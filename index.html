@@ -9,8 +9,8 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #e0e0e0;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #ffffff;
             min-height: 100vh;
             padding: 20px;
         }
@@ -26,54 +26,62 @@
         }
         
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         
         .header p {
-            color: #888;
+            color: #b0b0b0;
             font-size: 1.1em;
+            font-weight: 300;
         }
         
         /* 时间线 */
         .timeline {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 40px;
             flex-wrap: wrap;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.08), rgba(0, 212, 255, 0.08));
+            border: 2px solid rgba(0, 255, 136, 0.2);
+            border-radius: 12px;
             overflow-x: auto;
         }
         
         .timeline-item {
-            padding: 10px 15px;
-            background: rgba(0, 212, 255, 0.1);
-            border: 2px solid rgba(0, 212, 255, 0.3);
+            padding: 12px 18px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 212, 255, 0.15));
+            border: 2px solid rgba(0, 255, 136, 0.4);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
             position: relative;
+            color: #ffffff;
+            font-weight: 500;
         }
         
         .timeline-item:hover {
-            background: rgba(0, 212, 255, 0.2);
-            border-color: rgba(0, 212, 255, 0.6);
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 212, 255, 0.25));
+            border-color: #00ff88;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 255, 136, 0.2);
         }
         
         .timeline-item.active {
-            background: rgba(0, 212, 255, 0.3);
-            border-color: #00d4ff;
-            color: #00d4ff;
-            font-weight: bold;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            border-color: #00ff88;
+            color: #000000;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.4);
         }
         
         /* 控制按钮 */
@@ -86,20 +94,22 @@
         }
         
         .btn {
-            padding: 10px 20px;
-            background: rgba(0, 212, 255, 0.2);
-            border: 2px solid rgba(0, 212, 255, 0.5);
-            color: #00d4ff;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 212, 255, 0.2));
+            border: 2px solid rgba(0, 255, 136, 0.5);
+            color: #ffffff;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1em;
+            font-weight: 600;
         }
         
         .btn:hover:not(:disabled) {
-            background: rgba(0, 212, 255, 0.3);
-            border-color: #00d4ff;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 212, 255, 0.3));
+            border-color: #00ff88;
             transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 255, 136, 0.2);
         }
         
         .btn:disabled {
@@ -116,125 +126,173 @@
         }
         
         .date-input-group input {
-            padding: 10px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            color: #e0e0e0;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            color: #ffffff;
             border-radius: 8px;
             font-size: 1em;
         }
         
+        .date-input-group input::placeholder {
+            color: #888888;
+        }
+        
         .date-input-group input:focus {
             outline: none;
-            border-color: #00d4ff;
-            background: rgba(0, 212, 255, 0.1);
+            border-color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
         }
         
         /* 新闻内容 */
         .news-container {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 30px;
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 212, 255, 0.05));
+            border-radius: 12px;
+            padding: 35px;
+            border: 2px solid rgba(0, 255, 136, 0.15);
         }
         
         .news-date {
-            font-size: 1.3em;
-            color: #00d4ff;
-            margin-bottom: 10px;
-            font-weight: bold;
+            font-size: 1.5em;
+            color: #00ff88;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         
         .market-tone {
-            color: #888;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: rgba(0, 212, 255, 0.05);
-            border-left: 3px solid #00d4ff;
-            border-radius: 5px;
+            color: #ffffff;
+            margin-bottom: 25px;
+            padding: 18px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));
+            border-left: 4px solid #00ff88;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1.05em;
         }
         
         .news-section {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         
         .section-title {
-            font-size: 1.2em;
-            color: #00d4ff;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            font-size: 1.3em;
+            color: #00ff88;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid rgba(0, 255, 136, 0.4);
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
         
         .news-item {
-            background: rgba(0, 212, 255, 0.05);
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border-left: 3px solid #00d4ff;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.08), rgba(0, 212, 255, 0.08));
+            padding: 20px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            border-left: 4px solid #00ff88;
+            border: 2px solid rgba(0, 255, 136, 0.2);
+            border-left: 4px solid #00ff88;
+            transition: all 0.3s ease;
+        }
+        
+        .news-item:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.12), rgba(0, 212, 255, 0.12));
+            border-color: rgba(0, 255, 136, 0.4);
+            box-shadow: 0 8px 16px rgba(0, 255, 136, 0.15);
+            transform: translateX(4px);
         }
         
         .news-title {
-            font-size: 1.1em;
-            color: #e0e0e0;
-            margin-bottom: 8px;
-            font-weight: bold;
+            font-size: 1.2em;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
         
         .news-summary {
-            color: #aaa;
-            margin-bottom: 10px;
-            line-height: 1.6;
+            color: #d0d0d0;
+            margin-bottom: 15px;
+            line-height: 1.7;
+            font-size: 1.02em;
         }
         
         .news-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            font-size: 0.9em;
-            color: #888;
+            gap: 20px;
+            font-size: 0.95em;
+            color: #b0b0b0;
         }
         
         .meta-item {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
         }
         
         .meta-label {
-            color: #666;
-            font-size: 0.85em;
+            color: #888888;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .meta-value {
-            color: #00d4ff;
+            color: #00ff88;
+            font-weight: 600;
+            font-size: 1.05em;
         }
         
         .etf-list, .stock-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
         
         .etf-tag, .stock-tag {
-            padding: 5px 10px;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 5px;
-            font-size: 0.9em;
+            padding: 8px 14px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 212, 255, 0.15));
+            border: 1.5px solid rgba(0, 255, 136, 0.4);
+            border-radius: 6px;
+            font-size: 0.95em;
+            color: #ffffff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .etf-tag:hover, .stock-tag:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 212, 255, 0.25));
+            border-color: #00ff88;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
         }
         
         .sentiment-good {
             color: #ff4444;
+            font-weight: 700;
         }
         
         .sentiment-bad {
             color: #44ff44;
+            font-weight: 700;
+        }
+        
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888888;
+        }
+        
+        .empty-state p {
+            font-size: 1.1em;
         }
         
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
             
             .news-container {
@@ -243,11 +301,24 @@
             
             .timeline {
                 gap: 8px;
+                padding: 15px;
             }
             
             .timeline-item {
-                padding: 8px 12px;
+                padding: 10px 12px;
                 font-size: 0.9em;
+            }
+            
+            .news-meta {
+                gap: 15px;
+            }
+            
+            .section-title {
+                font-size: 1.1em;
+            }
+            
+            .news-title {
+                font-size: 1.05em;
             }
         }
     </style>
@@ -274,7 +345,9 @@
         </div>
         
         <div class="news-container" id="newsContainer">
-            <p style="text-align: center; color: #888;">加载中...</p>
+            <div class="empty-state">
+                <p>加载中...</p>
+            </div>
         </div>
     </div>
     
@@ -350,7 +423,7 @@
         function renderNews() {
             const news = getNews(currentDate);
             if (!news) {
-                document.getElementById('newsContainer').innerHTML = '<p style="text-align: center; color: #888;">该日期暂无新闻</p>';
+                document.getElementById('newsContainer').innerHTML = '<div class="empty-state"><p>该日期暂无新闻</p></div>';
                 return;
             }
             
