@@ -9,8 +9,8 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
-            color: #ffffff;
+            background: #ffffff;
+            color: #1a1a1a;
             min-height: 100vh;
             padding: 20px;
         }
@@ -23,23 +23,22 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
+            padding: 30px 0;
+            border-bottom: 3px solid #f0f0f0;
         }
         
         .header h1 {
             font-size: 2.8em;
             margin-bottom: 15px;
-            background: linear-gradient(135deg, #00ff88, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #1a1a1a;
             font-weight: 700;
             letter-spacing: 1px;
         }
         
         .header p {
-            color: #b0b0b0;
+            color: #666666;
             font-size: 1.1em;
-            font-weight: 300;
+            font-weight: 400;
         }
         
         /* 时间线 */
@@ -50,38 +49,37 @@
             margin-bottom: 40px;
             flex-wrap: wrap;
             padding: 25px;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.08), rgba(0, 212, 255, 0.08));
-            border: 2px solid rgba(0, 255, 136, 0.2);
+            background: #f8f8f8;
             border-radius: 12px;
             overflow-x: auto;
         }
         
         .timeline-item {
             padding: 12px 18px;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 212, 255, 0.15));
-            border: 2px solid rgba(0, 255, 136, 0.4);
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
             position: relative;
-            color: #ffffff;
+            color: #333333;
             font-weight: 500;
         }
         
         .timeline-item:hover {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 212, 255, 0.25));
-            border-color: #00ff88;
+            background: #f0f0f0;
+            border-color: #1a1a1a;
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 255, 136, 0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
         
         .timeline-item.active {
-            background: linear-gradient(135deg, #00ff88, #00d4ff);
-            border-color: #00ff88;
-            color: #000000;
+            background: #1a1a1a;
+            border-color: #1a1a1a;
+            color: #ffffff;
             font-weight: 700;
-            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.4);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
         
         /* 控制按钮 */
@@ -95,9 +93,9 @@
         
         .btn {
             padding: 12px 24px;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 212, 255, 0.2));
-            border: 2px solid rgba(0, 255, 136, 0.5);
-            color: #ffffff;
+            background: #ffffff;
+            border: 2px solid #1a1a1a;
+            color: #1a1a1a;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -106,10 +104,10 @@
         }
         
         .btn:hover:not(:disabled) {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 212, 255, 0.3));
-            border-color: #00ff88;
+            background: #1a1a1a;
+            color: #ffffff;
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0, 255, 136, 0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
         
         .btn:disabled {
@@ -127,46 +125,46 @@
         
         .date-input-group input {
             padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(0, 255, 136, 0.3);
-            color: #ffffff;
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            color: #1a1a1a;
             border-radius: 8px;
             font-size: 1em;
         }
         
         .date-input-group input::placeholder {
-            color: #888888;
+            color: #999999;
         }
         
         .date-input-group input:focus {
             outline: none;
-            border-color: #00ff88;
-            background: rgba(0, 255, 136, 0.1);
-            box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+            border-color: #1a1a1a;
+            background: #ffffff;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
         }
         
         /* 新闻内容 */
         .news-container {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 212, 255, 0.05));
+            background: #ffffff;
             border-radius: 12px;
             padding: 35px;
-            border: 2px solid rgba(0, 255, 136, 0.15);
+            border: 2px solid #f0f0f0;
         }
         
         .news-date {
             font-size: 1.5em;
-            color: #00ff88;
+            color: #1a1a1a;
             margin-bottom: 15px;
             font-weight: 700;
             letter-spacing: 1px;
         }
         
         .market-tone {
-            color: #ffffff;
+            color: #1a1a1a;
             margin-bottom: 25px;
             padding: 18px;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));
-            border-left: 4px solid #00ff88;
+            background: #f8f8f8;
+            border-left: 4px solid #1a1a1a;
             border-radius: 8px;
             font-weight: 500;
             font-size: 1.05em;
@@ -178,41 +176,40 @@
         
         .section-title {
             font-size: 1.3em;
-            color: #00ff88;
+            color: #1a1a1a;
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 3px solid rgba(0, 255, 136, 0.4);
+            border-bottom: 3px solid #1a1a1a;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
         
         .news-item {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.08), rgba(0, 212, 255, 0.08));
+            background: #f8f8f8;
             padding: 20px;
             margin-bottom: 18px;
             border-radius: 10px;
-            border-left: 4px solid #00ff88;
-            border: 2px solid rgba(0, 255, 136, 0.2);
-            border-left: 4px solid #00ff88;
+            border: 2px solid #e0e0e0;
+            border-left: 4px solid #1a1a1a;
             transition: all 0.3s ease;
         }
         
         .news-item:hover {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.12), rgba(0, 212, 255, 0.12));
-            border-color: rgba(0, 255, 136, 0.4);
-            box-shadow: 0 8px 16px rgba(0, 255, 136, 0.15);
+            background: #f0f0f0;
+            border-color: #1a1a1a;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             transform: translateX(4px);
         }
         
         .news-title {
             font-size: 1.2em;
-            color: #ffffff;
+            color: #1a1a1a;
             margin-bottom: 10px;
             font-weight: 700;
         }
         
         .news-summary {
-            color: #d0d0d0;
+            color: #333333;
             margin-bottom: 15px;
             line-height: 1.7;
             font-size: 1.02em;
@@ -223,7 +220,7 @@
             flex-wrap: wrap;
             gap: 20px;
             font-size: 0.95em;
-            color: #b0b0b0;
+            color: #666666;
         }
         
         .meta-item {
@@ -233,7 +230,7 @@
         }
         
         .meta-label {
-            color: #888888;
+            color: #999999;
             font-size: 0.9em;
             font-weight: 600;
             text-transform: uppercase;
@@ -241,7 +238,7 @@
         }
         
         .meta-value {
-            color: #00ff88;
+            color: #1a1a1a;
             font-weight: 600;
             font-size: 1.05em;
         }
@@ -254,28 +251,28 @@
         
         .etf-tag, .stock-tag {
             padding: 8px 14px;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 212, 255, 0.15));
-            border: 1.5px solid rgba(0, 255, 136, 0.4);
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
             border-radius: 6px;
             font-size: 0.95em;
-            color: #ffffff;
+            color: #1a1a1a;
             font-weight: 500;
             transition: all 0.3s ease;
         }
         
         .etf-tag:hover, .stock-tag:hover {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 212, 255, 0.25));
-            border-color: #00ff88;
-            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+            background: #f0f0f0;
+            border-color: #1a1a1a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         .sentiment-good {
-            color: #ff4444;
+            color: #d32f2f;
             font-weight: 700;
         }
         
         .sentiment-bad {
-            color: #44ff44;
+            color: #388e3c;
             font-weight: 700;
         }
         
@@ -283,7 +280,7 @@
         .empty-state {
             text-align: center;
             padding: 60px 20px;
-            color: #888888;
+            color: #999999;
         }
         
         .empty-state p {
