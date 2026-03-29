@@ -16,414 +16,423 @@
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
-        header {
+        .header {
             text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 40px;
         }
         
-        h1 {
-            color: #4CAF50;
-            font-size: 28px;
+        .header h1 {
+            font-size: 2.5em;
             margin-bottom: 10px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .date-selector {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-            flex-wrap: wrap;
+        .header p {
+            color: #888;
+            font-size: 1.1em;
         }
         
-        .date-selector button {
-            background: rgba(76,175,80,0.2);
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 14px;
-        }
-        
-        .date-selector button:hover {
-            background: rgba(76,175,80,0.4);
-        }
-        
-        .date-selector button.active {
-            background: #4CAF50;
-            color: #1a1a2e;
-        }
-        
-        .date-selector input {
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.05);
-            color: #e0e0e0;
-            font-size: 14px;
-        }
-        
+        /* 时间线 */
         .timeline {
             display: flex;
-            gap: 5px;
-            overflow-x: auto;
-            padding: 15px 0;
-            margin: 20px 0;
             justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow-x: auto;
         }
         
         .timeline-item {
-            min-width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,255,255,0.1);
+            padding: 10px 15px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid rgba(0, 212, 255, 0.3);
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-size: 12px;
-            text-align: center;
-            padding: 5px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            position: relative;
         }
         
         .timeline-item:hover {
-            background: rgba(76,175,80,0.2);
-            border-color: #4CAF50;
+            background: rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.6);
+            transform: translateY(-2px);
         }
         
         .timeline-item.active {
-            background: #4CAF50;
-            color: #1a1a2e;
-            border-color: #4CAF50;
-        }
-        
-        .market-tone {
-            background: rgba(255,193,7,0.1);
-            border-left: 4px solid #FFC107;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 8px;
-        }
-        
-        .market-tone strong {
-            color: #FFC107;
-        }
-        
-        .section {
-            margin: 30px 0;
-        }
-        
-        .section-title {
-            font-size: 22px;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid;
-        }
-        
-        .s-level .section-title { color: #f44336; border-color: #f44336; }
-        .a-level .section-title { color: #FFC107; border-color: #FFC107; }
-        .douyin .section-title { color: #2196F3; border-color: #2196F3; }
-        
-        .news-item {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s;
-        }
-        
-        .news-item:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateX(5px);
-        }
-        
-        .news-title {
-            font-size: 18px;
+            background: rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff;
+            color: #00d4ff;
             font-weight: bold;
-            margin-bottom: 12px;
-            color: #fff;
         }
         
-        .news-row {
-            margin: 8px 0;
-            font-size: 14px;
-        }
-        
-        .label {
-            color: #888;
-            margin-right: 8px;
-        }
-        
-        .etf-tag {
-            display: inline-block;
-            background: rgba(76,175,80,0.2);
-            color: #4CAF50;
-            padding: 3px 10px;
-            border-radius: 12px;
-            margin: 3px;
-            font-size: 12px;
-        }
-        
-        .stock-tag {
-            display: inline-block;
-            background: rgba(33,150,243,0.2);
-            color: #2196F3;
-            padding: 3px 10px;
-            border-radius: 12px;
-            margin: 3px;
-            font-size: 12px;
-        }
-        
-        .sentiment-bullish {
-            color: #f44336;
-        }
-        
-        .sentiment-bearish {
-            color: #4CAF50;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #666;
-            font-size: 12px;
-        }
-        
-        .nav-buttons {
+        /* 控制按钮 */
+        .controls {
             display: flex;
-            gap: 10px;
             justify-content: center;
-            margin: 20px 0;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
         }
         
-        .nav-buttons button {
-            background: rgba(76,175,80,0.2);
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
+        .btn {
             padding: 10px 20px;
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            color: #00d4ff;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            font-size: 1em;
         }
         
-        .nav-buttons button:hover:not(:disabled) {
-            background: rgba(76,175,80,0.4);
+        .btn:hover:not(:disabled) {
+            background: rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff;
+            transform: translateY(-2px);
         }
         
-        .nav-buttons button:disabled {
+        .btn:disabled {
             opacity: 0.3;
             cursor: not-allowed;
         }
         
-        .current-date {
-            text-align: center;
-            font-size: 18px;
-            color: #4CAF50;
-            margin: 20px 0;
+        /* 日期输入 */
+        .date-input-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .date-input-group input {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            color: #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        
+        .date-input-group input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+        }
+        
+        /* 新闻内容 */
+        .news-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .news-date {
+            font-size: 1.3em;
+            color: #00d4ff;
+            margin-bottom: 10px;
             font-weight: bold;
+        }
+        
+        .market-tone {
+            color: #888;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 3px solid #00d4ff;
+            border-radius: 5px;
+        }
+        
+        .news-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.2em;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .news-item {
+            background: rgba(0, 212, 255, 0.05);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #00d4ff;
+        }
+        
+        .news-title {
+            font-size: 1.1em;
+            color: #e0e0e0;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .news-summary {
+            color: #aaa;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .news-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .meta-label {
+            color: #666;
+            font-size: 0.85em;
+        }
+        
+        .meta-value {
+            color: #00d4ff;
+        }
+        
+        .etf-list, .stock-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .etf-tag, .stock-tag {
+            padding: 5px 10px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        
+        .sentiment-good {
+            color: #ff4444;
+        }
+        
+        .sentiment-bad {
+            color: #44ff44;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .news-container {
+                padding: 20px;
+            }
+            
+            .timeline {
+                gap: 8px;
+            }
+            
+            .timeline-item {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="header">
             <h1>📊 财经新闻速览</h1>
-            <p>支持历史新闻查看</p>
-        </header>
-
-        <div class="date-selector">
-            <button onclick="goToToday()">今天</button>
-            <input type="date" id="dateInput" onchange="loadNewsFromInput()">
-            <button onclick="showAllDates()">查看所有日期</button>
+            <p>实时财经新闻 · 历史查看 · 智能分类</p>
         </div>
-
+        
         <div class="timeline" id="timeline"></div>
-
-        <div class="nav-buttons">
-            <button onclick="previousDay()" id="prevBtn">← 前一天</button>
-            <button onclick="nextDay()" id="nextBtn">后一天 →</button>
+        
+        <div class="controls">
+            <button class="btn" id="prevBtn" onclick="showPreviousDate()">← 前一天</button>
+            <button class="btn" id="todayBtn" onclick="showToday()">📅 今天</button>
+            <button class="btn" id="nextBtn" onclick="showNextDate()">后一天 →</button>
+            <button class="btn" onclick="toggleAllDates()">📋 查看所有日期</button>
         </div>
-
-        <div class="current-date" id="currentDate"></div>
-
-        <div class="market-tone" id="marketTone"></div>
-
-        <div class="section s-level" id="sLevel"></div>
-        <div class="section a-level" id="aLevel"></div>
-        <div class="section douyin" id="douyin"></div>
-
-        <footer>
-            <p>生成时间：<span id="generatedTime"></span></p>
-            <p>数据来源：网易财经、权威财经媒体</p>
-        </footer>
+        
+        <div class="date-input-group">
+            <input type="text" id="dateInput" placeholder="输入日期 (YYYY-MM-DD)" onkeypress="handleDateInput(event)">
+            <button class="btn" onclick="jumpToDate()">跳转</button>
+        </div>
+        
+        <div class="news-container" id="newsContainer">
+            <p style="text-align: center; color: #888;">加载中...</p>
+        </div>
     </div>
-
+    
     <script src="news-data.js"></script>
     <script>
-        let currentDate = availableDates[0]; // 默认显示今天
-
-        function formatDate(dateStr) {
-            const date = new Date(dateStr + 'T00:00:00');
-            const days = ['日', '一', '二', '三', '四', '五', '六'];
-            const day = days[date.getDay()];
-            return dateStr.split('-').slice(1).join('-') + ' (周' + day + ')';
-        }
-
-        function renderTimeline() {
+        let currentDate = availableDates[0];
+        
+        function initTimeline() {
             const timeline = document.getElementById('timeline');
             timeline.innerHTML = '';
             
             availableDates.forEach(date => {
                 const item = document.createElement('div');
                 item.className = 'timeline-item' + (date === currentDate ? ' active' : '');
-                item.textContent = date.split('-')[2];
-                item.onclick = () => loadNews(date);
+                item.textContent = date;
+                item.onclick = () => showDate(date);
                 timeline.appendChild(item);
             });
         }
-
-        function renderNews(date) {
-            const news = getNews(date);
-            if (!news) return;
-
-            // 更新当前日期显示
-            document.getElementById('currentDate').textContent = '📅 ' + formatDate(date);
-
-            // 更新市场基调
-            document.getElementById('marketTone').innerHTML = 
-                '<strong>⚠️ 今日市场总基调：</strong>' + news.market_tone;
-
-            // 渲染 S 级新闻
-            let sHtml = '<h2 class="section-title">🔴 S级 - 主线级</h2>';
-            news.s_level.forEach(item => {
-                const etfHtml = item.etfs.map(e => 
-                    `<span class="etf-tag">${e.name}(<span class="sentiment-${e.sentiment === '利好' ? 'bullish' : 'bearish'}">${e.sentiment}</span>)</span>`
-                ).join('');
-                const stockHtml = item.stocks.map(s => 
-                    `<span class="stock-tag">${s}</span>`
-                ).join('');
-                
-                sHtml += `
-                    <div class="news-item">
-                        <div class="news-title">${item.emoji} ${item.title}</div>
-                        <div class="news-row"><span class="label">📌 要点：</span>${item.summary}</div>
-                        <div class="news-row"><span class="label">⏱️ 影响时长：</span>${item.duration}</div>
-                        <div class="news-row"><span class="label">📈 映射ETF：</span>${etfHtml}</div>
-                        <div class="news-row"><span class="label">✨ 映射个股：</span>${stockHtml}</div>
-                        <div class="news-row"><span class="label">💡 资金信号：</span>${item.signal}</div>
-                    </div>
-                `;
-            });
-            document.getElementById('sLevel').innerHTML = sHtml;
-
-            // 渲染 A 级新闻
-            let aHtml = '<h2 class="section-title">🟡 A级 - 轮动级</h2>';
-            news.a_level.forEach(item => {
-                const etfHtml = item.etfs.map(e => 
-                    `<span class="etf-tag">${e.name}(<span class="sentiment-${e.sentiment === '利好' ? 'bullish' : 'bearish'}">${e.sentiment}</span>)</span>`
-                ).join('');
-                const stockHtml = item.stocks.map(s => 
-                    `<span class="stock-tag">${s}</span>`
-                ).join('');
-                
-                aHtml += `
-                    <div class="news-item">
-                        <div class="news-title">${item.emoji} ${item.title}</div>
-                        <div class="news-row"><span class="label">📌 要点：</span>${item.summary}</div>
-                        <div class="news-row"><span class="label">⏱️ 影响时长：</span>${item.duration}</div>
-                        <div class="news-row"><span class="label">📈 映射ETF：</span>${etfHtml}</div>
-                        <div class="news-row"><span class="label">✨ 映射个股：</span>${stockHtml}</div>
-                        <div class="news-row"><span class="label">💡 资金信号：</span>${item.signal}</div>
-                    </div>
-                `;
-            });
-            document.getElementById('aLevel').innerHTML = aHtml;
-
-            // 渲染抖音相关
-            let dyHtml = '<h2 class="section-title">📱 抖音相关</h2>';
-            news.douyin.forEach(item => {
-                const etfHtml = item.etfs.map(e => 
-                    `<span class="etf-tag">${e.name}(<span class="sentiment-${e.sentiment === '利好' ? 'bullish' : 'bearish'}">${e.sentiment}</span>)</span>`
-                ).join('');
-                const stockHtml = item.stocks.map(s => 
-                    `<span class="stock-tag">${s}</span>`
-                ).join('');
-                
-                dyHtml += `
-                    <div class="news-item">
-                        <div class="news-title">${item.emoji} ${item.title}</div>
-                        <div class="news-row"><span class="label">📌 要点：</span>${item.summary}</div>
-                        <div class="news-row"><span class="label">⏱️ 影响时长：</span>${item.duration}</div>
-                        <div class="news-row"><span class="label">📈 映射ETF：</span>${etfHtml}</div>
-                        <div class="news-row"><span class="label">✨ 映射个股：</span>${stockHtml}</div>
-                        <div class="news-row"><span class="label">💡 资金信号：</span>${item.signal}</div>
-                    </div>
-                `;
-            });
-            document.getElementById('douyin').innerHTML = dyHtml;
-
-            // 更新导航按钮
-            document.getElementById('prevBtn').disabled = !getPreviousDate(date);
-            document.getElementById('nextBtn').disabled = !getNextDate(date);
-
-            // 更新时间线
-            renderTimeline();
-
-            // 更新日期输入框
-            document.getElementById('dateInput').value = date;
-
-            // 更新生成时间
-            document.getElementById('generatedTime').textContent = new Date().toLocaleString('zh-CN');
+        
+        function showDate(date) {
+            if (!availableDates.includes(date)) return;
+            currentDate = date;
+            updateUI();
         }
-
-        function loadNews(date) {
-            if (availableDates.includes(date)) {
-                currentDate = date;
-                renderNews(date);
-                window.scrollTo(0, 0);
+        
+        function showPreviousDate() {
+            const prev = getPreviousDate(currentDate);
+            if (prev) showDate(prev);
+        }
+        
+        function showNextDate() {
+            const next = getNextDate(currentDate);
+            if (next) showDate(next);
+        }
+        
+        function showToday() {
+            showDate(availableDates[0]);
+        }
+        
+        function jumpToDate() {
+            const input = document.getElementById('dateInput').value;
+            if (availableDates.includes(input)) {
+                showDate(input);
+                document.getElementById('dateInput').value = '';
+            } else {
+                alert('日期不存在');
             }
         }
-
-        function previousDay() {
-            const prev = getPreviousDate(currentDate);
-            if (prev) loadNews(prev);
+        
+        function handleDateInput(event) {
+            if (event.key === 'Enter') {
+                jumpToDate();
+            }
         }
-
-        function nextDay() {
-            const next = getNextDate(currentDate);
-            if (next) loadNews(next);
+        
+        function toggleAllDates() {
+            const dates = availableDates.join('\n');
+            alert('可用日期:\n' + dates);
         }
-
-        function goToToday() {
-            loadNews(availableDates[0]);
+        
+        function updateUI() {
+            initTimeline();
+            updateButtons();
+            renderNews();
         }
-
-        function loadNewsFromInput() {
-            const date = document.getElementById('dateInput').value;
-            loadNews(date);
+        
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = !getPreviousDate(currentDate);
+            document.getElementById('nextBtn').disabled = !getNextDate(currentDate);
         }
-
-        function showAllDates() {
-            alert('可用日期：\n' + availableDates.join('\n'));
+        
+        function renderNews() {
+            const news = getNews(currentDate);
+            if (!news) {
+                document.getElementById('newsContainer').innerHTML = '<p style="text-align: center; color: #888;">该日期暂无新闻</p>';
+                return;
+            }
+            
+            let html = `
+                <div class="news-date">${news.date}</div>
+                <div class="market-tone">📈 ${news.market_tone}</div>
+            `;
+            
+            if (news.s_level && news.s_level.length > 0) {
+                html += '<div class="news-section">';
+                html += '<div class="section-title">🔴 S级新闻（主线级）</div>';
+                news.s_level.forEach(item => {
+                    html += renderNewsItem(item);
+                });
+                html += '</div>';
+            }
+            
+            if (news.a_level && news.a_level.length > 0) {
+                html += '<div class="news-section">';
+                html += '<div class="section-title">🟡 A级新闻（轮动级）</div>';
+                news.a_level.forEach(item => {
+                    html += renderNewsItem(item);
+                });
+                html += '</div>';
+            }
+            
+            if (news.douyin && news.douyin.length > 0) {
+                html += '<div class="news-section">';
+                html += '<div class="section-title">📱 抖音相关</div>';
+                news.douyin.forEach(item => {
+                    html += renderNewsItem(item);
+                });
+                html += '</div>';
+            }
+            
+            document.getElementById('newsContainer').innerHTML = html;
         }
-
+        
+        function renderNewsItem(item) {
+            let etfHtml = '';
+            if (item.etfs && item.etfs.length > 0) {
+                etfHtml = '<div class="meta-item"><span class="meta-label">📈 映射ETF</span><div class="etf-list">';
+                item.etfs.forEach(etf => {
+                    const sentiment = etf.sentiment === '利好' ? 'sentiment-good' : 'sentiment-bad';
+                    etfHtml += `<span class="etf-tag"><span class="${sentiment}">${etf.sentiment}</span> ${etf.name}</span>`;
+                });
+                etfHtml += '</div></div>';
+            }
+            
+            let stockHtml = '';
+            if (item.stocks && item.stocks.length > 0) {
+                stockHtml = '<div class="meta-item"><span class="meta-label">✨ 映射个股</span><div class="stock-list">';
+                item.stocks.forEach(stock => {
+                    stockHtml += `<span class="stock-tag">${stock}</span>`;
+                });
+                stockHtml += '</div></div>';
+            }
+            
+            return `
+                <div class="news-item">
+                    <div class="news-title">${item.emoji} ${item.title}</div>
+                    <div class="news-summary">${item.summary}</div>
+                    <div class="news-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">⏱️ 影响时长</span>
+                            <span class="meta-value">${item.duration}</span>
+                        </div>
+                        ${etfHtml}
+                        ${stockHtml}
+                        <div class="meta-item">
+                            <span class="meta-label">💡 资金信号</span>
+                            <span class="meta-value">${item.signal}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
         // 初始化
-        renderNews(currentDate);
+        initTimeline();
+        updateButtons();
+        renderNews();
     </script>
 </body>
 </html>
