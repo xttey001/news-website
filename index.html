@@ -9,8 +9,8 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: #000000;
-            color: #ffffff;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
             min-height: 100vh;
             padding: 20px;
         }
@@ -24,19 +24,19 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 30px 0;
-            border-bottom: 2px solid #333333;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
         
         .header h1 {
             font-size: 2.8em;
             margin-bottom: 15px;
-            color: #ffffff;
+            color: #4CAF50;
             font-weight: 700;
             letter-spacing: 1px;
         }
         
         .header p {
-            color: #cccccc;
+            color: #b0b0b0;
             font-size: 1.1em;
             font-weight: 400;
         }
@@ -49,38 +49,38 @@
             margin-bottom: 40px;
             flex-wrap: wrap;
             padding: 25px;
-            background: #111111;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             overflow-x: auto;
-            border: 1px solid #333333;
+            border: 2px solid rgba(76, 175, 80, 0.2);
         }
         
         .timeline-item {
             padding: 12px 18px;
-            background: #1a1a1a;
-            border: 2px solid #444444;
+            background: rgba(76, 175, 80, 0.15);
+            border: 2px solid rgba(76, 175, 80, 0.4);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
             position: relative;
-            color: #ffffff;
+            color: #e0e0e0;
             font-weight: 500;
         }
         
         .timeline-item:hover {
-            background: #2a2a2a;
-            border-color: #666666;
+            background: rgba(76, 175, 80, 0.25);
+            border-color: #4CAF50;
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 16px rgba(76, 175, 80, 0.2);
         }
         
         .timeline-item.active {
-            background: #ffffff;
-            border-color: #ffffff;
-            color: #000000;
+            background: #4CAF50;
+            border-color: #4CAF50;
+            color: #1a1a2e;
             font-weight: 700;
-            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(76, 175, 80, 0.4);
         }
         
         /* 控制按钮 */
@@ -94,9 +94,9 @@
         
         .btn {
             padding: 12px 24px;
-            background: #1a1a1a;
-            border: 2px solid #ffffff;
-            color: #ffffff;
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -105,10 +105,10 @@
         }
         
         .btn:hover:not(:disabled) {
-            background: #ffffff;
-            color: #000000;
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 16px rgba(76, 175, 80, 0.2);
         }
         
         .btn:disabled {
@@ -126,46 +126,46 @@
         
         .date-input-group input {
             padding: 12px 15px;
-            background: #1a1a1a;
-            border: 2px solid #444444;
-            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            color: #e0e0e0;
             border-radius: 8px;
             font-size: 1em;
         }
         
         .date-input-group input::placeholder {
-            color: #666666;
+            color: #888888;
         }
         
         .date-input-group input:focus {
             outline: none;
-            border-color: #ffffff;
-            background: #1a1a1a;
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+            box-shadow: 0 0 12px rgba(76, 175, 80, 0.3);
         }
         
         /* 新闻内容 */
         .news-container {
-            background: #0a0a0a;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             padding: 35px;
-            border: 2px solid #333333;
+            border: 2px solid rgba(76, 175, 80, 0.2);
         }
         
         .news-date {
             font-size: 1.5em;
-            color: #ffffff;
+            color: #e0e0e0;
             margin-bottom: 15px;
             font-weight: 700;
             letter-spacing: 1px;
         }
         
         .market-tone {
-            color: #ffffff;
+            color: #FFC107;
             margin-bottom: 25px;
             padding: 18px;
-            background: #1a1a1a;
-            border-left: 4px solid #ffffff;
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #FFC107;
             border-radius: 8px;
             font-weight: 500;
             font-size: 1.05em;
@@ -177,28 +177,41 @@
         
         .section-title {
             font-size: 1.3em;
-            color: #ffffff;
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 3px solid #ffffff;
+            border-bottom: 3px solid;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
         
+        .s-level .section-title {
+            color: #f44336;
+            border-color: #f44336;
+        }
+        
+        .a-level .section-title {
+            color: #FFC107;
+            border-color: #FFC107;
+        }
+        
+        .douyin .section-title {
+            color: #2196F3;
+            border-color: #2196F3;
+        }
+        
         .news-item {
-            background: #1a1a1a;
+            background: rgba(255, 255, 255, 0.05);
             padding: 20px;
             margin-bottom: 18px;
             border-radius: 10px;
-            border: 2px solid #333333;
-            border-left: 4px solid #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
         
         .news-item:hover {
-            background: #2a2a2a;
-            border-color: #555555;
-            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(76, 175, 80, 0.3);
+            box-shadow: 0 8px 16px rgba(76, 175, 80, 0.1);
             transform: translateX(4px);
         }
         
@@ -210,7 +223,7 @@
         }
         
         .news-summary {
-            color: #dddddd;
+            color: #d0d0d0;
             margin-bottom: 15px;
             line-height: 1.7;
             font-size: 1.02em;
@@ -239,7 +252,7 @@
         }
         
         .meta-value {
-            color: #ffffff;
+            color: #e0e0e0;
             font-weight: 600;
             font-size: 1.05em;
         }
@@ -250,30 +263,47 @@
             gap: 10px;
         }
         
-        .etf-tag, .stock-tag {
+        .etf-tag {
             padding: 8px 14px;
-            background: #2a2a2a;
-            border: 2px solid #444444;
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
             border-radius: 6px;
             font-size: 0.95em;
-            color: #ffffff;
+            color: #4CAF50;
             font-weight: 500;
             transition: all 0.3s ease;
         }
         
-        .etf-tag:hover, .stock-tag:hover {
-            background: #3a3a3a;
-            border-color: #666666;
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+        .etf-tag:hover {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+        }
+        
+        .stock-tag {
+            padding: 8px 14px;
+            background: rgba(33, 150, 243, 0.2);
+            border: 2px solid #2196F3;
+            border-radius: 6px;
+            font-size: 0.95em;
+            color: #2196F3;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .stock-tag:hover {
+            background: rgba(33, 150, 243, 0.3);
+            border-color: #2196F3;
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
         }
         
         .sentiment-good {
-            color: #ff6b6b;
+            color: #f44336;
             font-weight: 700;
         }
         
         .sentiment-bad {
-            color: #51cf66;
+            color: #4CAF50;
             font-weight: 700;
         }
         
@@ -431,7 +461,7 @@
             `;
             
             if (news.s_level && news.s_level.length > 0) {
-                html += '<div class="news-section">';
+                html += '<div class="news-section s-level">';
                 html += '<div class="section-title">🔴 S级新闻（主线级）</div>';
                 news.s_level.forEach(item => {
                     html += renderNewsItem(item);
@@ -440,7 +470,7 @@
             }
             
             if (news.a_level && news.a_level.length > 0) {
-                html += '<div class="news-section">';
+                html += '<div class="news-section a-level">';
                 html += '<div class="section-title">🟡 A级新闻（轮动级）</div>';
                 news.a_level.forEach(item => {
                     html += renderNewsItem(item);
@@ -449,7 +479,7 @@
             }
             
             if (news.douyin && news.douyin.length > 0) {
-                html += '<div class="news-section">';
+                html += '<div class="news-section douyin">';
                 html += '<div class="section-title">📱 抖音相关</div>';
                 news.douyin.forEach(item => {
                     html += renderNewsItem(item);
