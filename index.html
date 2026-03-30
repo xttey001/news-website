@@ -509,8 +509,8 @@
 
         <!-- 风格切换器 -->
         <div class="style-switcher">
-            <button class="style-btn active" id="style1btn" onclick="switchStyle(1)">◉ 经典胶囊</button>
-            <button class="style-btn" id="style2btn" onclick="switchStyle(2)">◈ 玻璃卡片</button>
+            <button class="style-btn" id="style1btn" onclick="switchStyle(1)">◉ 经典胶囊</button>
+            <button class="style-btn active" id="style2btn" onclick="switchStyle(2)">◈ 玻璃卡片</button>
             <button class="style-btn" id="style3btn" onclick="switchStyle(3)">◎ 渐变光晕</button>
             <button class="style-btn" id="style4btn" onclick="switchStyle(4)">○ 日历数字</button>
         </div>
@@ -546,7 +546,7 @@
     <script src="news-data.js"></script>
     <script>
         let currentDate = availableDates[0];
-        let currentStyle = 1;
+        let currentStyle = 2;
 
         /* ========== 风格切换 ========== */
         function switchStyle(n) {
@@ -712,17 +712,17 @@
                 stockHtml += '<div class="tag-row">';
                 item.stocks.forEach(stock => {
                     // 从ETF推断个股情绪
-                    const relatedEtf = item.etfs && item.etfs.find(e => true);
+                    const relatedEtf = item.etfs && item.etfs[0];
                     let sentiment = 'neutral';
                     let icon = '◆';
-                    let reason = '板块联动';
+                    let reason = '';
                     if (relatedEtf) {
                         sentiment = relatedEtf.sentiment;
                         icon = sentiment === '利好' ? '▲' : '▼';
                         reason = sentiment === '利好' ? '受益于' : '受限于';
                     }
                     const cls = sentiment;
-                    const reasonText = sentiment === 'neutral' ? '' : `<span class="tag-reason">${reason}</span>`;
+                    const reasonText = reason ? `<span class="tag-reason">(${reason})</span>` : '';
                     stockHtml += `<span class="stock-tag ${cls}">${icon} ${stock}${reasonText}</span>`;
                 });
                 stockHtml += '</div>';
