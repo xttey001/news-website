@@ -423,46 +423,58 @@
             align-items: center;
             gap: 5px;
             padding: 4px 10px;
-            border-radius: 12px;
+            border-radius: 6px;
             margin: 3px;
             font-size: 12px;
+            font-weight: 500;
             border: 1px solid;
             transition: all 0.2s;
         }
         .stock-tag:hover { transform: translateY(-1px); }
+        /* 利好：红色 */
         .stock-tag.bullish {
-            background: rgba(244,67,54,0.08);
-            border-color: rgba(244,67,54,0.25);
-            color: #ff8a65;
+            background: rgba(244,67,54,0.15);
+            border-color: rgba(244,67,54,0.4);
+            color: #ff6b6b;
         }
         .stock-tag.bullish:hover {
-            background: rgba(244,67,54,0.15);
-            box-shadow: 0 2px 8px rgba(244,67,54,0.12);
+            background: rgba(244,67,54,0.25);
+            box-shadow: 0 2px 8px rgba(244,67,54,0.2);
         }
+        .stock-tag.bullish .sentiment-label {
+            background: #f44336;
+            color: #fff;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        /* 利空：橙色 */
         .stock-tag.bearish {
-            background: rgba(76,175,80,0.08);
-            border-color: rgba(76,175,80,0.25);
-            color: #81c784;
+            background: rgba(255,152,0,0.12);
+            border-color: rgba(255,152,0,0.35);
+            color: #ffb74d;
         }
         .stock-tag.bearish:hover {
-            background: rgba(76,175,80,0.15);
-            box-shadow: 0 2px 8px rgba(76,175,80,0.12);
+            background: rgba(255,152,0,0.22);
+            box-shadow: 0 2px 8px rgba(255,152,0,0.18);
         }
-        /* 中性 */
+        .stock-tag.bearish .sentiment-label {
+            background: #ff9800;
+            color: #fff;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        /* 中性：灰色 */
         .stock-tag.neutral {
-            background: rgba(33,150,243,0.08);
-            border-color: rgba(33,150,243,0.25);
-            color: #64b5f6;
+            background: rgba(150,150,150,0.08);
+            border-color: rgba(150,150,150,0.2);
+            color: #9e9e9e;
         }
         .stock-tag.neutral:hover {
-            background: rgba(33,150,243,0.15);
-        }
-
-        /* 原因说明文字 */
-        .tag-reason {
-            font-size: 10px;
-            opacity: 0.65;
-            margin-left: 2px;
+            background: rgba(150,150,150,0.15);
         }
 
         /* ================================================
@@ -705,25 +717,21 @@
                 etfHtml += '</div>';
             }
 
-            // 个股标签（带情绪 + 原因）
+            // 个股标签（利好/利空文字 + 颜色）
             let stockHtml = '';
             if (item.stocks && item.stocks.length) {
                 stockHtml = '<div class="news-row"><span class="label">✨ 映射个股：</span></div>';
                 stockHtml += '<div class="tag-row">';
                 item.stocks.forEach(stock => {
-                    // 从ETF推断个股情绪
                     const relatedEtf = item.etfs && item.etfs[0];
-                    let sentiment = 'neutral';
-                    let icon = '◆';
-                    let reason = '';
+                    let cls = 'neutral';
+                    let labelHtml = '';
                     if (relatedEtf) {
-                        sentiment = relatedEtf.sentiment;
-                        icon = sentiment === '利好' ? '▲' : '▼';
-                        reason = sentiment === '利好' ? '受益于' : '受限于';
+                        cls = relatedEtf.sentiment === '利好' ? 'bullish' : 'bearish';
+                        const labelText = relatedEtf.sentiment === '利好' ? '利好' : '利空';
+                        labelHtml = `<span class="sentiment-label">${labelText}</span>`;
                     }
-                    const cls = sentiment;
-                    const reasonText = reason ? `<span class="tag-reason">(${reason})</span>` : '';
-                    stockHtml += `<span class="stock-tag ${cls}">${icon} ${stock}${reasonText}</span>`;
+                    stockHtml += `<span class="stock-tag ${cls}">${labelHtml}${stock}</span>`;
                 });
                 stockHtml += '</div>';
             }
