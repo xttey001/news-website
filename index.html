@@ -6,71 +6,261 @@
     <title>财经新闻速览 - 历史查看</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-start: #1a1a2e;
+            --bg-end: #16213e;
+            --green: #4CAF50;
+            --green-bg: rgba(76,175,80,0.12);
+            --green-border: rgba(76,175,80,0.35);
+            --green-active-bg: rgba(76,175,80,0.25);
+            --orange: #FF9800;
+            --red: #f44336;
+            --blue: #2196F3;
+            --gold: #FFC107;
+            --card-bg: rgba(255,255,255,0.05);
+            --card-border: rgba(255,255,255,0.1);
+            --text: #e0e0e0;
+            --text-dim: #888;
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #e0e0e0;
+            font-family: var(--font);
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+            color: var(--text);
             min-height: 100vh;
             padding: 20px;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1000px; margin: 0 auto; }
 
-        /* 头部 */
+        /* ===== 头部 ===== */
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 28px;
+            padding: 22px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
         }
-        .header h1 {
-            color: #4CAF50;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        .header p {
-            color: #888;
-            font-size: 14px;
-        }
+        .header h1 { color: var(--green); font-size: 28px; margin-bottom: 8px; }
+        .header p { color: var(--text-dim); font-size: 14px; }
 
-        /* 时间线 */
-        .timeline {
+        /* ================================================
+           时间按钮风格 — 切换开关
+           ================================================ */
+
+        /* 风格切换器 */
+        .style-switcher {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 8px;
+            margin-bottom: 18px;
             flex-wrap: wrap;
-            padding: 15px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
         }
-        .timeline-item {
-            padding: 8px 14px;
-            background: rgba(76,175,80,0.1);
-            border: 2px solid rgba(76,175,80,0.3);
+        .style-btn {
+            padding: 5px 14px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--text-dim);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        .style-btn:hover { border-color: var(--green); color: var(--green); }
+        .style-btn.active {
+            background: var(--green-bg);
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        /* ================================================
+           风格一：经典胶囊（原始）
+           ================================================ */
+        .timeline-style1 {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            padding: 14px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+        .style1-item {
+            padding: 7px 14px;
+            background: var(--green-bg);
+            border: 2px solid var(--green-border);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 14px;
+            font-size: 13px;
             white-space: nowrap;
         }
-        .timeline-item:hover {
-            background: rgba(76,175,80,0.2);
-            border-color: rgba(76,175,80,0.6);
+        .style1-item:hover {
+            background: var(--green-active-bg);
+            border-color: var(--green);
             transform: translateY(-2px);
         }
-        .timeline-item.active {
-            background: rgba(76,175,80,0.3);
-            border-color: #4CAF50;
-            color: #4CAF50;
+        .style1-item.active {
+            background: var(--green-active-bg);
+            border-color: var(--green);
+            color: var(--green);
             font-weight: bold;
+            box-shadow: 0 0 12px rgba(76,175,80,0.3);
         }
 
-        /* 控制按钮 */
+        /* ================================================
+           风格二：玻璃态圆角卡片
+           ================================================ */
+        .timeline-style2 {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            padding: 16px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+        }
+        .style2-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 16px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+            min-width: 58px;
+        }
+        .style2-item:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(76,175,80,0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .style2-item.active {
+            background: linear-gradient(135deg, rgba(76,175,80,0.3), rgba(76,175,80,0.15));
+            border-color: var(--green);
+            box-shadow: 0 0 20px rgba(76,175,80,0.25), 0 4px 16px rgba(0,0,0,0.3);
+        }
+        .style2-date { font-size: 13px; font-weight: 600; color: var(--text); }
+        .style2-day { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+        .style2-item.active .style2-date { color: var(--green); }
+        .style2-item.active .style2-day { color: var(--green); opacity: 0.7; }
+        .style2-dot {
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--text-dim);
+            margin-bottom: 4px;
+            transition: all 0.3s;
+        }
+        .style2-item.active .style2-dot {
+            background: var(--green);
+            box-shadow: 0 0 6px var(--green);
+        }
+
+        /* ================================================
+           风格三：渐变胶囊 + 光晕
+           ================================================ */
+        .timeline-style3 {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            padding: 18px 20px;
+            background: linear-gradient(90deg, rgba(76,175,80,0.05) 0%, rgba(76,175,80,0.02) 50%, rgba(33,150,243,0.05) 100%);
+            border-radius: 50px;
+            border: 1px solid rgba(76,175,80,0.15);
+        }
+        .style3-item {
+            padding: 8px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+            background: rgba(255,255,255,0.05);
+            border: 1.5px solid rgba(255,255,255,0.1);
+            color: var(--text-dim);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+        .style3-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--green), #2E7D32);
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+        .style3-item:hover::before { opacity: 0.15; }
+        .style3-item:hover { transform: translateY(-2px); border-color: rgba(76,175,80,0.4); color: var(--text); }
+        .style3-item.active {
+            background: linear-gradient(135deg, rgba(76,175,80,0.35), rgba(76,175,80,0.2));
+            border-color: var(--green);
+            color: var(--green);
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(76,175,80,0.2), 0 4px 12px rgba(0,0,0,0.25);
+        }
+        .style3-item span { position: relative; z-index: 1; }
+
+        /* ================================================
+           风格四：微型日期块 + 数字大号
+           ================================================ */
+        .timeline-style4 {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            padding: 14px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+        .style4-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 52px;
+            padding: 8px 4px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1.5px solid transparent;
+        }
+        .style4-item:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        .style4-item.active {
+            background: linear-gradient(180deg, rgba(76,175,80,0.25) 0%, rgba(76,175,80,0.1) 100%);
+            border-color: var(--green);
+        }
+        .style4-day { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+        .style4-num { font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.2; margin: 2px 0; }
+        .style4-month { font-size: 10px; color: var(--text-dim); }
+        .style4-item.active .style4-day { color: var(--green); }
+        .style4-item.active .style4-num { color: var(--green); }
+        .style4-item.active .style4-month { color: var(--green); opacity: 0.7; }
+
+        /* 隐藏非当前风格 */
+        .timeline-wrapper > div { display: none; }
+        .timeline-wrapper > div.active { display: flex; }
+
+        /* ================================================
+           控制按钮
+           ================================================ */
         .controls {
             display: flex;
             justify-content: center;
@@ -79,138 +269,234 @@
             flex-wrap: wrap;
         }
         .btn {
-            padding: 8px 16px;
-            background: rgba(76,175,80,0.2);
-            border: 2px solid rgba(76,175,80,0.5);
-            color: #4CAF50;
+            padding: 8px 18px;
+            background: var(--green-bg);
+            border: 2px solid var(--green-border);
+            color: var(--green);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 14px;
         }
         .btn:hover:not(:disabled) {
-            background: rgba(76,175,80,0.3);
-            border-color: #4CAF50;
+            background: var(--green-active-bg);
+            border-color: var(--green);
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76,175,80,0.2);
         }
-        .btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
+        .btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
         /* 日期输入 */
         .date-input-group {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
         .date-input-group input {
-            padding: 8px 14px;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(76,175,80,0.3);
-            color: #e0e0e0;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid var(--green-border);
+            color: var(--text);
             border-radius: 8px;
             font-size: 14px;
+            transition: all 0.3s;
         }
         .date-input-group input:focus {
             outline: none;
-            border-color: #4CAF50;
-            background: rgba(76,175,80,0.1);
+            border-color: var(--green);
+            background: var(--green-bg);
+            box-shadow: 0 0 12px rgba(76,175,80,0.15);
         }
 
-        /* 市场基调 - 重要提示 */
+        /* ================================================
+           市场基调
+           ================================================ */
         .market-tone {
-            background: rgba(255,193,7,0.1);
-            border-left: 4px solid #FFC107;
-            padding: 15px;
-            margin-bottom: 25px;
-            border-radius: 8px;
+            background: rgba(255,193,7,0.08);
+            border-left: 4px solid var(--gold);
+            padding: 14px 18px;
+            margin-bottom: 24px;
+            border-radius: 0 10px 10px 0;
         }
-        .market-tone strong {
-            color: #FFC107;
-        }
+        .market-tone strong { color: var(--gold); }
 
-        /* 新闻区块 */
-        .news-section {
-            margin-bottom: 30px;
-        }
+        /* ================================================
+           新闻区块
+           ================================================ */
+        .news-section { margin-bottom: 28px; }
         .section-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
+            font-size: 18px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
             border-bottom: 2px solid;
         }
-        .s-level .section-title { color: #f44336; border-color: #f44336; }
-        .a-level .section-title { color: #FFC107; border-color: #FFC107; }
-        .douyin .section-title { color: #2196F3; border-color: #2196F3; }
+        .s-level .section-title { color: var(--red); border-color: var(--red); }
+        .a-level .section-title { color: var(--gold); border-color: var(--gold); }
+        .douyin .section-title { color: var(--blue); border-color: var(--blue); }
 
-        /* 新闻卡片 */
+        /* ================================================
+           新闻卡片
+           ================================================ */
         .news-item {
-            background: rgba(255,255,255,0.05);
+            background: var(--card-bg);
             padding: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid var(--card-border);
             transition: all 0.3s;
+            border-left: 3px solid transparent;
         }
         .news-item:hover {
             background: rgba(255,255,255,0.08);
-            transform: translateX(5px);
+            transform: translateX(4px);
         }
+        .s-level .news-item { border-left-color: var(--red); }
+        .a-level .news-item { border-left-color: var(--gold); }
+        .douyin .news-item { border-left-color: var(--blue); }
+
         .news-title {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: bold;
             margin-bottom: 10px;
             color: #fff;
+            line-height: 1.5;
         }
         .news-row {
             margin: 7px 0;
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
-        .label {
-            color: #888;
-            margin-right: 8px;
-        }
-        .bullish { color: #f44336; }
-        .bearish { color: #4CAF50; }
+        .label { color: var(--text-dim); margin-right: 8px; }
 
-        /* 标签 */
+        /* ================================================
+           标签样式（升级版）
+           ================================================ */
+
+        /* 标签容器 */
+        .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+
+        /* ETF标签 */
         .etf-tag {
-            display: inline-block;
-            background: rgba(76,175,80,0.2);
-            color: #4CAF50;
-            padding: 3px 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
             border-radius: 12px;
             margin: 3px;
             font-size: 12px;
+            border: 1px solid;
+            transition: all 0.2s;
         }
-        .stock-tag {
-            display: inline-block;
-            background: rgba(33,150,243,0.2);
-            color: #2196F3;
-            padding: 3px 10px;
-            border-radius: 12px;
-            margin: 3px;
-            font-size: 12px;
+        .etf-tag:hover { transform: translateY(-1px); }
+        .etf-tag.bullish {
+            background: rgba(244,67,54,0.12);
+            border-color: rgba(244,67,54,0.3);
+            color: #ff7043;
+        }
+        .etf-tag.bullish:hover {
+            background: rgba(244,67,54,0.2);
+            box-shadow: 0 2px 8px rgba(244,67,54,0.15);
+        }
+        .etf-tag.bearish {
+            background: rgba(255,152,0,0.1);
+            border-color: rgba(255,152,0,0.3);
+            color: var(--orange);
+        }
+        .etf-tag.bearish:hover {
+            background: rgba(255,152,0,0.18);
+            box-shadow: 0 2px 8px rgba(255,152,0,0.15);
         }
 
-        /* Footer */
+        /* 情绪图标 */
+        .sentiment-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .sentiment-dot.up { background: #ff7043; box-shadow: 0 0 4px #ff7043; }
+        .sentiment-dot.down { background: var(--orange); box-shadow: 0 0 4px var(--orange); }
+
+        /* 个股标签 */
+        .stock-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin: 3px;
+            font-size: 12px;
+            border: 1px solid;
+            transition: all 0.2s;
+        }
+        .stock-tag:hover { transform: translateY(-1px); }
+        .stock-tag.bullish {
+            background: rgba(244,67,54,0.08);
+            border-color: rgba(244,67,54,0.25);
+            color: #ff8a65;
+        }
+        .stock-tag.bullish:hover {
+            background: rgba(244,67,54,0.15);
+            box-shadow: 0 2px 8px rgba(244,67,54,0.12);
+        }
+        .stock-tag.bearish {
+            background: rgba(76,175,80,0.08);
+            border-color: rgba(76,175,80,0.25);
+            color: #81c784;
+        }
+        .stock-tag.bearish:hover {
+            background: rgba(76,175,80,0.15);
+            box-shadow: 0 2px 8px rgba(76,175,80,0.12);
+        }
+        /* 中性 */
+        .stock-tag.neutral {
+            background: rgba(33,150,243,0.08);
+            border-color: rgba(33,150,243,0.25);
+            color: #64b5f6;
+        }
+        .stock-tag.neutral:hover {
+            background: rgba(33,150,243,0.15);
+        }
+
+        /* 原因说明文字 */
+        .tag-reason {
+            font-size: 10px;
+            opacity: 0.65;
+            margin-left: 2px;
+        }
+
+        /* ================================================
+           Footer
+           ================================================ */
         footer {
             text-align: center;
             margin-top: 40px;
             padding: 20px;
-            color: #666;
+            color: #555;
             font-size: 12px;
         }
 
+        /* ================================================
+           响应式
+           ================================================ */
         @media (max-width: 768px) {
             .header h1 { font-size: 22px; }
-            .timeline { gap: 6px; }
-            .timeline-item { padding: 6px 10px; font-size: 12px; }
-            .news-item { padding: 15px; }
+            .style-switcher { gap: 6px; }
+            .style-btn { padding: 4px 10px; font-size: 11px; }
+            .news-item { padding: 14px; }
             .news-title { font-size: 15px; }
+            .date-input-group { flex-direction: column; align-items: center; }
+        }
+
+        /* ================================================
+           切换动画
+           ================================================ */
+        .timeline-wrapper > div {
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -221,8 +507,23 @@
             <p>实时财经新闻 · 历史查看 · 智能分类</p>
         </div>
 
-        <div class="timeline" id="timeline"></div>
+        <!-- 风格切换器 -->
+        <div class="style-switcher">
+            <button class="style-btn active" id="style1btn" onclick="switchStyle(1)">◉ 经典胶囊</button>
+            <button class="style-btn" id="style2btn" onclick="switchStyle(2)">◈ 玻璃卡片</button>
+            <button class="style-btn" id="style3btn" onclick="switchStyle(3)">◎ 渐变光晕</button>
+            <button class="style-btn" id="style4btn" onclick="switchStyle(4)">○ 日历数字</button>
+        </div>
 
+        <!-- 时间线容器 -->
+        <div class="timeline-wrapper">
+            <div id="timeline1" class="timeline-style1 active"></div>
+            <div id="timeline2" class="timeline-style2"></div>
+            <div id="timeline3" class="timeline-style3"></div>
+            <div id="timeline4" class="timeline-style4"></div>
+        </div>
+
+        <!-- 控制按钮 -->
         <div class="controls">
             <button class="btn" id="prevBtn" onclick="showPreviousDate()">← 前一天</button>
             <button class="btn" id="todayBtn" onclick="showToday()">📅 今天</button>
@@ -245,127 +546,184 @@
     <script src="news-data.js"></script>
     <script>
         let currentDate = availableDates[0];
+        let currentStyle = 1;
 
-        function initTimeline() {
-            const timeline = document.getElementById('timeline');
-            timeline.innerHTML = '';
+        /* ========== 风格切换 ========== */
+        function switchStyle(n) {
+            currentStyle = n;
+            document.querySelectorAll('.style-switcher .style-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('style' + n + 'btn').classList.add('active');
+            document.querySelectorAll('.timeline-wrapper > div').forEach(d => d.classList.remove('active'));
+            document.getElementById('timeline' + n).classList.add('active');
+            // Save preference
+            try { localStorage.setItem('timelineStyle', n); } catch(e) {}
+        }
+
+        /* ========== 中文星期 ========== */
+        function getDayName(dateStr) {
+            const map = ['周日','周一','周二','周三','周四','周五','周六'];
+            const d = new Date(dateStr.replace(/(\d{4})-(\d{2})-(\d{2})/, '$2/$3/$1'));
+            return map[d.getDay()];
+        }
+        function getMonthDay(dateStr) {
+            const [, m, d] = dateStr.split('-');
+            return { month: parseInt(m), day: parseInt(d) };
+        }
+
+        /* ========== 初始化各风格时间线 ========== */
+        function initAllTimelines() {
+            // Style 1
+            const tl1 = document.getElementById('timeline1');
+            tl1.innerHTML = '';
             availableDates.forEach(date => {
                 const item = document.createElement('div');
-                item.className = 'timeline-item' + (date === currentDate ? ' active' : '');
+                item.className = 'style1-item' + (date === currentDate ? ' active' : '');
                 item.textContent = date;
-                item.onclick = () => showDate(date);
-                timeline.appendChild(item);
+                item.onclick = () => { currentDate = date; updateUI(); };
+                tl1.appendChild(item);
+            });
+
+            // Style 2
+            const tl2 = document.getElementById('timeline2');
+            tl2.innerHTML = '';
+            availableDates.forEach(date => {
+                const item = document.createElement('div');
+                item.className = 'style2-item' + (date === currentDate ? ' active' : '');
+                item.innerHTML = `<div class="style2-dot"></div><div class="style2-date">${date}</div><div class="style2-day">${getDayName(date)}</div>`;
+                item.onclick = () => { currentDate = date; updateUI(); };
+                tl2.appendChild(item);
+            });
+
+            // Style 3
+            const tl3 = document.getElementById('timeline3');
+            tl3.innerHTML = '';
+            availableDates.forEach(date => {
+                const item = document.createElement('div');
+                item.className = 'style3-item' + (date === currentDate ? ' active' : '');
+                item.innerHTML = `<span>${date}</span>`;
+                item.onclick = () => { currentDate = date; updateUI(); };
+                tl3.appendChild(item);
+            });
+
+            // Style 4
+            const tl4 = document.getElementById('timeline4');
+            tl4.innerHTML = '';
+            availableDates.forEach(date => {
+                const { month, day } = getMonthDay(date);
+                const item = document.createElement('div');
+                item.className = 'style4-item' + (date === currentDate ? ' active' : '');
+                item.innerHTML = `<div class="style4-day">${getDayName(date)}</div><div class="style4-num">${day}</div><div class="style4-month">${month}月</div>`;
+                item.onclick = () => { currentDate = date; updateUI(); };
+                tl4.appendChild(item);
             });
         }
 
+        /* ========== 导航函数 ========== */
         function showDate(date) {
             if (!availableDates.includes(date)) return;
             currentDate = date;
             updateUI();
         }
-
         function showPreviousDate() {
             const idx = availableDates.indexOf(currentDate);
             if (idx < availableDates.length - 1) showDate(availableDates[idx + 1]);
         }
-
         function showNextDate() {
             const idx = availableDates.indexOf(currentDate);
             if (idx > 0) showDate(availableDates[idx - 1]);
         }
-
-        function showToday() {
-            showDate(availableDates[0]);
-        }
-
-        function getPreviousDate(date) {
-            const idx = availableDates.indexOf(date);
-            return idx < availableDates.length - 1 ? availableDates[idx + 1] : null;
-        }
-
-        function getNextDate(date) {
-            const idx = availableDates.indexOf(date);
-            return idx > 0 ? availableDates[idx - 1] : null;
-        }
-
+        function showToday() { showDate(availableDates[0]); }
         function jumpToDate() {
-            const input = document.getElementById('dateInput').value.trim();
-            if (availableDates.includes(input)) {
-                showDate(input);
-                document.getElementById('dateInput').value = '';
-            }
+            const v = document.getElementById('dateInput').value.trim();
+            if (availableDates.includes(v)) { showDate(v); document.getElementById('dateInput').value = ''; }
         }
+        function handleDateInput(e) { if (e.key === 'Enter') jumpToDate(); }
+        function showAllDates() { alert('可用日期:\n' + availableDates.join('\n')); }
 
-        function handleDateInput(event) {
-            if (event.key === 'Enter') jumpToDate();
-        }
-
-        function showAllDates() {
-            const dates = availableDates.join('\n');
-            alert('可用日期:\n' + dates);
-        }
-
+        /* ========== 更新UI ========== */
         function updateUI() {
-            initTimeline();
+            // Sync all timeline highlights
+            for (let i = 1; i <= 4; i++) {
+                const tl = document.getElementById('timeline' + i);
+                const cls = i === 1 ? 'style1-item' : 'style' + i + '-item';
+                tl.querySelectorAll('.' + cls).forEach(item => {
+                    const isActive = item.textContent.includes(currentDate) || item.querySelector('.style2-date,.style3-item span')?.textContent === currentDate;
+                    item.classList.toggle('active', item.innerHTML.includes(currentDate));
+                });
+            }
             updateButtons();
             renderNews();
         }
 
         function updateButtons() {
-            document.getElementById('prevBtn').disabled = !getPreviousDate(currentDate);
-            document.getElementById('nextBtn').disabled = !getNextDate(currentDate);
+            const idx = availableDates.indexOf(currentDate);
+            document.getElementById('prevBtn').disabled = idx >= availableDates.length - 1;
+            document.getElementById('nextBtn').disabled = idx <= 0;
         }
 
+        /* ========== 渲染新闻 ========== */
         function renderNews() {
             const news = newsData[currentDate];
             if (!news) {
-                document.getElementById('newsContent').innerHTML = '<p style="text-align:center;color:#888;">该日期暂无新闻</p>';
+                document.getElementById('newsContent').innerHTML = '<p style="text-align:center;color:#666;padding:40px;">该日期暂无新闻</p>';
                 return;
             }
-
             let html = `<div class="market-tone"><strong>⚠️ 今日市场基调：</strong>${news.market_tone}</div>`;
 
-            if (news.s_level && news.s_level.length > 0) {
-                html += '<div class="news-section s-level">';
-                html += '<div class="section-title">🔴 S级 - 主线级</div>';
-                news.s_level.forEach(item => { html += renderNewsItem(item); });
+            if (news.s_level && news.s_level.length) {
+                html += '<div class="news-section s-level"><div class="section-title">🔴 S级 - 主线级</div>';
+                news.s_level.forEach(i => html += renderNewsItem(i));
                 html += '</div>';
             }
-
-            if (news.a_level && news.a_level.length > 0) {
-                html += '<div class="news-section a-level">';
-                html += '<div class="section-title">🟡 A级 - 轮动级</div>';
-                news.a_level.forEach(item => { html += renderNewsItem(item); });
+            if (news.a_level && news.a_level.length) {
+                html += '<div class="news-section a-level"><div class="section-title">🟡 A级 - 轮动级</div>';
+                news.a_level.forEach(i => html += renderNewsItem(i));
                 html += '</div>';
             }
-
-            if (news.douyin && news.douyin.length > 0) {
-                html += '<div class="news-section douyin">';
-                html += '<div class="section-title">📱 抖音相关</div>';
-                news.douyin.forEach(item => { html += renderNewsItem(item); });
+            if (news.douyin && news.douyin.length) {
+                html += '<div class="news-section douyin"><div class="section-title">📱 抖音相关</div>';
+                news.douyin.forEach(i => html += renderNewsItem(i));
                 html += '</div>';
             }
-
             document.getElementById('newsContent').innerHTML = html;
         }
 
         function renderNewsItem(item) {
+            // ETF 标签
             let etfHtml = '';
-            if (item.etfs && item.etfs.length > 0) {
-                etfHtml = '<div class="news-row"><span class="label">📈 映射ETF：</span>';
+            if (item.etfs && item.etfs.length) {
+                etfHtml = '<div class="news-row"><span class="label">📈 映射ETF：</span></div>';
+                etfHtml += '<div class="tag-row">';
                 item.etfs.forEach(etf => {
-                    const cls = etf.sentiment === '利好' ? 'bullish' : 'bearish';
-                    const txt = etf.sentiment === '利好' ? '利好' : '利空';
-                    etfHtml += `<span class="etf-tag"><span class="${cls}">${txt}</span> ${etf.name}</span>`;
+                    const isBullish = etf.sentiment === '利好';
+                    const cls = isBullish ? 'bullish' : 'bearish';
+                    const dotCls = isBullish ? 'up' : 'down';
+                    const icon = isBullish ? '▲' : '▼';
+                    const label = isBullish ? '利好' : '利空';
+                    etfHtml += `<span class="etf-tag ${cls}"><span class="sentiment-dot ${dotCls}"></span>${icon} ${label} ${etf.name}</span>`;
                 });
                 etfHtml += '</div>';
             }
 
+            // 个股标签（带情绪 + 原因）
             let stockHtml = '';
-            if (item.stocks && item.stocks.length > 0) {
-                stockHtml = '<div class="news-row"><span class="label">✨ 映射个股：</span>';
+            if (item.stocks && item.stocks.length) {
+                stockHtml = '<div class="news-row"><span class="label">✨ 映射个股：</span></div>';
+                stockHtml += '<div class="tag-row">';
                 item.stocks.forEach(stock => {
-                    stockHtml += `<span class="stock-tag">${stock}</span>`;
+                    // 从ETF推断个股情绪
+                    const relatedEtf = item.etfs && item.etfs.find(e => true);
+                    let sentiment = 'neutral';
+                    let icon = '◆';
+                    let reason = '板块联动';
+                    if (relatedEtf) {
+                        sentiment = relatedEtf.sentiment;
+                        icon = sentiment === '利好' ? '▲' : '▼';
+                        reason = sentiment === '利好' ? '受益于' : '受限于';
+                    }
+                    const cls = sentiment;
+                    const reasonText = sentiment === 'neutral' ? '' : `<span class="tag-reason">${reason}</span>`;
+                    stockHtml += `<span class="stock-tag ${cls}">${icon} ${stock}${reasonText}</span>`;
                 });
                 stockHtml += '</div>';
             }
@@ -378,11 +736,17 @@
                     ${etfHtml}
                     ${stockHtml}
                     <div class="news-row"><span class="label">💡 资金信号：</span>${item.signal}</div>
-                </div>
-            `;
+                </div>`;
         }
 
-        // 初始化
+        /* ========== 初始化 ========== */
+        // 恢复风格偏好
+        try {
+            const saved = localStorage.getItem('timelineStyle');
+            if (saved) { switchStyle(parseInt(saved)); }
+        } catch(e) {}
+
+        initAllTimelines();
         updateUI();
     </script>
 </body>
