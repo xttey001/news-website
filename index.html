@@ -417,64 +417,45 @@
         .sentiment-dot.up { background: #ff7043; box-shadow: 0 0 4px #ff7043; }
         .sentiment-dot.down { background: var(--orange); box-shadow: 0 0 4px var(--orange); }
 
-        /* 个股标签 */
+        /* 个股标签 — 白框整体，内含情绪色块 */
         .stock-tag {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            padding: 4px 10px;
-            border-radius: 6px;
+            gap: 0;
             margin: 3px;
             font-size: 12px;
             font-weight: 500;
-            border: 1px solid;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 5px;
+            background: transparent;
+            overflow: hidden;
             transition: all 0.2s;
         }
-        .stock-tag:hover { transform: translateY(-1px); }
-        /* 利好：红色 */
-        .stock-tag.bullish {
-            background: rgba(244,67,54,0.15);
-            border-color: rgba(244,67,54,0.4);
-            color: #ff6b6b;
+        .stock-tag:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255,255,255,0.5);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
-        .stock-tag.bullish:hover {
-            background: rgba(244,67,54,0.25);
-            box-shadow: 0 2px 8px rgba(244,67,54,0.2);
-        }
-        .stock-tag.bullish .sentiment-label {
-            background: #f44336;
-            color: #fff;
-            padding: 1px 5px;
-            border-radius: 3px;
+        /* 左侧情绪色块 */
+        .stock-tag .sentiment-label {
+            padding: 4px 7px;
             font-size: 11px;
-            font-weight: 600;
-        }
-        /* 利空：绿色 */
-        .stock-tag.bearish {
-            background: rgba(76,175,80,0.12);
-            border-color: rgba(76,175,80,0.35);
-            color: #81c784;
-        }
-        .stock-tag.bearish:hover {
-            background: rgba(76,175,80,0.22);
-            box-shadow: 0 2px 8px rgba(76,175,80,0.18);
-        }
-        .stock-tag.bearish .sentiment-label {
-            background: #4CAF50;
+            font-weight: 700;
             color: #fff;
-            padding: 1px 5px;
-            border-radius: 3px;
-            font-size: 11px;
-            font-weight: 600;
+            white-space: nowrap;
         }
-        /* 中性：灰色 */
-        .stock-tag.neutral {
-            background: rgba(150,150,150,0.08);
-            border-color: rgba(150,150,150,0.2);
+        .stock-tag.bullish .sentiment-label { background: #ff9800; }  /* 利好：橙色 */
+        .stock-tag.bearish .sentiment-label { background: #4CAF50; }  /* 利空：绿色 */
+        .stock-tag.neutral .sentiment-label { display: none; }
+        /* 右侧股票名称 */
+        .stock-tag .stock-name {
+            padding: 4px 8px;
+            color: #e0e0e0;
+            white-space: nowrap;
+        }
+        .stock-tag.neutral .stock-name {
+            padding: 4px 10px;
             color: #9e9e9e;
-        }
-        .stock-tag.neutral:hover {
-            background: rgba(150,150,150,0.15);
         }
 
         /* ================================================
@@ -731,7 +712,7 @@
                         const labelText = relatedEtf.sentiment === '利好' ? '利好' : '利空';
                         labelHtml = `<span class="sentiment-label">${labelText}</span>`;
                     }
-                    stockHtml += `<span class="stock-tag ${cls}">${labelHtml}${stock}</span>`;
+                    stockHtml += `<span class="stock-tag ${cls}">${labelHtml}<span class="stock-name">${stock}</span></span>`;
                 });
                 stockHtml += '</div>';
             }
