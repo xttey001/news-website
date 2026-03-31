@@ -1,0 +1,192 @@
+        }).catch(function() {
+            card.innerHTML = '<div class="index-error">⚠ 行情数据加载失败，请刷新重试</div>';
+        });
+    })();
+
+    /* ============================================================
+       时间线初始化
+       ============================================================ */
+    var currentDate = availableDates[0];
+    var currentStyle = 2;
+
+    function getDayName(dateStr) {
+        var map = ['周日','周一','周二','周三','周四','周五','周六'];
+        var parts = dateStr.split('-');
+        var d = new Date(parts[1]+'/'+parts[2]+'/'+parts[0]);
+        return map[d.getDay()];
+    }
+    function getMonthDay(dateStr) {
+        var p = dateStr.split('-');
+        return { month: parseInt(p[1]), day: parseInt(p[2]) };
+    }
+
+    function initAllTimelines() {
+        availableDates.forEach(function(date) {
+            var isActive = date === currentDate;
+            var day = getDayName(date);
+            var md = getMonthDay(date);
+
+            // Style 1
+            var i1 = document.createElement('div');
+            i1.className = 'style1-item' + (isActive ? ' active' : '');
+            i1.textContent = date;
+            i1.onclick = function() { currentDate = date; updateUI(); };
+            document.getElementById('timeline1').appendChild(i1);
+
+            // Style 2
+            var i2 = document.createElement('div');
+            i2.className = 'style2-item' + (isActive ? ' active' : '');
+            i2.innerHTML = '<div class="style2-dot"></div><div class="style2-date">'+date+'</div><div class="style2-day">'+day+'</div>';
+            i2.onclick = function() { currentDate = date; updateUI(); };
+            document.getElementById('timeline2').appendChild(i2);
+
+            // Style 3
+            var i3 = document.createElement('div');
+            i3.className = 'style3-item' + (isActive ? ' active' : '');
+            i3.innerHTML = '<span>'+date+'</span>';
+            i3.onclick = function() { currentDate = date; updateUI(); };
+            document.getElementById('timeline3').appendChild(i3);
+
+            // Style 4
+            var i4 = document.createElement('div');
+            i4.className = 'style4-item' + (isActive ? ' active' : '');
+            i4.innerHTML = '<div class="style4-day">'+day+'</div><div class="style4-num">'+md.day+'</div><div class="style4-month">'+md.month+'月</div>';
+            i4.onclick = function() { currentDate = date; updateUI(); };
+            document.getElementById('timeline4').appendChild(i4);
+        });
+    }
+
+    function switchStyle(n) {
+        currentStyle = n;
+        document.querySelectorAll('.style-switcher .style-btn').forEach(function(b){ b.classList.remove('active'); });
+        document.getElementById('style'+n+'btn').classList.add('active');
+        document.querySelectorAll('.timeline-container > div').forEach(function(d){ d.classList.remove('active'); });
+        document.getElementById('timeline'+n).classList.add('active');
+        try { localStorage.setItem('timelineStyle', n); } catch(e){}
+    }
+
+    function showDate(date) {
+        if (!availableDates.includes(date)) return;
+        currentDate = date;
+        updateUI();
+    }
+    function showPreviousDate() {
+        var idx = availableDates.indexOf(currentDate);
+        if (idx < availableDates.length - 1) showDate(availableDates[idx + 1]);
+    }
+    function showNextDate() {
+        var idx = availableDates.indexOf(currentDate);
+        if (idx > 0) showDate(availableDates[idx - 1]);
+    }
+    function showToday() { showDate(availableDates[0]); }
+    function jumpToDate() {
+        var v = document.getElementById('dateInput').value.trim();
+        if (availableDates.includes(v)) { showDate(v); document.getElementById('dateInput').value = ''; }
+    }
+    function handleDateInput(e) { if (e.key === 'Enter') jumpToDate(); }
+    function showAllDates() { alert('可用日期:\n' + availableDates.join('\n')); }
+
+    function updateUI() {
+        // Sync all timelines
+        for (var s = 1; s <= 4; s++) {
+            var tl = document.getElementById('timeline'+s);
+            var cls = s === 1 ? 'style1-item' : 'style'+s+'-item';
+            var items = tl.querySelectorAll('.'+cls);
+            items.forEach(function(item, i) {
+                var itemDate = availableDates[i];
+                item.classList.toggle('active', itemDate === currentDate);
+            });
+        }
+        updateButtons();
+        renderNews();
+    }
+
+    function updateButtons() {
+        var idx = availableDates.indexOf(currentDate);
+        document.getElementById('prevBtn').disabled = idx >= availableDates.length - 1;
+        document.getElementById('nextBtn').disabled = idx <= 0;
+    }
+
+    function renderNews() {
+        var news = newsData[currentDate];
+        if (!news) {
+            document.getElementById('newsContent').innerHTML = '<p style="text-align:center;color:#555;padding:40px;">该日期暂无新闻</p>';
+            return;
+        }
+        var html = '<div class="market-tone"><strong>⚠️ 今日市场基调：</strong>'+news.market_tone+'</div>';
+
+        if (news.s_level && news.s_level.length) {
+            html += '<div class="news-section s-level"><div class="section-title">🔴 S级 - 主线级</div>';
+            news.s_level.forEach(function(i){ html += renderNewsItem(i); });
+            html += '</div>';
+        }
+        if (news.a_level && news.a_level.length) {
+            html += '<div class="news-section a-level"><div class="section-title">🟡 A级 - 轮动级</div>';
+            news.a_level.forEach(function(i){ html += renderNewsItem(i); });
+            html += '</div>';
+        }
+        if (news.douyin && news.douyin.length) {
+            html += '<div class="news-section douyin"><div class="section-title">📱 抖音相关</div>';
+            news.douyin.forEach(function(i){ html += renderNewsItem(i); });
+            html += '</div>';
+        }
+        document.getElementById('newsContent').innerHTML = html;
+    }
+
+    function renderNewsItem(item) {
+        // ETF
+        var etfHtml = '';
+        if (item.etfs && item.etfs.length) {
+            etfHtml = '<div class="news-row"><span class="label">📈 映射ETF：</span></div><div class="tag-row">';
+            item.etfs.forEach(function(etf) {
+                var isUp = etf.sentiment === '利好';
+                var cls = isUp ? 'up' : 'down';
+                var icon = isUp ? '▲' : '▼';
+                var label = isUp ? '利好' : '利空';
+                etfHtml += '<span class="etf-tag '+cls+'"><span class="etf-dot '+cls+'"></span>'+icon+' '+label+' '+etf.name+'</span>';
+            });
+            etfHtml += '</div>';
+        }
+
+        // Stocks
+        var stockHtml = '';
+        if (item.stocks && item.stocks.length) {
+            stockHtml = '<div class="news-row"><span class="label">✨ 映射个股：</span></div><div class="tag-row">';
+            item.stocks.forEach(function(stock) {
+                // Support both old format (string) and new format (object)
+                var name, sentiment, reason;
+                if (typeof stock === 'string') {
+                    name = stock;
+                    var relatedEtf = item.etfs && item.etfs.length > 0 ? item.etfs[0] : null;
+                    sentiment = relatedEtf ? relatedEtf.sentiment : 'neutral';
+                } else {
+                    name = stock.name || stock;
+                    sentiment = stock.sentiment || (item.etfs && item.etfs.length > 0 ? item.etfs[0].sentiment : 'neutral');
+                    reason = stock.reason || (sentiment === '利好' ? '受益于' : sentiment === '利空' ? '受限于' : '板块联动');
+                }
+                var isUp = sentiment === '利好';
+                var isDown = sentiment === '利空';
+                var cls = isUp ? 'up' : isDown ? 'down' : 'neutral';
+                var icon = isUp ? '▲' : isDown ? '▼' : '◆';
+                var label = isUp ? '利好' : isDown ? '利空' : '中性';
+                var reasonText = '<span class="stock-reason">('+reason+')</span>';
+                stockHtml += '<span class="stock-tag '+cls+'">'+icon+' '+label+' '+name+' '+reasonText+'</span>';
+            });
+            stockHtml += '</div>';
+        }
+
+        return '<div class="news-item">'+
+            '<div class="news-title">'+item.emoji+' '+item.title+'</div>'+
+            '<div class="news-row"><span class="label">📌 要点：</span>'+item.summary+'</div>'+
+            '<div class="news-row"><span class="label">⏱️ 影响时长：</span>'+item.duration+'</div>'+
+            etfHtml+stockHtml+
+            '<div class="news-row"><span class="label">💡 资金信号：</span>'+item.signal+'</div>'+
+            '</div>';
+    }
+
+    // Init
+    initAllTimelines();
+    updateUI();
+    </script>
+</body>
+</html>
