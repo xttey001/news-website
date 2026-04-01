@@ -11,11 +11,11 @@ const newsData = {
         "duration": "1-2周",
         "etfs": [
           {
-            "name": "518880",
+            "name": "518880 黄金ETF",
             "sentiment": "利好"
           },
           {
-            "name": "512880",
+            "name": "512880 国债ETF",
             "sentiment": "利空"
           }
         ],
@@ -32,11 +32,11 @@ const newsData = {
         "duration": "2-4周",
         "etfs": [
           {
-            "name": "512760",
+            "name": "512760 芯片ETF",
             "sentiment": "利好"
           },
           {
-            "name": "515980",
+            "name": "515980 云计算与大数据ETF",
             "sentiment": "利好"
           }
         ],
@@ -55,7 +55,7 @@ const newsData = {
         "duration": "1-2个月",
         "etfs": [
           {
-            "name": "515980",
+            "name": "515980 云计算与大数据ETF",
             "sentiment": "利好"
           }
         ],
@@ -72,7 +72,7 @@ const newsData = {
         "duration": "1-2周",
         "etfs": [
           {
-            "name": "512760",
+            "name": "512760 芯片ETF",
             "sentiment": "利好"
           }
         ],
@@ -89,7 +89,7 @@ const newsData = {
         "duration": "2-4周",
         "etfs": [
           {
-            "name": "515700",
+            "name": "515700 新能源ETF",
             "sentiment": "利好"
           }
         ],
@@ -134,11 +134,11 @@ const newsData = {
         "duration": "1-2天",
         "etfs": [
           {
-            "name": "512880",
+            "name": "512880 国债ETF",
             "sentiment": "利空"
           },
           {
-            "name": "159992",
+            "name": "159992 创新药产业ETF",
             "sentiment": "利好"
           }
         ],
@@ -156,15 +156,15 @@ const newsData = {
         "duration": "2-4周",
         "etfs": [
           {
-            "name": "512500",
+            "name": "512500 中证500ETF",
             "sentiment": "利好"
           },
           {
-            "name": "159915",
+            "name": "159915 创业板ETF",
             "sentiment": "利好"
           },
           {
-            "name": "512760",
+            "name": "512760 芯片ETF",
             "sentiment": "利好"
           }
         ],
@@ -184,7 +184,7 @@ const newsData = {
         "duration": "1-2周",
         "etfs": [
           {
-            "name": "515980",
+            "name": "515980 云计算与大数据ETF",
             "sentiment": "利好"
           }
         ],
@@ -198,11 +198,11 @@ const newsData = {
         "duration": "2-4天",
         "etfs": [
           {
-            "name": "518880",
+            "name": "518880 黄金ETF",
             "sentiment": "利好"
           },
           {
-            "name": "512880",
+            "name": "512880 国债ETF",
             "sentiment": "利空"
           }
         ],
@@ -219,7 +219,7 @@ const newsData = {
         "duration": "2-3个月",
         "etfs": [
           {
-            "name": "515700",
+            "name": "515700 新能源ETF",
             "sentiment": "利好"
           }
         ],
@@ -235,7 +235,7 @@ const newsData = {
         "duration": "3-6个月",
         "etfs": [
           {
-            "name": "515700",
+            "name": "515700 新能源ETF",
             "sentiment": "利好"
           }
         ],
@@ -251,7 +251,7 @@ const newsData = {
         "duration": "1-2年",
         "etfs": [
           {
-            "name": "512760",
+            "name": "512760 芯片ETF",
             "sentiment": "利好"
           }
         ],
