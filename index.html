@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>财经新闻速览 - 历史查看</title>
+    <title>悟空财经判断</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg-start: #1a1a2e;
-            --bg-end: #16213e;
-            --green: #4CAF50;
-            --green-bg: rgba(76,175,80,0.12);
-            --green-border: rgba(76,175,80,0.35);
-            --green-active-bg: rgba(76,175,80,0.25);
-            --orange: #FF9800;
-            --red: #f44336;
-            --blue: #2196F3;
-            --gold: #FFC107;
-            --card-bg: rgba(255,255,255,0.05);
+            --bg-start: #0d1117;
+            --bg-end: #161b22;
+            --green: #3fb950;
+            --green-bg: rgba(63,185,80,0.12);
+            --green-border: rgba(63,185,80,0.35);
+            --orange: #f0883e;
+            --red: #f85149;
+            --blue: #58a6ff;
+            --gold: #d29922;
+            --purple: #a371f7;
+            --card-bg: rgba(255,255,255,0.04);
             --card-border: rgba(255,255,255,0.1);
-            --text: #e0e0e0;
-            --text-dim: #888;
+            --text: #e6edf3;
+            --text-dim: #8b949e;
             --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
@@ -36,242 +36,84 @@
         /* ===== 头部 ===== */
         .header {
             text-align: center;
-            margin-bottom: 28px;
-            padding: 22px;
+            margin-bottom: 32px;
+            padding: 28px;
             background: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 20px;
             border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
         }
-        .header h1 { color: var(--green); font-size: 28px; margin-bottom: 8px; }
-        .header p { color: var(--text-dim); font-size: 14px; }
-
-        /* ================================================
-           时间按钮风格 — 切换开关
-           ================================================ */
-
-        /* 风格切换器 */
-        .style-switcher {
+        .header h1 { 
+            font-size: 32px; 
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .subtitle { 
+            color: var(--text-dim); 
+            font-size: 14px;
             display: flex;
+            align-items: center;
             justify-content: center;
             gap: 8px;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
         }
-        .style-btn {
-            padding: 5px 14px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: var(--text-dim);
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s;
-        }
-        .style-btn:hover { border-color: var(--green); color: var(--green); }
-        .style-btn.active {
-            background: var(--green-bg);
-            border-color: var(--green);
+        .header .date-display {
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: rgba(63,185,80,0.1);
+            border-radius: 8px;
+            display: inline-block;
             color: var(--green);
+            font-weight: 600;
         }
 
-        /* ================================================
-           风格一：经典胶囊（原始）
-           ================================================ */
-        .timeline-style1 {
+        /* ===== 时间线 ===== */
+        .timeline-nav {
             display: flex;
             justify-content: center;
             gap: 8px;
             margin-bottom: 28px;
             flex-wrap: wrap;
-            padding: 14px;
+            padding: 16px;
             background: var(--card-bg);
             border-radius: 12px;
             border: 1px solid var(--card-border);
         }
-        .style1-item {
-            padding: 7px 14px;
-            background: var(--green-bg);
-            border: 2px solid var(--green-border);
+        .date-item {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 13px;
-            white-space: nowrap;
         }
-        .style1-item:hover {
-            background: var(--green-active-bg);
+        .date-item:hover {
+            background: rgba(63,185,80,0.1);
             border-color: var(--green);
             transform: translateY(-2px);
         }
-        .style1-item.active {
-            background: var(--green-active-bg);
-            border-color: var(--green);
-            color: var(--green);
-            font-weight: bold;
-            box-shadow: 0 0 12px rgba(76,175,80,0.3);
-        }
-
-        /* ================================================
-           风格二：玻璃态圆角卡片
-           ================================================ */
-        .timeline-style2 {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 28px;
-            flex-wrap: wrap;
-            padding: 16px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-        }
-        .style2-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px 16px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 14px;
-            cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-            min-width: 58px;
-        }
-        .style2-item:hover {
-            background: rgba(255,255,255,0.12);
-            border-color: rgba(76,175,80,0.5);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        }
-        .style2-item.active {
-            background: linear-gradient(135deg, rgba(76,175,80,0.3), rgba(76,175,80,0.15));
-            border-color: var(--green);
-            box-shadow: 0 0 20px rgba(76,175,80,0.25), 0 4px 16px rgba(0,0,0,0.3);
-        }
-        .style2-date { font-size: 13px; font-weight: 600; color: var(--text); }
-        .style2-day { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
-        .style2-item.active .style2-date { color: var(--green); }
-        .style2-item.active .style2-day { color: var(--green); opacity: 0.7; }
-        .style2-dot {
-            width: 5px; height: 5px;
-            border-radius: 50%;
-            background: var(--text-dim);
-            margin-bottom: 4px;
-            transition: all 0.3s;
-        }
-        .style2-item.active .style2-dot {
-            background: var(--green);
-            box-shadow: 0 0 6px var(--green);
-        }
-
-        /* ================================================
-           风格三：渐变胶囊 + 光晕
-           ================================================ */
-        .timeline-style3 {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 28px;
-            flex-wrap: wrap;
-            padding: 18px 20px;
-            background: linear-gradient(90deg, rgba(76,175,80,0.05) 0%, rgba(76,175,80,0.02) 50%, rgba(33,150,243,0.05) 100%);
-            border-radius: 50px;
-            border: 1px solid rgba(76,175,80,0.15);
-        }
-        .style3-item {
-            padding: 8px 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-            background: rgba(255,255,255,0.05);
-            border: 1.5px solid rgba(255,255,255,0.1);
-            color: var(--text-dim);
-            white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-        }
-        .style3-item::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50px;
-            background: linear-gradient(135deg, var(--green), #2E7D32);
-            opacity: 0;
-            transition: opacity 0.35s;
-        }
-        .style3-item:hover::before { opacity: 0.15; }
-        .style3-item:hover { transform: translateY(-2px); border-color: rgba(76,175,80,0.4); color: var(--text); }
-        .style3-item.active {
-            background: linear-gradient(135deg, rgba(76,175,80,0.35), rgba(76,175,80,0.2));
+        .date-item.active {
+            background: var(--green-bg);
             border-color: var(--green);
             color: var(--green);
             font-weight: 600;
-            box-shadow: 0 0 20px rgba(76,175,80,0.2), 0 4px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 0 16px rgba(63,185,80,0.2);
         }
-        .style3-item span { position: relative; z-index: 1; }
 
-        /* ================================================
-           风格四：微型日期块 + 数字大号
-           ================================================ */
-        .timeline-style4 {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 28px;
-            flex-wrap: wrap;
-            padding: 14px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid var(--card-border);
-        }
-        .style4-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 52px;
-            padding: 8px 4px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 1.5px solid transparent;
-        }
-        .style4-item:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
-        }
-        .style4-item.active {
-            background: linear-gradient(180deg, rgba(76,175,80,0.25) 0%, rgba(76,175,80,0.1) 100%);
-            border-color: var(--green);
-        }
-        .style4-day { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
-        .style4-num { font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.2; margin: 2px 0; }
-        .style4-month { font-size: 10px; color: var(--text-dim); }
-        .style4-item.active .style4-day { color: var(--green); }
-        .style4-item.active .style4-num { color: var(--green); }
-        .style4-item.active .style4-month { color: var(--green); opacity: 0.7; }
-
-        /* 隐藏非当前风格 */
-        .timeline-wrapper > div { display: none; }
-        .timeline-wrapper > div.active { display: flex; }
-
-        /* ================================================
-           控制按钮
-           ================================================ */
+        /* ===== 控制按钮 ===== */
         .controls {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
         }
         .btn {
             padding: 8px 18px;
             background: var(--green-bg);
-            border: 2px solid var(--green-border);
+            border: 1px solid var(--green-border);
             color: var(--green);
             border-radius: 8px;
             cursor: pointer;
@@ -279,110 +121,190 @@
             font-size: 14px;
         }
         .btn:hover:not(:disabled) {
-            background: var(--green-active-bg);
-            border-color: var(--green);
+            background: rgba(63,185,80,0.2);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(76,175,80,0.2);
+            box-shadow: 0 4px 12px rgba(63,185,80,0.15);
         }
         .btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
-        /* 日期输入 */
-        .date-input-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 28px;
-        }
-        .date-input-group input {
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.08);
-            border: 2px solid var(--green-border);
-            color: var(--text);
-            border-radius: 8px;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-        .date-input-group input:focus {
-            outline: none;
-            border-color: var(--green);
-            background: var(--green-bg);
-            box-shadow: 0 0 12px rgba(76,175,80,0.15);
-        }
-
-        /* ================================================
-           市场基调
-           ================================================ */
+        /* ===== 市场基调 ===== */
         .market-tone {
-            background: rgba(255,193,7,0.08);
+            background: linear-gradient(135deg, rgba(210,153,34,0.12) 0%, rgba(210,153,34,0.05) 100%);
             border-left: 4px solid var(--gold);
-            padding: 14px 18px;
-            margin-bottom: 24px;
-            border-radius: 0 10px 10px 0;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+            border-radius: 0 12px 12px 0;
         }
-        .market-tone strong { color: var(--gold); }
+        .market-tone h2 {
+            color: var(--gold);
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .market-tone p { color: var(--text); line-height: 1.7; }
 
-        /* ================================================
-           新闻区块
-           ================================================ */
-        .news-section { margin-bottom: 28px; }
-        .section-title {
+        /* ===== 悟空判断 ===== */
+        .wukong-judgment {
+            background: linear-gradient(135deg, rgba(163,113,247,0.12) 0%, rgba(88,166,255,0.08) 100%);
+            border: 1px solid rgba(163,113,247,0.25);
+            padding: 22px;
+            margin-bottom: 28px;
+            border-radius: 16px;
+        }
+        .wukong-judgment h2 {
+            color: var(--purple);
             font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .wukong-judgment .summary {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .wukong-judgment .tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
             margin-bottom: 14px;
-            padding-bottom: 8px;
+        }
+        .wukong-judgment .tag-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .wukong-judgment .tag-label {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+        .wukong-judgment .bullish-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .wukong-judgment .bullish-tag {
+            padding: 4px 10px;
+            background: rgba(248,81,73,0.15);
+            border: 1px solid rgba(248,81,73,0.3);
+            border-radius: 6px;
+            font-size: 12px;
+            color: #ff7b72;
+        }
+        .wukong-judgment .bearish-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .wukong-judgment .bearish-tag {
+            padding: 4px 10px;
+            background: rgba(63,185,80,0.15);
+            border: 1px solid rgba(63,185,80,0.3);
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--green);
+        }
+        .wukong-judgment .strategy {
+            margin-top: 14px;
+            padding: 14px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .wukong-judgment .strategy-label {
+            color: var(--text-dim);
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        /* ===== 新闻区块 ===== */
+        .news-section { margin-bottom: 32px; }
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
             border-bottom: 2px solid;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .s-level .section-title { color: var(--red); border-color: var(--red); }
         .a-level .section-title { color: var(--gold); border-color: var(--gold); }
         .douyin .section-title { color: var(--blue); border-color: var(--blue); }
 
-        /* ================================================
-           新闻卡片
-           ================================================ */
+        /* ===== 新闻卡片 ===== */
         .news-item {
             background: var(--card-bg);
-            padding: 20px;
-            margin-bottom: 14px;
-            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 16px;
+            border-radius: 14px;
             border: 1px solid var(--card-border);
             transition: all 0.3s;
-            border-left: 3px solid transparent;
+            border-left: 4px solid transparent;
         }
         .news-item:hover {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.06);
             transform: translateX(4px);
         }
         .s-level .news-item { border-left-color: var(--red); }
         .a-level .news-item { border-left-color: var(--gold); }
         .douyin .news-item { border-left-color: var(--blue); }
 
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
         .news-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 17px;
+            font-weight: 600;
             color: #fff;
             line-height: 1.5;
+            flex: 1;
         }
+        .news-source {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 6px;
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+        .news-source a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+        .news-source a:hover {
+            text-decoration: underline;
+        }
+
         .news-row {
-            margin: 7px 0;
+            margin: 10px 0;
             font-size: 14px;
-            line-height: 1.65;
+            line-height: 1.7;
         }
         .label { color: var(--text-dim); margin-right: 8px; }
 
-        /* ================================================
-           标签样式（升级版）
-           ================================================ */
-
-        /* 标签容器 */
+        /* ===== 标签样式 ===== */
         .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 
-        /* ETF标签 */
         .etf-tag {
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            padding: 4px 10px;
-            border-radius: 12px;
+            padding: 5px 12px;
+            border-radius: 8px;
             margin: 3px;
             font-size: 12px;
             border: 1px solid;
@@ -390,34 +312,21 @@
         }
         .etf-tag:hover { transform: translateY(-1px); }
         .etf-tag.bullish {
-            background: rgba(244,67,54,0.12);
-            border-color: rgba(244,67,54,0.3);
-            color: #ff7043;
-        }
-        .etf-tag.bullish:hover {
-            background: rgba(244,67,54,0.2);
-            box-shadow: 0 2px 8px rgba(244,67,54,0.15);
+            background: rgba(248,81,73,0.12);
+            border-color: rgba(248,81,73,0.35);
+            color: #ff7b72;
         }
         .etf-tag.bearish {
-            background: rgba(255,152,0,0.1);
-            border-color: rgba(255,152,0,0.3);
-            color: var(--orange);
+            background: rgba(63,185,80,0.12);
+            border-color: rgba(63,185,80,0.35);
+            color: var(--green);
         }
-        .etf-tag.bearish:hover {
-            background: rgba(255,152,0,0.18);
-            box-shadow: 0 2px 8px rgba(255,152,0,0.15);
+        .etf-tag.neutral {
+            background: rgba(139,148,158,0.12);
+            border-color: rgba(139,148,158,0.35);
+            color: var(--text-dim);
         }
 
-        /* 情绪图标 */
-        .sentiment-dot {
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-        .sentiment-dot.up { background: #ff7043; box-shadow: 0 0 4px #ff7043; }
-        .sentiment-dot.down { background: var(--orange); box-shadow: 0 0 4px var(--orange); }
-
-        /* 个股标签 — 白框整体，内含情绪色块 */
         .stock-tag {
             display: inline-flex;
             align-items: center;
@@ -425,189 +334,108 @@
             margin: 3px;
             font-size: 12px;
             font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: 5px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
             background: transparent;
             overflow: hidden;
             transition: all 0.2s;
         }
         .stock-tag:hover {
             transform: translateY(-1px);
-            border-color: rgba(255,255,255,0.5);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.4);
         }
-        /* 左侧情绪色块 */
         .stock-tag .sentiment-label {
-            padding: 4px 7px;
+            padding: 5px 8px;
             font-size: 11px;
             font-weight: 700;
             color: #fff;
             white-space: nowrap;
         }
-        .stock-tag.bullish .sentiment-label { background: #f44336; }  /* 利好：红色 */
-        .stock-tag.bearish .sentiment-label { background: #4CAF50; }  /* 利空：绿色 */
+        .stock-tag.bullish .sentiment-label { background: #f85149; }
+        .stock-tag.bearish .sentiment-label { background: #3fb950; }
         .stock-tag.neutral .sentiment-label { display: none; }
-        /* 右侧股票名称 */
         .stock-tag .stock-name {
-            padding: 4px 8px;
-            color: #e0e0e0;
+            padding: 5px 9px;
+            color: #e6edf3;
             white-space: nowrap;
         }
         .stock-tag.neutral .stock-name {
-            padding: 4px 10px;
-            color: #9e9e9e;
+            padding: 5px 10px;
+            color: #8b949e;
         }
 
-        /* ================================================
-           Footer
-           ================================================ */
+        /* ===== Footer ===== */
         footer {
             text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #555;
+            margin-top: 48px;
+            padding: 24px;
+            color: #484f58;
             font-size: 12px;
         }
 
-        /* ================================================
-           响应式
-           ================================================ */
+        /* ===== 响应式 ===== */
         @media (max-width: 768px) {
-            .header h1 { font-size: 22px; }
-            .style-switcher { gap: 6px; }
-            .style-btn { padding: 4px 10px; font-size: 11px; }
-            .news-item { padding: 14px; }
+            .header h1 { font-size: 24px; }
+            .news-item { padding: 16px; }
             .news-title { font-size: 15px; }
-            .date-input-group { flex-direction: column; align-items: center; }
-        }
-
-        /* ================================================
-           切换动画
-           ================================================ */
-        .timeline-wrapper > div {
-            animation: fadeIn 0.3s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
+            .wukong-judgment { padding: 16px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>📊 财经新闻速览</h1>
-            <p>实时财经新闻 · 历史查看 · 智能分类</p>
+            <h1>🐵 悟空财经判断</h1>
+            <div class="subtitle">
+                <span>不被表面新闻迷惑，精准挖掘信息背后的真实含义</span>
+            </div>
+            <div class="date-display" id="currentDate"></div>
         </div>
 
-        <!-- 风格切换器 -->
-        <div class="style-switcher">
-            <button class="style-btn" id="style1btn" onclick="switchStyle(1)">◉ 经典胶囊</button>
-            <button class="style-btn active" id="style2btn" onclick="switchStyle(2)">◈ 玻璃卡片</button>
-            <button class="style-btn" id="style3btn" onclick="switchStyle(3)">◎ 渐变光晕</button>
-            <button class="style-btn" id="style4btn" onclick="switchStyle(4)">○ 日历数字</button>
-        </div>
-
-        <!-- 时间线容器 -->
-        <div class="timeline-wrapper">
-            <div id="timeline1" class="timeline-style1 active"></div>
-            <div id="timeline2" class="timeline-style2"></div>
-            <div id="timeline3" class="timeline-style3"></div>
-            <div id="timeline4" class="timeline-style4"></div>
-        </div>
+        <!-- 时间线导航 -->
+        <div class="timeline-nav" id="timelineNav"></div>
 
         <!-- 控制按钮 -->
         <div class="controls">
             <button class="btn" id="prevBtn" onclick="showPreviousDate()">← 前一天</button>
-            <button class="btn" id="todayBtn" onclick="showToday()">📅 今天</button>
+            <button class="btn" onclick="showToday()">📅 今天</button>
             <button class="btn" id="nextBtn" onclick="showNextDate()">后一天 →</button>
-            <button class="btn" onclick="showAllDates()">📋 所有日期</button>
         </div>
 
-        <div class="date-input-group">
-            <input type="text" id="dateInput" placeholder="输入日期 (YYYY-MM-DD)" onkeypress="handleDateInput(event)">
-            <button class="btn" onclick="jumpToDate()">跳转</button>
-        </div>
-
+        <!-- 新闻内容 -->
         <div id="newsContent"></div>
 
         <footer>
-            <p>数据来源：网易财经 · 权威财经媒体</p>
+            <p>数据来源：天集 ProSearch · 权威财经媒体</p>
         </footer>
     </div>
 
     <script src="news-data.js"></script>
     <script>
         let currentDate = availableDates[0];
-        let currentStyle = 2;
-
-        /* ========== 风格切换 ========== */
-        function switchStyle(n) {
-            currentStyle = n;
-            document.querySelectorAll('.style-switcher .style-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('style' + n + 'btn').classList.add('active');
-            document.querySelectorAll('.timeline-wrapper > div').forEach(d => d.classList.remove('active'));
-            document.getElementById('timeline' + n).classList.add('active');
-            // Save preference
-            try { localStorage.setItem('timelineStyle', n); } catch(e) {}
-        }
 
         /* ========== 中文星期 ========== */
         function getDayName(dateStr) {
             const map = ['周日','周一','周二','周三','周四','周五','周六'];
-            const d = new Date(dateStr.replace(/(\d{4})-(\d{2})-(\d{2})/, '$2/$3/$1'));
+            const d = new Date(dateStr.replace(/-/g, '/'));
             return map[d.getDay()];
         }
-        function getMonthDay(dateStr) {
-            const [, m, d] = dateStr.split('-');
-            return { month: parseInt(m), day: parseInt(d) };
+
+        function formatDate(dateStr) {
+            const [y, m, d] = dateStr.split('-');
+            return `${parseInt(m)}月${parseInt(d)}日 ${getDayName(dateStr)}`;
         }
 
-        /* ========== 初始化各风格时间线 ========== */
-        function initAllTimelines() {
-            // Style 1
-            const tl1 = document.getElementById('timeline1');
-            tl1.innerHTML = '';
+        /* ========== 初始化时间线 ========== */
+        function initTimeline() {
+            const nav = document.getElementById('timelineNav');
+            nav.innerHTML = '';
             availableDates.forEach(date => {
                 const item = document.createElement('div');
-                item.className = 'style1-item' + (date === currentDate ? ' active' : '');
-                item.textContent = date;
+                item.className = 'date-item' + (date === currentDate ? ' active' : '');
+                item.textContent = formatDate(date);
                 item.onclick = () => { currentDate = date; updateUI(); };
-                tl1.appendChild(item);
-            });
-
-            // Style 2
-            const tl2 = document.getElementById('timeline2');
-            tl2.innerHTML = '';
-            availableDates.forEach(date => {
-                const item = document.createElement('div');
-                item.className = 'style2-item' + (date === currentDate ? ' active' : '');
-                item.innerHTML = `<div class="style2-dot"></div><div class="style2-date">${date}</div><div class="style2-day">${getDayName(date)}</div>`;
-                item.onclick = () => { currentDate = date; updateUI(); };
-                tl2.appendChild(item);
-            });
-
-            // Style 3
-            const tl3 = document.getElementById('timeline3');
-            tl3.innerHTML = '';
-            availableDates.forEach(date => {
-                const item = document.createElement('div');
-                item.className = 'style3-item' + (date === currentDate ? ' active' : '');
-                item.innerHTML = `<span>${date}</span>`;
-                item.onclick = () => { currentDate = date; updateUI(); };
-                tl3.appendChild(item);
-            });
-
-            // Style 4
-            const tl4 = document.getElementById('timeline4');
-            tl4.innerHTML = '';
-            availableDates.forEach(date => {
-                const { month, day } = getMonthDay(date);
-                const item = document.createElement('div');
-                item.className = 'style4-item' + (date === currentDate ? ' active' : '');
-                item.innerHTML = `<div class="style4-day">${getDayName(date)}</div><div class="style4-num">${day}</div><div class="style4-month">${month}月</div>`;
-                item.onclick = () => { currentDate = date; updateUI(); };
-                tl4.appendChild(item);
+                nav.appendChild(item);
             });
         }
 
@@ -626,55 +454,101 @@
             if (idx > 0) showDate(availableDates[idx - 1]);
         }
         function showToday() { showDate(availableDates[0]); }
-        function jumpToDate() {
-            const v = document.getElementById('dateInput').value.trim();
-            if (availableDates.includes(v)) { showDate(v); document.getElementById('dateInput').value = ''; }
-        }
-        function handleDateInput(e) { if (e.key === 'Enter') jumpToDate(); }
-        function showAllDates() { alert('可用日期:\n' + availableDates.join('\n')); }
 
         /* ========== 更新UI ========== */
         function updateUI() {
-            // Sync all timeline highlights
-            for (let i = 1; i <= 4; i++) {
-                const tl = document.getElementById('timeline' + i);
-                const cls = i === 1 ? 'style1-item' : 'style' + i + '-item';
-                tl.querySelectorAll('.' + cls).forEach(item => {
-                    const isActive = item.textContent.includes(currentDate) || item.querySelector('.style2-date,.style3-item span')?.textContent === currentDate;
-                    item.classList.toggle('active', item.innerHTML.includes(currentDate));
-                });
-            }
-            updateButtons();
-            renderNews();
-        }
-
-        function updateButtons() {
+            // 更新时间线高亮
+            document.querySelectorAll('.date-item').forEach((item, i) => {
+                item.classList.toggle('active', availableDates[i] === currentDate);
+            });
+            // 更新日期显示
+            document.getElementById('currentDate').textContent = formatDate(currentDate);
+            // 更新按钮状态
             const idx = availableDates.indexOf(currentDate);
             document.getElementById('prevBtn').disabled = idx >= availableDates.length - 1;
             document.getElementById('nextBtn').disabled = idx <= 0;
+            // 渲染新闻
+            renderNews();
         }
 
         /* ========== 渲染新闻 ========== */
         function renderNews() {
             const news = newsData[currentDate];
             if (!news) {
-                document.getElementById('newsContent').innerHTML = '<p style="text-align:center;color:#666;padding:40px;">该日期暂无新闻</p>';
+                document.getElementById('newsContent').innerHTML = '<p style="text-align:center;color:#666;padding:60px;">该日期暂无新闻</p>';
                 return;
             }
-            let html = `<div class="market-tone"><strong>⚠️ 今日市场基调：</strong>${news.market_tone}</div>`;
 
+            let html = '';
+
+            // 市场基调
+            if (news.market_tone) {
+                html += `
+                    <div class="market-tone">
+                        <h2>📊 今日基调</h2>
+                        <p>${news.market_tone}</p>
+                    </div>
+                `;
+            }
+
+            // 悟空判断
+            if (news.wukong_judgment) {
+                const wj = news.wukong_judgment;
+                html += `
+                    <div class="wukong-judgment">
+                        <h2>🐵 悟空今日判断</h2>
+                        <div class="summary">${wj.summary || ''}</div>
+                        <div class="tags-row">
+                `;
+                if (wj.bullish && wj.bullish.length) {
+                    html += `
+                        <div class="tag-group">
+                            <span class="tag-label">看多：</span>
+                            <div class="bullish-tags">
+                                ${wj.bullish.map(s => `<span class="bullish-tag">${s}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+                if (wj.bearish && wj.bearish.length) {
+                    html += `
+                        <div class="tag-group">
+                            <span class="tag-label">看空：</span>
+                            <div class="bearish-tags">
+                                ${wj.bearish.map(s => `<span class="bearish-tag">${s}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+                html += `
+                        </div>
+                `;
+                if (wj.strategy) {
+                    html += `
+                        <div class="strategy">
+                            <div class="strategy-label">💡 操作参考</div>
+                            ${wj.strategy}
+                        </div>
+                    `;
+                }
+                html += `</div>`;
+            }
+
+            // S级新闻
             if (news.s_level && news.s_level.length) {
-                html += '<div class="news-section s-level"><div class="section-title">🔴 S级 - 主线级</div>';
+                html += '<div class="news-section s-level"><div class="section-title">🔴 S级 · 结构性叙事（影响1-4周）</div>';
                 news.s_level.forEach(i => html += renderNewsItem(i));
                 html += '</div>';
             }
+            // A级新闻
             if (news.a_level && news.a_level.length) {
-                html += '<div class="news-section a-level"><div class="section-title">🟡 A级 - 轮动级</div>';
+                html += '<div class="news-section a-level"><div class="section-title">🟡 A级 · 阶段性叙事（影响1-3天）</div>';
                 news.a_level.forEach(i => html += renderNewsItem(i));
                 html += '</div>';
             }
+            // 抖音/平台相关
             if (news.douyin && news.douyin.length) {
-                html += '<div class="news-section douyin"><div class="section-title">📱 抖音相关</div>';
+                html += '<div class="news-section douyin"><div class="section-title">📱 抖音/平台相关</div>';
                 news.douyin.forEach(i => html += renderNewsItem(i));
                 html += '</div>';
             }
@@ -682,44 +556,55 @@
         }
 
         function renderNewsItem(item) {
+            // 来源显示
+            let sourceHtml = '';
+            if (item.source) {
+                if (item.url) {
+                    sourceHtml = `<div class="news-source">来源：<a href="${item.url}" target="_blank">${item.source}</a></div>`;
+                } else {
+                    sourceHtml = `<div class="news-source">来源：${item.source}</div>`;
+                }
+            }
+
             // ETF 标签
             let etfHtml = '';
             if (item.etfs && item.etfs.length) {
-                etfHtml = '<div class="news-row"><span class="label">📈 映射ETF：</span></div>';
+                etfHtml = '<div class="news-row"><span class="label">📈 ETF映射：</span></div>';
                 etfHtml += '<div class="tag-row">';
                 item.etfs.forEach(etf => {
-                    const isBullish = etf.sentiment === '利好';
-                    const cls = isBullish ? 'bullish' : 'bearish';
-                    const dotCls = isBullish ? 'up' : 'down';
-                    const icon = isBullish ? '▲' : '▼';
-                    const label = isBullish ? '利好' : '利空';
-                    etfHtml += `<span class="etf-tag ${cls}"><span class="sentiment-dot ${dotCls}"></span>${icon} ${label} ${etf.name}</span>`;
+                    let cls = 'neutral';
+                    if (etf.sentiment === '利好') cls = 'bullish';
+                    else if (etf.sentiment === '利空') cls = 'bearish';
+                    const icon = cls === 'bullish' ? '▲' : cls === 'bearish' ? '▼' : '●';
+                    etfHtml += `<span class="etf-tag ${cls}">${icon} ${etf.name}</span>`;
                 });
                 etfHtml += '</div>';
             }
 
-            // 个股标签（利好/利空文字 + 颜色）
+            // 个股标签
             let stockHtml = '';
             if (item.stocks && item.stocks.length) {
-                stockHtml = '<div class="news-row"><span class="label">✨ 映射个股：</span></div>';
+                stockHtml = '<div class="news-row"><span class="label">✨ 个股映射：</span></div>';
                 stockHtml += '<div class="tag-row">';
                 item.stocks.forEach(stock => {
                     const relatedEtf = item.etfs && item.etfs[0];
                     let cls = 'neutral';
-                    let labelHtml = '';
+                    let labelText = '';
                     if (relatedEtf) {
                         cls = relatedEtf.sentiment === '利好' ? 'bullish' : 'bearish';
-                        const labelText = relatedEtf.sentiment === '利好' ? '利好' : '利空';
-                        labelHtml = `<span class="sentiment-label">${labelText}</span>`;
+                        labelText = relatedEtf.sentiment === '利好' ? '利好' : '利空';
                     }
-                    stockHtml += `<span class="stock-tag ${cls}">${labelHtml}<span class="stock-name">${stock}</span></span>`;
+                    stockHtml += `<span class="stock-tag ${cls}">${labelText ? `<span class="sentiment-label">${labelText}</span>` : ''}<span class="stock-name">${stock}</span></span>`;
                 });
                 stockHtml += '</div>';
             }
 
             return `
                 <div class="news-item">
-                    <div class="news-title">${item.emoji} ${item.title}</div>
+                    <div class="news-header">
+                        <div class="news-title">${item.emoji || '📌'} ${item.title}</div>
+                        ${sourceHtml}
+                    </div>
                     <div class="news-row"><span class="label">📌 要点：</span>${item.summary}</div>
                     <div class="news-row"><span class="label">⏱️ 影响时长：</span>${item.duration}</div>
                     ${etfHtml}
@@ -729,13 +614,7 @@
         }
 
         /* ========== 初始化 ========== */
-        // 恢复风格偏好
-        try {
-            const saved = localStorage.getItem('timelineStyle');
-            if (saved) { switchStyle(parseInt(saved)); }
-        } catch(e) {}
-
-        initAllTimelines();
+        initTimeline();
         updateUI();
     </script>
 </body>
