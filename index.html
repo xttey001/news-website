@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>悟空财经判断</title>
+    <title>悟空财经分析</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -11,7 +11,6 @@
             --bg-end: #161b22;
             --green: #3fb950;
             --green-bg: rgba(63,185,80,0.12);
-            --green-border: rgba(63,185,80,0.35);
             --orange: #f0883e;
             --red: #f85149;
             --blue: #58a6ff;
@@ -30,57 +29,51 @@
             color: var(--text);
             min-height: 100vh;
             padding: 20px;
+            line-height: 1.7;
         }
-        .container { max-width: 1000px; margin: 0 auto; }
+        .container { max-width: 900px; margin: 0 auto; }
 
-        /* ===== 头部 ===== */
+        /* ===== 标题 ===== */
         .header {
             text-align: center;
             margin-bottom: 32px;
-            padding: 28px;
+            padding: 24px;
             background: var(--card-bg);
-            border-radius: 20px;
+            border-radius: 16px;
             border: 1px solid var(--card-border);
         }
-        .header h1 { 
-            font-size: 32px; 
+        .header h1 {
+            font-size: 26px;
             margin-bottom: 8px;
             background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .header .subtitle { 
-            color: var(--text-dim); 
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .header .date-display {
-            margin-top: 12px;
-            padding: 8px 16px;
-            background: rgba(63,185,80,0.1);
-            border-radius: 8px;
+        .header .date-tag {
             display: inline-block;
-            color: var(--green);
-            font-weight: 600;
+            margin-top: 10px;
+            padding: 6px 14px;
+            background: rgba(163,113,247,0.15);
+            border: 1px solid rgba(163,113,247,0.3);
+            border-radius: 8px;
+            color: var(--purple);
+            font-size: 13px;
         }
 
-        /* ===== 时间线 ===== */
-        .timeline-nav {
+        /* ===== 导航 ===== */
+        .nav-bar {
             display: flex;
             justify-content: center;
             gap: 8px;
             margin-bottom: 28px;
             flex-wrap: wrap;
-            padding: 16px;
+            padding: 14px;
             background: var(--card-bg);
             border-radius: 12px;
             border: 1px solid var(--card-border);
         }
-        .date-item {
+        .date-btn {
             padding: 8px 16px;
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
@@ -88,280 +81,202 @@
             cursor: pointer;
             transition: all 0.3s;
             font-size: 13px;
+            color: var(--text-dim);
         }
-        .date-item:hover {
+        .date-btn:hover {
             background: rgba(63,185,80,0.1);
             border-color: var(--green);
-            transform: translateY(-2px);
+            color: var(--green);
         }
-        .date-item.active {
+        .date-btn.active {
             background: var(--green-bg);
             border-color: var(--green);
             color: var(--green);
             font-weight: 600;
-            box-shadow: 0 0 16px rgba(63,185,80,0.2);
         }
 
-        /* ===== 控制按钮 ===== */
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-        .btn {
-            padding: 8px 18px;
-            background: var(--green-bg);
-            border: 1px solid var(--green-border);
-            color: var(--green);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 14px;
-        }
-        .btn:hover:not(:disabled) {
-            background: rgba(63,185,80,0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(63,185,80,0.15);
-        }
-        .btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-        /* ===== 市场基调 ===== */
-        .market-tone {
-            background: linear-gradient(135deg, rgba(210,153,34,0.12) 0%, rgba(210,153,34,0.05) 100%);
-            border-left: 4px solid var(--gold);
-            padding: 18px 22px;
-            margin-bottom: 20px;
-            border-radius: 0 12px 12px 0;
-        }
-        .market-tone h2 {
-            color: var(--gold);
-            font-size: 16px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .market-tone p { color: var(--text); line-height: 1.7; }
-
-        /* ===== 悟空判断 ===== */
-        .wukong-judgment {
-            background: linear-gradient(135deg, rgba(163,113,247,0.12) 0%, rgba(88,166,255,0.08) 100%);
-            border: 1px solid rgba(163,113,247,0.25);
+        /* ===== 区块通用 ===== */
+        .section {
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--card-border);
             padding: 22px;
-            margin-bottom: 28px;
-            border-radius: 16px;
+            margin-bottom: 24px;
         }
-        .wukong-judgment h2 {
-            color: var(--purple);
+        .section-title {
             font-size: 18px;
+            font-weight: 600;
             margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .wukong-judgment .summary {
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 16px;
-            padding-bottom: 16px;
+            padding-bottom: 12px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .wukong-judgment .tags-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 14px;
+
+        /* ===== 今日基调 ===== */
+        .tone-section .section-title { color: var(--gold); }
+        .tone-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text);
         }
-        .wukong-judgment .tag-group {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+
+        /* ===== 悟空判断 ===== */
+        .judgment-section { 
+            background: linear-gradient(135deg, rgba(163,113,247,0.08) 0%, rgba(88,166,255,0.05) 100%);
+            border-color: rgba(163,113,247,0.2);
         }
-        .wukong-judgment .tag-label {
-            font-size: 12px;
-            color: var(--text-dim);
-        }
-        .wukong-judgment .bullish-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-        .wukong-judgment .bullish-tag {
-            padding: 4px 10px;
-            background: rgba(248,81,73,0.15);
-            border: 1px solid rgba(248,81,73,0.3);
-            border-radius: 6px;
-            font-size: 12px;
-            color: #ff7b72;
-        }
-        .wukong-judgment .bearish-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-        .wukong-judgment .bearish-tag {
-            padding: 4px 10px;
-            background: rgba(63,185,80,0.15);
-            border: 1px solid rgba(63,185,80,0.3);
-            border-radius: 6px;
-            font-size: 12px;
-            color: var(--green);
-        }
-        .wukong-judgment .strategy {
-            margin-top: 14px;
-            padding: 14px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
+        .judgment-section .section-title { color: var(--purple); }
+        .emotion-row {
             font-size: 14px;
-            line-height: 1.6;
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-        .wukong-judgment .strategy-label {
+        .emotion-label { color: var(--text-dim); }
+        .emotion-value { 
+            color: var(--green); 
+            font-weight: 600;
+        }
+        .analysis-list {
+            margin-bottom: 16px;
+        }
+        .analysis-item {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .analysis-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
             color: var(--text-dim);
-            font-size: 12px;
-            margin-bottom: 6px;
+        }
+        .strategy-box {
+            background: rgba(255,255,255,0.04);
+            border-radius: 10px;
+            padding: 16px;
+        }
+        .strategy-label {
+            font-size: 13px;
+            color: var(--text-dim);
+            margin-bottom: 10px;
+        }
+        .strategy-item {
+            font-size: 14px;
+            margin-bottom: 8px;
+            line-height: 1.6;
         }
 
         /* ===== 新闻区块 ===== */
-        .news-section { margin-bottom: 32px; }
-        .section-title {
-            font-size: 20px;
-            margin-bottom: 18px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .s-level .section-title { color: var(--red); border-color: var(--red); }
-        .a-level .section-title { color: var(--gold); border-color: var(--gold); }
-        .douyin .section-title { color: var(--blue); border-color: var(--blue); }
+        .news-section.s-level .section-title { color: var(--red); }
+        .news-section.a-level .section-title { color: var(--gold); }
+        .news-section.douyin .section-title { color: var(--blue); }
 
         /* ===== 新闻卡片 ===== */
-        .news-item {
-            background: var(--card-bg);
-            padding: 22px;
+        .news-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border-left: 4px solid;
+            padding: 18px;
             margin-bottom: 16px;
-            border-radius: 14px;
-            border: 1px solid var(--card-border);
-            transition: all 0.3s;
-            border-left: 4px solid transparent;
         }
-        .news-item:hover {
-            background: rgba(255,255,255,0.06);
-            transform: translateX(4px);
-        }
-        .s-level .news-item { border-left-color: var(--red); }
-        .a-level .news-item { border-left-color: var(--gold); }
-        .douyin .news-item { border-left-color: var(--blue); }
+        .s-level .news-card { border-left-color: var(--red); }
+        .a-level .news-card { border-left-color: var(--gold); }
+        .douyin .news-card { border-left-color: var(--blue); }
 
         .news-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 12px;
             flex-wrap: wrap;
             gap: 10px;
+            margin-bottom: 12px;
         }
         .news-title {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 600;
             color: #fff;
-            line-height: 1.5;
             flex: 1;
         }
         .news-source {
-            display: flex;
-            align-items: center;
-            gap: 6px;
             padding: 4px 10px;
             background: rgba(255,255,255,0.06);
             border-radius: 6px;
             font-size: 11px;
             color: var(--text-dim);
         }
-        .news-source a {
-            color: var(--blue);
-            text-decoration: none;
-        }
-        .news-source a:hover {
-            text-decoration: underline;
-        }
-
         .news-row {
             margin: 10px 0;
             font-size: 14px;
-            line-height: 1.7;
         }
-        .label { color: var(--text-dim); margin-right: 8px; }
+        .label { 
+            color: var(--text-dim); 
+            margin-right: 6px;
+            font-size: 13px;
+        }
 
-        /* ===== 标签样式 ===== */
-        .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-
-        .etf-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 5px 12px;
-            border-radius: 8px;
-            margin: 3px;
-            font-size: 12px;
-            border: 1px solid;
-            transition: all 0.2s;
+        /* ===== 映射标签 ===== */
+        .mapping-section {
+            margin-top: 14px;
         }
-        .etf-tag:hover { transform: translateY(-1px); }
-        .etf-tag.bullish {
-            background: rgba(248,81,73,0.12);
-            border-color: rgba(248,81,73,0.35);
-            color: #ff7b72;
+        .mapping-row {
+            margin-bottom: 12px;
         }
-        .etf-tag.bearish {
-            background: rgba(63,185,80,0.12);
-            border-color: rgba(63,185,80,0.35);
-            color: var(--green);
-        }
-        .etf-tag.neutral {
-            background: rgba(139,148,158,0.12);
-            border-color: rgba(139,148,158,0.35);
+        .mapping-label {
+            font-size: 13px;
             color: var(--text-dim);
+            margin-bottom: 8px;
         }
-
-        .stock-tag {
+        .tags-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag-item {
             display: inline-flex;
             align-items: center;
             gap: 0;
-            margin: 3px;
-            font-size: 12px;
-            font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0;
             border-radius: 6px;
-            background: transparent;
             overflow: hidden;
+            font-size: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
             transition: all 0.2s;
         }
-        .stock-tag:hover {
+        .tag-item:hover {
             transform: translateY(-1px);
-            border-color: rgba(255,255,255,0.4);
+            border-color: rgba(255,255,255,0.3);
         }
-        .stock-tag .sentiment-label {
+        .tag-sentiment {
             padding: 5px 8px;
-            font-size: 11px;
             font-weight: 700;
-            color: #fff;
-            white-space: nowrap;
+            font-size: 11px;
         }
-        .stock-tag.bullish .sentiment-label { background: #f85149; }
-        .stock-tag.bearish .sentiment-label { background: #3fb950; }
-        .stock-tag.neutral .sentiment-label { display: none; }
-        .stock-tag .stock-name {
-            padding: 5px 9px;
-            color: #e6edf3;
-            white-space: nowrap;
-        }
-        .stock-tag.neutral .stock-name {
+        .tag-sentiment.bullish { background: var(--red); color: #fff; }
+        .tag-sentiment.bearish { background: var(--green); color: #fff; }
+        .tag-sentiment.neutral { background: #6e7681; color: #fff; }
+        .tag-sentiment.watch { background: var(--blue); color: #fff; }
+        .tag-sentiment.avoid { background: var(--orange); color: #fff; }
+        .tag-name {
             padding: 5px 10px;
-            color: #8b949e;
+            color: var(--text);
+        }
+        .tag-note {
+            padding: 5px 8px;
+            color: var(--text-dim);
+            font-size: 11px;
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* ===== 警告提示 ===== */
+        .warning-box {
+            margin-top: 14px;
+            padding: 12px 14px;
+            background: rgba(248,129,73,0.1);
+            border: 1px solid rgba(248,129,73,0.25);
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--orange);
         }
 
         /* ===== Footer ===== */
@@ -375,35 +290,24 @@
 
         /* ===== 响应式 ===== */
         @media (max-width: 768px) {
-            .header h1 { font-size: 24px; }
-            .news-item { padding: 16px; }
-            .news-title { font-size: 15px; }
-            .wukong-judgment { padding: 16px; }
+            .header h1 { font-size: 22px; }
+            .section { padding: 16px; }
+            .news-card { padding: 14px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🐵 悟空财经判断</h1>
-            <div class="subtitle">
-                <span>不被表面新闻迷惑，精准挖掘信息背后的真实含义</span>
-            </div>
-            <div class="date-display" id="currentDate"></div>
+            <h1>🐵 悟空财经分析</h1>
+            <div class="date-tag" id="dateDisplay"></div>
         </div>
 
-        <!-- 时间线导航 -->
-        <div class="timeline-nav" id="timelineNav"></div>
+        <!-- 日期导航 -->
+        <div class="nav-bar" id="navBar"></div>
 
-        <!-- 控制按钮 -->
-        <div class="controls">
-            <button class="btn" id="prevBtn" onclick="showPreviousDate()">← 前一天</button>
-            <button class="btn" onclick="showToday()">📅 今天</button>
-            <button class="btn" id="nextBtn" onclick="showNextDate()">后一天 →</button>
-        </div>
-
-        <!-- 新闻内容 -->
-        <div id="newsContent"></div>
+        <!-- 内容区 -->
+        <div id="content"></div>
 
         <footer>
             <p>数据来源：天集 ProSearch · 权威财经媒体</p>
@@ -414,207 +318,191 @@
     <script>
         let currentDate = availableDates[0];
 
-        /* ========== 中文星期 ========== */
-        function getDayName(dateStr) {
-            const map = ['周日','周一','周二','周三','周四','周五','周六'];
-            const d = new Date(dateStr.replace(/-/g, '/'));
-            return map[d.getDay()];
-        }
-
         function formatDate(dateStr) {
             const [y, m, d] = dateStr.split('-');
-            return `${parseInt(m)}月${parseInt(d)}日 ${getDayName(dateStr)}`;
+            return `${parseInt(m)}月${parseInt(d)}日`;
         }
 
-        /* ========== 初始化时间线 ========== */
-        function initTimeline() {
-            const nav = document.getElementById('timelineNav');
+        function initNav() {
+            const nav = document.getElementById('navBar');
             nav.innerHTML = '';
             availableDates.forEach(date => {
-                const item = document.createElement('div');
-                item.className = 'date-item' + (date === currentDate ? ' active' : '');
-                item.textContent = formatDate(date);
-                item.onclick = () => { currentDate = date; updateUI(); };
-                nav.appendChild(item);
+                const btn = document.createElement('button');
+                btn.className = 'date-btn' + (date === currentDate ? ' active' : '');
+                btn.textContent = formatDate(date);
+                btn.onclick = () => { currentDate = date; updateUI(); };
+                nav.appendChild(btn);
             });
         }
 
-        /* ========== 导航函数 ========== */
-        function showDate(date) {
-            if (!availableDates.includes(date)) return;
-            currentDate = date;
-            updateUI();
-        }
-        function showPreviousDate() {
-            const idx = availableDates.indexOf(currentDate);
-            if (idx < availableDates.length - 1) showDate(availableDates[idx + 1]);
-        }
-        function showNextDate() {
-            const idx = availableDates.indexOf(currentDate);
-            if (idx > 0) showDate(availableDates[idx - 1]);
-        }
-        function showToday() { showDate(availableDates[0]); }
-
-        /* ========== 更新UI ========== */
         function updateUI() {
-            // 更新时间线高亮
-            document.querySelectorAll('.date-item').forEach((item, i) => {
-                item.classList.toggle('active', availableDates[i] === currentDate);
+            // 更新导航高亮
+            document.querySelectorAll('.date-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', availableDates[i] === currentDate);
             });
             // 更新日期显示
-            document.getElementById('currentDate').textContent = formatDate(currentDate);
-            // 更新按钮状态
-            const idx = availableDates.indexOf(currentDate);
-            document.getElementById('prevBtn').disabled = idx >= availableDates.length - 1;
-            document.getElementById('nextBtn').disabled = idx <= 0;
-            // 渲染新闻
-            renderNews();
+            document.getElementById('dateDisplay').textContent = formatDate(currentDate);
+            renderContent();
         }
 
-        /* ========== 渲染新闻 ========== */
-        function renderNews() {
-            const news = newsData[currentDate];
-            if (!news) {
-                document.getElementById('newsContent').innerHTML = '<p style="text-align:center;color:#666;padding:60px;">该日期暂无新闻</p>';
+        function getSentimentClass(sentiment) {
+            const map = {
+                '利好': 'bullish',
+                '利空': 'bearish',
+                '关注': 'watch',
+                '警惕': 'avoid',
+                '回避': 'avoid'
+            };
+            return map[sentiment] || 'neutral';
+        }
+
+        function renderTags(items) {
+            if (!items || !items.length) return '';
+            let html = '<div class="tags-wrap">';
+            items.forEach(item => {
+                const cls = getSentimentClass(item.sentiment);
+                html += `<span class="tag-item">`;
+                html += `<span class="tag-sentiment ${cls}">${item.sentiment}</span>`;
+                html += `<span class="tag-name">${item.name}</span>`;
+                if (item.note) {
+                    html += `<span class="tag-note">${item.note}</span>`;
+                }
+                html += '</span>';
+            });
+            html += '</div>';
+            return html;
+        }
+
+        function renderNewsCard(item) {
+            let html = `
+                <div class="news-card">
+                    <div class="news-header">
+                        <div class="news-title">${item.emoji} ${item.title}</div>
+                        <div class="news-source">来源：${item.source}</div>
+                    </div>
+                    <div class="news-row"><span class="label">要点：</span>${item.summary}</div>
+                    <div class="news-row"><span class="label">影响时长：</span>${item.duration}</div>`;
+
+            if (item.etfs && item.etfs.length) {
+                html += `
+                    <div class="mapping-section">
+                        <div class="mapping-row">
+                            <div class="mapping-label">📈 ETF映射：</div>
+                            ${renderTags(item.etfs)}
+                        </div>
+                    </div>`;
+            }
+
+            if (item.stocks && item.stocks.length) {
+                html += `
+                    <div class="mapping-section">
+                        <div class="mapping-row">
+                            <div class="mapping-label">✨ 个股映射：</div>
+                            ${renderTags(item.stocks)}
+                        </div>
+                    </div>`;
+            }
+
+            if (item.warning) {
+                html += `<div class="warning-box">⚠️ ${item.warning}</div>`;
+            }
+
+            html += '</div>';
+            return html;
+        }
+
+        function renderContent() {
+            const data = newsData[currentDate];
+            if (!data) {
+                document.getElementById('content').innerHTML = '<p style="text-align:center;color:#666;padding:60px;">该日期暂无数据</p>';
                 return;
             }
 
             let html = '';
 
-            // 市场基调
-            if (news.market_tone) {
+            // 今日基调
+            if (data.market_tone) {
                 html += `
-                    <div class="market-tone">
-                        <h2>📊 今日基调</h2>
-                        <p>${news.market_tone}</p>
-                    </div>
-                `;
+                    <div class="section tone-section">
+                        <div class="section-title">📊 今日基调</div>
+                        <div class="tone-content">${data.market_tone}</div>
+                    </div>`;
             }
 
-            // 悟空判断
-            if (news.wukong_judgment) {
-                const wj = news.wukong_judgment;
+            // 悟空今日判断
+            if (data.wukong_judgment) {
+                const wj = data.wukong_judgment;
                 html += `
-                    <div class="wukong-judgment">
-                        <h2>🐵 悟空今日判断</h2>
-                        <div class="summary">${wj.summary || ''}</div>
-                        <div class="tags-row">
-                `;
-                if (wj.bullish && wj.bullish.length) {
+                    <div class="section judgment-section">
+                        <div class="section-title">📈 悟空今日判断</div>`;
+                
+                if (wj.emotion) {
                     html += `
-                        <div class="tag-group">
-                            <span class="tag-label">看多：</span>
-                            <div class="bullish-tags">
-                                ${wj.bullish.map(s => `<span class="bullish-tag">${s}</span>`).join('')}
-                            </div>
-                        </div>
-                    `;
+                        <div class="emotion-row">
+                            <span class="emotion-label">大盘情绪：</span>
+                            <span class="emotion-value">${wj.emotion}</span>
+                        </div>`;
                 }
-                if (wj.bearish && wj.bearish.length) {
+
+                if (wj.analysis && wj.analysis.length) {
+                    html += '<div class="analysis-list">';
+                    wj.analysis.forEach(a => {
+                        html += `<div class="analysis-item">${a}</div>`;
+                    });
+                    html += '</div>';
+                }
+
+                if (wj.strategy && wj.strategy.length) {
                     html += `
-                        <div class="tag-group">
-                            <span class="tag-label">看空：</span>
-                            <div class="bearish-tags">
-                                ${wj.bearish.map(s => `<span class="bearish-tag">${s}</span>`).join('')}
-                            </div>
-                        </div>
-                    `;
+                        <div class="strategy-box">
+                            <div class="strategy-label">今日操作参考：</div>`;
+                    wj.strategy.forEach(s => {
+                        html += `<div class="strategy-item">${s}</div>`;
+                    });
+                    html += '</div>';
                 }
-                html += `
-                        </div>
-                `;
-                if (wj.strategy) {
-                    html += `
-                        <div class="strategy">
-                            <div class="strategy-label">💡 操作参考</div>
-                            ${wj.strategy}
-                        </div>
-                    `;
-                }
-                html += `</div>`;
+
+                html += '</div>';
             }
 
-            // S级新闻
-            if (news.s_level && news.s_level.length) {
-                html += '<div class="news-section s-level"><div class="section-title">🔴 S级 · 结构性叙事（影响1-4周）</div>';
-                news.s_level.forEach(i => html += renderNewsItem(i));
+            // S级
+            if (data.s_level && data.s_level.length) {
+                html += `
+                    <div class="section news-section s-level">
+                        <div class="section-title">🔴 S级（结构性叙事，影响1-4周）</div>`;
+                data.s_level.forEach(item => {
+                    html += renderNewsCard(item);
+                });
                 html += '</div>';
             }
-            // A级新闻
-            if (news.a_level && news.a_level.length) {
-                html += '<div class="news-section a-level"><div class="section-title">🟡 A级 · 阶段性叙事（影响1-3天）</div>';
-                news.a_level.forEach(i => html += renderNewsItem(i));
+
+            // A级
+            if (data.a_level && data.a_level.length) {
+                html += `
+                    <div class="section news-section a-level">
+                        <div class="section-title">🟡 A级（阶段性叙事，影响1-3天）</div>`;
+                data.a_level.forEach(item => {
+                    html += renderNewsCard(item);
+                });
                 html += '</div>';
             }
-            // 抖音/平台相关
-            if (news.douyin && news.douyin.length) {
-                html += '<div class="news-section douyin"><div class="section-title">📱 抖音/平台相关</div>';
-                news.douyin.forEach(i => html += renderNewsItem(i));
+
+            // 抖音/平台
+            if (data.douyin && data.douyin.length) {
+                html += `
+                    <div class="section news-section douyin">
+                        <div class="section-title">📱 抖音/平台相关</div>`;
+                data.douyin.forEach(item => {
+                    html += renderNewsCard(item);
+                });
                 html += '</div>';
             }
-            document.getElementById('newsContent').innerHTML = html;
+
+            document.getElementById('content').innerHTML = html;
         }
 
-        function renderNewsItem(item) {
-            // 来源显示
-            let sourceHtml = '';
-            if (item.source) {
-                if (item.url) {
-                    sourceHtml = `<div class="news-source">来源：<a href="${item.url}" target="_blank">${item.source}</a></div>`;
-                } else {
-                    sourceHtml = `<div class="news-source">来源：${item.source}</div>`;
-                }
-            }
-
-            // ETF 标签
-            let etfHtml = '';
-            if (item.etfs && item.etfs.length) {
-                etfHtml = '<div class="news-row"><span class="label">📈 ETF映射：</span></div>';
-                etfHtml += '<div class="tag-row">';
-                item.etfs.forEach(etf => {
-                    let cls = 'neutral';
-                    if (etf.sentiment === '利好') cls = 'bullish';
-                    else if (etf.sentiment === '利空') cls = 'bearish';
-                    const icon = cls === 'bullish' ? '▲' : cls === 'bearish' ? '▼' : '●';
-                    etfHtml += `<span class="etf-tag ${cls}">${icon} ${etf.name}</span>`;
-                });
-                etfHtml += '</div>';
-            }
-
-            // 个股标签
-            let stockHtml = '';
-            if (item.stocks && item.stocks.length) {
-                stockHtml = '<div class="news-row"><span class="label">✨ 个股映射：</span></div>';
-                stockHtml += '<div class="tag-row">';
-                item.stocks.forEach(stock => {
-                    const relatedEtf = item.etfs && item.etfs[0];
-                    let cls = 'neutral';
-                    let labelText = '';
-                    if (relatedEtf) {
-                        cls = relatedEtf.sentiment === '利好' ? 'bullish' : 'bearish';
-                        labelText = relatedEtf.sentiment === '利好' ? '利好' : '利空';
-                    }
-                    stockHtml += `<span class="stock-tag ${cls}">${labelText ? `<span class="sentiment-label">${labelText}</span>` : ''}<span class="stock-name">${stock}</span></span>`;
-                });
-                stockHtml += '</div>';
-            }
-
-            return `
-                <div class="news-item">
-                    <div class="news-header">
-                        <div class="news-title">${item.emoji || '📌'} ${item.title}</div>
-                        ${sourceHtml}
-                    </div>
-                    <div class="news-row"><span class="label">📌 要点：</span>${item.summary}</div>
-                    <div class="news-row"><span class="label">⏱️ 影响时长：</span>${item.duration}</div>
-                    ${etfHtml}
-                    ${stockHtml}
-                    <div class="news-row"><span class="label">💡 资金信号：</span>${item.signal}</div>
-                </div>`;
-        }
-
-        /* ========== 初始化 ========== */
-        initTimeline();
+        // 初始化
+        initNav();
         updateUI();
     </script>
 </body>
