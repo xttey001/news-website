@@ -316,6 +316,25 @@
 
     <script src="news-data.js"></script>
     <script>
+        // 调试信息
+        console.log('=== 调试信息 ===');
+        console.log('availableDates:', typeof availableDates !== 'undefined' ? availableDates : 'undefined');
+        console.log('newsData:', typeof newsData !== 'undefined' ? Object.keys(newsData) : 'undefined');
+        
+        // 错误捕获
+        window.onerror = function(msg, url, line) {
+            alert('JavaScript 错误: ' + msg + '\n行号: ' + line);
+            return false;
+        };
+        
+        if (typeof availableDates === 'undefined') {
+            document.getElementById('content').innerHTML = '<p style="color:red;padding:20px;">错误：availableDates 未定义，news-data.js 加载失败</p>';
+        } else if (typeof newsData === 'undefined') {
+            document.getElementById('content').innerHTML = '<p style="color:red;padding:20px;">错误：newsData 未定义</p>';
+        } else {
+            console.log('数据加载成功！');
+        }
+        
         let currentDate = availableDates[0];
 
         function formatDate(dateStr) {
