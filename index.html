@@ -44,11 +44,17 @@
         }
         .header h1 {
             font-size: 26px;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+        .header .subtitle {
+            font-size: 13px;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+            font-style: italic;
         }
         .header .date-tag {
             display: inline-block;
@@ -112,6 +118,10 @@
         }
 
         /* ===== 今日基调 ===== */
+        .tone-section {
+            border: 2px solid var(--gold);
+            background: linear-gradient(135deg, rgba(210,153,34,0.08) 0%, rgba(210,153,34,0.03) 100%);
+        }
         .tone-section .section-title { color: var(--gold); }
         .tone-content {
             font-size: 15px;
@@ -152,13 +162,16 @@
             color: var(--text-dim);
         }
         .strategy-box {
-            background: rgba(255,255,255,0.04);
+            background: linear-gradient(135deg, rgba(63,185,80,0.15) 0%, rgba(63,185,80,0.08) 100%);
+            border: 1px solid rgba(63,185,80,0.3);
             border-radius: 10px;
             padding: 16px;
+            margin-top: 8px;
         }
         .strategy-label {
             font-size: 13px;
-            color: var(--text-dim);
+            color: var(--green);
+            font-weight: 600;
             margin-bottom: 10px;
         }
         .strategy-item {
@@ -300,6 +313,7 @@
     <div class="container">
         <div class="header">
             <h1>🐵 悟空财经分析</h1>
+            <div class="subtitle">不盲从主流解读，用逻辑和数据说话</div>
             <div class="date-tag" id="dateDisplay"></div>
         </div>
 
