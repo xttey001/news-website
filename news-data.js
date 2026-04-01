@@ -1,5 +1,5 @@
 // 新闻数据 - 悟空财经判断格式
-const newsData = {
+var newsData = {
   "2026-04-02": {
     "date": "2026-04-02",
     "market_tone": "谨慎偏多 — 美伊谈判利好全球风险资产，但A股财报季压力对冲，整体震荡为主",
@@ -192,7 +192,7 @@ const newsData = {
 };
 
 // 获取所有可用日期（从最新到最旧）
-const availableDates = [
+var availableDates = [
   "2026-04-02",
   "2026-04-01"
 ];
