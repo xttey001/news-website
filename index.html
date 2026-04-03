@@ -448,11 +448,50 @@
         /* ===== 新闻专属贝叶斯分析 ===== */
         .news-bayes-card {
             margin: 16px 0 24px 0;
-            background: rgba(88,166,255,0.05);
-            border: 1px solid rgba(88,166,255,0.15);
+            background: rgba(240,136,62,0.08);
+            border: 1px solid rgba(240,136,62,0.25);
+            border-radius: 10px;
+            padding: 16px;
         }
         .news-bayes-card .bayes-card-title {
-            color: var(--blue);
+            color: var(--orange);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(240,136,62,0.2);
+        }
+        .news-bayes-card .bayes-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        .news-bayes-card .bayes-table th {
+            background: rgba(240,136,62,0.15);
+            color: var(--orange);
+            padding: 8px 10px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(240,136,62,0.2);
+        }
+        .news-bayes-card .bayes-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text);
+        }
+        .news-bayes-card .bayes-table tr:last-child td {
+            border-bottom: none;
+        }
+        .news-bayes-card .key-variable {
+            display: inline-block;
+            background: rgba(163,113,247,0.15);
+            border: 1px solid rgba(163,113,247,0.3);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: var(--purple);
+            margin-top: 8px;
         }
 
         /* ===== Footer ===== */
@@ -745,7 +784,7 @@
             html += `<div class="section-divider"><span>=== 新闻详情 ===</span></div>`;
 
             // 智能匹配新闻和贝叶斯分析
-            function findBayesForNews(newsTitle, newsAnalysisList) {
+            function findBayesForNews(newsTitle, newsAnalysisList, decisionMatrix) {
                 if (!newsAnalysisList) return null;
                 
                 // 1. 精确匹配
@@ -753,10 +792,10 @@
                 if (exact) return exact;
                 
                 // 2. 关键词匹配（提取新闻标题中的核心关键词）
-                const keywords = newsTitle.replace(/[：:].*$/, '').split(/[，,、]/);
+                const keywords = newsTitle.replace(/[：:].*$/, '').split(/[，,、\s]/);
                 for (const na of newsAnalysisList) {
                     for (const kw of keywords) {
-                        if (kw.length >= 4 && na.news_title.includes(kw)) {
+                        if (kw.length >= 2 && na.news_title.includes(kw)) {
                             return na;
                         }
                     }
@@ -764,8 +803,20 @@
                 
                 // 3. 反向包含匹配
                 for (const na of newsAnalysisList) {
-                    if (newsTitle.includes(na.news_title) || na.news_title.includes(newsTitle.substring(0, 8))) {
+                    if (newsTitle.includes(na.news_title) || na.news_title.includes(newsTitle.substring(0, 10))) {
                         return na;
+                    }
+                }
+
+                // 4. 决策矩阵匹配（通过胜率关联）
+                if (decisionMatrix) {
+                    for (const dm of decisionMatrix) {
+                        // 检查决策矩阵的新闻名称是否在新闻标题中
+                        if (newsTitle.includes(dm.news) || 
+                            (dm.news.length > 4 && newsTitle.includes(dm.news.substring(0, 6)))) {
+                            const matched = newsAnalysisList.find(na => na.news_title === dm.news);
+                            if (matched) return matched;
+                        }
                     }
                 }
                 
@@ -780,7 +831,7 @@
                 data.s_level.forEach(item => {
                     html += renderNewsCard(item);
                     // 查找并渲染对应的贝叶斯分析
-                    const bayes = findBayesForNews(item.title, data.bajie_bayesian?.news_analysis);
+                    const bayes = findBayesForNews(item.title, data.bajie_bayesian?.news_analysis, data.bajie_bayesian?.decision_matrix);
                     if (bayes) {
                         html += renderNewsBayesAnalysis(item.title, bayes);
                     }
@@ -795,7 +846,7 @@
                         <div class="section-title">🟡 A级（阶段性叙事，影响1-3天）</div>`;
                 data.a_level.forEach(item => {
                     html += renderNewsCard(item);
-                    const bayes = findBayesForNews(item.title, data.bajie_bayesian?.news_analysis);
+                    const bayes = findBayesForNews(item.title, data.bajie_bayesian?.news_analysis, data.bajie_bayesian?.decision_matrix);
                     if (bayes) {
                         html += renderNewsBayesAnalysis(item.title, bayes);
                     }
@@ -810,7 +861,7 @@
                         <div class="section-title">📱 抖音/平台相关</div>`;
                 data.douyin.forEach(item => {
                     html += renderNewsCard(item);
-                    const bayes = findBayesForNews(item.title, data.bajie_bayesian?.news_analysis);
+                    const bayes = findBayesForNews(item.title, data.bajie_bayesian?.news_analysis, data.bajie_bayesian?.decision_matrix);
                     if (bayes) {
                         html += renderNewsBayesAnalysis(item.title, bayes);
                     }
