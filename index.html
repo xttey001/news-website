@@ -135,6 +135,73 @@
             border-color: rgba(163,113,247,0.2);
         }
         .judgment-section .section-title { color: var(--purple); }
+        
+        /* ===== 八戒贝叶斯 ===== */
+        .bayesian-section {
+            background: linear-gradient(135deg, rgba(255,193,7,0.08) 0%, rgba(255,152,0,0.05) 100%);
+            border-color: rgba(255,193,7,0.2);
+        }
+        .bayesian-section .section-title { color: #FFC107; }
+        .overall-card {
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .overall-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+        }
+        .stat-label { font-size: 12px; color: var(--text-dim); }
+        .stat-value { font-size: 18px; font-weight: 700; margin-top: 4px; }
+        .stat-value.high { color: var(--green); }
+        .stat-value.medium { color: #FFC107; }
+        .stat-value.low { color: #f44336; }
+        .overall-conclusion {
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 12px;
+            background: rgba(255,193,7,0.08);
+            border-radius: 8px;
+            border-left: 3px solid #FFC107;
+        }
+        .decision-matrix {
+            margin-top: 16px;
+        }
+        .matrix-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #FFC107;
+            margin-bottom: 12px;
+        }
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .matrix-table th {
+            text-align: left;
+            padding: 8px;
+            background: rgba(255,255,255,0.05);
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+        .matrix-table td {
+            padding: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .win-rate { font-weight: 600; }
+        .win-rate.high { color: var(--green); }
+        .win-rate.medium { color: #FFC107; }
+        .win-rate.low { color: #f44336; }
         .emotion-row {
             font-size: 14px;
             margin-bottom: 14px;
@@ -474,6 +541,73 @@
                         html += `<div class="strategy-item">${s}</div>`;
                     });
                     html += '</div>';
+                }
+
+                html += '</div>';
+            }
+
+            // 八戒贝叶斯决策分析
+            if (data.bajie_bayesian) {
+                const bj = data.bajie_bayesian;
+                html += `
+                    <div class="section bayesian-section">
+                        <div class="section-title">🧮 八戒贝叶斯决策分析</div>`;
+
+                // 总体结论卡片
+                if (bj.overall) {
+                    const o = bj.overall;
+                    const wrClass = o.win_rate >= 65 ? 'high' : o.win_rate >= 50 ? 'medium' : 'low';
+                    html += `
+                        <div class="overall-card">
+                            <div class="overall-stats">
+                                <div class="stat-item">
+                                    <div class="stat-label">综合胜率</div>
+                                    <div class="stat-value ${wrClass}">${o.win_rate}%</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">止损线</div>
+                                    <div class="stat-value low">${o.stop_loss}%</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">持仓周期</div>
+                                    <div class="stat-value medium">${o.holding_period}</div>
+                                </div>
+                            </div>
+                            <div class="overall-conclusion">${o.conclusion}</div>
+                        </div>`;
+                }
+
+                // 决策矩阵表格
+                if (bj.decision_matrix && bj.decision_matrix.length) {
+                    html += `
+                        <div class="decision-matrix">
+                            <div class="matrix-title">📊 决策矩阵</div>
+                            <table class="matrix-table">
+                                <thead>
+                                    <tr>
+                                        <th>新闻</th>
+                                        <th>胜率</th>
+                                        <th>预期收益</th>
+                                        <th>风险比</th>
+                                        <th>建议</th>
+                                    </tr>
+                                </thead>
+                                <tbody>`;
+                    bj.decision_matrix.forEach(m => {
+                        const rc = m.win_rate >= 65 ? 'high' : m.win_rate >= 50 ? 'medium' : 'low';
+                        html += `
+                                    <tr>
+                                        <td>${m.news}</td>
+                                        <td><span class="win-rate ${rc}">${m.win_rate}%</span></td>
+                                        <td>${m.expected_return}</td>
+                                        <td>${m.risk_ratio}</td>
+                                        <td>${m.action}</td>
+                                    </tr>`;
+                    });
+                    html += `
+                                </tbody>
+                            </table>
+                        </div>`;
                 }
 
                 html += '</div>';
