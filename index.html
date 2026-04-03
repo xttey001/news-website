@@ -791,11 +791,22 @@
                 const exact = newsAnalysisList.find(na => na.news_title === newsTitle);
                 if (exact) return exact;
                 
-                // 2. 关键词匹配（提取新闻标题中的核心关键词）
-                const keywords = newsTitle.replace(/[：:].*$/, '').split(/[，,、\s]/);
+                // 2. 核心概念匹配（提取2-4字的核心概念进行匹配）
+                const titlePrefix = newsTitle.replace(/[：:].*$/, '');
+                const coreConcepts = [];
+                
+                // 提取常见财经概念词
+                const conceptPatterns = ['原油', '黄金', '美股', 'AI芯片', '芯片', 'CPO', '光模块', 'A股', '央行', '油气', '科技', '存储', '新能源', '锂电', '光伏', '医药', '银行', '地产'];
+                conceptPatterns.forEach(concept => {
+                    if (titlePrefix.includes(concept)) {
+                        coreConcepts.push(concept);
+                    }
+                });
+                
+                // 按概念匹配
                 for (const na of newsAnalysisList) {
-                    for (const kw of keywords) {
-                        if (kw.length >= 2 && na.news_title.includes(kw)) {
+                    for (const concept of coreConcepts) {
+                        if (na.news_title.includes(concept)) {
                             return na;
                         }
                     }
@@ -808,14 +819,21 @@
                     }
                 }
 
-                // 4. 决策矩阵匹配（通过胜率关联）
+                // 4. 决策矩阵匹配
                 if (decisionMatrix) {
                     for (const dm of decisionMatrix) {
                         // 检查决策矩阵的新闻名称是否在新闻标题中
                         if (newsTitle.includes(dm.news) || 
-                            (dm.news.length > 4 && newsTitle.includes(dm.news.substring(0, 6)))) {
+                            (dm.news.length > 4 && titlePrefix.includes(dm.news.substring(0, 6)))) {
                             const matched = newsAnalysisList.find(na => na.news_title === dm.news);
                             if (matched) return matched;
+                        }
+                        // 检查核心概念是否匹配
+                        for (const concept of coreConcepts) {
+                            if (dm.news.includes(concept)) {
+                                const matched = newsAnalysisList.find(na => na.news_title === dm.news);
+                                if (matched) return matched;
+                            }
                         }
                     }
                 }
