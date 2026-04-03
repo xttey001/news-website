@@ -239,28 +239,57 @@
             font-size: 1.2em;
         }
 
-        .wukong-item {
+        .judgment-content {
             display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .judgment-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
             color: #e0e0e0;
         }
 
-        .wukong-label {
+        .judgment-label {
             color: #4CAF50;
             font-weight: bold;
-            min-width: 80px;
+            font-size: 0.95em;
+        }
+
+        .op-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .op-item {
+            padding: 5px 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            font-size: 0.95em;
         }
 
         /* 决策矩阵表格 */
         .decision-matrix {
+            margin: 20px 0;
+        }
+
+        .decision-matrix h3 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .matrix-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
             font-size: 0.9em;
         }
 
-        .decision-matrix th {
+        .matrix-table th {
             background: rgba(76, 175, 80, 0.2);
             color: #4CAF50;
             padding: 12px;
@@ -268,13 +297,13 @@
             border: 1px solid rgba(76, 175, 80, 0.3);
         }
 
-        .decision-matrix td {
+        .matrix-table td {
             padding: 10px 12px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: #ccc;
         }
 
-        .decision-matrix tr:hover {
+        .matrix-table tr:hover {
             background: rgba(76, 175, 80, 0.05);
         }
 
