@@ -6,18 +6,117 @@ var newsData = {
     "wukong_judgment": {
       "emotion": "谨慎偏空",
       "analysis": [
-        "A股高开低走，沪指半日跌0.93%失守3900点关口，全天跌1%报3880.1点",
-        "两市成交1.66万亿元较昨日缩量1866亿，全市场超4700只个股下跌",
-        "涨停21只、跌停21只，CPO/光刻机/AI算力逆市走强，通宇通讯等多股涨停",
-        "央行净回笼1452亿元，资金面边际收紧，但资金仍在持续入场",
-        "3月A股新开户460.14万户同比增长50%，增量资金持续入场"
+        "A股高开低走，沪指跌1%报3880.1点，失守3900点关口",
+        "两市成交1.66万亿缩量1866亿，超4700只个股下跌，节前避险情绪浓厚",
+        "CPO/光刻机/AI算力逆市走强，通宇通讯/福晶科技涨停，结构性机会仍在",
+        "央行净回笼1452亿元，资金面边际收紧",
+        "3月新开户460万户同比+50%，增量资金持续入场"
       ],
       "strategy": [
-        "⚠️ 大盘承压：沪指高开低走失守3900，短期仍有调整压力",
-        "✅ CPO/光刻机：题材逆市走强，通宇通讯/福晶科技涨停，节后可关注",
-        "✅ 油气：布伦特原油突破140美元创2008年新高，持续配置",
-        "📌 避险：黄金/国债ETF可作为防御配置",
-        "⚠️ 清明休市：A股4月4-6日休市，4月7日复牌，关注节后资金动向"
+        "⚠️ 大盘：节前避险+缩量，短期仍有调整压力",
+        "✅ CPO/光模块：逆市走强，通宇通讯/福晶科技涨停，节后重点关注",
+        "✅ 油气：布伦特原油突破140美元，持续配置",
+        "📌 避险：黄金/国债ETF防御配置",
+        "⚠️ 节后关注：4月7日复牌，观察北向资金动向"
+      ]
+    },
+    "bajie_bayesian": {
+      "overall": {
+        "win_rate": 48,
+        "best_action": "节后观望，等待缩量企稳后再做多CPO/算力",
+        "best_etfs": "515980云计算ETF 20% + 160140油气ETF 20% + 518880黄金ETF 10%",
+        "stop_loss": -6,
+        "holding_period": "1-2周",
+        "conclusion": "大盘缩量回调，胜率不足50%，建议节后观望。结构性机会在CPO/算力，可轻仓博弈。"
+      },
+      "decision_matrix": [
+        {
+          "news": "A股缩量下跌",
+          "win_rate": 35,
+          "expected_return": "−3%~+2%",
+          "risk_ratio": "1:1.5",
+          "action": "❌ 回避",
+          "priority": 1
+        },
+        {
+          "news": "CPO逆市走强",
+          "win_rate": 68,
+          "expected_return": "+8%~15%",
+          "risk_ratio": "1:0.6",
+          "action": "✅ 可做",
+          "priority": 2
+        },
+        {
+          "news": "原油突破140美元",
+          "win_rate": 72,
+          "expected_return": "+10%~20%",
+          "risk_ratio": "1:0.5",
+          "action": "✅ 重点做多",
+          "priority": 3
+        },
+        {
+          "news": "字节豆包Token爆发",
+          "win_rate": 74,
+          "expected_return": "+12%~18%",
+          "risk_ratio": "1:0.6",
+          "action": "✅ 重点做多",
+          "priority": 4
+        },
+        {
+          "news": "礼来GLP-1口服获批",
+          "win_rate": 65,
+          "expected_return": "+8%~14%",
+          "risk_ratio": "1:0.8",
+          "action": "✅ 可做",
+          "priority": 5
+        }
+      ],
+      "news_analysis": [
+        {
+          "news_title": "A股缩量下跌",
+          "prior": 55,
+          "likelihood": 45,
+          "posterior": 35,
+          "expected_return": "−3%~+2%",
+          "confidence": "[−5%, +4%]",
+          "key_variable": "节后北向资金流向（悟空：若节后首日净流入>50亿，胜率可回升至55%）"
+        },
+        {
+          "news_title": "CPO逆市走强",
+          "prior": 60,
+          "likelihood": 72,
+          "posterior": 68,
+          "expected_return": "+8%~15%",
+          "confidence": "[+2%, +22%]",
+          "key_variable": "通宇通讯/福晶科技节后能否连板（悟空：连板概率60%，可追涨）"
+        },
+        {
+          "news_title": "原油突破140美元",
+          "prior": 70,
+          "likelihood": 78,
+          "posterior": 72,
+          "expected_return": "+10%~20%",
+          "confidence": "[+5%, +28%]",
+          "key_variable": "霍尔木兹海峡局势（悟空：短期难以缓解，油价仍有上行空间）"
+        },
+        {
+          "news_title": "字节豆包Token爆发",
+          "prior": 65,
+          "likelihood": 82,
+          "posterior": 74,
+          "expected_return": "+12%~18%",
+          "confidence": "[+4%, +25%]",
+          "key_variable": "豆包数据真实性（悟空：数据可信度高，字节自研芯片已API输出）"
+        },
+        {
+          "news_title": "礼来GLP-1口服获批",
+          "prior": 55,
+          "likelihood": 60,
+          "posterior": 65,
+          "expected_return": "+8%~14%",
+          "confidence": "[+1%, +20%]",
+          "key_variable": "中国医保谈判进度（悟空：2027年前难以进入医保，自费价格$149/月偏贵）"
+        }
       ]
     },
     "s_level": [
