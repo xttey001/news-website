@@ -3,757 +3,780 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>悟空财经分析</title>
+    <title>财经新闻速览 - 历史查看</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg-start: #0d1117;
-            --bg-end: #161b22;
-            --green: #3fb950;
-            --green-bg: rgba(63,185,80,0.12);
-            --orange: #f0883e;
-            --red: #f85149;
-            --blue: #58a6ff;
-            --gold: #d29922;
-            --purple: #a371f7;
-            --card-bg: rgba(255,255,255,0.04);
-            --card-border: rgba(255,255,255,0.1);
-            --text: #e6edf3;
-            --text-dim: #8b949e;
-            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-
+        
         body {
-            font-family: var(--font);
-            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
-            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
             min-height: 100vh;
             padding: 20px;
-            line-height: 1.7;
         }
-        .container { max-width: 900px; margin: 0 auto; }
-
-        /* ===== 标题 ===== */
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
         .header {
             text-align: center;
-            margin-bottom: 32px;
-            padding: 24px;
-            background: var(--card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--card-border);
+            margin-bottom: 40px;
         }
+        
         .header h1 {
-            font-size: 26px;
-            margin-bottom: 4px;
-            background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .header .subtitle {
-            font-size: 13px;
-            color: var(--text-dim);
-            margin-bottom: 8px;
-            font-style: italic;
+        
+        .header p {
+            color: #888;
+            font-size: 1.1em;
         }
-        .header .date-tag {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 6px 14px;
-            background: rgba(163,113,247,0.15);
-            border: 1px solid rgba(163,113,247,0.3);
-            border-radius: 8px;
-            color: var(--purple);
-            font-size: 13px;
-        }
-
-        /* ===== 导航 ===== */
-        .nav-bar {
+        
+        /* 时间线 */
+        .timeline {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            margin-bottom: 28px;
+            gap: 10px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
-            padding: 14px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid var(--card-border);
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow-x: auto;
         }
-        .date-btn {
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+        
+        .timeline-item {
+            padding: 10px 15px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid rgba(0, 212, 255, 0.3);
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-size: 13px;
-            color: var(--text-dim);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            position: relative;
         }
-        .date-btn:hover {
-            background: rgba(63,185,80,0.1);
-            border-color: var(--green);
-            color: var(--green);
-        }
-        .date-btn.active {
-            background: var(--green-bg);
-            border-color: var(--green);
-            color: var(--green);
-            font-weight: 600;
-        }
-
-        /* ===== 区块通用 ===== */
-        .section {
-            background: var(--card-bg);
-            border-radius: 14px;
-            border: 1px solid var(--card-border);
-            padding: 22px;
-            margin-bottom: 24px;
-        }
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* ===== 今日基调 ===== */
-        .tone-section {
-            border: 2px solid var(--gold);
-            background: linear-gradient(135deg, rgba(210,153,34,0.08) 0%, rgba(210,153,34,0.03) 100%);
-        }
-        .tone-section .section-title { color: var(--gold); }
-        .tone-content {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text);
-        }
-
-        /* ===== 悟空判断 ===== */
-        .judgment-section { 
-            background: linear-gradient(135deg, rgba(163,113,247,0.08) 0%, rgba(88,166,255,0.05) 100%);
-            border-color: rgba(163,113,247,0.2);
-        }
-        .judgment-section .section-title { color: var(--purple); }
         
-        /* ===== 八戒贝叶斯 ===== */
-        .bayesian-section {
-            background: linear-gradient(135deg, rgba(255,193,7,0.08) 0%, rgba(255,152,0,0.05) 100%);
-            border-color: rgba(255,193,7,0.2);
+        .timeline-item:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.6);
+            transform: translateY(-2px);
         }
-        .bayesian-section .section-title { color: #FFC107; }
-        .overall-card {
-            background: rgba(0,0,0,0.2);
-            border-radius: 10px;
-            padding: 16px;
-            margin-bottom: 16px;
+        
+        .timeline-item.active {
+            background: rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff;
+            color: #00d4ff;
+            font-weight: bold;
         }
-        .overall-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 14px;
+        
+        /* 控制按钮 */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
         }
-        .stat-item {
-            text-align: center;
-            padding: 10px;
-            background: rgba(255,255,255,0.03);
+        
+        .btn {
+            padding: 10px 20px;
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            color: #00d4ff;
             border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
         }
-        .stat-label { font-size: 12px; color: var(--text-dim); }
-        .stat-value { font-size: 18px; font-weight: 700; margin-top: 4px; }
-        .stat-value.high { color: var(--green); }
-        .stat-value.medium { color: #FFC107; }
-        .stat-value.low { color: #f44336; }
-        .overall-conclusion {
-            font-size: 14px;
-            line-height: 1.6;
-            padding: 12px;
-            background: rgba(255,193,7,0.08);
+        
+        .btn:hover:not(:disabled) {
+            background: rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff;
+            transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        /* 日期输入 */
+        .date-input-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .date-input-group input {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            color: #e0e0e0;
             border-radius: 8px;
-            border-left: 3px solid #FFC107;
+            font-size: 1em;
         }
-        .decision-matrix {
-            margin-top: 16px;
+        
+        .date-input-group input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
         }
-        .matrix-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #FFC107;
-            margin-bottom: 12px;
-        }
-        .matrix-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-        .matrix-table th {
-            text-align: left;
-            padding: 8px;
-            background: rgba(255,255,255,0.05);
-            color: var(--text-dim);
-            font-weight: 600;
-        }
-        .matrix-table td {
-            padding: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .win-rate { font-weight: 600; }
-        .win-rate.high { color: var(--green); }
-        .win-rate.medium { color: #FFC107; }
-        .win-rate.low { color: #f44336; }
-
-        /* 贝叶斯推断卡片 */
-        .bayes-analysis-list { margin-top: 16px; }
-        .bayes-card {
-            background: rgba(0,0,0,0.2);
+        
+        /* 新闻内容 */
+        .news-container {
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
-            padding: 16px;
-            margin-bottom: 12px;
+            padding: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
         }
-        .bayes-card-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #FFC107;
+        
+        .news-date {
+            font-size: 1.3em;
+            color: #00d4ff;
             margin-bottom: 10px;
+            font-weight: bold;
         }
-        .bayes-table {
+        
+        .market-tone {
+            color: #888;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 3px solid #00d4ff;
+            border-radius: 5px;
+        }
+        
+        .news-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.2em;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .news-item {
+            background: rgba(0, 212, 255, 0.05);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #00d4ff;
+        }
+        
+        .news-title {
+            font-size: 1.1em;
+            color: #e0e0e0;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .news-summary {
+            color: #aaa;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .news-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .meta-label {
+            color: #666;
+            font-size: 0.85em;
+        }
+        
+        .meta-value {
+            color: #00d4ff;
+        }
+        
+        .etf-list, .stock-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .etf-tag, .stock-tag {
+            padding: 5px 10px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        
+        /* 新格式样式：结论前置 */
+        .wukong-judgment {
+            background: rgba(76, 175, 80, 0.1);
+            border: 2px solid rgba(76, 175, 80, 0.4);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .wukong-judgment h3 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .wukong-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+
+        .wukong-label {
+            color: #4CAF50;
+            font-weight: bold;
+            min-width: 80px;
+        }
+
+        /* 决策矩阵表格 */
+        .decision-matrix {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13px;
+            margin: 20px 0;
+            font-size: 0.9em;
         }
-        .bayes-table th {
+
+        .decision-matrix th {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            padding: 12px;
             text-align: left;
-            padding: 7px 8px;
-            background: rgba(255,255,255,0.05);
-            color: var(--text-dim);
-            font-weight: 600;
+            border: 1px solid rgba(76, 175, 80, 0.3);
         }
-        .bayes-table td {
-            padding: 7px 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+
+        .decision-matrix td {
+            padding: 10px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
         }
-        .bayes-table .posterior-row td {
-            border-top: 2px solid rgba(255,193,7,0.3);
-            background: rgba(255,193,7,0.05);
+
+        .decision-matrix tr:hover {
+            background: rgba(76, 175, 80, 0.05);
         }
-        .key-variable {
-            margin-top: 10px;
-            font-size: 13px;
-            color: var(--text-dim);
-            padding: 8px 12px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 6px;
+
+        .probability-high {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .probability-medium {
+            color: #FFC107;
+            font-weight: bold;
+        }
+
+        .probability-low {
+            color: #f44336;
+            font-weight: bold;
+        }
+
+        .suggestion-good {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .suggestion-caution {
+            color: #FFC107;
+            font-weight: bold;
+        }
+
+        .suggestion-bad {
+            color: #f44336;
+            font-weight: bold;
         }
 
         /* 八戒最终结论 */
         .bajie-conclusion {
-            margin-top: 16px;
-            background: linear-gradient(135deg, rgba(255,193,7,0.12) 0%, rgba(255,152,0,0.08) 100%);
-            border: 1px solid rgba(255,193,7,0.3);
+            background: rgba(156, 39, 176, 0.1);
+            border: 2px solid rgba(156, 39, 176, 0.4);
             border-radius: 10px;
-            padding: 16px;
-        }
-        .bajie-conclusion-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: #FFC107;
-            margin-bottom: 12px;
-        }
-        .bajie-conclusion-row {
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        .bc-label {
-            color: var(--text-dim);
-            font-weight: 600;
-        }
-        .emotion-row {
-            font-size: 14px;
-            margin-bottom: 14px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .emotion-label { color: var(--text-dim); }
-        .emotion-value { 
-            color: var(--green); 
-            font-weight: 600;
-        }
-        .analysis-list {
-            margin-bottom: 16px;
-        }
-        .analysis-item {
-            position: relative;
-            padding-left: 18px;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-        .analysis-item::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--text-dim);
-        }
-        .strategy-box {
-            background: linear-gradient(135deg, rgba(63,185,80,0.15) 0%, rgba(63,185,80,0.08) 100%);
-            border: 1px solid rgba(63,185,80,0.3);
-            border-radius: 10px;
-            padding: 16px;
-            margin-top: 8px;
-        }
-        .strategy-label {
-            font-size: 13px;
-            color: var(--green);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        .strategy-item {
-            font-size: 14px;
-            margin-bottom: 8px;
-            line-height: 1.6;
+            padding: 20px;
+            margin-bottom: 25px;
         }
 
-        /* ===== 新闻区块 ===== */
-        .news-section.s-level .section-title { color: var(--red); }
-        .news-section.a-level .section-title { color: var(--gold); }
-        .news-section.douyin .section-title { color: var(--blue); }
-
-        /* ===== 新闻卡片 ===== */
-        .news-card {
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            border-left: 4px solid;
-            padding: 18px;
-            margin-bottom: 16px;
+        .bajie-conclusion h3 {
+            color: #9C27B0;
+            margin-bottom: 15px;
+            font-size: 1.2em;
         }
-        .s-level .news-card { border-left-color: var(--red); }
-        .a-level .news-card { border-left-color: var(--gold); }
-        .douyin .news-card { border-left-color: var(--blue); }
 
-        .news-header {
+        .conclusion-item {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 12px;
-        }
-        .news-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #fff;
-            flex: 1;
-        }
-        .news-source {
-            padding: 4px 10px;
-            background: rgba(255,255,255,0.06);
-            border-radius: 6px;
-            font-size: 11px;
-            color: var(--text-dim);
-        }
-        .news-row {
-            margin: 10px 0;
-            font-size: 14px;
-        }
-        .label { 
-            color: var(--text-dim); 
-            margin-right: 6px;
-            font-size: 13px;
+            margin-bottom: 10px;
+            color: #e0e0e0;
         }
 
-        /* ===== 映射标签 ===== */
-        .mapping-section {
-            margin-top: 14px;
-        }
-        .mapping-row {
-            margin-bottom: 12px;
-        }
-        .mapping-label {
-            font-size: 13px;
-            color: var(--text-dim);
-            margin-bottom: 8px;
-        }
-        .tags-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .tag-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 0;
-            padding: 0;
-            border-radius: 6px;
-            overflow: hidden;
-            font-size: 12px;
-            border: 1px solid rgba(255,255,255,0.15);
-            transition: all 0.2s;
-        }
-        .tag-item:hover {
-            transform: translateY(-1px);
-            border-color: rgba(255,255,255,0.3);
-        }
-        .tag-sentiment {
-            padding: 5px 8px;
-            font-weight: 700;
-            font-size: 11px;
-        }
-        .tag-sentiment.bullish { background: var(--red); color: #fff; }
-        .tag-sentiment.bearish { background: var(--green); color: #fff; }
-        .tag-sentiment.neutral { background: #6e7681; color: #fff; }
-        .tag-sentiment.watch { background: var(--blue); color: #fff; }
-        .tag-sentiment.avoid { background: var(--orange); color: #fff; }
-        .tag-name {
-            padding: 5px 10px;
-            color: var(--text);
-        }
-        .tag-note {
-            padding: 5px 8px;
-            color: var(--text-dim);
-            font-size: 11px;
-            background: rgba(255,255,255,0.03);
+        .conclusion-label {
+            color: #9C27B0;
+            font-weight: bold;
+            min-width: 100px;
         }
 
-        /* ===== 警告提示 ===== */
-        .warning-box {
-            margin-top: 14px;
-            padding: 12px 14px;
-            background: rgba(248,129,73,0.1);
-            border: 1px solid rgba(248,129,73,0.25);
+        /* 新闻项贝叶斯分析 */
+        .bayes-analysis {
+            background: rgba(255, 193, 7, 0.05);
+            border: 1px solid rgba(255, 193, 7, 0.3);
             border-radius: 8px;
-            font-size: 13px;
-            color: var(--orange);
+            padding: 15px;
+            margin-top: 15px;
         }
 
-        /* ===== Footer ===== */
-        footer {
-            text-align: center;
-            margin-top: 48px;
-            padding: 24px;
-            color: #484f58;
-            font-size: 12px;
+        .bayes-title {
+            color: #FFC107;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1em;
         }
 
-        /* ===== 响应式 ===== */
+        .bayes-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+        }
+
+        .bayes-table th {
+            background: rgba(255, 193, 7, 0.15);
+            color: #FFC107;
+            padding: 8px;
+            text-align: left;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .bayes-table td {
+            padding: 6px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+        }
+
+        .bayes-table .bayes-label {
+            color: #888;
+        }
+
+        .bayes-table .bayes-value {
+            color: #e0e0e0;
+        }
+
+        .bayes-table .bayes-highlight {
+            color: #FFC107;
+            font-weight: bold;
+        }
+
+        .bayes-table .bayes-prob {
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .bayes-table .bayes-profit {
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        .bayes-table .bayes-ci {
+            color: #2196F3;
+        }
+
+        .bajie-label {
+            font-size: 0.85em;
+            color: #9C27B0;
+            font-weight: bold;
+        }
+
+        .emoji-s {
+            color: #f44336;
+        }
+
+        .emoji-a {
+            color: #FFC107;
+        }
+
+        .emoji-douyin {
+            color: #2196F3;
+        }
+        
         @media (max-width: 768px) {
-            .header h1 { font-size: 22px; }
-            .section { padding: 16px; }
-            .news-card { padding: 14px; }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .news-container {
+                padding: 20px;
+            }
+            
+            .timeline {
+                gap: 8px;
+            }
+            
+            .timeline-item {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🐵 悟空财经分析</h1>
-            <div class="subtitle">不盲从主流解读，用逻辑和数据说话</div>
-            <div class="date-tag" id="dateDisplay"></div>
+            <h1>📊 财经新闻速览</h1>
+            <p>实时财经新闻 · 历史查看 · 智能分类</p>
         </div>
-
-        <!-- 日期导航 -->
-        <div class="nav-bar" id="navBar"></div>
-
-        <!-- 内容区 -->
-        <div id="content"></div>
-
-        <footer>
-            <p>数据来源：天集 ProSearch · 权威财经媒体</p>
-        </footer>
+        
+        <div class="timeline" id="timeline"></div>
+        
+        <div class="controls">
+            <button class="btn" id="prevBtn" onclick="showPreviousDate()">← 前一天</button>
+            <button class="btn" id="todayBtn" onclick="showToday()">📅 今天</button>
+            <button class="btn" id="nextBtn" onclick="showNextDate()">后一天 →</button>
+            <button class="btn" onclick="toggleAllDates()">📋 查看所有日期</button>
+        </div>
+        
+        <div class="date-input-group">
+            <input type="text" id="dateInput" placeholder="输入日期 (YYYY-MM-DD)" onkeypress="handleDateInput(event)">
+            <button class="btn" onclick="jumpToDate()">跳转</button>
+        </div>
+        
+        <div class="news-container" id="newsContainer">
+            <p style="text-align: center; color: #888;">加载中...</p>
+        </div>
     </div>
-
+    
     <script src="news-data.js"></script>
     <script>
         let currentDate = availableDates[0];
-
-        function formatDate(dateStr) {
-            const [y, m, d] = dateStr.split('-');
-            return `${parseInt(m)}月${parseInt(d)}日`;
-        }
-
-        function initNav() {
-            const nav = document.getElementById('navBar');
-            nav.innerHTML = '';
+        
+        function initTimeline() {
+            const timeline = document.getElementById('timeline');
+            timeline.innerHTML = '';
+            
             availableDates.forEach(date => {
-                const btn = document.createElement('button');
-                btn.className = 'date-btn' + (date === currentDate ? ' active' : '');
-                btn.textContent = formatDate(date);
-                btn.onclick = () => { currentDate = date; updateUI(); };
-                nav.appendChild(btn);
+                const item = document.createElement('div');
+                item.className = 'timeline-item' + (date === currentDate ? ' active' : '');
+                item.textContent = date;
+                item.onclick = () => showDate(date);
+                timeline.appendChild(item);
             });
         }
-
+        
+        function showDate(date) {
+            if (!availableDates.includes(date)) return;
+            currentDate = date;
+            updateUI();
+        }
+        
+        function showPreviousDate() {
+            const prev = getPreviousDate(currentDate);
+            if (prev) showDate(prev);
+        }
+        
+        function showNextDate() {
+            const next = getNextDate(currentDate);
+            if (next) showDate(next);
+        }
+        
+        function showToday() {
+            showDate(availableDates[0]);
+        }
+        
+        function jumpToDate() {
+            const input = document.getElementById('dateInput').value;
+            if (availableDates.includes(input)) {
+                showDate(input);
+                document.getElementById('dateInput').value = '';
+            } else {
+                alert('日期不存在');
+            }
+        }
+        
+        function handleDateInput(event) {
+            if (event.key === 'Enter') {
+                jumpToDate();
+            }
+        }
+        
+        function toggleAllDates() {
+            const dates = availableDates.join('\n');
+            alert('可用日期:\n' + dates);
+        }
+        
         function updateUI() {
-            // 更新导航高亮
-            document.querySelectorAll('.date-btn').forEach((btn, i) => {
-                btn.classList.toggle('active', availableDates[i] === currentDate);
-            });
-            // 更新日期显示
-            document.getElementById('dateDisplay').textContent = formatDate(currentDate);
-            renderContent();
+            initTimeline();
+            updateButtons();
+            renderNews();
         }
-
-        function getSentimentClass(sentiment) {
-            const map = {
-                '利好': 'bullish',
-                '利空': 'bearish',
-                '关注': 'watch',
-                '警惕': 'avoid',
-                '回避': 'avoid'
-            };
-            return map[sentiment] || 'neutral';
+        
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = !getPreviousDate(currentDate);
+            document.getElementById('nextBtn').disabled = !getNextDate(currentDate);
         }
-
-        function renderTags(items) {
-            if (!items || !items.length) return '';
-            let html = '<div class="tags-wrap">';
-            items.forEach(item => {
-                const cls = getSentimentClass(item.sentiment);
-                html += `<span class="tag-item">`;
-                html += `<span class="tag-sentiment ${cls}">${item.sentiment}</span>`;
-                html += `<span class="tag-name">${item.name}</span>`;
-                if (item.note) {
-                    html += `<span class="tag-note">${item.note}</span>`;
-                }
-                html += '</span>';
-            });
-            html += '</div>';
-            return html;
-        }
-
-        function renderNewsCard(item) {
-            let html = `
-                <div class="news-card">
-                    <div class="news-header">
-                        <div class="news-title">${item.emoji} ${item.title}</div>
-                        <div class="news-source">来源：${item.source}</div>
-                    </div>
-                    <div class="news-row"><span class="label">要点：</span>${item.summary}</div>
-                    <div class="news-row"><span class="label">影响时长：</span>${item.duration}</div>`;
-
-            if (item.etfs && item.etfs.length) {
-                html += `
-                    <div class="mapping-section">
-                        <div class="mapping-row">
-                            <div class="mapping-label">📈 ETF映射：</div>
-                            ${renderTags(item.etfs)}
-                        </div>
-                    </div>`;
-            }
-
-            if (item.stocks && item.stocks.length) {
-                html += `
-                    <div class="mapping-section">
-                        <div class="mapping-row">
-                            <div class="mapping-label">✨ 个股映射：</div>
-                            ${renderTags(item.stocks)}
-                        </div>
-                    </div>`;
-            }
-
-            if (item.warning) {
-                html += `<div class="warning-box">⚠️ ${item.warning}</div>`;
-            }
-
-            html += '</div>';
-            return html;
-        }
-
-        function renderContent() {
-            const data = newsData[currentDate];
-            if (!data) {
-                document.getElementById('content').innerHTML = '<p style="text-align:center;color:#666;padding:60px;">该日期暂无数据</p>';
+        
+        function renderNews() {
+            const news = getNews(currentDate);
+            if (!news) {
+                document.getElementById('newsContainer').innerHTML = '<p style="text-align: center; color: #888;">该日期暂无新闻</p>';
                 return;
             }
-
-            let html = '';
-
-            // 今日基调
-            if (data.market_tone) {
-                html += `
-                    <div class="section tone-section">
-                        <div class="section-title">📊 今日基调</div>
-                        <div class="tone-content">${data.market_tone}</div>
-                    </div>`;
-            }
-
+            
+            // 收集所有新闻用于决策矩阵
+            const allNews = [];
+            if (news.s_level) allNews.push(...news.s_level.map(i => ({...i, level: 'S'})));
+            if (news.a_level) allNews.push(...news.a_level.map(i => ({...i, level: 'A'})));
+            if (news.douyin) allNews.push(...news.douyin.map(i => ({...i, level: '抖音'})));
+            
+            let html = `
+                <div class="news-date">${news.date}</div>
+                <div class="market-tone">📈 ${news.market_tone}</div>
+            `;
+            
             // 悟空今日判断
-            if (data.wukong_judgment) {
-                const wj = data.wukong_judgment;
-                html += `
-                    <div class="section judgment-section">
-                        <div class="section-title">📈 悟空今日判断</div>`;
-                
-                if (wj.emotion) {
-                    html += `
-                        <div class="emotion-row">
-                            <span class="emotion-label">大盘情绪：</span>
-                            <span class="emotion-value">${wj.emotion}</span>
-                        </div>`;
-                }
-
-                if (wj.analysis && wj.analysis.length) {
-                    html += '<div class="analysis-list">';
-                    wj.analysis.forEach(a => {
-                        html += `<div class="analysis-item">${a}</div>`;
-                    });
-                    html += '</div>';
-                }
-
-                if (wj.strategy && wj.strategy.length) {
-                    html += `
-                        <div class="strategy-box">
-                            <div class="strategy-label">今日操作参考：</div>`;
-                    wj.strategy.forEach(s => {
-                        html += `<div class="strategy-item">${s}</div>`;
-                    });
-                    html += '</div>';
-                }
-
-                html += '</div>';
+            if (news.wukong_judgment) {
+                html += renderWukongJudgment(news.wukong_judgment);
             }
-
-            // 八戒贝叶斯决策分析
-            if (data.bajie_bayesian) {
-                const bj = data.bajie_bayesian;
-                html += `
-                    <div class="section bayesian-section">
-                        <div class="section-title">🧮 八戒贝叶斯决策分析</div>`;
-
-                // 每条新闻贝叶斯推断表格
-                if (bj.news_analysis && bj.news_analysis.length) {
-                    html += `<div class="bayes-analysis-list">`;
-                    bj.news_analysis.forEach(na => {
-                        const pc = na.posterior >= 65 ? 'high' : na.posterior >= 50 ? 'medium' : 'low';
-                        html += `
-                        <div class="bayes-card">
-                            <div class="bayes-card-title">📊 贝叶斯概率推断：${na.news_title}</div>
-                            <table class="bayes-table">
-                                <thead>
-                                    <tr><th>维度</th><th>判断</th><th>概率</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>先验（市场基准）</td>
-                                        <td>历史基准</td>
-                                        <td>${na.prior}%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>似然（数据验证）</td>
-                                        <td>新闻信息强度</td>
-                                        <td>${na.likelihood}%</td>
-                                    </tr>
-                                    <tr class="posterior-row">
-                                        <td>后验（综合）</td>
-                                        <td>做多概率</td>
-                                        <td><strong class="win-rate ${pc}">${na.posterior}%</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>预期收益率</td>
-                                        <td>ETF/个股</td>
-                                        <td><strong>${na.expected_return}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>置信区间</td>
-                                        <td>95%CI</td>
-                                        <td>${na.confidence}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="key-variable">💡 关键变量：${na.key_variable}</div>
-                        </div>`;
-                    });
-                    html += `</div>`;
-                }
-
-                // 决策矩阵表格
-                if (bj.decision_matrix && bj.decision_matrix.length) {
-                    html += `
-                        <div class="decision-matrix">
-                            <div class="matrix-title">📊 决策矩阵</div>
-                            <table class="matrix-table">
-                                <thead>
-                                    <tr>
-                                        <th>新闻</th>
-                                        <th>胜率</th>
-                                        <th>预期收益</th>
-                                        <th>风险比</th>
-                                        <th>建议</th>
-                                    </tr>
-                                </thead>
-                                <tbody>`;
-                    bj.decision_matrix.forEach(m => {
-                        const rc = m.win_rate >= 65 ? 'high' : m.win_rate >= 50 ? 'medium' : 'low';
-                        html += `
-                                    <tr>
-                                        <td>${m.news}</td>
-                                        <td><span class="win-rate ${rc}">${m.win_rate}%</span></td>
-                                        <td>${m.expected_return}</td>
-                                        <td>${m.risk_ratio}</td>
-                                        <td>${m.action}</td>
-                                    </tr>`;
-                    });
-                    html += `
-                                </tbody>
-                            </table>
-                        </div>`;
-                }
-
-                // 八戒最终结论
-                if (bj.overall) {
-                    const o = bj.overall;
-                    const wrClass = o.win_rate >= 65 ? 'high' : o.win_rate >= 50 ? 'medium' : 'low';
-                    html += `
-                        <div class="bajie-conclusion">
-                            <div class="bajie-conclusion-title">🧠 八戒最终结论</div>
-                            <div class="bajie-conclusion-row"><span class="bc-label">最优行动：</span><span>${o.best_action}</span></div>
-                            <div class="bajie-conclusion-row"><span class="bc-label">最优ETF组合：</span><span>${o.best_etfs}</span></div>
-                            <div class="bajie-conclusion-row"><span class="bc-label">胜率：</span><span class="win-rate ${wrClass}">~${o.win_rate}%（贝叶斯后验）</span></div>
-                            <div class="bajie-conclusion-row"><span class="bc-label">最大回撤警戒：</span><span class="win-rate low">${o.stop_loss}%（止损线）</span></div>
-                        </div>`;
-                }
-
-                html += '</div>';
+            
+            // 决策矩阵
+            if (allNews.length > 0) {
+                html += renderDecisionMatrix(allNews);
             }
-
-            // S级
-            if (data.s_level && data.s_level.length) {
-                html += `
-                    <div class="section news-section s-level">
-                        <div class="section-title">🔴 S级（结构性叙事，影响1-4周）</div>`;
-                data.s_level.forEach(item => {
-                    html += renderNewsCard(item);
+            
+            // 八戒最终结论
+            if (news.bajie_conclusion) {
+                html += renderBajieConclusion(news.bajie_conclusion);
+            }
+            
+            if (news.s_level && news.s_level.length > 0) {
+                html += '<div class="news-section">';
+                html += '<div class="section-title">🔴 S级新闻（主线级）</div>';
+                news.s_level.forEach(item => {
+                    html += renderNewsItem(item);
                 });
                 html += '</div>';
             }
-
-            // A级
-            if (data.a_level && data.a_level.length) {
-                html += `
-                    <div class="section news-section a-level">
-                        <div class="section-title">🟡 A级（阶段性叙事，影响1-3天）</div>`;
-                data.a_level.forEach(item => {
-                    html += renderNewsCard(item);
+            
+            if (news.a_level && news.a_level.length > 0) {
+                html += '<div class="news-section">';
+                html += '<div class="section-title">🟡 A级新闻（轮动级）</div>';
+                news.a_level.forEach(item => {
+                    html += renderNewsItem(item);
                 });
                 html += '</div>';
             }
-
-            // 抖音/平台
-            if (data.douyin && data.douyin.length) {
-                html += `
-                    <div class="section news-section douyin">
-                        <div class="section-title">📱 抖音/平台相关</div>`;
-                data.douyin.forEach(item => {
-                    html += renderNewsCard(item);
+            
+            if (news.douyin && news.douyin.length > 0) {
+                html += '<div class="news-section">';
+                html += '<div class="section-title">📱 抖音相关</div>';
+                news.douyin.forEach(item => {
+                    html += renderNewsItem(item);
                 });
                 html += '</div>';
             }
-
-            document.getElementById('content').innerHTML = html;
+            
+            document.getElementById('newsContainer').innerHTML = html;
         }
-
+        
+        function renderWukongJudgment(judgment) {
+            let analysisHtml = '';
+            if (judgment.core_analysis && judgment.core_analysis.length > 0) {
+                analysisHtml = judgment.core_analysis.map(a => `<li>${a}</li>`).join('');
+            }
+            
+            let opsHtml = '';
+            if (judgment.operations && judgment.operations.length > 0) {
+                opsHtml = judgment.operations.map(op => {
+                    const emoji = op.type === '可做' ? '✅' : op.type === '警惕' ? '⚠️' : op.type === '回避' ? '❌' : '📌';
+                    return `<div class="op-item">${emoji} ${op.content}</div>`;
+                }).join('');
+            }
+            
+            return `
+                <div class="wukong-judgment">
+                    <h3>📈 悟空今日判断</h3>
+                    <div class="judgment-content">
+                        <div class="judgment-item">
+                            <span class="judgment-label">大盘情绪：</span>
+                            <span>${judgment.market_sentiment || '暂无'}</span>
+                        </div>
+                        ${analysisHtml ? `<div class="judgment-item"><span class="judgment-label">核心分析：</span><ul>${analysisHtml}</ul></div>` : ''}
+                        ${opsHtml ? `<div class="judgment-item"><span class="judgment-label">操作参考：</span><div class="op-list">${opsHtml}</div></div>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function renderDecisionMatrix(newsList) {
+            const rows = newsList.map(item => {
+                const bayes = item.bayes_analysis || {};
+                const prob = bayes.posterior || 50;
+                const profit = bayes.expected_return || '0%';
+                const suggestion = prob >= 75 ? '✅' : prob >= 60 ? '✅' : prob >= 50 ? '⚠️' : prob >= 40 ? '⚠️' : '❌';
+                const probClass = prob >= 75 ? 'probability-high' : prob >= 50 ? 'probability-medium' : 'probability-low';
+                
+                return `
+                    <tr>
+                        <td>${item.emoji} ${item.title.substring(0, 20)}...</td>
+                        <td class="${probClass}">${prob}%</td>
+                        <td>${profit}</td>
+                        <td>${suggestion}</td>
+                    </tr>
+                `;
+            }).join('');
+            
+            return `
+                <div class="decision-matrix">
+                    <h3>📊 决策矩阵</h3>
+                    <table class="matrix-table">
+                        <thead>
+                            <tr>
+                                <th>新闻</th>
+                                <th>做多概率</th>
+                                <th>预期收益</th>
+                                <th>建议</th>
+                            </tr>
+                        </thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>
+            `;
+        }
+        
+        function renderBajieConclusion(conclusion) {
+            return `
+                <div class="bajie-conclusion">
+                    <h3>🧠 八戒最终结论</h3>
+                    <div class="conclusion-item">
+                        <span class="conclusion-label">最优行动：</span>
+                        <span>${conclusion.optimal_action || '观望'}</span>
+                    </div>
+                    <div class="conclusion-item">
+                        <span class="conclusion-label">最优ETF组合：</span>
+                        <span>${conclusion.optimal_etfs || '暂无'}</span>
+                    </div>
+                    <div class="conclusion-item">
+                        <span class="conclusion-label">胜率：</span>
+                        <span>${conclusion.win_rate || '50%'}</span>
+                    </div>
+                    <div class="conclusion-item">
+                        <span class="conclusion-label">最大回撤警戒：</span>
+                        <span>${conclusion.max_drawdown || '-5%'}</span>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function renderNewsItem(item) {
+            let etfHtml = '';
+            if (item.etfs && item.etfs.length > 0) {
+                etfHtml = '<div class="meta-item"><span class="meta-label">📈 映射ETF</span><div class="etf-list">';
+                item.etfs.forEach(etf => {
+                    const sentiment = etf.sentiment === '利好' ? 'sentiment-good' : 'sentiment-bad';
+                    etfHtml += `<span class="etf-tag"><span class="${sentiment}">${etf.sentiment}</span> ${etf.name}</span>`;
+                });
+                etfHtml += '</div></div>';
+            }
+            
+            let stockHtml = '';
+            if (item.stocks && item.stocks.length > 0) {
+                stockHtml = '<div class="meta-item"><span class="meta-label">✨ 映射个股</span><div class="stock-list">';
+                item.stocks.forEach(stock => {
+                    stockHtml += `<span class="stock-tag">${stock}</span>`;
+                });
+                stockHtml += '</div></div>';
+            }
+            
+            // 贝叶斯分析
+            let bayesHtml = '';
+            if (item.bayes_analysis) {
+                bayesHtml = renderBayesAnalysis(item.bayes_analysis);
+            }
+            
+            return `
+                <div class="news-item">
+                    <div class="news-title">${item.emoji} ${item.title}</div>
+                    <div class="news-summary">${item.summary}</div>
+                    <div class="news-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">⏱️ 影响时长</span>
+                            <span class="meta-value">${item.duration}</span>
+                        </div>
+                        ${etfHtml}
+                        ${stockHtml}
+                        <div class="meta-item">
+                            <span class="meta-label">💡 资金信号</span>
+                            <span class="meta-value">${item.signal}</span>
+                        </div>
+                    </div>
+                    ${bayesHtml}
+                </div>
+            `;
+        }
+        
+        function renderBayesAnalysis(bayes) {
+            return `
+                <div class="bayes-analysis">
+                    <div class="bayes-title">🧮 八戒贝叶斯分析</div>
+                    <table class="bayes-table">
+                        <tr>
+                            <th>维度</th>
+                            <th>判断</th>
+                            <th>概率/数值</th>
+                        </tr>
+                        <tr>
+                            <td class="bayes-label">先验（市场基准）</td>
+                            <td class="bayes-value">${bayes.prior_judgment || '中性'}</td>
+                            <td>${bayes.prior_prob || '50'}%</td>
+                        </tr>
+                        <tr>
+                            <td class="bayes-label">似然（数据验证）</td>
+                            <td class="bayes-value">${bayes.likelihood_judgment || '中性'}</td>
+                            <td>${bayes.likelihood_prob || '50'}%</td>
+                        </tr>
+                        <tr>
+                            <td class="bayes-label">后验（综合）</td>
+                            <td class="bayes-value">做多概率</td>
+                            <td class="bayes-prob">${bayes.posterior || '50'}%</td>
+                        </tr>
+                        <tr>
+                            <td class="bayes-label">预期收益率</td>
+                            <td class="bayes-value">ETF/个股</td>
+                            <td class="bayes-profit">${bayes.expected_return || '0%'}</td>
+                        </tr>
+                        <tr>
+                            <td class="bayes-label">置信区间</td>
+                            <td class="bayes-value">95%CI</td>
+                            <td class="bayes-ci">${bayes.confidence_interval || '[0%, 0%]'}</td>
+                        </tr>
+                    </table>
+                    ${bayes.key_variables ? `<div class="bayes-keyvar">💡 关键变量：${bayes.key_variables}</div>` : ''}
+                </div>
+            `;
+        }
+        
         // 初始化
-        initNav();
-        updateUI();
+        initTimeline();
+        updateButtons();
+        renderNews();
     </script>
 </body>
 </html>
