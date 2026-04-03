@@ -1017,8 +1017,7 @@ var newsData = {
       }
     ],
     "douyin": []
-  }
-};
+  },
 
   "2026-04-04": {
     "date": "2026-04-04",
@@ -1208,7 +1207,8 @@ var newsData = {
       }
     ],
     "douyin": []
-  },
+  }
+};
 
 // 获取所有可用日期（从最新到最旧）
 var availableDates = [
