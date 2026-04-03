@@ -22,12 +22,12 @@ var newsData = {
     },
     "bajie_bayesian": {
       "overall": {
-        "win_rate": 48,
-        "best_action": "节后观望，等待缩量企稳后再做多CPO/算力",
-        "best_etfs": "515980云计算ETF 20% + 160140油气ETF 20% + 518880黄金ETF 10%",
+        "win_rate": 65,
+        "best_action": "节后重点配置CPO/光模块+油气，回避大盘",
+        "best_etfs": "515980云计算ETF 25% + 160140油气ETF 25% + 513900港股通100ETF 15%",
         "stop_loss": -6,
         "holding_period": "1-2周",
-        "conclusion": "大盘缩量回调，胜率不足50%，建议节后观望。结构性机会在CPO/算力，可轻仓博弈。"
+        "conclusion": "大盘缩量回调胜率不足，但CPO主力资金大举流入+原油供需紧张，结构性机会明确。节后重点配置CPO/光模块和油气，回避大盘指数。"
       },
       "decision_matrix": [
         {
@@ -39,12 +39,20 @@ var newsData = {
           "priority": 1
         },
         {
-          "news": "CPO逆市走强",
-          "win_rate": 68,
-          "expected_return": "+8%~15%",
-          "risk_ratio": "1:0.6",
-          "action": "✅ 可做",
+          "news": "CPO主力大举流入",
+          "win_rate": 72,
+          "expected_return": "+10%~18%",
+          "risk_ratio": "1:0.5",
+          "action": "✅ 重点做多",
           "priority": 2
+        },
+        {
+          "news": "港股通ETF大涨",
+          "win_rate": 62,
+          "expected_return": "+6%~12%",
+          "risk_ratio": "1:0.8",
+          "action": "✅ 可做",
+          "priority": 3
         },
         {
           "news": "原油突破140美元",
@@ -52,7 +60,7 @@ var newsData = {
           "expected_return": "+10%~20%",
           "risk_ratio": "1:0.5",
           "action": "✅ 重点做多",
-          "priority": 3
+          "priority": 4
         },
         {
           "news": "字节豆包Token爆发",
@@ -60,14 +68,6 @@ var newsData = {
           "expected_return": "+12%~18%",
           "risk_ratio": "1:0.6",
           "action": "✅ 重点做多",
-          "priority": 4
-        },
-        {
-          "news": "礼来GLP-1口服获批",
-          "win_rate": 65,
-          "expected_return": "+8%~14%",
-          "risk_ratio": "1:0.8",
-          "action": "✅ 可做",
           "priority": 5
         }
       ],
@@ -79,16 +79,25 @@ var newsData = {
           "posterior": 35,
           "expected_return": "−3%~+2%",
           "confidence": "[−5%, +4%]",
-          "key_variable": "节后北向资金流向（悟空：若节后首日净流入>50亿，胜率可回升至55%）"
+          "key_variable": "节后北向资金流向（若节后首日净流入>50亿，胜率可回升至55%）"
         },
         {
-          "news_title": "CPO逆市走强",
+          "news_title": "CPO逆市走强+主力大举流入",
           "prior": 60,
-          "likelihood": 72,
-          "posterior": 68,
-          "expected_return": "+8%~15%",
-          "confidence": "[+2%, +22%]",
-          "key_variable": "通宇通讯/福晶科技节后能否连板（悟空：连板概率60%，可追涨）"
+          "likelihood": 75,
+          "posterior": 72,
+          "expected_return": "+10%~18%",
+          "confidence": "[+4%, +25%]",
+          "key_variable": "通宇通讯/中际旭创节后能否延续强势（连板概率65%）"
+        },
+        {
+          "news_title": "港股通ETF大涨",
+          "prior": 55,
+          "likelihood": 68,
+          "posterior": 62,
+          "expected_return": "+6%~12%",
+          "confidence": "[+2%, +18%]",
+          "key_variable": "港股通资金持续流入情况"
         },
         {
           "news_title": "原油突破140美元",
@@ -97,7 +106,7 @@ var newsData = {
           "posterior": 72,
           "expected_return": "+10%~20%",
           "confidence": "[+5%, +28%]",
-          "key_variable": "霍尔木兹海峡局势（悟空：短期难以缓解，油价仍有上行空间）"
+          "key_variable": "霍尔木兹海峡局势（短期难以缓解，油价仍有上行空间）"
         },
         {
           "news_title": "字节豆包Token爆发",
@@ -106,16 +115,7 @@ var newsData = {
           "posterior": 74,
           "expected_return": "+12%~18%",
           "confidence": "[+4%, +25%]",
-          "key_variable": "豆包数据真实性（悟空：数据可信度高，字节自研芯片已API输出）"
-        },
-        {
-          "news_title": "礼来GLP-1口服获批",
-          "prior": 55,
-          "likelihood": 60,
-          "posterior": 65,
-          "expected_return": "+8%~14%",
-          "confidence": "[+1%, +20%]",
-          "key_variable": "中国医保谈判进度（悟空：2027年前难以进入医保，自费价格$149/月偏贵）"
+          "key_variable": "豆包数据真实性（数据可信度高，字节自研芯片已API输出）"
         }
       ]
     },
