@@ -78,6 +78,7 @@
             background: var(--card-bg);
             border-radius: 12px;
             border: 1px solid var(--card-border);
+            align-items: center;
         }
         .date-btn {
             padding: 8px 16px;
@@ -99,6 +100,64 @@
             border-color: var(--green);
             color: var(--green);
             font-weight: 600;
+        }
+        /* 日期选择器 */
+        .date-picker-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 8px;
+        }
+        .date-picker-wrap label {
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+        .date-picker {
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+            font-family: var(--font);
+        }
+        .date-picker:hover {
+            border-color: var(--green);
+        }
+        .date-picker:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 2px rgba(63,185,80,0.2);
+        }
+        /* 前一日/后一日按钮 */
+        .nav-arrow-btn {
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-arrow-btn:hover:not(:disabled) {
+            background: rgba(63,185,80,0.1);
+            border-color: var(--green);
+            color: var(--green);
+        }
+        .nav-arrow-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .nav-divider {
+            width: 1px;
+            height: 24px;
+            background: rgba(255,255,255,0.1);
+            margin: 0 4px;
         }
 
         /* ===== 区块通用 ===== */
@@ -520,7 +579,16 @@
         </div>
 
         <!-- 日期导航 -->
-        <div class="nav-bar" id="navBar"></div>
+        <div class="nav-bar" id="navBar">
+            <button class="nav-arrow-btn" id="prevBtn" onclick="goToPrevDate()">◀ 前一日</button>
+            <div class="nav-divider"></div>
+            <div class="date-picker-wrap">
+                <label for="datePicker">选择日期：</label>
+                <input type="date" id="datePicker" class="date-picker" onchange="onDatePickerChange(this.value)">
+            </div>
+            <div class="nav-divider"></div>
+            <button class="nav-arrow-btn" id="nextBtn" onclick="goToNextDate()">后一日 ▶</button>
+        </div>
 
         <!-- 内容区 -->
         <div id="content"></div>
@@ -540,22 +608,50 @@
         }
 
         function initNav() {
-            const nav = document.getElementById('navBar');
-            nav.innerHTML = '';
-            availableDates.forEach(date => {
-                const btn = document.createElement('button');
-                btn.className = 'date-btn' + (date === currentDate ? ' active' : '');
-                btn.textContent = formatDate(date);
-                btn.onclick = () => { currentDate = date; updateUI(); };
-                nav.appendChild(btn);
-            });
+            // 设置日期选择器的范围
+            const datePicker = document.getElementById('datePicker');
+            if (availableDates.length > 0) {
+                datePicker.min = availableDates[availableDates.length - 1]; // 最早日期
+                datePicker.max = availableDates[0]; // 最晚日期
+                datePicker.value = currentDate;
+            }
+            updateNavButtons();
+        }
+
+        function updateNavButtons() {
+            const currentIndex = availableDates.indexOf(currentDate);
+            document.getElementById('prevBtn').disabled = currentIndex >= availableDates.length - 1;
+            document.getElementById('nextBtn').disabled = currentIndex <= 0;
+        }
+
+        function onDatePickerChange(value) {
+            if (value && availableDates.includes(value)) {
+                currentDate = value;
+                updateUI();
+            }
+        }
+
+        function goToPrevDate() {
+            const currentIndex = availableDates.indexOf(currentDate);
+            if (currentIndex < availableDates.length - 1) {
+                currentDate = availableDates[currentIndex + 1];
+                updateUI();
+            }
+        }
+
+        function goToNextDate() {
+            const currentIndex = availableDates.indexOf(currentDate);
+            if (currentIndex > 0) {
+                currentDate = availableDates[currentIndex - 1];
+                updateUI();
+            }
         }
 
         function updateUI() {
-            // 更新导航高亮
-            document.querySelectorAll('.date-btn').forEach((btn, i) => {
-                btn.classList.toggle('active', availableDates[i] === currentDate);
-            });
+            // 更新日期选择器
+            document.getElementById('datePicker').value = currentDate;
+            // 更新导航按钮状态
+            updateNavButtons();
             // 更新日期显示
             document.getElementById('dateDisplay').textContent = formatDate(currentDate);
             renderContent();
