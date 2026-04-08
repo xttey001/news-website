@@ -671,12 +671,19 @@
             if (!items || !items.length) return '';
             let html = '<div class="tags-wrap">';
             items.forEach(item => {
-                const cls = getSentimentClass(item.sentiment);
+                // 兼容纯字符串和对象两种格式
+                const isObj = typeof item === 'object' && item !== null;
+                const sentiment = isObj ? item.sentiment : '';
+                const name = isObj ? item.name : item;
+                const note = isObj ? (item.note || '') : '';
+                const cls = getSentimentClass(sentiment);
                 html += `<span class="tag-item">`;
-                html += `<span class="tag-sentiment ${cls}">${item.sentiment}</span>`;
-                html += `<span class="tag-name">${item.name}</span>`;
-                if (item.note) {
-                    html += `<span class="tag-note">${item.note}</span>`;
+                if (sentiment) {
+                    html += `<span class="tag-sentiment ${cls}">${sentiment}</span>`;
+                }
+                html += `<span class="tag-name">${name}</span>`;
+                if (note) {
+                    html += `<span class="tag-note">${note}</span>`;
                 }
                 html += '</span>';
             });
