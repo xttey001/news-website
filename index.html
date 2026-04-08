@@ -689,7 +689,7 @@
                 <div class="news-card">
                     <div class="news-header">
                         <div class="news-title">${item.emoji} ${item.title}</div>
-                        <div class="news-source">来源：${item.source}</div>
+                        ${item.source ? '<div class="news-source">来源：' + item.source + '</div>' : ''}
                     </div>
                     <div class="news-row"><span class="label">要点：</span>${item.summary}</div>
                     <div class="news-row"><span class="label">影响时长：</span>${item.duration}</div>`;
@@ -726,6 +726,14 @@
         function renderNewsBayesAnalysis(newsTitle, bayesData) {
             if (!bayesData) return '';
             const pc = bayesData.posterior >= 65 ? 'high' : bayesData.posterior >= 50 ? 'medium' : 'low';
+            const priorJudg = bayesData.prior_judgment || '历史基准';
+            const priorProb = bayesData.prior_prob || bayesData.prior || 50;
+            const likelihoodJudg = bayesData.likelihood_judgment || '新闻信息强度';
+            const likelihoodProb = bayesData.likelihood_prob || bayesData.likelihood || 50;
+            const posterior = bayesData.posterior || 50;
+            const expectedReturn = bayesData.expected_return || 'N/A';
+            const confidence = bayesData.confidence_interval || bayesData.confidence || 'N/A';
+            const keyVar = bayesData.key_variables || bayesData.key_variable || 'N/A';
             return `
             <div class="bayes-card news-bayes-card">
                 <div class="bayes-card-title">🧮 八戒贝叶斯分析</div>
@@ -736,32 +744,32 @@
                     <tbody>
                         <tr>
                             <td>先验（市场基准）</td>
-                            <td>历史基准</td>
-                            <td>${bayesData.prior}%</td>
+                            <td>${priorJudg}</td>
+                            <td>${priorProb}%</td>
                         </tr>
                         <tr>
                             <td>似然（数据验证）</td>
-                            <td>新闻信息强度</td>
-                            <td>${bayesData.likelihood}%</td>
+                            <td>${likelihoodJudg}</td>
+                            <td>${likelihoodProb}%</td>
                         </tr>
                         <tr class="posterior-row">
                             <td>后验（综合）</td>
                             <td>做多概率</td>
-                            <td><strong class="win-rate ${pc}">${bayesData.posterior}%</strong></td>
+                            <td><strong class="win-rate ${pc}">${posterior}%</strong></td>
                         </tr>
                         <tr>
                             <td>预期收益率</td>
                             <td>ETF/个股</td>
-                            <td><strong>${bayesData.expected_return}</strong></td>
+                            <td><strong>${expectedReturn}</strong></td>
                         </tr>
                         <tr>
                             <td>置信区间</td>
                             <td>95%CI</td>
-                            <td>${bayesData.confidence}</td>
+                            <td>${confidence}</td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="key-variable">💡 关键变量：${bayesData.key_variable}</div>
+                <div class="key-variable">💡 关键变量：${keyVar}</div>
             </div>`;
         }
 
@@ -790,28 +798,33 @@
                     <div class="section judgment-section">
                         <div class="section-title">📈 悟空今日判断</div>`;
                 
-                if (wj.emotion) {
+                const emotion = wj.emotion || wj.market_sentiment;
+                if (emotion) {
                     html += `
                         <div class="emotion-row">
                             <span class="emotion-label">大盘情绪：</span>
-                            <span class="emotion-value">${wj.emotion}</span>
+                            <span class="emotion-value">${emotion}</span>
                         </div>`;
                 }
 
-                if (wj.analysis && wj.analysis.length) {
+                const analysisList = wj.analysis || wj.core_analysis;
+                if (analysisList && analysisList.length) {
                     html += '<div class="analysis-list">';
-                    wj.analysis.forEach(a => {
+                    analysisList.forEach(a => {
                         html += `<div class="analysis-item">${a}</div>`;
                     });
                     html += '</div>';
                 }
 
-                if (wj.strategy && wj.strategy.length) {
+                const strategyList = wj.strategy || wj.operations;
+                if (strategyList && strategyList.length) {
                     html += `
                         <div class="strategy-box">
                             <div class="strategy-label">今日操作参考：</div>`;
-                    wj.strategy.forEach(s => {
-                        html += `<div class="strategy-item">${s}</div>`;
+                    strategyList.forEach(s => {
+                        const label = s.type ? s.type + ' ' : '';
+                        const text = s.content || s;
+                        html += `<div class="strategy-item">${label}${text}</div>`;
                     });
                     html += '</div>';
                 }
@@ -820,9 +833,9 @@
             }
 
             // 决策矩阵 + 八戒最终结论（汇总部分）
-            if (data.bajie_bayesian) {
-                const bj = data.bajie_bayesian;
+            const bj = data.bajie_bayesian || buildBajieBayesian(data);
 
+            if (bj) {
                 // 决策矩阵表格
                 if (bj.decision_matrix && bj.decision_matrix.length) {
                     html += `
@@ -859,17 +872,19 @@
                 }
 
                 // 八戒最终结论
-                if (bj.overall) {
-                    const o = bj.overall;
-                    const wrClass = o.win_rate >= 65 ? 'high' : o.win_rate >= 50 ? 'medium' : 'low';
+                const overall = bj.overall || data.bajie_conclusion;
+                if (overall) {
+                    const wrStr = overall.win_rate || '';
+                    const wrNum = parseInt(wrStr) || 50;
+                    const wrClass = wrNum >= 65 ? 'high' : wrNum >= 50 ? 'medium' : 'low';
                     html += `
                     <div class="section conclusion-section">
                         <div class="section-title">🧠 八戒最终结论</div>
                         <div class="bajie-conclusion">
-                            <div class="bajie-conclusion-row"><span class="bc-label">最优行动：</span><span>${o.best_action}</span></div>
-                            <div class="bajie-conclusion-row"><span class="bc-label">最优ETF组合：</span><span>${o.best_etfs}</span></div>
-                            <div class="bajie-conclusion-row"><span class="bc-label">胜率：</span><span class="win-rate ${wrClass}">~${o.win_rate}%（贝叶斯后验）</span></div>
-                            <div class="bajie-conclusion-row"><span class="bc-label">最大回撤警戒：</span><span class="win-rate low">${o.stop_loss}%（止损线）</span></div>
+                            <div class="bajie-conclusion-row"><span class="bc-label">最优行动：</span><span>${overall.best_action || overall.optimal_action || ''}</span></div>
+                            <div class="bajie-conclusion-row"><span class="bc-label">最优ETF组合：</span><span>${overall.best_etfs || overall.optimal_etfs || ''}</span></div>
+                            <div class="bajie-conclusion-row"><span class="bc-label">胜率：</span><span class="win-rate ${wrClass}">${wrStr || overall.win_rate || ''}</span></div>
+                            <div class="bajie-conclusion-row"><span class="bc-label">最大回撤警戒：</span><span class="win-rate low">${overall.stop_loss || overall.max_drawdown || ''}</span></div>
                         </div>
                     </div>`;
                 }
@@ -877,6 +892,30 @@
 
             // 分隔线
             html += `<div class="section-divider"><span>=== 新闻详情 ===</span></div>`;
+
+            // 从每条新闻的 bayes_analysis 构建 bajie_bayesian 结构（兼容新旧数据格式）
+            function buildBajieBayesian(data) {
+                const allNews = [].concat(data.s_level || [], data.a_level || [], data.douyin || []);
+                const newsAnalysis = [];
+                const decisionMatrix = [];
+                allNews.forEach(item => {
+                    const ba = item.bayes_analysis;
+                    if (ba) {
+                        newsAnalysis.push({ news_title: item.title, ...ba });
+                        const wr = ba.posterior || 50;
+                        const action = wr >= 65 ? '✅ 坚定做多' : wr >= 50 ? '⚠️ 轻仓' : '❌ 回避';
+                        decisionMatrix.push({
+                            news: item.title.substring(0, 15) + '...',
+                            win_rate: wr,
+                            expected_return: ba.expected_return || 'N/A',
+                            risk_ratio: wr >= 65 ? '1:3' : wr >= 50 ? '1:2' : '1:1',
+                            action: action
+                        });
+                    }
+                });
+                if (newsAnalysis.length === 0) return null;
+                return { news_analysis: newsAnalysis, decision_matrix: decisionMatrix };
+            }
 
             // 智能匹配新闻和贝叶斯分析
             function findBayesForNews(newsTitle, newsAnalysisList, decisionMatrix) {
@@ -943,8 +982,7 @@
                         <div class="section-title">🔴 S级（结构性叙事，影响1-4周）</div>`;
                 data.s_level.forEach(item => {
                     html += renderNewsCard(item);
-                    // 查找并渲染对应的贝叶斯分析
-                    const bayes = findBayesForNews(item.title, data.bajie_bayesian?.news_analysis, data.bajie_bayesian?.decision_matrix);
+                    const bayes = item.bayes_analysis || findBayesForNews(item.title, bj?.news_analysis, bj?.decision_matrix);
                     if (bayes) {
                         html += renderNewsBayesAnalysis(item.title, bayes);
                     }
@@ -959,7 +997,7 @@
                         <div class="section-title">🟡 A级（阶段性叙事，影响1-3天）</div>`;
                 data.a_level.forEach(item => {
                     html += renderNewsCard(item);
-                    const bayes = findBayesForNews(item.title, data.bajie_bayesian?.news_analysis, data.bajie_bayesian?.decision_matrix);
+                    const bayes = item.bayes_analysis || findBayesForNews(item.title, bj?.news_analysis, bj?.decision_matrix);
                     if (bayes) {
                         html += renderNewsBayesAnalysis(item.title, bayes);
                     }
@@ -974,7 +1012,7 @@
                         <div class="section-title">📱 抖音/平台相关</div>`;
                 data.douyin.forEach(item => {
                     html += renderNewsCard(item);
-                    const bayes = findBayesForNews(item.title, data.bajie_bayesian?.news_analysis, data.bajie_bayesian?.decision_matrix);
+                    const bayes = item.bayes_analysis || findBayesForNews(item.title, bj?.news_analysis, bj?.decision_matrix);
                     if (bayes) {
                         html += renderNewsBayesAnalysis(item.title, bayes);
                     }
