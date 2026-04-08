@@ -1,5 +1,150 @@
 // 新闻数据 - 自动生成
 const newsData = {
+  "2026-04-09": {
+    "date": "2026-04-09",
+    "market_tone": "科技股强势领涨！芯片、人工智能板块爆发，复旦微电大涨超10%，寒武纪涨超8%，市场做多情绪高涨",
+    "wukong_judgment": {
+        "market_sentiment": "震荡偏多，科技成长股领涨",
+        "core_analysis": [
+            "AI芯片/人工智能板块爆发：复旦微电大涨超10%，寒武纪-U涨超8%，金山办公涨超7%，人工智能AIETF(515070)盘中涨超3%",
+            "科技股重估进入阶段性休整后反弹：海外关税风险落地，市场进入财报窗口期，业绩确定性成为超额收益抓手",
+            "芯片板块集体走强：芯原股份、景嘉微等个股跟涨，科创AI指数异动拉升",
+            "进入4月财报季，业绩确定性将成为市场风格主要抓手，关注业绩超预期个股"
+        ],
+        "operations": [
+            {
+                "type": "可做",
+                "content": "AI芯片/人工智能板块：复旦微电、寒武纪-U、金山办公、人工智能AIETF(515070)"
+            },
+            {
+                "type": "可做",
+                "content": "科创芯片ETF：588890科创芯片ETF、588780科创芯片设计ETF"
+            },
+            {
+                "type": "警惕",
+                "content": "短期涨幅较大个股，注意获利回吐风险"
+            },
+            {
+                "type": "关注",
+                "content": "4月财报季业绩超预期个股"
+            }
+        ]
+    },
+    "bajie_conclusion": {
+        "optimal_action": "重点配置AI芯片+人工智能ETF，科技成长股业绩驱动行情",
+        "optimal_etfs": "515070人工智能AIETF(40%) + 588890科创芯片ETF(30%) + 512930AI人工智能ETF(20%) + 现金(10%)",
+        "win_rate": "~72%（贝叶斯后验）",
+        "max_drawdown": "-5%（止损线）",
+        "holding_period": "1-2周"
+    },
+    "s_level": [
+        {
+            "emoji": "🔴",
+            "title": "AI芯片/人工智能板块爆发：复旦微电大涨超10%，寒武纪涨超8%",
+            "summary": "4月9日科技板块快速拉升，芯片、人工智能、军工板块走强。人工智能AIETF(515070)盘中上涨超3%，持仓股复旦微电大涨超10%，寒武纪-U大涨超8%，金山办公大涨超7%，芯原股份、景嘉微等个股跟涨。中银证券表示，科技股重估进入阶段性休整，海外关税风险落地，短期A股或进入震荡调整阶段。进入4月，A股即将进入财报窗口期，业绩确定性将会成为4月市场风格超额收益主要抓手。",
+            "duration": "1-2周",
+            "etfs": [
+                {
+                    "name": "515070 人工智能AIETF",
+                    "sentiment": "利好"
+                },
+                {
+                    "name": "588890 科创芯片ETF",
+                    "sentiment": "利好"
+                },
+                {
+                    "name": "512930 AI人工智能ETF",
+                    "sentiment": "利好"
+                }
+            ],
+            "stocks": [
+                "复旦微电",
+                "寒武纪-U",
+                "金山办公",
+                "芯原股份",
+                "景嘉微"
+            ],
+            "signal": "主力资金回流科技板块，AI芯片需求持续爆发，短期做多情绪高涨",
+            "bayes_analysis": {
+                "prior_judgment": "科技股修复反弹",
+                "prior_prob": 62,
+                "likelihood_judgment": "AI芯片爆发+个股大涨超10%",
+                "likelihood_prob": 80,
+                "posterior": 72,
+                "expected_return": "+6%~+12%",
+                "confidence_interval": "[+3%, +18%]",
+                "key_variables": "4月财报季业绩兑现情况（若业绩超预期，胜率提升至75%）"
+            }
+        }
+    ],
+    "a_level": [
+        {
+            "emoji": "🟡",
+            "title": "科技股重估进入阶段性休整后反弹",
+            "summary": "中银证券表示，科技股重估进入阶段性休整，海外关税风险落地，短期A股或进入震荡调整阶段。进入4月，A股即将进入财报窗口期，业绩确定性将会成为4月市场风格超额收益主要抓手。",
+            "duration": "1-2周",
+            "etfs": [
+                {
+                    "name": "588000 科创50ETF",
+                    "sentiment": "利好"
+                },
+                {
+                    "name": "512760 芯片ETF",
+                    "sentiment": "利好"
+                }
+            ],
+            "stocks": [
+                "中芯国际",
+                "澜起科技",
+                "北方华创"
+            ],
+            "signal": "科技股业绩驱动行情开启，关注财报超预期个股",
+            "bayes_analysis": {
+                "prior_judgment": "科技股估值修复",
+                "prior_prob": 58,
+                "likelihood_judgment": "关税风险落地+业绩窗口期",
+                "likelihood_prob": 72,
+                "posterior": 66,
+                "expected_return": "+5%~+10%",
+                "confidence_interval": "[+2%, +15%]",
+                "key_variables": "Q1财报业绩表现（若整体超预期，胜率可提升至70%）"
+            }
+        },
+        {
+            "emoji": "🟡",
+            "title": "科创AI指数异动拉升，芯片设计ETF交投活跃",
+            "summary": "科创AI指数午盘异动拉升涨超2%，科创AIETF(588790)直线拉升涨超2%，成交额超2000万元，换手率12.18%，交投活跃。成分股中，乐鑫科技涨超9%，恒玄科技、虹软科技涨超8%。",
+            "duration": "1-2周",
+            "etfs": [
+                {
+                    "name": "588790 科创AIETF",
+                    "sentiment": "利好"
+                },
+                {
+                    "name": "588780 科创芯片设计ETF",
+                    "sentiment": "利好"
+                }
+            ],
+            "stocks": [
+                "乐鑫科技",
+                "恒玄科技",
+                "虹软科技"
+            ],
+            "signal": "科创板AI概念股活跃，资金关注度高",
+            "bayes_analysis": {
+                "prior_judgment": "科创板AI概念活跃",
+                "prior_prob": 55,
+                "likelihood_judgment": "ETF涨超2%+换手率超12%",
+                "likelihood_prob": 70,
+                "posterior": 64,
+                "expected_return": "+4%~+8%",
+                "confidence_interval": "[+2%, +12%]",
+                "key_variables": "科创板整体流动性（若成交持续放大，胜率可提升至68%）"
+            }
+        }
+    ],
+    "douyin": []
+  },
   "2026-04-08": {
     "date": "2026-04-08",
     "market_tone": "科技股强势回归！美伊谈判现逆转信号，AI芯片、人工智能板块领涨，创业板人工智能ETF涨超7%",
