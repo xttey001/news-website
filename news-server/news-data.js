@@ -1,5 +1,227 @@
 // 新闻数据 - 自动生成
 const newsData = {
+  "2026-04-08": {
+    "date": "2026-04-08",
+    "market_tone": "科技股强势回归！美伊谈判现逆转信号，AI芯片、人工智能板块领涨，创业板人工智能ETF涨超7%",
+    "wukong_judgment": {
+      "market_sentiment": "震荡偏多，科技成长股修复反弹",
+      "core_analysis": [
+        "AI芯片爆发：科创芯片ETF涨超5%，创业板人工智能ETF涨超7%，中际旭创涨超6%",
+        "科技股集体上攻：美伊谈判现逆转信号，市场风险偏好回升",
+        "AI人工智能ETF平安涨超4.2%，冲击3连涨，深信服涨6%，光环新网上涨5.92%",
+        "资金回流科技板块：前期调整后迎来修复行情"
+      ],
+      "operations": [
+        {"type": "可做", "content": "AI芯片/算力板块：中际旭创、通宇通讯、科创芯片ETF"},
+        {"type": "可做", "content": "人工智能ETF：短期反弹趋势确立"},
+        {"type": "警惕", "content": "成交量配合，若不放大则冲高回落风险"}
+      ]
+    },
+    "bajie_conclusion": {
+      "optimal_action": "重点配置AI芯片+人工智能ETF，科技成长股修复行情",
+      "optimal_etfs": "588890科创芯片ETF(40%) + 512930 AI人工智能ETF(30%) + 现金(30%)",
+      "win_rate": "~70%（贝叶斯后验）",
+      "max_drawdown": "-5%（止损线）",
+      "holding_period": "1-2周"
+    },
+    "s_level": [
+      {
+        "emoji": "🔴",
+        "title": "AI芯片/人工智能板块爆发式上涨",
+        "summary": "科创芯片ETF涨超5%，创业板人工智能ETF涨超7%，中际旭创涨超6%，深信服涨6%，光环新网上涨5.92%。美伊谈判现逆转信号，科技板块强势回归，资金回流科技成长股。",
+        "duration": "1-2周",
+        "etfs": [
+          {"name": "588890 科创芯片ETF", "sentiment": "利好"},
+          {"name": "512930 AI人工智能ETF", "sentiment": "利好"},
+          {"name": "512760 芯片ETF", "sentiment": "利好"}
+        ],
+        "stocks": [
+          "中际旭创",
+          "深信服",
+          "光环新网",
+          "润泽科技",
+          "星宸科技"
+        ],
+        "signal": "主力资金回流科技板块，短期做多情绪高涨",
+        "bayes_analysis": {
+          "prior_judgment": "科技股修复反弹",
+          "prior_prob": 60,
+          "likelihood_judgment": "AI芯片爆发+ETF涨超7%",
+          "likelihood_prob": 78,
+          "posterior": 72,
+          "expected_return": "+5%~+10%",
+          "confidence_interval": "[+3%, +15%]",
+          "key_variables": "成交量能否持续放大（若破万亿，胜率提升至75%）"
+        }
+      },
+      {
+        "emoji": "🔴",
+        "title": "美伊谈判现逆转信号",
+        "summary": "美伊谈判出现逆转信号，地缘风险降温，市场风险偏好回升。避险资金流出黄金、油气板块，流入科技成长股。",
+        "duration": "1-3天",
+        "etfs": [
+          {"name": "512930 AI人工智能ETF", "sentiment": "利好"},
+          {"name": "588890 科创芯片ETF", "sentiment": "利好"},
+          {"name": "518880 黄金ETF", "sentiment": "利空"},
+          {"name": "501018 南方原油", "sentiment": "利空"}
+        ],
+        "stocks": [
+          "中际旭创",
+          "深信服",
+          "光环新网"
+        ],
+        "signal": "避险资金流出，成长股资金流入",
+        "bayes_analysis": {
+          "prior_judgment": "地缘风险定价",
+          "prior_prob": 55,
+          "likelihood_judgment": "谈判逆转信号明确",
+          "likelihood_prob": 75,
+          "posterior": 68,
+          "expected_return": "+4%~+8%",
+          "confidence_interval": "[+2%, +12%]",
+          "key_variables": "谈判能否实质性落地（若达成停火，胜率提升至75%）"
+        }
+      }
+    ],
+    "a_level": [
+      {
+        "emoji": "🟡",
+        "title": "创业板人工智能ETF涨超7%",
+        "summary": "创业板人工智能ETF南方(159382)上涨7.03%，冲击3连涨，跟踪指数创业板人工智能指数强势上涨7.18%。",
+        "duration": "1-2周",
+        "etfs": [
+          {"name": "159382 创业板人工智能ETF", "sentiment": "利好"},
+          {"name": "512930 AI人工智能ETF", "sentiment": "利好"}
+        ],
+        "stocks": [
+          "中际旭创",
+          "深信服",
+          "光环新网"
+        ],
+        "signal": "AI板块强势反弹，短期趋势确立",
+        "bayes_analysis": {
+          "prior_judgment": "AI板块调整充分，估值合理",
+          "prior_prob": 58,
+          "likelihood_judgment": "ETF涨超7%，资金回流明确",
+          "likelihood_prob": 72,
+          "posterior": 67,
+          "expected_return": "+4%~+8%",
+          "confidence_interval": "[+2%, +12%]",
+          "key_variables": "成交量、北向资金流向"
+        }
+      }
+    ],
+    "douyin": []
+  },
+  "2026-04-07": {
+    "date": "2026-04-07",
+    "market_tone": "节后首日修复！美伊停火协议落地，风险偏好回升，A股温和高开，加密货币概念股领涨",
+    "wukong_judgment": {
+      "market_sentiment": "偏多，修复性反弹为主",
+      "core_analysis": [
+        "美伊停火协议正式落地，地缘风险急剧降温：黄金从4800美元高位回落至4650美元，原油从140美元回落至106美元",
+        "比特币站稳70000美元创历史新高，加密货币概念股开盘领涨，区块链板块涨幅居前",
+        "日韩股市强劲反弹映射：日经225涨0.72%，韩国KOSPI涨2.02%，三星电子涨近4%",
+        "美股科技股隔夜普涨：特斯拉涨1.67%，Meta涨超1%，芯片股闪迪涨超4%",
+        "北向资金节后首日流向是关键观察指标，若净流入>50亿则确认修复行情"
+      ],
+      "operations": [
+        {"type": "可做", "content": "加密货币概念股：比特币破7万美元历史新高，矿机/交易所概念股重点配置"},
+        {"type": "可做", "content": "AI芯片/算力：美股芯片股大涨映射，A股中际旭创/通宇通讯有望延续"},
+        {"type": "警惕", "content": "油气板块：美伊停火原油回落，短期回避油气ETF"},
+        {"type": "警惕", "content": "黄金贵金属：避险情绪降温，黄金高位震荡，控制仓位"},
+        {"type": "关注", "content": "北向资金流向+成交量能否放大"}
+      ]
+    },
+    "bajie_conclusion": {
+      "optimal_action": "节后首日重点配置加密货币概念股+AI芯片，回避油气/黄金避险资产",
+      "optimal_etfs": "512760芯片ETF(30%) + 515980云计算ETF(25%) + 加密货币概念股(15%) + 现金(30%)",
+      "win_rate": "~70%（贝叶斯后验）",
+      "max_drawdown": "-6%（止损线）",
+      "holding_period": "1-2周"
+    },
+    "s_level": [
+      {
+        "emoji": "🔴",
+        "title": "比特币站稳7万美元创历史新高",
+        "summary": "比特币站稳70000美元创历史新高，加密货币概念股开盘领涨，区块链板块涨幅居前。矿机、交易所概念股重点配置。",
+        "duration": "1-2周",
+        "etfs": [
+          {"name": "512760 芯片ETF", "sentiment": "利好"},
+          {"name": "515980 云计算ETF", "sentiment": "利好"}
+        ],
+        "stocks": [
+          "中际旭创",
+          "通宇通讯",
+          "矿机概念股"
+        ],
+        "signal": "加密货币胜率75%，AI芯片胜率72%",
+        "bayes_analysis": {
+          "prior_judgment": "比特币突破历史新高",
+          "prior_prob": 68,
+          "likelihood_judgment": "站稳70000美元，市场情绪高涨",
+          "likelihood_prob": 82,
+          "posterior": 75,
+          "expected_return": "+12%~+18%",
+          "confidence_interval": "[+5%, +25%]",
+          "key_variables": "比特币能否站稳72000美元（若突破75000，胜率可提升至80%）"
+        }
+      },
+      {
+        "emoji": "🔴",
+        "title": "美伊停火协议正式落地",
+        "summary": "美伊停火协议正式落地，地缘风险急剧降温。黄金从4800美元高位回落至4650美元，原油从140美元回落至106美元。避险资金流出，风险偏好回升。",
+        "duration": "1-3天",
+        "etfs": [
+          {"name": "512760 芯片ETF", "sentiment": "利好"},
+          {"name": "518880 黄金ETF", "sentiment": "利空"},
+          {"name": "501018 南方原油", "sentiment": "利空"}
+        ],
+        "stocks": [
+          "科技龙头股"
+        ],
+        "signal": "避险资金流出，成长股资金流入",
+        "bayes_analysis": {
+          "prior_judgment": "地缘风险降温",
+          "prior_prob": 60,
+          "likelihood_judgment": "停火协议落地，风险偏好回升",
+          "likelihood_prob": 78,
+          "posterior": 70,
+          "expected_return": "+5%~+10%",
+          "confidence_interval": "[+2%, +15%]",
+          "key_variables": "协议执行情况、后续局势发展"
+        }
+      }
+    ],
+    "a_level": [
+      {
+        "emoji": "🟡",
+        "title": "日韩股市强劲反弹",
+        "summary": "日经225涨0.72%，韩国KOSPI涨2.02%，三星电子涨近4%。美股科技股隔夜普涨：特斯拉涨1.67%，Meta涨超1%，芯片股闪迪涨超4%。",
+        "duration": "1-3天",
+        "etfs": [
+          {"name": "512760 芯片ETF", "sentiment": "利好"},
+          {"name": "513500 标普500ETF", "sentiment": "利好"}
+        ],
+        "stocks": [
+          "三星产业链",
+          "科技龙头股"
+        ],
+        "signal": "日韩大涨映射，A股节后有望跟涨",
+        "bayes_analysis": {
+          "prior_judgment": "外围市场反弹",
+          "prior_prob": 60,
+          "likelihood_judgment": "日韩大涨，美股科技股普涨",
+          "likelihood_prob": 75,
+          "posterior": 68,
+          "expected_return": "+5%~+10%",
+          "confidence_interval": "[+2%, +15%]",
+          "key_variables": "A股节后成交量能否放大（若>1.5万亿，胜率可提升至72%）"
+        }
+      }
+    ],
+    "douyin": []
+  },
   "2026-04-03": {
     "date": "2026-04-03",
     "market_tone": "清明假期A股休市，海外市场剧烈分化，黄金暴跌原油暴涨，科技股逆势走强，关注节后A股方向",
@@ -246,7 +468,7 @@ const newsData = {
 };
 
 // 可用日期列表（从新到旧）
-const availableDates = ["2026-04-03", "2026-04-02"];
+const availableDates = ["2026-04-08", "2026-04-07", "2026-04-03", "2026-04-02"];
 
 // 获取指定日期的新闻
 function getNews(date) {
