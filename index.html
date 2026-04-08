@@ -712,11 +712,16 @@
             }
 
             if (item.stocks && item.stocks.length) {
+                // 纯字符串个股默认标记为利好，保持与ETF标签风格一致
+                const stockItems = item.stocks.map(s => {
+                    if (typeof s === 'object') return s;
+                    return { name: s, sentiment: '利好' };
+                });
                 html += `
                     <div class="mapping-section">
                         <div class="mapping-row">
                             <div class="mapping-label">✨ 个股映射：</div>
-                            ${renderTags(item.stocks)}
+                            ${renderTags(stockItems)}
                         </div>
                     </div>`;
             }
