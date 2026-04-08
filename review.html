@@ -251,26 +251,6 @@
         }
         .lesson-content li { margin-bottom: 6px; }
 
-        /* Navigation */
-        .nav-bar {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-        .nav-btn {
-            padding: 8px 16px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 13px;
-            transition: all 0.2s;
-        }
-        .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
-        .nav-btn.active { border-color: var(--gold); color: var(--gold); }
-
         /* Footer */
         .footer {
             text-align: center;
@@ -285,16 +265,53 @@
             .score-grid { grid-template-columns: repeat(2, 1fr); }
             .day-header { flex-wrap: wrap; }
         }
+
+        /* ===== 页面切换导航 ===== */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .page-nav .page-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .page-nav .page-btn-timeline {
+            background: rgba(63,185,80,0.15);
+            border: 1px solid rgba(63,185,80,0.4);
+            color: #3fb950;
+        }
+        .page-nav .page-btn-timeline:hover {
+            background: rgba(63,185,80,0.25);
+            border-color: #3fb950;
+            box-shadow: 0 0 12px rgba(63,185,80,0.3);
+        }
+        .page-nav .page-btn-review {
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.3);
+            color: #d29922;
+        }
+        .page-nav .page-btn-review:hover,
+        .page-nav .page-btn-review.active {
+            background: rgba(255,193,7,0.2);
+            border-color: #d29922;
+            box-shadow: 0 0 12px rgba(255,193,7,0.3);
+        }
     </style>
 </head>
 <body>
 <div class="container">
 
-    <!-- Navigation -->
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-btn">📅 新闻时间线</a>
-        <a href="review.html" class="nav-btn active">📊 14天复盘报告</a>
-    </nav>
+    <!-- 页面切换导航 -->
+    <div class="page-nav">
+        <a href="index.html" class="page-btn page-btn-timeline">📅 新闻时间线</a>
+        <a href="review.html" class="page-btn page-btn-review active">📊 14天复盘报告</a>
+    </div>
 
     <!-- Header -->
     <div class="header">

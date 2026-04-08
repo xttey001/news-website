@@ -33,6 +33,43 @@
         }
         .container { max-width: 900px; margin: 0 auto; }
 
+        /* ===== 页面切换导航 ===== */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .page-nav .page-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .page-nav .page-btn-timeline {
+            background: rgba(63,185,80,0.15);
+            border: 1px solid rgba(63,185,80,0.4);
+            color: #3fb950;
+        }
+        .page-nav .page-btn-timeline:hover,
+        .page-nav .page-btn-timeline.active {
+            background: rgba(63,185,80,0.25);
+            border-color: #3fb950;
+            box-shadow: 0 0 12px rgba(63,185,80,0.3);
+        }
+        .page-nav .page-btn-review {
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.3);
+            color: #d29922;
+        }
+        .page-nav .page-btn-review:hover {
+            background: rgba(255,193,7,0.2);
+            border-color: #d29922;
+            box-shadow: 0 0 12px rgba(255,193,7,0.3);
+        }
+
         /* ===== 标题 ===== */
         .header {
             text-align: center;
@@ -571,6 +608,12 @@
 </head>
 <body>
     <div class="container">
+        <!-- 页面切换导航 -->
+        <div class="page-nav">
+            <a href="index.html" class="page-btn page-btn-timeline active">📅 新闻时间线</a>
+            <a href="review.html" class="page-btn page-btn-review">📊 14天复盘报告</a>
+        </div>
+
         <div class="header">
             <h1>🐵 悟空财经分析</h1>
             <div class="subtitle">不盲从主流解读，用逻辑和数据说话</div>
