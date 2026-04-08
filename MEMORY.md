@@ -158,11 +158,13 @@ ETF映射：
 | 个股格式 | `["中际旭创"]`（纯字符串） | `{name, sentiment, note}`（对象数组） |
 
 **防故障规则清单（每次更新时必须检查）**：
+0. ⚠️ **Git merge/rebase 前必须先保护 news-data.js**（最高优先级！）：执行 `git stash` 先把本地 news-data.js 备份，merge/rebase 结束后再检查 news-data.js 是否被覆盖，若只剩几条数据立即从 git reflog 找回最近含完整数据的 commit（如 `git show cd722ac:news-data.js`）并恢复。
 1. ✅ 每次更新 news-data.js 后：先 `node --check`，再 push
 2. ✅ 编辑 index.html 后：必须 `git diff` 审查，禁止大段复制粘贴
 3. ✅ 用脚本生成 news-data.js 后：确认文件末尾有 `const availableDates`
 4. ✅ push 后：等 2 分钟再验证，不要反复 push
 5. ✅ 用户端问题：先确认 `Ctrl+Shift+R` 强制刷新，再排查代码
+6. ✅ **用 stash 保存本地重要更改**：涉及 news-data.js、index.html、MEMORY.md 的重要修改，先 `git stash` 再 merge/rebase，避免被远程空版本覆盖。
 
 ### 分工变更（2026-04-03 最终版）
 - **不再需要多Agent**：悟空和八戒的分析风格已内化到QClaw
