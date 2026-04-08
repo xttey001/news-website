@@ -109,19 +109,60 @@ ETF映射：
 - **每次更新样式时**：只更新 `index.html`，`news-data.js` 保持不变
 - **⚠️ 严禁**：`daily_update.py` 或任何脚本/定时任务复制或覆盖 `index.html`，否则样式会被重置
 
-### 网站更新防故障规则（2026-04-03 血泪教训，永久记忆）
+### 网站更新防故障规则（2026-04-03 初版 / 2026-04-08 完善，永久记忆）
 
-**2026-04-03 空白页面事故复盘**：
-- 原因：编辑 index.html 时，误将「悟空判断」的渲染代码块复制了两次。第二次残留在「八戒贝叶斯」区块之后，`const wj` 变量已超出 `if` 作用域，浏览器 JS 解析直接报错，整个 script 块被丢弃，页面只剩标题骨架。
-- 加剧因素：GitHub Pages 每次 push 后需要 1-3 分钟重建，期间看到的是旧版，反复 push 反而加剧 build queue 积压。
-- 表现：网站只显示「🐵 悟空财经分析」标题 + footer，中间完全空白。
+**故障排查流程（每次出问题必须按此顺序）**：
 
-**防故障规则（编辑 index.html 时必须遵守）**：
-1. **禁止大段复制粘贴整个代码块** → 只编辑需要改动的那几行
-2. **编辑完 index.html 后必须 git diff 审查** → 确认无重复/残留代码
-3. **const 变量作用域检查** → `const` 声明在 if/for 块内，块外不可引用
-4. **推送后等 2 分钟再验证** → GitHub Pages 需要构建时间
-5. **页面空白时第一步** → F12 Console 看 JS 报错，不是先改代码
+> **第一步**：先在本地验证，再 push 到远程
+> 1. `node --check news-data.js` → 无输出 = 语法 OK
+> 2. `node -e "eval(require('fs').readFileSync('news-data.js','utf-8')+';availableDates')"` → 有输出 = 变量 OK
+> 3. `node` 模拟完整执行 → 无报错 = 逻辑 OK
+> 4. 然后才 push
+
+> **第二步**：push 后等 2 分钟，再验证 GitHub Pages（不要反复 push）
+> 1. `Invoke-WebRequest` 直接拉取 `raw.githubusercontent.com` 验证文件内容
+> 2. 用 `Ctrl+Shift+R` 强制刷新浏览器（清除 HTTP 缓存）
+> 3. 确认是最新 commit 的 SHA
+> 4. 如果仍空白 → F12 Console 看 JS 报错
+
+---
+
+**事故 1（2026-04-03）：index.html 复制粘贴事故**
+- 原因：编辑 index.html 时，误将「悟空判断」渲染代码块复制了两次，残留代码的 `const wj` 超出 if 作用域，JS 解析报错，整个 script 块被丢弃，页面只剩标题骨架。
+- 加剧因素：GitHub Pages push 后需要 1-3 分钟重建，反复 push 加剧 build queue 积压。
+- 表现：只显示「🐵 悟空财经分析」标题 + footer，中间空白。
+
+**事故 2（2026-04-08）：JSON 文件三连套娃故障**
+
+| 层次 | 表现 | 根因 | 教训 |
+|------|------|------|------|
+| 第一层 | 恢复历史数据后页面空白 | `JSON.stringify` 重新生成时，中文书名号 `""` 在 JS 字符串字面量中变成未转义字符，JS 解析直接报错崩溃 | JSON 数据中禁止出现中文双引号 `""`，用书名号 `《》` 代替 |
+| 第二层 | 修复双引号后悟空/八戒内容仍不显示 | `index.html` 期望的字段名（`emotion/analysis/strategy`）和实际数据字段名（`market_sentiment/core_analysis/operations`）完全不匹配，渲染结果为空 | index.html 必须同时兼容新旧两种数据格式，参考 `renderContent()` 中的兼容逻辑 |
+| 第三层 | 用户说还是不行 | GitHub Pages 重建需要 1-3 分钟，加上浏览器缓存了之前的空白状态 | 用户端需要 `Ctrl+Shift+R` 强制刷新 |
+
+**JSON 文件写入安全规则**：
+1. **禁止用 `JSON.stringify` 裸写 target 文件** → 可能丢失文件末尾的 `const availableDates` 变量
+2. **先写临时文件验证语法** → `node --check` 通过后再覆盖
+3. **写完后必须验证** → 确认 `availableDates` 存在
+
+**数据结构兼容规范（重要）**：
+
+`index.html` 必须同时支持两套格式：
+
+| 字段 | 新格式（04-07起） | 旧格式（03-25~04-06） |
+|------|-----------------|---------------------|
+| 悟空情绪 | `wukong_judgment.market_sentiment` | `wukong_judgment.emotion` |
+| 悟空分析 | `wukong_judgment.core_analysis` | `wukong_judgment.analysis` |
+| 悟空策略 | `wukong_judgment.operations` | `wukong_judgment.strategy` |
+| 八戒结构 | `bajie_conclusion`（扁平） | `bajie_bayesian`（嵌套） |
+| 个股格式 | `["中际旭创"]`（纯字符串） | `{name, sentiment, note}`（对象数组） |
+
+**防故障规则清单（每次更新时必须检查）**：
+1. ✅ 每次更新 news-data.js 后：先 `node --check`，再 push
+2. ✅ 编辑 index.html 后：必须 `git diff` 审查，禁止大段复制粘贴
+3. ✅ 用脚本生成 news-data.js 后：确认文件末尾有 `const availableDates`
+4. ✅ push 后：等 2 分钟再验证，不要反复 push
+5. ✅ 用户端问题：先确认 `Ctrl+Shift+R` 强制刷新，再排查代码
 
 ### 分工变更（2026-04-03 最终版）
 - **不再需要多Agent**：悟空和八戒的分析风格已内化到QClaw
