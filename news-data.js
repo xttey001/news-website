@@ -1,5 +1,3 @@
-// 财经新闻数据 - 恢复完整版
-
 const newsData = {
   "2026-04-08": {
     "date": "2026-04-08",
@@ -172,7 +170,7 @@ const newsData = {
           "买入概率": 43,
           "is_long_term": false,
           "date": "2026-04-08",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 43
         },
         {
@@ -190,7 +188,7 @@ const newsData = {
           "买入概率": 14,
           "is_long_term": false,
           "date": "2026-04-08",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 14
         },
         {
@@ -210,7 +208,7 @@ const newsData = {
           "买入概率": 14,
           "is_long_term": false,
           "date": "2026-04-08",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 14
         }
       ],
@@ -232,7 +230,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -493,7 +491,7 @@ const newsData = {
           "买入概率": 51,
           "is_long_term": false,
           "date": "2026-04-07",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 51
         },
         {
@@ -513,7 +511,7 @@ const newsData = {
           "买入概率": 28,
           "is_long_term": false,
           "date": "2026-04-07",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 28
         },
         {
@@ -533,7 +531,7 @@ const newsData = {
           "买入概率": 14,
           "is_long_term": false,
           "date": "2026-04-07",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 14
         }
       ],
@@ -555,7 +553,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -1019,7 +1017,7 @@ const newsData = {
           "买入概率": 56,
           "is_long_term": true,
           "date": "2026-04-06",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 56
         },
         {
@@ -1039,7 +1037,7 @@ const newsData = {
           "买入概率": 53,
           "is_long_term": true,
           "date": "2026-04-06",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 53
         },
         {
@@ -1059,7 +1057,7 @@ const newsData = {
           "买入概率": 37,
           "is_long_term": true,
           "date": "2026-04-06",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 37
         },
         {
@@ -1080,7 +1078,7 @@ const newsData = {
           "买入概率": 35,
           "is_long_term": true,
           "date": "2026-04-06",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 35
         },
         {
@@ -1101,7 +1099,7 @@ const newsData = {
           "买入概率": 27,
           "is_long_term": true,
           "date": "2026-04-06",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 27
         },
         {
@@ -1122,7 +1120,7 @@ const newsData = {
           "买入概率": 24,
           "is_long_term": true,
           "date": "2026-04-06",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 24
         },
         {
@@ -1140,7 +1138,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": true,
           "date": "2026-04-06",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -1162,7 +1160,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -1532,7 +1530,7 @@ const newsData = {
           "买入概率": 32,
           "is_long_term": true,
           "date": "2026-04-04",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 32
         },
         {
@@ -1553,7 +1551,7 @@ const newsData = {
           "买入概率": 32,
           "is_long_term": true,
           "date": "2026-04-04",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 32
         },
         {
@@ -1574,7 +1572,7 @@ const newsData = {
           "买入概率": 25,
           "is_long_term": true,
           "date": "2026-04-04",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 25
         },
         {
@@ -1592,7 +1590,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": true,
           "date": "2026-04-04",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -1614,7 +1612,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -2065,7 +2063,7 @@ const newsData = {
           "买入概率": 59,
           "is_long_term": false,
           "date": "2026-04-02",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 59
         },
         {
@@ -2086,7 +2084,7 @@ const newsData = {
           "买入概率": 55,
           "is_long_term": false,
           "date": "2026-04-02",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 55
         },
         {
@@ -2107,7 +2105,7 @@ const newsData = {
           "买入概率": 51,
           "is_long_term": false,
           "date": "2026-04-02",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 51
         },
         {
@@ -2125,7 +2123,7 @@ const newsData = {
           "买入概率": 14,
           "is_long_term": false,
           "date": "2026-04-02",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 14
         },
         {
@@ -2143,7 +2141,7 @@ const newsData = {
           "买入概率": 14,
           "is_long_term": false,
           "date": "2026-04-02",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 14
         },
         {
@@ -2163,7 +2161,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-02",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -2181,7 +2179,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-02",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -2199,7 +2197,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-02",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -2217,7 +2215,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-02",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -2239,7 +2237,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -2473,7 +2471,7 @@ const newsData = {
           "买入概率": 59,
           "is_long_term": false,
           "date": "2026-04-01",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 59
         },
         {
@@ -2493,7 +2491,7 @@ const newsData = {
           "买入概率": 31,
           "is_long_term": false,
           "date": "2026-04-01",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 31
         },
         {
@@ -2511,7 +2509,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-01",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -2529,7 +2527,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-01",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -2551,7 +2549,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -2737,7 +2735,7 @@ const newsData = {
           "买入概率": 34,
           "is_long_term": true,
           "date": "2026-03-31",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 34
         },
         {
@@ -2755,7 +2753,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": true,
           "date": "2026-03-31",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -2777,7 +2775,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -3009,7 +3007,7 @@ const newsData = {
           "买入概率": 42,
           "is_long_term": false,
           "date": "2026-03-30",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 42
         },
         {
@@ -3029,7 +3027,7 @@ const newsData = {
           "买入概率": 34,
           "is_long_term": false,
           "date": "2026-03-30",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 34
         },
         {
@@ -3047,7 +3045,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-03-30",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -3065,7 +3063,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-03-30",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -3087,7 +3085,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -3395,7 +3393,7 @@ const newsData = {
           "买入概率": 54,
           "is_long_term": true,
           "date": "2026-03-29",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 54
         },
         {
@@ -3415,7 +3413,7 @@ const newsData = {
           "买入概率": 53,
           "is_long_term": true,
           "date": "2026-03-29",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 53
         },
         {
@@ -3435,7 +3433,7 @@ const newsData = {
           "买入概率": 32,
           "is_long_term": true,
           "date": "2026-03-29",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 32
         },
         {
@@ -3453,7 +3451,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": true,
           "date": "2026-03-29",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -3471,7 +3469,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": true,
           "date": "2026-03-29",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -3489,7 +3487,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": true,
           "date": "2026-03-29",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -3511,7 +3509,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -3734,7 +3732,7 @@ const newsData = {
           "买入概率": 14,
           "is_long_term": true,
           "date": "2026-03-28",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 14
         },
         {
@@ -3752,7 +3750,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": true,
           "date": "2026-03-28",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -3772,7 +3770,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": true,
           "date": "2026-03-28",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -3790,7 +3788,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": true,
           "date": "2026-03-28",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -3812,7 +3810,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -4030,7 +4028,7 @@ const newsData = {
           "买入概率": 48,
           "is_long_term": false,
           "date": "2026-03-27",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 48
         },
         {
@@ -4051,7 +4049,7 @@ const newsData = {
           "买入概率": 40,
           "is_long_term": false,
           "date": "2026-03-27",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 40
         },
         {
@@ -4071,7 +4069,7 @@ const newsData = {
           "买入概率": 36,
           "is_long_term": false,
           "date": "2026-03-27",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 36
         },
         {
@@ -4091,7 +4089,7 @@ const newsData = {
           "买入概率": 34,
           "is_long_term": false,
           "date": "2026-03-27",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 34
         }
       ],
@@ -4113,7 +4111,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -4337,7 +4335,7 @@ const newsData = {
           "买入概率": 29,
           "is_long_term": false,
           "date": "2026-03-26",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 29
         },
         {
@@ -4357,7 +4355,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-03-26",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -4375,7 +4373,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-03-26",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -4397,7 +4395,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -4623,7 +4621,7 @@ const newsData = {
           "买入概率": 34,
           "is_long_term": false,
           "date": "2026-03-25",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 34
         },
         {
@@ -4641,7 +4639,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-03-25",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -4659,7 +4657,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-03-25",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -4681,7 +4679,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -4884,7 +4882,7 @@ const newsData = {
           "买入概率": 45,
           "is_long_term": false,
           "date": "2026-04-05",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 45
         },
         {
@@ -4905,7 +4903,7 @@ const newsData = {
           "买入概率": 18,
           "is_long_term": false,
           "date": "2026-04-05",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 18
         },
         {
@@ -4923,7 +4921,7 @@ const newsData = {
           "买入概率": 14,
           "is_long_term": false,
           "date": "2026-04-05",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 14
         },
         {
@@ -4941,7 +4939,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-05",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -4959,7 +4957,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-05",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -4981,7 +4979,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -5073,6 +5071,31 @@ const newsData = {
         }
       ],
       "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+    },
+    "wukong_judgment": {
+      "emotion": "谨慎偏防御，结构性机会为主",
+      "analysis": [
+        "伊朗军方强硬拒绝特朗普48小时通牒，中东战争进入关键节点，4月6日后局势可能升级",
+        "霍尔木兹海峡通航量回升但仍远低于战前水平，原油供应紧张持续，布伦特原油约111美元/桶",
+        "人民币资产成全球避风港：人民币成唯一对美元升值的主要货币，CIPS交易额创新高",
+        "美股周线五连阴终结，但服务业PMI跌破荣枯线，滞胀风险升温",
+        "创新药板块强势反弹：头部企业首度盈利，BD出海交易额Q1破600亿美元"
+      ],
+      "strategy": [
+        "✅ 人民币资产：CIPS交易创新高+人民币逆势升值，中国资产成避风港",
+        "✅ 油气板块：霍尔木兹海峡紧张局势持续，原油供需紧张，油气ETF持续配置",
+        "✅ 创新药：头部企业首度盈利+BD出海爆发，创新药进入业绩驱动新阶段",
+        "⚠️ 美股：服务业PMI跌破荣枯线+滞胀风险升温，谨慎对待",
+        "📌 节后关注：4月7日复牌，关注北向资金流向+中东局势进展"
+      ]
+    },
+    "bajie_conclusion": {
+      "optimal_action": "节后重点配置人民币资产+油气+创新药组合，回避美股敞口",
+      "optimal_etfs": "160140油气ETF 25% + 159992创新药ETF 25% + 518880黄金ETF 15% + 现金 35%",
+      "win_rate": "~67%",
+      "max_drawdown": "-7%",
+      "holding_period": "1-2周",
+      "conclusion": "中东危机升级+人民币资产避风港效应+创新药业绩拐点，三大主线明确。油气胜率72%，创新药胜率68%，人民币资产胜率70%。节后重点配置。"
     }
   },
   "2026-04-09": {
@@ -5242,7 +5265,7 @@ const newsData = {
           "买入概率": 44,
           "is_long_term": false,
           "date": "2026-04-09",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 44
         },
         {
@@ -5263,7 +5286,7 @@ const newsData = {
           "买入概率": 18,
           "is_long_term": false,
           "date": "2026-04-09",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 18
         },
         {
@@ -5281,7 +5304,7 @@ const newsData = {
           "买入概率": 14,
           "is_long_term": false,
           "date": "2026-04-09",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 14
         }
       ],
@@ -5303,7 +5326,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -5600,7 +5623,7 @@ const newsData = {
           "买入概率": 50,
           "is_long_term": false,
           "date": "2026-04-03",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 50
         },
         {
@@ -5620,7 +5643,7 @@ const newsData = {
           "买入概率": 24,
           "is_long_term": false,
           "date": "2026-04-03",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 24
         },
         {
@@ -5640,7 +5663,7 @@ const newsData = {
           "买入概率": 22,
           "is_long_term": false,
           "date": "2026-04-03",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 22
         },
         {
@@ -5660,7 +5683,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-03",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -5678,7 +5701,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-03",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         },
         {
@@ -5696,7 +5719,7 @@ const newsData = {
           "买入概率": 5,
           "is_long_term": false,
           "date": "2026-04-03",
-          "decay": 1.0,
+          "decay": 1,
           "weighted_buy_prob": 5
         }
       ],
@@ -5718,7 +5741,7 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 5.0
+            "change_pct": 5
           },
           "volume_trend": {
             "trend": "side",
@@ -5814,7 +5837,7 @@ const newsData = {
   }
 };
 
-const availableDates = ["2026-04-09", "2026-04-08", "2026-04-07", "2026-04-06", "2026-04-05", "2026-04-04", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25"];
+const availableDates = ["2026-04-09","2026-04-08","2026-04-07","2026-04-06","2026-04-05","2026-04-04","2026-04-03","2026-04-02","2026-04-01","2026-03-31","2026-03-30","2026-03-29","2026-03-28","2026-03-27","2026-03-26","2026-03-25"];
 
 function getNews(date) { return newsData[date] || null; }
 function getPreviousDate(date) { const idx = availableDates.indexOf(date); return idx < availableDates.length - 1 ? availableDates[idx + 1] : null; }
