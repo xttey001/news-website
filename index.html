@@ -379,6 +379,18 @@
             align-items: center;
             margin-bottom: 12px;
         }
+        .sangsha-meta {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .sg-meta-tag {
+            font-size: 12px;
+            color: #ce93d8;
+            background: rgba(156,39,176,0.2);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
         .sg-sentiment {
             font-size: 15px;
             font-weight: 700;
@@ -465,6 +477,10 @@
         }
         .sg-tags {
             color: var(--text-dim);
+        }
+        .sg-date {
+            color: var(--text-dim);
+            font-size: 11px;
         }
 
         /* ===== 白龙马主力行为 ===== */
@@ -1107,12 +1123,18 @@
 
             }
 
-            // ========== 沙僧韭菜直觉模块 ==========
+            // ========== 沙僧韭菜直觉模块（处理全量新闻）==========
             const sg = data.sangsha_module || data.sangsha;
             if (sg) {
+                const sgTotalNews = sg.total_news_count || 0;
+                const sgTimeWindow = sg.time_window || '7天累积';
                 html += `
                 <div class="section sangsha-section">
                     <div class="section-title">🧅 沙僧韭菜直觉</div>
+                    <div class="sangsha-meta">
+                        <span class="sg-meta-tag">分析全量新闻 ${sgTotalNews} 条</span>
+                        <span class="sg-meta-tag">${sgTimeWindow}</span>
+                    </div>
                     <div class="sangsha-header">
                         <span class="sg-sentiment">市场情绪: ${sg.overall_sentiment || '平稳'}</span>
                         <span class="sg-advice">${sg.advice || ''}</span>
@@ -1128,12 +1150,14 @@
                         </div>
                     </div>
                     <div class="sangsha-top-news">
-                        <div class="sg-top-title">🔥 TOP 3 最易催动散户买入的新闻</div>`;
+                        <div class="sg-top-title">🔥 TOP 5 最易催动散户买入的新闻</div>`;
                 
                 const sgResults = sg.analysis_results || [];
-                sgResults.slice(0, 3).forEach((r, i) => {
+                sgResults.slice(0, 5).forEach((r, i) => {
                     const buyProb = r.买入概率 || 0;
                     const tags = (r.情绪标签 || []).join(', ');
+                    const dateTag = r.date || '';
+                    const decayInfo = r.decay ? ` [${(r.decay*100).toFixed(0)}%权重]` : '';
                     html += `
                         <div class="sg-news-item">
                             <div class="sg-news-rank">${i+1}</div>
@@ -1142,6 +1166,7 @@
                                 <div class="sg-news-meta">
                                     <span class="sg-buy-prob">买入概率: ${buyProb}%</span>
                                     <span class="sg-tags">${tags}</span>
+                                    ${dateTag ? `<span class="sg-date">${dateTag}${decayInfo}</span>` : ''}
                                 </div>
                             </div>
                         </div>`;
