@@ -2,6 +2,601 @@
 // 生成时间: 2026-04-10 四层分析:悟空+八戒+沙僧+白龙马
 
 const newsData = {
+  "2026-04-10": {
+    "date": "2026-04-10",
+    "market_tone": "美伊停火协议生效但霍尔木兹海峡仍受控，地缘风险边际缓解但未完全消除；A股4月10日早盘收复4000点，券商/半导体/电池产业链强势拉升，市场情绪回暖",
+    "all_news": [
+      {
+        "title": "世界银行/IMF/粮农组织联合警告：战事扰乱全球能源市场，粮食安全堪忧",
+        "summary": "4月8日，世界银行、IMF和联合国世界粮食计划署发表联合声明，中东战事严重扰乱全球能源市场，石油、天然气和化肥价格急剧上涨，加上运输瓶颈，将不可避免导致粮食价格上涨和粮食安全问题。",
+        "source": "新浪财经",
+        "date": "2026-04-10",
+        "emoji": "🌍"
+      },
+      {
+        "title": "美伊停火协议4月8日生效，霍尔木兹海峡仍受伊朗控制",
+        "summary": "美伊4月8日宣布两周停火协议，伊朗外长称两周内船只可在技术限制允许下安全通过海峡。但4月9日伊朗海军仍在公共频道要求船只必须获许可才能过境，海峡实际管控未解除，上千艘船只仍在观望。",
+        "source": "今日头条/汇通财经",
+        "date": "2026-04-10",
+        "emoji": "⚔️"
+      },
+      {
+        "title": "四部门联合部署：规范动力及储能电池行业竞争秩序",
+        "summary": "工信部、发改委、市场监管总局、国家能源局4月9日联合召开动力及储能电池行业企业座谈会，要求坚决抵制'内卷式'竞争，深入推进产能预警调控、规范价格竞争、压缩供应商账期、打击知识产权侵权等工作。",
+        "source": "中国证券报/上证报",
+        "date": "2026-04-10",
+        "emoji": "🔋"
+      },
+      {
+        "title": "美伊首轮谈判4月11日将在巴基斯坦举行，双方分歧重重",
+        "summary": "美伊双方定于4月11日在巴基斯坦首都伊斯兰堡展开谈判。伊朗提出'十点方案'，包括结束对抵抗阵线的战争、美军撤出中东、伊朗主导海峡安全机制、美以赔偿伊朗损失、解除制裁等；双方在铀浓缩、撤军、霍尔木兹等核心问题上分歧明显。",
+        "source": "腾讯网/钛媒体",
+        "date": "2026-04-10",
+        "emoji": "🗺️"
+      },
+      {
+        "title": "伊朗最高领袖哈梅内伊发表声明：三点主张，追讨赔偿",
+        "summary": "伊朗最高领袖穆杰塔巴·哈梅内伊9日晚发表书面讲话：①侵略者必须赔偿损失；②霍尔木兹海峡管理将进入'新阶段'；③绝不放弃权利，将'抵抗阵线'视为整体。",
+        "source": "新浪财经",
+        "date": "2026-04-10",
+        "emoji": "🇮🇷"
+      },
+      {
+        "title": "特朗普要求以色列减少对黎巴嫩打击，配合美伊谈判",
+        "summary": "特朗普9日接受采访时表示，已要求以色列总理内塔尼亚胡在黎巴嫩军事行动中'更加低调'，以配合推动与伊朗达成的停火协议和外交努力。",
+        "source": "腾讯网",
+        "date": "2026-04-10",
+        "emoji": "🇺🇸"
+      },
+      {
+        "title": "洲际交易所(ICE)大幅上调布油和欧洲柴油期货保证金",
+        "summary": "由于中东战事导致大宗商品波动加剧，洲际交易所将布伦特原油期货保证金提高一倍以上至约1.1万美元，欧洲柴油期货保证金提高三倍以上至约2.1万美元，新标准4月10日收盘后生效。",
+        "source": "财联社/新浪",
+        "date": "2026-04-10",
+        "emoji": "📈"
+      },
+      {
+        "title": "A股4月10日早盘高开高走，沪指收复4000点，创业板涨超2%",
+        "summary": "4月10日，A股早盘高开高走，三大指数集体拉升，沪指收复4000点关口，创业板涨超2%。电池产业链、券商、半导体芯片等强势拉升，海运、算力硬件迎来调整。港股亦高开高走，恒科指涨超2%，科网股集体反弹。",
+        "source": "企鹅号/腾讯网",
+        "date": "2026-04-10",
+        "emoji": "📈"
+      },
+      {
+        "title": "A股4月8日强势上涨：沪指涨2.69%报3995点，创业板涨5.91%",
+        "summary": "2026年4月8日，上证指数收盘涨2.70%报3995.00点，深证成指涨4.79%报14042.50点，创业板指涨5.91%报3347.61点。贵金属、IT服务、元件等涨幅居前，油气开采、煤炭、医药商业下跌。",
+        "source": "企鹅号/中国经济网",
+        "date": "2026-04-09",
+        "emoji": "📊"
+      },
+      {
+        "title": "4月9日A股震荡调整：沪指跌0.73%，个股普跌",
+        "summary": "4月9日，A股全天震荡调整，上证指数跌0.73%，创业板指跌0.67%。个股涨跌比1039:4396，超4400股下跌。离境退税、PCB、黄金、高速铜连接、存储器、半导体、AI应用、算力租赁题材纷纷回调，锂矿、油气板块局部走强。",
+        "source": "东方财富",
+        "date": "2026-04-09",
+        "emoji": "📉"
+      },
+      {
+        "title": "4月9日A股共64只个股涨停，光纤概念汇源通信5连板",
+        "summary": "Wind数据显示，4月9日A股共计64只个股涨停。其中光纤概念股汇源通信收获5连板，液冷服务器股飞龙股份2连板。",
+        "source": "每经AI快讯",
+        "date": "2026-04-09",
+        "emoji": "🔔"
+      },
+      {
+        "title": "我国自贸试验区数量扩围至23个（新增内蒙古）",
+        "summary": "国务院印发《中国（内蒙古）自由贸易试验区总体方案》，内蒙古正式成为第23个自贸试验区。内蒙古本地股4月10日集体高开，内蒙新华、欧晶科技涨停。",
+        "source": "腾讯网",
+        "date": "2026-04-10",
+        "emoji": "🏛️"
+      },
+      {
+        "title": "互联网平台价格新规4月10日起正式实施",
+        "summary": "国家市场监管总局等三部门要求互联网平台企业规范价格行为，坚决遏制恶性价格竞争，互联网平台价格新规4月10日起正式实施。",
+        "source": "陆家嘴财经早餐",
+        "date": "2026-04-10",
+        "emoji": "💻"
+      },
+      {
+        "title": "工信部等五部门开展中小企业人才服务专项行动",
+        "summary": "工信部等五部门4月9日联合发布通知，开展中小企业人才服务专项行动，聚焦人才引进、培养、评价、留用等难题，加大引才支持、完善留用机制，促进中小企业高质量发展。",
+        "source": "新浪财经",
+        "date": "2026-04-10",
+        "emoji": "👔"
+      },
+      {
+        "title": "何立峰会见美国桥水创始人达利欧，传递中国经济积极信号",
+        "summary": "4月9日，中共中央政治局委员、中央财办主任何立峰会见美国桥水投资公司创始人达利欧。何立峰表示今年中国经济开局良好，'十五五'将扩大开放，欢迎各国投资。达利欧看好中国经济前景。",
+        "source": "芝麻AI速递",
+        "date": "2026-04-10",
+        "emoji": "🤝"
+      },
+      {
+        "title": "今日共11家公司发布股票回购进展公告",
+        "summary": "Wind数据显示，4月10日共11家公司发布股票回购相关进展。博拓生物拟回购不超2亿元，易德龙拟回购1000万元，嘉化能源已完成回购4.5亿元，三环集团已完成回购1.75亿元。",
+        "source": "企鹅号",
+        "date": "2026-04-10",
+        "emoji": "💹"
+      },
+      {
+        "title": "国际金价约4727美元/盎司，较1月高点5598美元已回调14%",
+        "summary": "4月9日国际现货黄金约4727.9美元/盎司（约1041.5元/克），4月8日曾跌至4803美元。2026年1月29日历史高点为5598.75美元/盎司，当前金价已从高点回落超14%。",
+        "source": "金投网/腾讯网",
+        "date": "2026-04-09",
+        "emoji": "🥇"
+      },
+      {
+        "title": "布伦特原油期货约97.49美元/桶，WTI约97.10美元/桶",
+        "summary": "4月9日，布伦特原油期货最新价格报97.49美元/桶，WTI美原油期货报97.10美元/桶。此前受美伊停火消息影响，油价曾大幅波动。",
+        "source": "金投网",
+        "date": "2026-04-09",
+        "emoji": "🛢️"
+      },
+      {
+        "title": "证券ETF(512880)今日强势反弹超5%，'牛市旗手'爆发",
+        "summary": "4月10日，证券ETF(512880)强势反弹超5%，规模超510亿元位居同类首位。重仓的中信证券、国泰君安等头部标的直接受益于市场活跃度提升。",
+        "source": "腾讯网",
+        "date": "2026-04-10",
+        "emoji": "📊"
+      },
+      {
+        "title": "科创芯片设计ETF国泰(589260)大涨超2.5%，半导体行业迎产业变革",
+        "summary": "4月10日，科创芯片设计ETF国泰(589260)大涨超2.5%。长城证券指出，AI发展对算力提出更高要求，推动半导体产业链特别是先进制程、先进封装、存储等环节持续受益。",
+        "source": "腾讯网",
+        "date": "2026-04-10",
+        "emoji": "🔬"
+      }
+    ],
+    "s_level": [
+      {
+        "emoji": "🔥",
+        "title": "美伊停火协议生效但霍尔木兹海峡仍受控，地缘风险持续发酵",
+        "summary": "美伊4月8日宣布两周停火协议，但伊朗海军仍在公共频道要求船只必须获许可才能过境，海峡实际管控未解除，上千艘船只仍在观望。特朗普要求以色列减少对黎巴嫩打击配合谈判，但伊朗提出'十点方案'（美军撤出中东、伊朗主导海峡安全、赔偿损失等），双方在核心问题上分歧明显。",
+        "duration": "2-4周（停火协议期+谈判窗口期）",
+        "etfs": [
+          {
+            "name": "518880 黄金ETF",
+            "sentiment": "利好"
+          },
+          {
+            "name": "159627 能源化工ETF",
+            "sentiment": "中性偏利好"
+          },
+          {
+            "name": "513500 标普500ETF",
+            "sentiment": "中性"
+          }
+        ],
+        "stocks": [
+          "601899 紫金矿业",
+          "600028 中国石化",
+          "601857 中国石油"
+        ],
+        "signal": "地缘风险未完全解除，能源/黄金仍有支撑；若谈判顺利则利好全球股市"
+      },
+      {
+        "emoji": "⚡",
+        "title": "A股4月10日早盘收复4000点，券商/半导体/电池产业链强势拉升",
+        "summary": "4月10日，A股早盘高开高走，沪指收复4000点关口，创业板涨超2%。电池产业链、券商、半导体芯片等强势拉升，证券ETF涨超5%，科创芯片设计ETF涨超2.5%。港股亦高开高走，恒科指涨超2%。",
+        "duration": "1-2周（短期反弹窗口）",
+        "etfs": [
+          {
+            "name": "512880 证券ETF",
+            "sentiment": "利好"
+          },
+          {
+            "name": "588260 科创芯片设计ETF",
+            "sentiment": "利好"
+          },
+          {
+            "name": "159806 新能源车ETF",
+            "sentiment": "利好"
+          }
+        ],
+        "stocks": [
+          "300750 宁德时代",
+          "002594 比亚迪",
+          "688256 寒武纪"
+        ],
+        "signal": "市场情绪回暖，科技成长主线明确，关注券商+半导体+新能源轮动机会"
+      }
+    ],
+    "a_level": [
+      {
+        "emoji": "🔋",
+        "title": "四部门联合规范动力及储能电池行业竞争秩序",
+        "summary": "工信部、发改委、市场监管总局、国家能源局4月9日联合召开座谈会，要求坚决抵制'内卷式'竞争，深入推进产能预警调控、规范价格竞争、压缩供应商账期、打击知识产权侵权等工作。",
+        "duration": "3-6个月（政策落地周期）",
+        "etfs": [
+          {
+            "name": "159871 新能源ETF",
+            "sentiment": "利好"
+          },
+          {
+            "name": "159755 电池ETF",
+            "sentiment": "利好"
+          }
+        ],
+        "stocks": [
+          "300750 宁德时代",
+          "002594 比亚迪",
+          "300274 阳光电源"
+        ],
+        "signal": "储能行业政策持续加码，头部企业受益于竞争秩序规范化"
+      },
+      {
+        "emoji": "🏛️",
+        "title": "内蒙古自贸试验区正式设立，我国自贸区扩围至23个",
+        "summary": "国务院印发《中国（内蒙古）自由贸易试验区总体方案》，内蒙古正式成为第23个自贸试验区。内蒙古本地股4月10日集体高开，内蒙新华、欧晶科技涨停。",
+        "duration": "1-3个月（主题炒作周期）",
+        "etfs": [
+          {
+            "name": "510300 沪深300ETF",
+            "sentiment": "中性偏利好"
+          }
+        ],
+        "stocks": [
+          "603230 内蒙新华",
+          "001269 欧晶科技"
+        ],
+        "signal": "区域主题投资机会，关注内蒙古本地基建/能源/农业相关标的"
+      },
+      {
+        "emoji": "🥇",
+        "title": "国际金价从1月高点回调14%，当前约4727美元/盎司",
+        "summary": "4月9日国际现货黄金约4727.9美元/盎司，较2026年1月29日历史高点5598.75美元/盎司已回调超14%。黄金股ETF平安(159322)4月8日曾涨超6.8%。",
+        "duration": "1-3个月（地缘风险+美联储政策博弈期）",
+        "etfs": [
+          {
+            "name": "518880 黄金ETF",
+            "sentiment": "中性"
+          },
+          {
+            "name": "159322 黄金股ETF平安",
+            "sentiment": "中性"
+          }
+        ],
+        "stocks": [
+          "601899 紫金矿业",
+          "600547 山东黄金"
+        ],
+        "signal": "金价回调后估值修复，地缘风险未完全解除仍有支撑，关注逢低配置机会"
+      }
+    ],
+    "douyin": [
+      {
+        "emoji": "📱",
+        "title": "抖音发布《网络暴力治理规范(2026版)》",
+        "summary": "抖音发布新版网暴治理规范，首次明确平台判定网暴的核心要素，公示四大治理基本原则，并界定了从严治理的网暴情形。",
+        "duration": "长期（平台治理）",
+        "etfs": [],
+        "stocks": [],
+        "signal": "平台治理趋严，关注内容安全合规投资机会"
+      }
+    ],
+    "wukong_judgment": "【悟空分析 - 2026年4月10日】\n\n一、市场环境判断\n1. 地缘风险：美伊停火协议生效但霍尔木兹海峡实际管控未解除，地缘风险边际缓解但未完全消除。伊朗提出的\"十点方案\"（美军撤出中东、伊朗主导海峡安全等）与美国立场分歧明显，谈判存在变数。\n\n2. 国内政策：四部门联合规范储能电池行业竞争秩序，利好头部企业；内蒙古自贸区设立带来区域主题机会；互联网平台价格新规实施。\n\n3. 市场情绪：A股4月8日强势反弹（沪指+2.7%，创业板+5.9%），4月9日震荡调整（超4400股下跌），4月10日早盘收复4000点，券商/半导体/电池产业链强势，显示市场情绪回暖但仍有波动。\n\n二、核心判断\n1. 短期（1-2周）：地缘风险边际缓解+国内政策利好，A股有望延续反弹，关注券商（市场活跃度提升）、半导体（AI算力需求）、新能源（储能政策）轮动机会。\n\n2. 中期（1-3个月）：需关注美伊谈判进展（4月11日首轮谈判）、美联储政策动向、国内经济数据。若谈判顺利，全球风险偏好回升；若谈判破裂，地缘风险再起。\n\n3. 黄金：从1月高点回调14%，当前估值相对合理，地缘风险未完全解除仍有支撑，建议逢低配置。\n\n三、风险提示\n- 美伊谈判破裂导致地缘风险升级\n- 美联储鹰派转向\n- 国内经济复苏不及预期",
+    "bajie_conclusion": "【八戒结论 - 2026年4月10日】\n\n一、今日操作建议\n1. 持仓建议：维持6-7成仓位，均衡配置成长+价值。\n\n2. 重点关注方向：\n   - 券商ETF（512880）：市场活跃度提升，\"牛市旗手\"弹性大\n   - 科创芯片设计ETF（588260）：AI算力需求驱动，半导体产业变革\n   - 新能源/电池ETF（159871/159755）：储能政策利好，竞争秩序规范化受益头部企业\n   - 黄金ETF（518880）：回调后逢低配置，地缘风险对冲\n\n3. 回避方向：\n   - 油气开采（地缘风险边际缓解但仍有波动）\n   - 航运/海运（霍尔木兹海峡管控未完全解除）\n\n二、关键观察指标\n1. 美伊谈判进展（4月11日首轮谈判）\n2. 霍尔木兹海峡通航情况\n3. A股成交量能否持续放大（4月8日成交2.43万亿）\n4. 北向资金流向\n\n三、一句话总结\n地缘风险边际缓解+国内政策利好，A股短期反弹窗口打开，建议关注券商+半导体+新能源轮动机会，黄金回调后逢低配置。",
+    "sangsha_module": {
+      "overall_sentiment": "平稳",
+      "advice": "震荡整理，观望为主",
+      "avg_buy_prob": 38,
+      "avg_panic_prob": 5,
+      "analysis_results": [
+        {
+          "news": "4月9日A股共64只个股涨停，光纤概念汇源通信5连板",
+          "title": "4月9日A股共64只个股涨停，光纤概念汇源通信5连板",
+          "full_title": "4月9日A股共64只个股涨停，光纤概念汇源通信5连板",
+          "summary": "Wind数据显示，4月9日A股共计64只个股涨停。其中光纤概念股汇源通信收获5连板，液冷服务器股飞龙...",
+          "追高买入概率": 93,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 59,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 57,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 57
+        },
+        {
+          "news": "我国自贸试验区数量扩围至23个（新增内蒙古）",
+          "title": "我国自贸试验区数量扩围至23个（新增内蒙古）",
+          "full_title": "我国自贸试验区数量扩围至23个（新增内蒙古）",
+          "summary": "国务院印发《中国（内蒙古）自由贸易试验区总体方案》，内蒙古正式成为第23个自贸试验区。内蒙古本地股4...",
+          "追高买入概率": 88,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 61,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 55,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 55
+        },
+        {
+          "news": "内蒙古自贸试验区正式设立，我国自贸区扩围至23个",
+          "title": "内蒙古自贸试验区正式设立，我国自贸区扩围至23个",
+          "full_title": "内蒙古自贸试验区正式设立，我国自贸区扩围至23个",
+          "summary": "国务院印发《中国（内蒙古）自由贸易试验区总体方案》，内蒙古正式成为第23个自贸试验区。内蒙古本地股4...",
+          "追高买入概率": 88,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 61,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 55,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 55
+        },
+        {
+          "news": "A股4月8日强势上涨：沪指涨2.69%报3995点，创业板涨...",
+          "title": "A股4月8日强势上涨：沪指涨2.69%报3995点，创业板涨5.91%",
+          "full_title": "A股4月8日强势上涨：沪指涨2.69%报3995点，创业板涨5.91%",
+          "summary": "2026年4月8日，上证指数收盘涨2.70%报3995.00点，深证成指涨4.79%报14042.5...",
+          "追高买入概率": 80,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 64,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 50,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 50
+        },
+        {
+          "news": "科创芯片设计ETF国泰(589260)大涨超2.5%，半导体...",
+          "title": "科创芯片设计ETF国泰(589260)大涨超2.5%，半导体行业迎产业变革",
+          "full_title": "科创芯片设计ETF国泰(589260)大涨超2.5%，半导体行业迎产业变革",
+          "summary": "4月10日，科创芯片设计ETF国泰(589260)大涨超2.5%。长城证券指出，AI发展对算力提出更...",
+          "追高买入概率": 80,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 64,
+          "情绪标签": [
+            "FOMO"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 50,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 50
+        },
+        {
+          "news": "证券ETF(512880)今日强势反弹超5%，'牛市旗手'爆...",
+          "title": "证券ETF(512880)今日强势反弹超5%，'牛市旗手'爆发",
+          "full_title": "证券ETF(512880)今日强势反弹超5%，'牛市旗手'爆发",
+          "summary": "4月10日，证券ETF(512880)强势反弹超5%，规模超510亿元位居同类首位。重仓的中信证券、...",
+          "追高买入概率": 8,
+          "抄底买入概率": 73,
+          "恐慌卖出概率": 5,
+          "观望概率": 72,
+          "情绪标签": [
+            "抄底冲动",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户想抄底，认为是机会",
+          "市场含义": "可能有反弹",
+          "买入概率": 34,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 34
+        },
+        {
+          "news": "4月9日A股震荡调整：沪指跌0.73%，个股普跌",
+          "title": "4月9日A股震荡调整：沪指跌0.73%，个股普跌",
+          "full_title": "4月9日A股震荡调整：沪指跌0.73%，个股普跌",
+          "summary": "4月9日，A股全天震荡调整，上证指数跌0.73%，创业板指跌0.67%。个股涨跌比1039:4396...",
+          "追高买入概率": 50,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 77,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户开始眼红，想冲进去",
+          "市场含义": "分歧加大",
+          "买入概率": 32,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 32
+        },
+        {
+          "news": "A股4月10日早盘高开高走，沪指收复4000点，创业板涨超2...",
+          "title": "A股4月10日早盘高开高走，沪指收复4000点，创业板涨超2%",
+          "full_title": "A股4月10日早盘高开高走，沪指收复4000点，创业板涨超2%",
+          "summary": "4月10日，A股早盘高开高走，三大指数集体拉升，沪指收复4000点关口，创业板涨超2%。电池产业链、...",
+          "追高买入概率": 8,
+          "抄底买入概率": 58,
+          "恐慌卖出概率": 5,
+          "观望概率": 77,
+          "情绪标签": [
+            "抄底冲动"
+          ],
+          "韭菜行为总结": "散户想抄底，认为是机会",
+          "市场含义": "可能有反弹",
+          "买入概率": 28,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 28
+        },
+        {
+          "news": "世界银行/IMF/粮农组织联合警告：战事扰乱全球能源市场，粮...",
+          "title": "世界银行/IMF/粮农组织联合警告：战事扰乱全球能源市场，粮食安全堪忧",
+          "full_title": "世界银行/IMF/粮农组织联合警告：战事扰乱全球能源市场，粮食安全堪忧",
+          "summary": "4月8日，世界银行、IMF和联合国世界粮食计划署发表联合声明，中东战事严重扰乱全球能源市场，石油、天...",
+          "追高买入概率": 20,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 89,
+          "情绪标签": [],
+          "韭菜行为总结": "散户情绪平稳",
+          "市场含义": "中性",
+          "买入概率": 14,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 14
+        },
+        {
+          "news": "国际金价约4727美元/盎司，较1月高点5598美元已回调1...",
+          "title": "国际金价约4727美元/盎司，较1月高点5598美元已回调14%",
+          "full_title": "国际金价约4727美元/盎司，较1月高点5598美元已回调14%",
+          "summary": "4月9日国际现货黄金约4727.9美元/盎司（约1041.5元/克），4月8日曾跌至4803美元。2...",
+          "追高买入概率": 20,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 89,
+          "情绪标签": [],
+          "韭菜行为总结": "散户情绪平稳",
+          "市场含义": "中性",
+          "买入概率": 14,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 14
+        }
+      ],
+      "total_news_count": 20,
+      "time_window": "7天累积（长期新闻除外）"
+    },
+    "white_dragon": {
+      "主力状态": "出货",
+      "阶段": "末期",
+      "行为解释": "多个ETF出现主力派发信号，注意风险",
+      "是否利用散户": true,
+      "散户情绪": {
+        "平均买入概率": 53,
+        "平均恐慌概率": 5
+      },
+      "各ETF分析": [
+        {
+          "code": "512760",
+          "price_trend": {
+            "trend": "up",
+            "strength": 90,
+            "change_pct": 7.67
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": 21.35,
+            "level": "normal"
+          },
+          "主力状态": "出货",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
+        },
+        {
+          "code": "512930",
+          "price_trend": {
+            "trend": "up",
+            "strength": 90,
+            "change_pct": 7.96
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": 15.09,
+            "level": "normal"
+          },
+          "主力状态": "出货",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
+        },
+        {
+          "code": "518880",
+          "price_trend": {
+            "trend": "side",
+            "strength": 40,
+            "change_pct": 1.49
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": -8.11,
+            "level": "normal"
+          },
+          "主力状态": "观望",
+          "阶段": "整理",
+          "行为解释": "价格横盘震荡，等待方向选择",
+          "是否利用散户": false,
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
+        },
+        {
+          "code": "588890",
+          "price_trend": {
+            "trend": "up",
+            "strength": 90,
+            "change_pct": 8.29
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": -0.19,
+            "level": "normal"
+          },
+          "主力状态": "出货",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
+        },
+        {
+          "code": "159382",
+          "price_trend": {
+            "trend": "up",
+            "strength": 90,
+            "change_pct": 9.8
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": 37.62,
+            "level": "normal"
+          },
+          "主力状态": "出货",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
+        }
+      ],
+      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+    }
+  },
   "2026-04-09": {
     "date": "2026-04-09",
     "market_tone": "科技股强势领涨！芯片、人工智能板块爆发，复旦微电大涨超10%，寒武纪涨超8%，市场做多情绪高涨",
@@ -234,7 +829,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -249,11 +844,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -268,11 +863,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -287,11 +882,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -306,11 +901,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -649,7 +1244,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -664,11 +1259,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -683,11 +1278,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -702,11 +1297,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -721,11 +1316,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -1021,7 +1616,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -1036,11 +1631,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -1055,11 +1650,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -1074,11 +1669,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -1093,11 +1688,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -1508,7 +2103,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -1523,11 +2118,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -1542,11 +2137,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -1561,11 +2156,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -1580,11 +2175,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2033,7 +2628,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2048,11 +2643,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2067,11 +2662,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "观望",
@@ -2086,11 +2681,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2105,11 +2700,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2335,7 +2930,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2350,11 +2945,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2369,11 +2964,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -2388,11 +2983,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2407,11 +3002,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2725,7 +3320,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2740,11 +3335,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2759,11 +3354,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -2778,11 +3373,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -2797,11 +3392,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3105,7 +3700,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3120,11 +3715,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3139,11 +3734,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -3158,11 +3753,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3177,11 +3772,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3485,7 +4080,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3500,11 +4095,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3519,11 +4114,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -3538,11 +4133,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3557,11 +4152,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3861,7 +4456,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3876,11 +4471,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3895,11 +4490,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -3914,11 +4509,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -3933,11 +4528,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4247,7 +4842,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4262,11 +4857,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4281,11 +4876,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -4300,11 +4895,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4319,11 +4914,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4570,7 +5165,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4585,11 +5180,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4604,11 +5199,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -4623,11 +5218,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4642,11 +5237,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4895,7 +5490,7 @@ const newsData = {
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.11,
+            "change_pct": 21.35,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4910,11 +5505,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.8
+            "change_pct": 7.96
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 14.83,
+            "change_pct": 15.09,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4929,11 +5524,11 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.52
+            "change_pct": 1.49
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.68,
+            "change_pct": -8.11,
             "level": "normal"
           },
           "主力状态": "吸筹",
@@ -4948,11 +5543,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.24
+            "change_pct": 8.29
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.56,
+            "change_pct": -0.19,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4967,11 +5562,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.65
+            "change_pct": 9.8
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.44,
+            "change_pct": 37.62,
             "level": "normal"
           },
           "主力状态": "出货",
@@ -4987,7 +5582,7 @@ const newsData = {
   }
 };
 
-const availableDates = ["2026-04-09", "2026-04-08", "2026-04-07", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25"];
+const availableDates = ["2026-04-10", "2026-04-09", "2026-04-08", "2026-04-07", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25"];
 
 // 获取指定日期的新闻
 function getNews(date) {
