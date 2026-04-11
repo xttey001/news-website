@@ -1,0 +1,297 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-04-11",
+  "description": "insights library for Wukong Finance | load active patterns before each analysis",
+  "patterns": [
+    {
+      "id": "GEO-001",
+      "name": "Geopolitical event + supply gap = high win-rate window",
+      "category": "geopolitical",
+      "confidence": 85,
+      "status": "active",
+      "verified_count": 3,
+      "source": "Week3 review (2026-04-07 to 04-10)",
+      "formula": "geopolitical_block + [key_chokepoint] + no_substitute = high_win_long",
+      "scope": "Oil, gold, energy stocks",
+      "boundaries": "Reverse within 1-3 days if ceasefire; max hold 3 days",
+      "key_signal": "Supply gap cannot be filled short-term (e.g. Hormuz = 20% oil transit)",
+      "trading_rules": [
+        "Window 1-3 days, must enter/exit quickly",
+        "Must set logical stop: ceasefire/peace_declaration/Hormuz_reopen -> exit immediately",
+        "Reduce geopolitical exposure before holidays (cannot update priors during closure)"
+      ],
+      "history": [
+        {
+          "date": "2026-03-29",
+          "judgment": "Hormuz crisis -> oil/gold surge",
+          "result": "Perfect hit",
+          "correct": true
+        },
+        {
+          "date": "2024-09",
+          "judgment": "Middle East conflict -> crude surge",
+          "result": "Hit",
+          "correct": true
+        },
+        {
+          "date": "2019-05",
+          "judgment": "Hormuz tension -> oil spike",
+          "result": "Hit",
+          "correct": true
+        },
+        {
+          "date": "2026-04-06",
+          "judgment": "Ceasefire -> gold reversal",
+          "result": "Boundary condition validated",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "LEAD-001",
+      "name": "Foreign markets lead A-shares by 1-2 days",
+      "category": "leading_indicator",
+      "confidence": 80,
+      "status": "active",
+      "verified_count": 3,
+      "source": "Week3 review",
+      "formula": "Pre-holiday -> check Nasdaq futures/BTC/Nikkei -> predict A-share direction next day",
+      "scope": "All A-shares post-holiday opens, especially Qingming/May Day/National Day",
+      "boundaries": "Lunar New Year/National Day strongest effect; small holidays ~1 day effect",
+      "key_signal": "Foreign markets direction on last trading day before holiday",
+      "trading_rules": [
+        "Must check foreign markets 1 day before holiday: Nasdaq futures, BTC, Nikkei",
+        "Foreign up -> A-share gap up probability >70%",
+        "Foreign down -> A-share gap down probability >70%"
+      ],
+      "history": [
+        {
+          "date": "2026-04-01",
+          "judgment": "Nikkei+4%, Kospi+8% -> A-share rebound",
+          "result": "04-07~08 rebound confirmed",
+          "correct": true
+        },
+        {
+          "date": "2026-04-06",
+          "judgment": "US tech up premarket -> A-share follows",
+          "result": "04-08 confirmed",
+          "correct": true
+        },
+        {
+          "date": "2026-04-07",
+          "judgment": "BTC breaks 70K -> crypto stocks explode",
+          "result": "04-08 confirmed",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "EARN-001",
+      "name": "Earnings validation + earnings season = highest win-rate",
+      "category": "earnings",
+      "confidence": 80,
+      "status": "active",
+      "verified_count": 5,
+      "source": "Week3 review",
+      "formula": "Earnings_season(3-4月/8-9月) + earnings_beat + industry_leader = high_win_position",
+      "scope": "All sectors, strongest in tech/medicine/new energy",
+      "boundaries": "Even earnings stocks drop in systemic bear market",
+      "key_signal": "Earnings beat + industry leader + quarterly report window",
+      "trading_rules": [
+        "In earnings season, prioritize earnings validation logic over theme trading",
+        "Earnings beat + next day gap up -> safe to enter (institutions validated)",
+        "2 consecutive quarters of beats -> trend opportunity"
+      ],
+      "history": [
+        {
+          "date": "2026-03-27~30",
+          "judgment": "TCL net profit +150% -> panel cycle inflection",
+          "result": "Sector continued through April",
+          "correct": true
+        },
+        {
+          "date": "2026-03-29",
+          "judgment": "Innovative drug BD outbound -> pharma limit up",
+          "result": "04-01 confirmed",
+          "correct": true
+        },
+        {
+          "date": "2026-03-30",
+          "judgment": "Xiaomi auto deliveries >10K -> new energy active",
+          "result": "Continued activity",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "TRUMP-001",
+      "name": "Trump Jawboning Reversal Law",
+      "category": "trump_trade",
+      "confidence": 70,
+      "status": "active",
+      "verified_count": 2,
+      "source": "Week3 review",
+      "formula": "Trump 1x喊话=ignore; 2-3x喊话=reduce; 3x+行政行动=reverse",
+      "scope": "Gold, crude, crypto, A-share safe-haven assets",
+      "boundaries": "The harder Trump pushes, the more it signals the asset is losing momentum",
+      "key_signal": "Trump repeatedly喊话same asset for multiple days",
+      "trading_rules": [
+        "1x喊话: ignore, follow original trend (reversal ~30%)",
+        "2-3x喊话: be cautious, reduce position, do not chase (reversal ~50%)",
+        "3x+ with actual action: clear reversal signal, reverse (reversal >=70%)"
+      ],
+      "history": [
+        {
+          "date": "2026-04-02",
+          "judgment": "Trump repeated Iran threats -> gold peaks at 4800 then drops",
+          "result": "04-02: 4800->4656 (-2.97%)",
+          "correct": true
+        },
+        {
+          "date": "2025-02",
+          "judgment": "Trump repeated dollar strength complaints -> DXY drops",
+          "result": "Partial hit",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "TRUMP-002",
+      "name": "Trump China hawkish -> semiconductor/AI chip self-sufficient main theme",
+      "category": "trump_trade",
+      "confidence": 75,
+      "status": "active",
+      "verified_count": 4,
+      "source": "Week3 review",
+      "formula": "Trump hawkish on China/tech sanctions + chip/AI sector = long window",
+      "scope": "Semiconductor equipment, AI chips, domestic software, storage",
+      "boundaries": "If simultaneous geopolitical escalation, gold/oil splits funds; Trump softens =失效",
+      "key_signal": "Trump announces new China tech sanctions/tariffs",
+      "trading_rules": [
+        "Trump chip ban/tariffs -> domestic替代 logic strengthened -> long chip/AI",
+        "Can combine with GEO-001: Trump hawkish + geopolitical escalation = chip+gold dual theme",
+        "Trump softens or deal progress -> exit self-sufficient positions immediately"
+      ],
+      "history": [
+        {
+          "date": "2026-04-07~10",
+          "judgment": "Trump tariffs -> AI chip self-sufficient rally",
+          "result": "Cambricon+8%, Fudan+10%",
+          "correct": true
+        },
+        {
+          "date": "2024-09",
+          "judgment": "Chip ban escalation -> semiconductor surge",
+          "result": "Hit",
+          "correct": true
+        },
+        {
+          "date": "2020-06",
+          "judgment": "Huawei entity list escalation -> domestic替代 surge",
+          "result": "Hit",
+          "correct": true
+        },
+        {
+          "date": "2018-07",
+          "judgment": "Trade war -> semiconductor domestic替代",
+          "result": "Hit",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "TRUMP-003",
+      "name": "Trump trade + geopolitical hedge = dual main themes (stackable)",
+      "category": "trump_trade",
+      "confidence": 70,
+      "status": "active",
+      "verified_count": 1,
+      "source": "Week3 review",
+      "formula": "Trump hawkish(tech_long) + geopolitical escalation(bullion_long) = chip+gold dual",
+      "scope": "When Trump is simultaneously hawkish on China AND some region geopolitical escalation",
+      "boundaries": "When geopolitical eases, Trump logic runs independently; tech continues",
+      "key_signal": "Trump hawkish on China + any regional geopolitical escalation",
+      "trading_rules": [
+        "Dual theme simultaneously -> split allocation: chip 50% + gold 50%",
+        "Geopolitical eases (ceasefire) -> exit gold, keep Trump logic (tech)",
+        "Trump softens -> exit tech, keep geopolitical logic (if any)"
+      ],
+      "history": [
+        {
+          "date": "2026-04-01~05",
+          "judgment": "Trump Iran threats + Middle East crisis -> chip+gold dual themes",
+          "result": "Early April dual themes confirmed",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "BAYES-001",
+      "name": "Bayesian prior must update in real-time",
+      "category": "framework",
+      "confidence": 0,
+      "status": "broken",
+      "verified_count": 1,
+      "source": "Week3 review - failure lesson",
+      "formula": "Bayesian_posterior = likelihood x geopolitical_prior",
+      "scope": "All probabilistic judgment scenarios",
+      "boundaries": "Geopolitical priors extremely unstable, must enter/exit quickly",
+      "key_signal": "Key variables = price triggers NOT holding reasons",
+      "trading_rules": [
+        "Geopolitical priors need update every 6-12 hours",
+        "Key variables = triggers: ceasefire_reached -> auto exit",
+        "Do NOT use key variables as HOLD reasons, only as STOP conditions"
+      ],
+      "history": [
+        {
+          "date": "2026-04-05",
+          "judgment": "Predict oil/gas win rate 72% (based on Hormuz persistence)",
+          "result": "04-06 ceasefire, win rate -> 0",
+          "correct": false,
+          "note": "Root cause: prior not updated during holiday closure"
+        }
+      ],
+      "failure_lessons": [
+        "Prior cannot update during holiday -> 04-05 failure root cause"
+      ]
+    },
+    {
+      "id": "AVOID-001",
+      "name": "Geopolitical linear extrapolation fallacy",
+      "category": "failure_lesson",
+      "confidence": 0,
+      "status": "broken",
+      "verified_count": 1,
+      "source": "Week3 review - failure lesson",
+      "formula": "Rhetoric escalation != actual escalation; mutual强硬 = negotiations imminent signal",
+      "scope": "All geopolitical event judgments",
+      "boundaries": "True escalation signal = both sides start military action, not rhetoric",
+      "key_signal": "News shows mutual强硬 statements from both sides",
+      "trading_rules": [
+        "Seeing mutual rhetoric escalation -> do NOT chase safe-haven assets, wait for actual military action",
+        "True escalation signal: both sides start military action/weapons deployment",
+        "Rhetoric escalation is actually a signal of imminent negotiations (game theory commitment problem)"
+      ],
+      "history": [
+        {
+          "date": "2026-04-05",
+          "judgment": "Iran强硬rejects -> situation will inevitably escalate",
+          "result": "48 hours later ceasefire",
+          "correct": false
+        }
+      ],
+      "failure_lessons": [
+        "Linear extrapolation is biggest enemy in geopolitical judgment",
+        "Multi-party game outcomes are non-linear",
+        "Maximum pressure is a negotiating tactic, not an end goal"
+      ]
+    }
+  ],
+  "meta": {
+    "total_patterns": 8,
+    "active_patterns": 6,
+    "broken_patterns": 2,
+    "avg_confidence": 77,
+    "next_review": "2026-04-18 (Week4 review)"
+  }
+}
