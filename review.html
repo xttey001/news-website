@@ -28,15 +28,61 @@
         }
         .container { max-width: 1000px; margin: 0 auto; }
         
+        /* Top Nav */
+        .top-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid var(--border);
+            margin: -20px -20px 30px -20px;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            backdrop-filter: blur(10px);
+        }
+        .nav-btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(255,193,7,0.1);
+        }
+        .nav-btn.active {
+            border-color: var(--gold);
+            background: rgba(255,193,7,0.2);
+            color: var(--gold);
+        }
+        .nav-btn.primary {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .nav-btn.primary:hover {
+            background: rgba(76,175,80,0.15);
+        }
+        
         /* Header */
         .header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 20px;
             border-bottom: 1px solid var(--border);
             margin-bottom: 30px;
         }
-        .header h1 { font-size: 32px; color: var(--gold); margin-bottom: 10px; }
-        .header .subtitle { color: var(--text-muted); font-size: 15px; }
+        .header h1 { font-size: 28px; color: var(--gold); margin-bottom: 8px; }
+        .header .subtitle { color: var(--text-muted); font-size: 14px; }
         
         /* Timeline Navigation */
         .timeline-nav {
@@ -179,7 +225,17 @@
     </style>
 </head>
 <body>
-<div class="container">
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <a href="index.html" class="nav-btn primary" title="今日财经新闻">
+            📰 今日新闻
+        </a>
+        <a href="review.html" class="nav-btn active" title="复盘报告中心">
+            📊 复盘报告
+        </a>
+    </div>
+
+    <div class="container">
     <div class="header">
         <h1>📊 悟空财经 · 复盘报告中心</h1>
         <div class="subtitle">每周复盘 · 经验沉淀 · 策略优化</div>
