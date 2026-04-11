@@ -1,5 +1,7 @@
-// 财经新闻数据 - 沙僧白龙马集成版
-// 生成时间: 2026-04-10 四层分析:悟空+八戒+沙僧+白龙马
+// 财经新闻数据 - 四层交叉分析版
+// 生成时间: 2026-04-10
+// 架构: 悟空+八戒(优质新闻) → 沙僧+白龙马(全量新闻+市场数据)
+// 三层交叉: 白龙马融合悟空信号 | 八戒融合沙僧+白龙马信号
 
 const newsData = {
   "2026-04-10": {
@@ -357,10 +359,39 @@ const newsData = {
       ]
     },
     "bajie_conclusion": {
-      "optimal_action": "维持6-7成仓位，均衡配置成长+价值，关注券商+半导体+新能源轮动机会",
+      "optimal_action": "观望",
       "optimal_etfs": "512880证券ETF(25%) + 588260科创芯片设计ETF(25%) + 159871新能源ETF(20%) + 518880黄金ETF(15%) + 现金(15%)",
-      "win_rate": "~68%（贝叶斯后验）",
-      "max_drawdown": "-6%（止损线）"
+      "win_rate": "~68%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 38,
+        "平均恐慌概率": 5,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "信号混乱",
+        "是否利用散户": true,
+        "可信度": 0.8,
+        "风险等级": "high",
+        "调整结果": "⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
+      },
+      "悟空信号": {
+        "市场情绪": "震荡偏多，地缘风险边际缓解，A股反弹窗口打开"
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
+      ],
+      "original_bajie": {
+        "optimal_action": "维持6-7成仓位，均衡配置成长+价值，关注券商+半导体+新能源轮动机会",
+        "optimal_etfs": "512880证券ETF(25%) + 588260科创芯片设计ETF(25%) + 159871新能源ETF(20%) + 518880黄金ETF(15%) + 现金(15%)",
+        "win_rate": "~68%（贝叶斯后验）",
+        "max_drawdown": "-6%（止损线）"
+      }
     },
     "sangsha_module": {
       "overall_sentiment": "平稳",
@@ -575,31 +606,37 @@ const newsData = {
       "time_window": "7天累积（长期新闻除外）"
     },
     "white_dragon": {
-      "主力状态": "出货",
-      "阶段": "末期",
-      "行为解释": "多个ETF出现主力派发信号，注意风险",
+      "主力状态": "信号混乱",
+      "阶段": "需观察",
+      "行为解释": "多个ETF主力信号矛盾（4个），市场分歧极大，建议观望等待信号明确",
       "是否利用散户": true,
+      "可信度": 0.8,
+      "矛盾ETF数": 4,
       "散户情绪": {
         "平均买入概率": 53,
         "平均恐慌概率": 5
       },
+      "悟空信号": "震荡偏多，地缘风险边际缓解，A股反弹窗口打开",
+      "八戒胜率": "~68%（贝叶斯后验）",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率68%但主力在出货，建议降仓",
           "sangsha_buy_prob": 53,
           "sangsha_panic_prob": 5
         },
@@ -608,17 +645,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率68%但主力在出货，建议降仓",
           "sangsha_buy_prob": 53,
           "sangsha_panic_prob": 5
         },
@@ -627,17 +666,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "观望",
           "阶段": "整理",
           "行为解释": "价格横盘震荡，等待方向选择",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 53,
           "sangsha_panic_prob": 5
         },
@@ -646,17 +687,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率68%但主力在出货，建议降仓",
           "sangsha_buy_prob": 53,
           "sangsha_panic_prob": 5
         },
@@ -665,22 +708,24 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率68%但主力在出货，建议降仓",
           "sangsha_buy_prob": 53,
           "sangsha_panic_prob": 5
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 信号矛盾：悟空/白龙马/散户三方信号不一致，建议观望或降仓"
     }
   },
   "2026-04-09": {
@@ -714,11 +759,40 @@ const newsData = {
       ]
     },
     "bajie_conclusion": {
-      "optimal_action": "重点配置AI芯片+人工智能ETF，科技成长股业绩驱动行情",
+      "optimal_action": "观望",
       "optimal_etfs": "515070人工智能AIETF(40%) + 588890科创芯片ETF(30%) + 512930AI人工智能ETF(20%) + 现金(10%)",
-      "win_rate": "~72%（贝叶斯后验）",
-      "max_drawdown": "-5%（止损线）",
-      "holding_period": "1-2周"
+      "win_rate": "~72%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "1-2周",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 25,
+        "平均恐慌概率": 19,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "信号混乱",
+        "是否利用散户": true,
+        "可信度": 0.8,
+        "风险等级": "high",
+        "调整结果": "⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
+      },
+      "悟空信号": {
+        "市场情绪": "震荡偏多，科技成长股领涨"
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
+      ],
+      "original_bajie": {
+        "optimal_action": "重点配置AI芯片+人工智能ETF，科技成长股业绩驱动行情",
+        "optimal_etfs": "515070人工智能AIETF(40%) + 588890科创芯片ETF(30%) + 512930AI人工智能ETF(20%) + 现金(10%)",
+        "win_rate": "~72%（贝叶斯后验）",
+        "max_drawdown": "-5%（止损线）",
+        "holding_period": "1-2周"
+      }
     },
     "s_level": [
       {
@@ -897,31 +971,37 @@ const newsData = {
       "time_window": "7天累积（长期新闻除外）"
     },
     "white_dragon": {
-      "主力状态": "出货",
-      "阶段": "末期",
-      "行为解释": "多个ETF出现主力派发信号，注意风险",
+      "主力状态": "信号混乱",
+      "阶段": "需观察",
+      "行为解释": "多个ETF主力信号矛盾（4个），市场分歧极大，建议观望等待信号明确",
       "是否利用散户": true,
+      "可信度": 0.8,
+      "矛盾ETF数": 4,
       "散户情绪": {
         "平均买入概率": 25,
         "平均恐慌概率": 19
       },
+      "悟空信号": "震荡偏多，科技成长股领涨",
+      "八戒胜率": "~72%（贝叶斯后验）",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率72%但主力在出货，建议降仓",
           "sangsha_buy_prob": 25,
           "sangsha_panic_prob": 19
         },
@@ -930,17 +1010,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率72%但主力在出货，建议降仓",
           "sangsha_buy_prob": 25,
           "sangsha_panic_prob": 19
         },
@@ -949,17 +1031,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 25,
           "sangsha_panic_prob": 19
         },
@@ -968,17 +1052,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率72%但主力在出货，建议降仓",
           "sangsha_buy_prob": 25,
           "sangsha_panic_prob": 19
         },
@@ -987,22 +1073,24 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率72%但主力在出货，建议降仓",
           "sangsha_buy_prob": 25,
           "sangsha_panic_prob": 19
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 信号矛盾：悟空/白龙马/散户三方信号不一致，建议观望或降仓；✅ 八戒支持：胜率72%，胜率信号积极"
     }
   },
   "2026-04-03": {
@@ -1316,27 +1404,33 @@ const newsData = {
       "阶段": "末期",
       "行为解释": "多个ETF出现主力派发信号，注意风险",
       "是否利用散户": true,
+      "可信度": 1.0,
+      "矛盾ETF数": 0,
       "散户情绪": {
         "平均买入概率": 21,
         "平均恐慌概率": 15
       },
+      "悟空信号": "暂无",
+      "八戒胜率": "暂无",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 21,
           "sangsha_panic_prob": 15
         },
@@ -1345,17 +1439,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 21,
           "sangsha_panic_prob": 15
         },
@@ -1364,17 +1460,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 21,
           "sangsha_panic_prob": 15
         },
@@ -1383,17 +1481,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 21,
           "sangsha_panic_prob": 15
         },
@@ -1402,22 +1502,54 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 21,
           "sangsha_panic_prob": 15
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓"
+    },
+    "bajie_conclusion": {
+      "optimal_action": "减仓回避",
+      "optimal_etfs": "（已减仓）",
+      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 18,
+        "平均恐慌概率": 13,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "出货",
+        "是否利用散户": true,
+        "可信度": 1.0,
+        "风险等级": "extreme",
+        "调整结果": "🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      },
+      "悟空信号": {
+        "市场情绪": ""
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      ],
+      "original_bajie": {}
     }
   },
   "2026-04-02": {
@@ -1688,27 +1820,33 @@ const newsData = {
       "阶段": "末期",
       "行为解释": "多个ETF出现主力派发信号，注意风险",
       "是否利用散户": true,
+      "可信度": 1.0,
+      "矛盾ETF数": 0,
       "散户情绪": {
         "平均买入概率": 26,
         "平均恐慌概率": 5
       },
+      "悟空信号": "暂无",
+      "八戒胜率": "暂无",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 26,
           "sangsha_panic_prob": 5
         },
@@ -1717,17 +1855,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 26,
           "sangsha_panic_prob": 5
         },
@@ -1736,17 +1876,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 26,
           "sangsha_panic_prob": 5
         },
@@ -1755,17 +1897,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 26,
           "sangsha_panic_prob": 5
         },
@@ -1774,22 +1918,54 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 26,
           "sangsha_panic_prob": 5
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓"
+    },
+    "bajie_conclusion": {
+      "optimal_action": "减仓回避",
+      "optimal_etfs": "（已减仓）",
+      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 20,
+        "平均恐慌概率": 5,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "出货",
+        "是否利用散户": true,
+        "可信度": 1.0,
+        "风险等级": "extreme",
+        "调整结果": "🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      },
+      "悟空信号": {
+        "市场情绪": ""
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      ],
+      "original_bajie": {}
     }
   },
   "2026-04-01": {
@@ -2175,27 +2351,33 @@ const newsData = {
       "阶段": "末期",
       "行为解释": "多个ETF出现主力派发信号，注意风险",
       "是否利用散户": true,
+      "可信度": 1.0,
+      "矛盾ETF数": 0,
       "散户情绪": {
         "平均买入概率": 37,
         "平均恐慌概率": 8
       },
+      "悟空信号": "暂无",
+      "八戒胜率": "暂无",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 37,
           "sangsha_panic_prob": 8
         },
@@ -2204,17 +2386,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 37,
           "sangsha_panic_prob": 8
         },
@@ -2223,17 +2407,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 37,
           "sangsha_panic_prob": 8
         },
@@ -2242,17 +2428,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 37,
           "sangsha_panic_prob": 8
         },
@@ -2261,22 +2449,54 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 37,
           "sangsha_panic_prob": 8
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓"
+    },
+    "bajie_conclusion": {
+      "optimal_action": "减仓回避",
+      "optimal_etfs": "（已减仓）",
+      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 21,
+        "平均恐慌概率": 11,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "出货",
+        "是否利用散户": true,
+        "可信度": 1.0,
+        "风险等级": "extreme",
+        "调整结果": "🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      },
+      "悟空信号": {
+        "市场情绪": ""
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      ],
+      "original_bajie": {}
     }
   },
   "2026-03-31": {
@@ -2700,27 +2920,33 @@ const newsData = {
       "阶段": "末期",
       "行为解释": "多个ETF出现主力派发信号，注意风险",
       "是否利用散户": true,
+      "可信度": 1.0,
+      "矛盾ETF数": 0,
       "散户情绪": {
         "平均买入概率": 54,
         "平均恐慌概率": 5
       },
+      "悟空信号": "暂无",
+      "八戒胜率": "暂无",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 54,
           "sangsha_panic_prob": 5
         },
@@ -2729,17 +2955,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 54,
           "sangsha_panic_prob": 5
         },
@@ -2748,17 +2976,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "观望",
           "阶段": "整理",
           "行为解释": "价格横盘震荡，等待方向选择",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 54,
           "sangsha_panic_prob": 5
         },
@@ -2767,17 +2997,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 54,
           "sangsha_panic_prob": 5
         },
@@ -2786,22 +3018,54 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 54,
           "sangsha_panic_prob": 5
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓"
+    },
+    "bajie_conclusion": {
+      "optimal_action": "减仓回避",
+      "optimal_etfs": "（已减仓）",
+      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 35,
+        "平均恐慌概率": 5,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "出货",
+        "是否利用散户": true,
+        "可信度": 1.0,
+        "风险等级": "extreme",
+        "调整结果": "🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      },
+      "悟空信号": {
+        "市场情绪": ""
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      ],
+      "original_bajie": {}
     }
   },
   "2026-03-30": {
@@ -3002,27 +3266,33 @@ const newsData = {
       "阶段": "末期",
       "行为解释": "多个ETF出现主力派发信号，注意风险",
       "是否利用散户": true,
+      "可信度": 1.0,
+      "矛盾ETF数": 0,
       "散户情绪": {
         "平均买入概率": 8,
         "平均恐慌概率": 5
       },
+      "悟空信号": "暂无",
+      "八戒胜率": "暂无",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 8,
           "sangsha_panic_prob": 5
         },
@@ -3031,17 +3301,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 8,
           "sangsha_panic_prob": 5
         },
@@ -3050,17 +3322,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 8,
           "sangsha_panic_prob": 5
         },
@@ -3069,17 +3343,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 8,
           "sangsha_panic_prob": 5
         },
@@ -3088,22 +3364,54 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 8,
           "sangsha_panic_prob": 5
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓"
+    },
+    "bajie_conclusion": {
+      "optimal_action": "减仓回避",
+      "optimal_etfs": "（已减仓）",
+      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 8,
+        "平均恐慌概率": 5,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "出货",
+        "是否利用散户": true,
+        "可信度": 1.0,
+        "风险等级": "extreme",
+        "调整结果": "🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      },
+      "悟空信号": {
+        "市场情绪": ""
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      ],
+      "original_bajie": {}
     }
   },
   "2026-03-29": {
@@ -3392,27 +3700,33 @@ const newsData = {
       "阶段": "末期",
       "行为解释": "多个ETF出现主力派发信号，注意风险",
       "是否利用散户": true,
+      "可信度": 1.0,
+      "矛盾ETF数": 0,
       "散户情绪": {
         "平均买入概率": 22,
         "平均恐慌概率": 15
       },
+      "悟空信号": "暂无",
+      "八戒胜率": "暂无",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 22,
           "sangsha_panic_prob": 15
         },
@@ -3421,17 +3735,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 22,
           "sangsha_panic_prob": 15
         },
@@ -3440,17 +3756,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 22,
           "sangsha_panic_prob": 15
         },
@@ -3459,17 +3777,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 22,
           "sangsha_panic_prob": 15
         },
@@ -3478,22 +3798,54 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 22,
           "sangsha_panic_prob": 15
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓"
+    },
+    "bajie_conclusion": {
+      "optimal_action": "减仓回避",
+      "optimal_etfs": "（已减仓）",
+      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 17,
+        "平均恐慌概率": 12,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "出货",
+        "是否利用散户": true,
+        "可信度": 1.0,
+        "风险等级": "extreme",
+        "调整结果": "🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      },
+      "悟空信号": {
+        "市场情绪": ""
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      ],
+      "original_bajie": {}
     }
   },
   "2026-03-28": {
@@ -3772,27 +4124,33 @@ const newsData = {
       "阶段": "末期",
       "行为解释": "多个ETF出现主力派发信号，注意风险",
       "是否利用散户": true,
+      "可信度": 1.0,
+      "矛盾ETF数": 0,
       "散户情绪": {
         "平均买入概率": 8,
         "平均恐慌概率": 5
       },
+      "悟空信号": "暂无",
+      "八戒胜率": "暂无",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 8,
           "sangsha_panic_prob": 5
         },
@@ -3801,17 +4159,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 8,
           "sangsha_panic_prob": 5
         },
@@ -3820,17 +4180,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 8,
           "sangsha_panic_prob": 5
         },
@@ -3839,17 +4201,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 8,
           "sangsha_panic_prob": 5
         },
@@ -3858,22 +4222,54 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 8,
           "sangsha_panic_prob": 5
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓"
+    },
+    "bajie_conclusion": {
+      "optimal_action": "减仓回避",
+      "optimal_etfs": "（已减仓）",
+      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 7,
+        "平均恐慌概率": 5,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "出货",
+        "是否利用散户": true,
+        "可信度": 1.0,
+        "风险等级": "extreme",
+        "调整结果": "🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      },
+      "悟空信号": {
+        "市场情绪": ""
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      ],
+      "original_bajie": {}
     }
   },
   "2026-03-27": {
@@ -4152,27 +4548,33 @@ const newsData = {
       "阶段": "末期",
       "行为解释": "多个ETF出现主力派发信号，注意风险",
       "是否利用散户": true,
+      "可信度": 1.0,
+      "矛盾ETF数": 0,
       "散户情绪": {
         "平均买入概率": 26,
         "平均恐慌概率": 5
       },
+      "悟空信号": "暂无",
+      "八戒胜率": "暂无",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 26,
           "sangsha_panic_prob": 5
         },
@@ -4181,17 +4583,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 26,
           "sangsha_panic_prob": 5
         },
@@ -4200,17 +4604,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 26,
           "sangsha_panic_prob": 5
         },
@@ -4219,17 +4625,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 26,
           "sangsha_panic_prob": 5
         },
@@ -4238,22 +4646,54 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 26,
           "sangsha_panic_prob": 5
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓"
+    },
+    "bajie_conclusion": {
+      "optimal_action": "减仓回避",
+      "optimal_etfs": "（已减仓）",
+      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 20,
+        "平均恐慌概率": 5,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "出货",
+        "是否利用散户": true,
+        "可信度": 1.0,
+        "风险等级": "extreme",
+        "调整结果": "🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      },
+      "悟空信号": {
+        "市场情绪": ""
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      ],
+      "original_bajie": {}
     }
   },
   "2026-03-26": {
@@ -4528,27 +4968,33 @@ const newsData = {
       "阶段": "末期",
       "行为解释": "多个ETF出现主力派发信号，注意风险",
       "是否利用散户": true,
+      "可信度": 1.0,
+      "矛盾ETF数": 0,
       "散户情绪": {
         "平均买入概率": 16,
         "平均恐慌概率": 5
       },
+      "悟空信号": "暂无",
+      "八戒胜率": "暂无",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 16,
           "sangsha_panic_prob": 5
         },
@@ -4557,17 +5003,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 16,
           "sangsha_panic_prob": 5
         },
@@ -4576,17 +5024,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 16,
           "sangsha_panic_prob": 5
         },
@@ -4595,17 +5045,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 16,
           "sangsha_panic_prob": 5
         },
@@ -4614,22 +5066,54 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 16,
           "sangsha_panic_prob": 5
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓"
+    },
+    "bajie_conclusion": {
+      "optimal_action": "减仓回避",
+      "optimal_etfs": "（已减仓）",
+      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 12,
+        "平均恐慌概率": 5,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "出货",
+        "是否利用散户": true,
+        "可信度": 1.0,
+        "风险等级": "extreme",
+        "调整结果": "🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      },
+      "悟空信号": {
+        "市场情绪": ""
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      ],
+      "original_bajie": {}
     }
   },
   "2026-03-25": {
@@ -4914,27 +5398,33 @@ const newsData = {
       "阶段": "末期",
       "行为解释": "多个ETF出现主力派发信号，注意风险",
       "是否利用散户": true,
+      "可信度": 1.0,
+      "矛盾ETF数": 0,
       "散户情绪": {
         "平均买入概率": 36,
         "平均恐慌概率": 5
       },
+      "悟空信号": "暂无",
+      "八戒胜率": "暂无",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 36,
           "sangsha_panic_prob": 5
         },
@@ -4943,17 +5433,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 36,
           "sangsha_panic_prob": 5
         },
@@ -4962,17 +5454,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 36,
           "sangsha_panic_prob": 5
         },
@@ -4981,17 +5475,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 36,
           "sangsha_panic_prob": 5
         },
@@ -5000,22 +5496,54 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
           "主力状态": "出货",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 36,
           "sangsha_panic_prob": 5
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓"
+    },
+    "bajie_conclusion": {
+      "optimal_action": "减仓回避",
+      "optimal_etfs": "（已减仓）",
+      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 28,
+        "平均恐慌概率": 5,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "出货",
+        "是否利用散户": true,
+        "可信度": 1.0,
+        "风险等级": "extreme",
+        "调整结果": "🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      },
+      "悟空信号": {
+        "市场情绪": ""
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】🚨 白龙马：主力派发+散户追高，双杀信号！建议清仓/减仓"
+      ],
+      "original_bajie": {}
     }
   },
   "2026-04-07": {
@@ -5054,11 +5582,40 @@ const newsData = {
       ]
     },
     "bajie_conclusion": {
-      "optimal_action": "节后首日重点配置加密货币概念股+AI芯片，回避油气/黄金避险资产",
+      "optimal_action": "观望",
       "optimal_etfs": "512760芯片ETF(30%) + 515980云计算ETF(25%) + 加密货币概念股(15%) + 现金(30%)",
-      "win_rate": "~70%（贝叶斯后验）",
-      "max_drawdown": "-6%（止损线）",
-      "holding_period": "1-2周"
+      "win_rate": "~70%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "1-2周",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 31,
+        "平均恐慌概率": 20,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "信号混乱",
+        "是否利用散户": true,
+        "可信度": 0.8,
+        "风险等级": "high",
+        "调整结果": "⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
+      },
+      "悟空信号": {
+        "市场情绪": "偏多，修复性反弹为主"
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
+      ],
+      "original_bajie": {
+        "optimal_action": "节后首日重点配置加密货币概念股+AI芯片，回避油气/黄金避险资产",
+        "optimal_etfs": "512760芯片ETF(30%) + 515980云计算ETF(25%) + 加密货币概念股(15%) + 现金(30%)",
+        "win_rate": "~70%（贝叶斯后验）",
+        "max_drawdown": "-6%（止损线）",
+        "holding_period": "1-2周"
+      }
     },
     "s_level": [
       {
@@ -5233,31 +5790,37 @@ const newsData = {
       "time_window": "7天累积（长期新闻除外）"
     },
     "white_dragon": {
-      "主力状态": "出货",
-      "阶段": "末期",
-      "行为解释": "多个ETF出现主力派发信号，注意风险",
+      "主力状态": "信号混乱",
+      "阶段": "需观察",
+      "行为解释": "多个ETF主力信号矛盾（4个），市场分歧极大，建议观望等待信号明确",
       "是否利用散户": true,
+      "可信度": 0.8,
+      "矛盾ETF数": 4,
       "散户情绪": {
         "平均买入概率": 31,
         "平均恐慌概率": 20
       },
+      "悟空信号": "偏多，修复性反弹为主",
+      "八戒胜率": "~70%（贝叶斯后验）",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率70%但主力在出货，建议降仓",
           "sangsha_buy_prob": 31,
           "sangsha_panic_prob": 20
         },
@@ -5266,17 +5829,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率70%但主力在出货，建议降仓",
           "sangsha_buy_prob": 31,
           "sangsha_panic_prob": 20
         },
@@ -5285,17 +5850,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 31,
           "sangsha_panic_prob": 20
         },
@@ -5304,17 +5871,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率70%但主力在出货，建议降仓",
           "sangsha_buy_prob": 31,
           "sangsha_panic_prob": 20
         },
@@ -5323,22 +5892,24 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率70%但主力在出货，建议降仓",
           "sangsha_buy_prob": 31,
           "sangsha_panic_prob": 20
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 信号矛盾：悟空/白龙马/散户三方信号不一致，建议观望或降仓；✅ 八戒支持：胜率70%，胜率信号积极"
     }
   },
   "2026-04-08": {
@@ -5368,11 +5939,40 @@ const newsData = {
       ]
     },
     "bajie_conclusion": {
-      "optimal_action": "重点配置AI芯片+人工智能ETF，科技成长股修复行情",
+      "optimal_action": "观望",
       "optimal_etfs": "588890科创芯片ETF(40%) + 512930 AI人工智能ETF(30%) + 现金(30%)",
-      "win_rate": "~70%（贝叶斯后验）",
-      "max_drawdown": "-5%（止损线）",
-      "holding_period": "1-2周"
+      "win_rate": "~70%（贝叶斯后验+沙僧白龙马融合）",
+      "max_drawdown": "-8.0%（止损线）",
+      "holding_period": "1-2周",
+      "沙僧信号": {
+        "情绪": "平稳",
+        "平均买入概率": 23,
+        "平均恐慌概率": 20,
+        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "可信度级别": "normal"
+      },
+      "白龙马信号": {
+        "主力状态": "信号混乱",
+        "是否利用散户": true,
+        "可信度": 0.8,
+        "风险等级": "high",
+        "调整结果": "⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
+      },
+      "悟空信号": {
+        "市场情绪": "震荡偏多，科技成长股修复反弹"
+      },
+      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
+      "融合说明": [
+        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
+        "【白龙马融合】⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
+      ],
+      "original_bajie": {
+        "optimal_action": "重点配置AI芯片+人工智能ETF，科技成长股修复行情",
+        "optimal_etfs": "588890科创芯片ETF(40%) + 512930 AI人工智能ETF(30%) + 现金(30%)",
+        "win_rate": "~70%（贝叶斯后验）",
+        "max_drawdown": "-5%（止损线）",
+        "holding_period": "1-2周"
+      }
     },
     "s_level": [
       {
@@ -5558,31 +6158,37 @@ const newsData = {
       "time_window": "7天累积（长期新闻除外）"
     },
     "white_dragon": {
-      "主力状态": "出货",
-      "阶段": "末期",
-      "行为解释": "多个ETF出现主力派发信号，注意风险",
+      "主力状态": "信号混乱",
+      "阶段": "需观察",
+      "行为解释": "多个ETF主力信号矛盾（4个），市场分歧极大，建议观望等待信号明确",
       "是否利用散户": true,
+      "可信度": 0.8,
+      "矛盾ETF数": 4,
       "散户情绪": {
         "平均买入概率": 23,
         "平均恐慌概率": 20
       },
+      "悟空信号": "震荡偏多，科技成长股修复反弹",
+      "八戒胜率": "~70%（贝叶斯后验）",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.67
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 21.35,
+            "change_pct": 27.49,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率70%但主力在出货，建议降仓",
           "sangsha_buy_prob": 23,
           "sangsha_panic_prob": 20
         },
@@ -5591,17 +6197,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.96
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 15.09,
+            "change_pct": 24.6,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率70%但主力在出货，建议降仓",
           "sangsha_buy_prob": 23,
           "sangsha_panic_prob": 20
         },
@@ -5610,17 +6218,19 @@ const newsData = {
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 1.49
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -8.11,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "吸筹",
           "阶段": "早期",
           "行为解释": "价格横盘/小跌，资金流入，主力可能在低位吸筹",
           "是否利用散户": false,
+          "可信度": 1.0,
+          "矛盾信号": "",
           "sangsha_buy_prob": 23,
           "sangsha_panic_prob": 20
         },
@@ -5629,17 +6239,19 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 8.29
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -0.19,
+            "change_pct": 3.17,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率70%但主力在出货，建议降仓",
           "sangsha_buy_prob": 23,
           "sangsha_panic_prob": 20
         },
@@ -5648,39 +6260,30 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 9.8
+            "change_pct": 10.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 37.62,
+            "change_pct": 44.11,
             "level": "normal"
           },
-          "主力状态": "出货",
+          "主力状态": "矛盾-主力派发",
           "阶段": "末期",
           "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
           "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率70%但主力在出货，建议降仓",
           "sangsha_buy_prob": 23,
           "sangsha_panic_prob": 20
         }
       ],
-      "综合建议": "⚠️ 风险提示：主力可能正在派发，散户追高风险大，建议减仓观望"
+      "综合建议": "⚠️ 信号矛盾：悟空/白龙马/散户三方信号不一致，建议观望或降仓；✅ 八戒支持：胜率70%，胜率信号积极"
     }
   }
 };
 
 const availableDates = ["2026-04-10", "2026-04-09", "2026-04-08", "2026-04-07", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25"];
 
-// 获取指定日期的新闻
-function getNews(date) {
-    return newsData[date] || null;
-}
-
-function getPreviousDate(date) {
-    const idx = availableDates.indexOf(date);
-    return idx < availableDates.length - 1 ? availableDates[idx + 1] : null;
-}
-
-function getNextDate(date) {
-    const idx = availableDates.indexOf(date);
-    return idx > 0 ? availableDates[idx - 1] : null;
-}
+function getNews(date) { return newsData[date] || null; }
+function getPreviousDate(date) { const idx = availableDates.indexOf(date); return idx < availableDates.length - 1 ? availableDates[idx + 1] : null; }
+function getNextDate(date) { const idx = availableDates.indexOf(date); return idx > 0 ? availableDates[idx - 1] : null; }
