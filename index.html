@@ -993,7 +993,7 @@
                         <div class="news-title">${item.emoji} ${item.title}</div>
                         ${item.source ? '<div class="news-source">来源：' + item.source + '</div>' : ''}
                     </div>
-                    <div class="news-row"><span class="label">要点：</span>${item.summary}</div>
+                    <div class="news-row"><span class="label">要点：</span>${item.key_point || item.summary || ''}</div>
                     <div class="news-row"><span class="label">影响时长：</span>${item.duration}</div>`;
 
             if (item.etfs && item.etfs.length) {

@@ -101,7 +101,17 @@ const newsData = {
           "中信证券(600030)",
           "黄金板块(山东黄金/中金黄金)"
         ],
-        "signal": "短期：地缘缓和预期压制避险需求（黄金/原油）；中期：谈判结果决定方向"
+        "signal": "短期：地缘缓和预期压制避险需求（黄金/原油）；中期：谈判结果决定方向",
+        "bayes_analysis": {
+          "prior_judgment": "地缘风险已部分定价，市场预期温和",
+          "prior_prob": 55,
+          "likelihood_judgment": "三国代表同出席=谈判级别史上最高，缓和预期升温；但双方分歧明确，达成协议概率低",
+          "likelihood_prob": 62,
+          "posterior": 58,
+          "expected_return": "黄金/原油-1%~+1%，取决于谈判进展",
+          "confidence_interval": "[-2%, +3%]",
+          "key_variables": "谈判是否破裂、Trump是否追加制裁、霍尔木兹管控权"
+        }
       },
       {
         "emoji": "🔴",
@@ -123,7 +133,17 @@ const newsData = {
           "黄金板块(中金黄金/山金国际)",
           "军工板块(中航沈飞/航发动力)"
         ],
-        "signal": "俄乌升温=避险情绪短暂反弹，但Trump分散精力=对伊谈判更迫切，整体地缘格局仍复杂"
+        "signal": "俄乌升温=避险情绪短暂反弹，但Trump分散精力=对伊谈判更迫切，整体地缘格局仍复杂",
+        "bayes_analysis": {
+          "prior_judgment": "美伊谈判压制避险情绪",
+          "prior_prob": 52,
+          "likelihood_judgment": "俄乌升温=地缘风险分散Trump精力，对伊谈判更迫切；整体避险逻辑混沌",
+          "likelihood_prob": 48,
+          "posterior": 50,
+          "expected_return": "黄金/原油震荡，+0%~+2%",
+          "confidence_interval": "[-1.5%, +3%]",
+          "key_variables": "俄乌冲突是否扩大、美伊谈判进展"
+        }
       }
     ],
     "a_level": [
@@ -149,7 +169,17 @@ const newsData = {
           "自动驾驶(德赛西威/华阳集团)",
           "比亚迪(002594)"
         ],
-        "signal": "AI算力ETF今日放量拉升+2.43%（量比1.54）=主力真实买入信号！短期主题性行情确认"
+        "signal": "AI算力ETF今日放量拉升+2.43%（量比1.54）=主力真实买入信号！短期主题性行情确认",
+        "bayes_analysis": {
+          "prior_judgment": "自动驾驶板块估值偏高，利好已部分反映",
+          "prior_prob": 58,
+          "likelihood_judgment": "四巨头同日发声=行业共识确立，2026年L3量产是实质性催化；主机厂+芯片+软件全产业链共振",
+          "likelihood_prob": 72,
+          "posterior": 68,
+          "expected_return": "AI算力ETF+3%~+8%，智能驾驶板块+5%~+12%",
+          "confidence_interval": "[+1%, +15%]",
+          "key_variables": "政策L3准入时间表、芯片算力突破、OEM量产节奏"
+        }
       },
       {
         "emoji": "🟡",
@@ -171,7 +201,17 @@ const newsData = {
           "存储芯片(兆易创新/北京君正)",
           "AI芯片(寒武纪-U/海光信息)"
         ],
-        "signal": "闪迪暴涨2500%=叙事泡沫信号，沙僧预警：散户看到闪迪暴涨会追同类股=短期顶部信号"
+        "signal": "闪迪暴涨2500%=叙事泡沫信号，沙僧预警：散户看到闪迪暴涨会追同类股=短期顶部信号",
+        "bayes_analysis": {
+          "prior_judgment": "AI存储板块已强势，2500%涨幅已充分定价",
+          "prior_prob": 55,
+          "likelihood_judgment": "闪迪被纳指100纳入=被动资金买入+机构背书，短期还有上涨惯性；但2500%涨幅已是超级泡沫信号",
+          "likelihood_prob": 65,
+          "posterior": 63,
+          "expected_return": "AI存储个股短期+5%~+15%，中期风险收益比差",
+          "confidence_interval": "[+2%, +20%]",
+          "key_variables": "纳指100调仓日资金流向、AI存储需求是否持续、竞争对手动态"
+        }
       },
       {
         "emoji": "🟡",
@@ -190,7 +230,17 @@ const newsData = {
           "硅钢(宝钢股份/首钢股份)",
           "储能(阳光电源/南都电源)"
         ],
-        "signal": "订单驱动=业绩可见，区别于纯主题炒作；电网ETF今日缩量小涨+1.08%=主力尚未大幅介入，建仓机会"
+        "signal": "订单驱动=业绩可见，区别于纯主题炒作；电网ETF今日缩量小涨+1.08%=主力尚未大幅介入，建仓机会",
+        "bayes_analysis": {
+          "prior_judgment": "电网设备板块平稳，订单可见性低",
+          "prior_prob": 50,
+          "likelihood_judgment": "变压器出口+十五五电网招标=订单可见性提升，电网投资上行周期确立；但A股电网标的估值已较高",
+          "likelihood_prob": 62,
+          "posterior": 58,
+          "expected_return": "电网ETF+2%~+6%",
+          "confidence_interval": "[+0.5%, +8%]",
+          "key_variables": "南瑞/许继/平高订单兑现情况、电网投资计划金额"
+        }
       }
     ],
     "wukong_judgment": {
