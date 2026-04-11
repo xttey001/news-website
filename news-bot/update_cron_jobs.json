@@ -1,0 +1,49 @@
+{
+  "jobs": [
+    {
+      "name": "财经新闻-早报",
+      "schedule": {"kind": "cron", "expr": "0 9 * * 1-5", "tz": "Asia/Shanghai"},
+      "sessionTarget": "isolated",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "执行命令：python C:/Users/asus/.qclaw/workspace/news-bot/news_fetcher.py，然后读取 C:/Users/asus/.qclaw/workspace/news-bot/latest_news.txt 的内容，通过 message 工具发送到微信（channel: weixin, to: o9cq807dwW0H1oaoEkmj7r8hfVeU@im.wechat）。不要回复 HEARTBEAT_OK，不要解释你是谁，只发送新闻内容。",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "wechat-access",
+        "to": "o9cq807dwW0H1oaoEkmj7r8hfVeU@im.wechat"
+      }
+    },
+    {
+      "name": "财经新闻-午报",
+      "schedule": {"kind": "cron", "expr": "0 13 * * 1-5", "tz": "Asia/Shanghai"},
+      "sessionTarget": "isolated",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "执行命令：python C:/Users/asus/.qclaw/workspace/news-bot/news_fetcher.py，然后读取 C:/Users/asus/.qclaw/workspace/news-bot/latest_news.txt 的内容，通过 message 工具发送到微信（channel: weixin, to: o9cq807dwW0H1oaoEkmj7r8hfVeU@im.wechat）。不要回复 HEARTBEAT_OK，不要解释你是谁，只发送新闻内容。",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "wechat-access",
+        "to": "o9cq807dwW0H1oaoEkmj7r8hfVeU@im.wechat"
+      }
+    },
+    {
+      "name": "财经新闻-晚报",
+      "schedule": {"kind": "cron", "expr": "0 22 * * 1-5", "tz": "Asia/Shanghai"},
+      "sessionTarget": "isolated",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "执行命令：python C:/Users/asus/.qclaw/workspace/news-bot/news_fetcher.py，然后读取 C:/Users/asus/.qclaw/workspace/news-bot/latest_news.txt 的内容，通过 message 工具发送到微信（channel: weixin, to: o9cq807dwW0H1oaoEkmj7r8hfVeU@im.wechat）。不要回复 HEARTBEAT_OK，不要解释你是谁，只发送新闻内容。",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "wechat-access",
+        "to": "o9cq807dwW0H1oaoEkmj7r8hfVeU@im.wechat"
+      }
+    }
+  ]
+}

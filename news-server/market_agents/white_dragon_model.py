@@ -16,7 +16,7 @@ class WhiteDragonModel:
     """白龙马主力行为模型 v2"""
 
     def __init__(self):
-        self.main_etfs = ['512760', '512930', '518880', '588890', '159382']
+        self.main_etfs = ['512760', '512930', '518880', '588890', '159871', '159542']
 
     def _calculate_price_trend(self, klines: List[Dict]) -> Dict[str, Any]:
         if not klines or len(klines) < 3:
@@ -26,7 +26,15 @@ class WhiteDragonModel:
         avg_recent = sum(k['close'] for k in recent) / len(recent)
         avg_earlier = sum(k['close'] for k in earlier) / len(earlier)
         change_pct = (avg_recent - avg_earlier) / avg_earlier * 100 if avg_earlier > 0 else 0
-        up_days = sum(1 for k in recent if k['change_pct'] > 0)
+        # 【修复】自己算每日涨跌，不用 change_pct 字段
+        day_changes = []
+        for i in range(1, len(klines)):
+            prev = klines[i-1]['close']
+            curr = klines[i]['close']
+            if prev > 0:
+                day_changes.append((curr - prev) / prev * 100)
+        recent_changes = day_changes[-3:] if len(day_changes) >= 3 else day_changes
+        up_days = sum(1 for c in recent_changes if c > 0)
         if up_days >= 3:
             trend, strength = 'up', 90
         elif up_days >= 2 and change_pct > 3:
@@ -136,29 +144,57 @@ class WhiteDragonModel:
         price_trend = self._calculate_price_trend(klines)
         volume_trend = self._calculate_volume_trend(klines)
 
-        # 基础主力状态判断
-        if price_trend['trend'] == 'up' and volume_trend['trend'] == 'up':
+        # 【修复】单日量比：今天 vs 昨天，不跟7天均值比
+        single_day_vol_ratio = 1.0
+        if len(klines) >= 2:
+            today_vol = klines[-1].get('volume', 0)
+            yest_vol = klines[-2].get('volume', 0)
+            if yest_vol > 0:
+                single_day_vol_ratio = today_vol / yest_vol
+        is_single_day_surge = single_day_vol_ratio > 1.3  # 单日放量>30%
+
+        # 【修复v2】先判断价格趋势，再分层量能
+        is_real_up = price_trend['trend'] == 'up'   # 真实上涨
+        is_real_down = price_trend['trend'] == 'down'  # 真实下跌
+        is_sideways = price_trend['trend'] == 'side'  # 横盘
+
+        if is_real_up:
+            if is_single_day_surge:
+                # 放量上涨 = 主力真买 OR 主力借机出货
+                if sangsha_buy_prob > 60:
+                    state, stage, explanation, using_retail = '出货', '末期', \
+                        f'放量上涨+散户追高（单日量比{single_day_vol_ratio:.2f}x），主力借机派发风险高', True
+                else:
+                    state, stage, explanation, using_retail = '拉升', '中期', \
+                        f'量价齐升（单日量比{single_day_vol_ratio:.2f}x），主力真实买入，短期有望继续上涨', False
+            elif sangsha_buy_prob > 60:
+                # 缩量上涨+散户追高 = 高位派发
+                state, stage, explanation, using_retail = '出货', '末期', \
+                    '价格上涨但量能不足+散户追高，主力高位派发风险高', True
+            else:
+                # 缩量上涨，散户平稳 = 主力控盘拉升（缩量是好事）
+                state, stage, explanation, using_retail = '拉升', '初期', \
+                    '价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘', False
+        elif is_real_down:
+            if volume_trend['level'] == 'low' or single_day_vol_ratio < 0.7:
+                state, stage, explanation, using_retail = '洗盘', '早期', \
+                    '缩量下跌，主力清洗浮动筹码，后市有望反弹', False
+            else:
+                state, stage, explanation, using_retail = '出货', '中期', \
+                    '放量下跌，主力真实派发，注意风险', True
+        elif is_sideways:
             if sangsha_buy_prob > 60:
                 state, stage, explanation, using_retail = '出货', '末期', \
-                    '价格大涨+放量，但散户追高情绪高涨，主力可能借机派发', True
+                    '横盘+散户追高，主力借高位派发', True
+            elif sangsha_panic_prob > 55:
+                state, stage, explanation, using_retail = '吸筹', '早期', \
+                    '横盘+散户恐慌，主力低位吸筹', False
             else:
-                state, stage, explanation, using_retail = '拉升', '中期', \
-                    '量价齐升，资金积极入场，短期有望继续上涨', False
-        elif price_trend['trend'] == 'up':
-            state, stage, explanation, using_retail = '出货', '末期', \
-                '价格上涨但量能不足，主力高位派发可能性大', True
-        elif price_trend['trend'] in ['side', 'down'] and sangsha_buy_prob < 40:
-            state, stage, explanation, using_retail = '吸筹', '早期', \
-                '价格横盘/小跌，资金流入，主力可能在低位吸筹', False
-        elif price_trend['trend'] == 'down' and volume_trend['level'] == 'low':
-            state, stage, explanation, using_retail = '洗盘', '早期', \
-                '缩量下跌，主力清洗浮动筹码，后市有望拉升', False
-        elif price_trend['trend'] == 'side':
-            state, stage, explanation, using_retail = '观望', '整理', \
-                '价格横盘震荡，等待方向选择', False
+                state, stage, explanation, using_retail = '观望', '整理', \
+                    '价格横盘震荡，等待方向选择', False
         else:
             state, stage, explanation, using_retail = '观望', '观察', \
-                '处于下降趋势中，建议观望', False
+                '趋势不明，建议观望', False
 
         # 【核心新增】悟空/八戒交叉分析
         xg = self._wukong_bajie_adjust(state, wukong, bajie)
@@ -176,7 +212,8 @@ class WhiteDragonModel:
             '可信度': round(xg['credibility'], 2),
             '矛盾信号': xg['signal_note'],
             'sangsha_buy_prob': sangsha_buy_prob,
-            'sangsha_panic_prob': sangsha_panic_prob
+            'sangsha_panic_prob': sangsha_panic_prob,
+            '单日量比': round(single_day_vol_ratio, 2)  # 今天/昨天
         }
 
     def analyze_multi_etfs(self, market_data: Dict,
@@ -198,36 +235,67 @@ class WhiteDragonModel:
                 )
                 etf_results.append(result)
 
-        # 综合多个ETF的状态
-        states = [r['主力状态'] for r in etf_results]
-        creds = [r['可信度'] for r in etf_results]
-        avg_cred = sum(creds) / len(creds) if creds else 1.0
+        # 综合多个ETF的状态（【修复】用可信度加权，而不是简单数票）
+        # 只统计可信度 >= 0.8 的ETF，避免低质量信号主导
+        valid_etfs = [(r, r.get('可信度', 1.0)) for r in etf_results if r.get('可信度', 1.0) >= 0.8]
 
-        pumping = sum(1 for s in states if '拉升' in s)
-        distributing = sum(1 for s in states if '出货' in s)
-        accumulating = sum(1 for s in states if '吸筹' in s)
-        washing = sum(1 for s in states if '洗盘' in s)
-        conflicting = sum(1 for s in states if '矛盾' in s)
+        scores = {'拉升': 0, '出货': 0, '吸筹': 0, '洗盘': 0, '矛盾': 0, '观望': 0}
+        for r, cred in valid_etfs:
+            state = r.get('主力状态', '观望')
+            weight = cred
+            if '拉升' in state:
+                scores['拉升'] += weight
+            elif '出货' in state:
+                scores['出货'] += weight
+            elif '吸筹' in state:
+                scores['吸筹'] += weight
+            elif '洗盘' in state:
+                scores['洗盘'] += weight
+            elif '矛盾' in state:
+                scores['矛盾'] += weight
+            else:
+                scores['观望'] += weight
 
-        # 矛盾ETF > 50%，判断为信号混乱
-        if conflicting >= 2:
+        # 最高分状态决定全局
+        best = max(scores, key=scores.get)
+        best_score = scores[best]
+        n_valid = len(valid_etfs)
+        n_total = len(etf_results)
+
+        conflicting = sum(1 for r in etf_results if '矛盾' in r.get('主力状态', ''))
+
+        if n_valid == 0 or best_score < 0.5:
+            overall_state, overall_stage = '信号混乱', '需观察'
+            overall_explanation = f'多个ETF主力信号混乱（{n_valid}个有效信号），建议观望等待信号明确'
+        elif conflicting >= 2:
             overall_state, overall_stage = '信号混乱', '需观察'
             overall_explanation = f'多个ETF主力信号矛盾（{conflicting}个），市场分歧极大，建议观望等待信号明确'
-        elif pumping >= 2:
+        elif best == '拉升' and best_score >= 1.5:
             overall_state, overall_stage = '拉升', '中期'
-            overall_explanation = '多个ETF处于拉升状态，市场整体偏多'
-        elif distributing >= 2:
+            overall_explanation = '主力拉升信号明确，多个ETF量价配合良好'
+        elif best == '拉升' and best_score >= 1.0:
+            overall_state, overall_stage = '拉升', '初期'
+            overall_explanation = '部分ETF出现主力拉升信号，可适度关注'
+        elif best == '出货' and best_score >= 1.5:
             overall_state, overall_stage = '出货', '末期'
-            overall_explanation = '多个ETF出现主力派发信号，注意风险'
-        elif accumulating >= 2:
+            overall_explanation = '多个ETF出现主力派发信号，注意高位风险'
+        elif best == '出货' and best_score >= 1.0:
+            overall_state, overall_stage = '出货', '中期'
+            overall_explanation = '部分ETF出现主力派发信号，注意分化风险'
+        elif best == '吸筹' and best_score >= 1.0:
             overall_state, overall_stage = '吸筹', '早期'
-            overall_explanation = '多个ETF显示主力吸筹信号，可分批布局'
-        elif washing >= 2:
+            overall_explanation = '部分ETF显示主力吸筹信号，可分批布局'
+        elif best == '洗盘' and best_score >= 1.0:
             overall_state, overall_stage = '洗盘', '早期'
-            overall_explanation = '多个ETF处于洗盘状态，后市有望反弹'
+            overall_explanation = '部分ETF处于洗盘状态，后市有望反弹'
+        elif best_score < 1.0:
+            overall_state, overall_stage = '分化', '观察'
+            overall_explanation = f'各ETF分化明显（拉升{best_score:.1f}分），需精选标的'
         else:
             overall_state, overall_stage = '分化', '观察'
             overall_explanation = '各ETF分化明显，需要精选标的'
+
+        avg_cred = sum(r.get('可信度', 1.0) for r in etf_results) / len(etf_results) if etf_results else 1.0
 
         using_retail = any(r.get('是否利用散户', False) for r in etf_results)
 

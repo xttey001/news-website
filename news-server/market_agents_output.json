@@ -1,0 +1,289 @@
+{
+  "sangsha": {
+    "沙僧模块": {
+      "overall_sentiment": "平稳",
+      "advice": "震荡整理，观望为主",
+      "avg_buy_prob": 33,
+      "avg_panic_prob": 25,
+      "analysis_results": [
+        {
+          "news": "COMEX黄金突破70000美元创历史新高",
+          "title": "COMEX黄金突破70000美元创历史新高",
+          "full_title": "COMEX黄金突破70000美元创历史新高",
+          "summary": "COMEX黄金突破70000美元大关，加密货币概念股开盘涨停，交易所概念股重配置",
+          "追高买入概率": 95,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 59,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 59,
+          "is_long_term": true,
+          "date": "2026-04-07",
+          "decay": 1.0,
+          "weighted_buy_prob": 59
+        },
+        {
+          "news": "AI芯片/半导体板块暴涨，创业板人工智能ETF涨超7%",
+          "title": "AI芯片/半导体板块暴涨，创业板人工智能ETF涨超7%",
+          "full_title": "AI芯片/半导体板块暴涨，创业板人工智能ETF涨超7%",
+          "summary": "科创芯片ETF涨超5%，创业板AI ETF涨超7%，中际旭创涨停，光模块继续涨",
+          "追高买入概率": 93,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 59,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 57,
+          "is_long_term": false,
+          "date": "2026-04-08",
+          "decay": 0.7,
+          "weighted_buy_prob": 39
+        },
+        {
+          "news": "创业板人工智能ETF南方(159382)涨超7%",
+          "title": "创业板人工智能ETF南方(159382)涨超7%",
+          "full_title": "创业板人工智能ETF南方(159382)涨超7%",
+          "summary": "创业板人工智能ETF涨停附近，跟踪创业板AI指数强势上涨",
+          "追高买入概率": 92,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 59,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 57,
+          "is_long_term": false,
+          "date": "2026-04-08",
+          "decay": 0.7,
+          "weighted_buy_prob": 39
+        },
+        {
+          "news": "美联储停火协议正式落地",
+          "title": "美联储停火协议正式落地",
+          "full_title": "美联储停火协议正式落地",
+          "summary": "美联储停火协议正式落地，地缘风险偏好回升。黄金从4800美元高位回落至4650美元，原油从140美元...",
+          "追高买入概率": 5,
+          "抄底买入概率": 38,
+          "恐慌卖出概率": 34,
+          "观望概率": 76,
+          "情绪标签": [
+            "抄底冲动"
+          ],
+          "韭菜行为总结": "散户情绪平稳",
+          "市场含义": "中性",
+          "买入概率": 18,
+          "is_long_term": true,
+          "date": "2026-04-07",
+          "decay": 1.0,
+          "weighted_buy_prob": 18
+        },
+        {
+          "news": "创业板AI判断震荡反弹信号",
+          "title": "创业板AI判断震荡反弹信号",
+          "full_title": "创业板AI判断震荡反弹信号",
+          "summary": "创业板AI判断出现反弹信号，地缘风险降低，市场风险偏好回升",
+          "追高买入概率": 5,
+          "抄底买入概率": 54,
+          "恐慌卖出概率": 33,
+          "观望概率": 71,
+          "情绪标签": [
+            "抄底冲动"
+          ],
+          "韭菜行为总结": "散户想抄底，认为是机会",
+          "市场含义": "可能有反弹",
+          "买入概率": 24,
+          "is_long_term": false,
+          "date": "2026-04-08",
+          "decay": 0.7,
+          "weighted_buy_prob": 16
+        },
+        {
+          "news": "美股科技股趋势走强：AI芯片存储领涨",
+          "title": "美股科技股趋势走强：AI芯片存储领涨",
+          "full_title": "美股科技股趋势走强：AI芯片存储领涨",
+          "summary": "4月3日美股三大指数收涨，AI芯片、存储板块领涨，英特尔涨1.67%，Meta涨超1%，英伟达概念股...",
+          "追高买入概率": 20,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 89,
+          "情绪标签": [],
+          "韭菜行为总结": "散户情绪平稳",
+          "市场含义": "中性",
+          "买入概率": 14,
+          "is_long_term": true,
+          "date": "2026-04-03",
+          "decay": 1.0,
+          "weighted_buy_prob": 14
+        },
+        {
+          "news": "黄金暴跌原油大跌：大商所原油暴跌逾7%",
+          "title": "黄金暴跌原油大跌：大商所原油暴跌逾7%",
+          "full_title": "黄金暴跌原油大跌：大商所原油暴跌逾7%",
+          "summary": "4月3日大商所原油市场暴跌，大户商品恐慌性抛售，纽油期货跌破106美元/桶，日内跌超5%",
+          "追高买入概率": 5,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 89,
+          "观望概率": 69,
+          "情绪标签": [
+            "恐慌"
+          ],
+          "韭菜行为总结": "散户恐慌，想割肉",
+          "市场含义": "可能见底",
+          "买入概率": 5,
+          "is_long_term": true,
+          "date": "2026-04-03",
+          "decay": 1.0,
+          "weighted_buy_prob": 5
+        }
+      ],
+      "time_window": "7天累积（长期新闻除外）"
+    }
+  },
+  "white_dragon": {
+    "白龙马决策": {
+      "主力状态": "分化",
+      "阶段": "观察",
+      "行为解释": "各ETF分化明显，需要精选标的",
+      "是否利用散户": false,
+      "散户情绪": {
+        "平均买入概率": 43,
+        "平均恐慌概率": 16
+      },
+      "各ETF分析": [
+        {
+          "code": "512760",
+          "price_trend": {
+            "trend": "up",
+            "strength": 90,
+            "change_pct": 5.0
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": 21.72,
+            "level": "normal"
+          },
+          "fund_flow": {
+            "trend": "side",
+            "net_amt": 0,
+            "days": 0
+          },
+          "主力状态": "观望",
+          "阶段": "整理",
+          "行为解释": "多空平衡，观望为主",
+          "是否利用散户": false,
+          "sangsha_buy_prob": 43,
+          "sangsha_panic_prob": 16
+        },
+        {
+          "code": "512930",
+          "price_trend": {
+            "trend": "up",
+            "strength": 90,
+            "change_pct": 5.43
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": 11.41,
+            "level": "normal"
+          },
+          "fund_flow": {
+            "trend": "side",
+            "net_amt": 0,
+            "days": 0
+          },
+          "主力状态": "观望",
+          "阶段": "整理",
+          "行为解释": "多空平衡，观望为主",
+          "是否利用散户": false,
+          "sangsha_buy_prob": 43,
+          "sangsha_panic_prob": 16
+        },
+        {
+          "code": "518880",
+          "price_trend": {
+            "trend": "side",
+            "strength": 40,
+            "change_pct": 1.33
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": -10.83,
+            "level": "normal"
+          },
+          "fund_flow": {
+            "trend": "side",
+            "net_amt": 0,
+            "days": 0
+          },
+          "主力状态": "观望",
+          "阶段": "整理",
+          "行为解释": "价格横盘震荡，等待方向选择",
+          "是否利用散户": false,
+          "sangsha_buy_prob": 43,
+          "sangsha_panic_prob": 16
+        },
+        {
+          "code": "588890",
+          "price_trend": {
+            "trend": "up",
+            "strength": 90,
+            "change_pct": 6.16
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": 0.4,
+            "level": "normal"
+          },
+          "fund_flow": {
+            "trend": "side",
+            "net_amt": 0,
+            "days": 0
+          },
+          "主力状态": "观望",
+          "阶段": "整理",
+          "行为解释": "多空平衡，观望为主",
+          "是否利用散户": false,
+          "sangsha_buy_prob": 43,
+          "sangsha_panic_prob": 16
+        },
+        {
+          "code": "159382",
+          "price_trend": {
+            "trend": "up",
+            "strength": 90,
+            "change_pct": 6.74
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": 29.76,
+            "level": "normal"
+          },
+          "fund_flow": {
+            "trend": "side",
+            "net_amt": 0,
+            "days": 0
+          },
+          "主力状态": "观望",
+          "阶段": "整理",
+          "行为解释": "多空平衡，观望为主",
+          "是否利用散户": false,
+          "sangsha_buy_prob": 43,
+          "sangsha_panic_prob": 16
+        }
+      ],
+      "综合建议": "📊 观望为主：市场方向不明，建议轻仓观望"
+    }
+  }
+}

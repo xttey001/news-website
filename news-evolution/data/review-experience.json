@@ -1,0 +1,480 @@
+{
+  "version": "2.0",
+  "last_updated": "2026-04-11",
+  "description": "五维进化经验知识库 — 每个模块吃自己领域的经验，各自变强",
+  "wukong_experiences": [
+    {
+      "id": "WX-001",
+      "title": "地缘政治非线性判断规则",
+      "type": "analysis_framework",
+      "active": true,
+      "trigger": {
+        "has_geopolitical_event": true,
+        "keywords": [
+          "战争",
+          "制裁",
+          "冲突",
+          "海峡",
+          "军事",
+          "封锁",
+          "威胁",
+          "通牒"
+        ]
+      },
+      "rules": [
+        "嘴炮升级 ≠ 实际升级",
+        "'双方互相强硬'往往意味着谈判快到了（博弈论承诺不可信困境）",
+        "真正升级信号 = 军事行动 / 经济制裁落地 / 海峡封锁宣布",
+        "地缘事件必须标注窗口期：通常1-3天达峰值"
+      ],
+      "output_adjustment": {
+        "append_tag": "[⚠️ 地缘·非线性格式]",
+        "force_window_period": "1-3天",
+        "force_logic_stop": true,
+        "logic_stop_conditions": [
+          "停火协议达成",
+          "和平声明发布",
+          "海峡开放宣布"
+        ],
+        "reduce_win_rate": 10
+      },
+      "verified_by": "4月5日失误→4月6日停火反转",
+      "hit_count": 0,
+      "correct_count": 0
+    },
+    {
+      "id": "WX-002",
+      "title": "Trump喊话强度量化表",
+      "type": "signal_detection",
+      "active": true,
+      "trigger": {
+        "contains_trump_news": true,
+        "keywords": [
+          "Trump",
+          "特朗普",
+          "关税",
+          "威胁",
+          "制裁",
+          "禁令"
+        ]
+      },
+      "rules": [
+        "统计近3天内Trump相关新闻数量作为强度值",
+        "强度=1: 可忽略，按原趋势走（反转概率~30%）",
+        "强度≥2: 警惕，开始减仓不追涨（反转概率~50%）",
+        "强度≥3或实际行政行动: 反转信号明确（反转概率≥70%）",
+        "在分析结论中标注Trump强度等级"
+      ],
+      "output_adjustment": {
+        "append_trump_intensity": true,
+        "intensity_levels": {
+          "1": {
+            "label": "可忽略",
+            "action": "按原趋势",
+            "reversal_prob": 30
+          },
+          "2": {
+            "label": "警惕",
+            "action": "减仓不追涨",
+            "reversal_prob": 50
+          },
+          "3": {
+            "label": "反转信号",
+            "action": "逆向操作",
+            "reversal_prob": 70
+          }
+        }
+      },
+      "verified_by": "4月2日 Trump连续威胁伊朗 → 黄金4800见顶回落至4656",
+      "hit_count": 0,
+      "correct_count": 0
+    },
+    {
+      "id": "WX-003",
+      "title": "财报季业绩驱动力分级",
+      "type": "event_classification",
+      "active": true,
+      "trigger": {
+        "is_earnings_season": true,
+        "has_earnings_news": true,
+        "keywords": [
+          "业绩",
+          "超预期",
+          "净利润",
+          "营收",
+          "财报",
+          "季报",
+          "年报"
+        ]
+      },
+      "rules": [
+        "业绩超预期 + 行业龙头 + 季报/年报窗口期 = 高胜率机会",
+        "普通利好 vs 主线级机会：看是否有行业周期拐点确认",
+        "财报季重点时段：3-4月（年报季）、8-9月（三季报）"
+      ],
+      "output_adjustment": {
+        "classify_level": true,
+        "levels": {
+          "主线级": {
+            "criteria": "行业龙头+业绩超预期+周期拐点确认",
+            "boost_win_rate": 10
+          },
+          "普通利好": {
+            "criteria": "单一公司业绩好但无行业共振",
+            "boost_win_rate": 0
+          }
+        }
+      },
+      "verified_by": "TCL科技净利润+150%面板周期拐点 → 板块联动持续至4月",
+      "hit_count": 0,
+      "correct_count": 0
+    }
+  ],
+  "sangsha_experiences": [
+    {
+      "id": "SS-001",
+      "title": "狂热提前预警：FOMO加速度检测",
+      "type": "early_warning",
+      "active": true,
+      "trigger": {
+        "always_active": true,
+        "condition": "buy_prob_rising_fast"
+      },
+      "rules": [
+        "不只看绝对值，要看变化速度",
+        "买入概率2天内从50%飙升到70%+ → 提前预警'即将狂热'",
+        "买入概率连续3天上升 → 标记'情绪加速升温'",
+        "提前预警级别：'升温中' → '接近狂热' → '已狂热'(三级)",
+        "在'升温中'阶段就应该开始提示风险"
+      ],
+      "output_adjustment": {
+        "add_early_warning": true,
+        "warning_levels": [
+          "升温中",
+          "接近狂热",
+          "已狂热"
+        ],
+        "downgrade_sentiment_on_warning": true
+      },
+      "verified_by": "多次牛市顶部散户情绪数据回测",
+      "hit_count": 0,
+      "correct_count": 0
+    },
+    {
+      "id": "SS-002",
+      "title": "恐慌逆向机会强化标记",
+      "type": "opportunity_detection",
+      "active": true,
+      "trigger": {
+        "panic_prob_gt": 55
+      },
+      "rules": [
+        "恐慌概率>55%时，不仅标记为'恐慌'，还要额外标记'📌逆向机会'",
+        "逆向机会质量评估：",
+        "- 恐慌 + 市场已跌>5% = ★★★★☆ 高质量逆向点",
+        "- 恐慌 + 刚有利空消息落地 = ★★★★★ 极佳逆向点（利空出尽）",
+        "- 恐慌 + 还有未落地利空 = ★★☆☆☆ 风险仍大",
+        "在输出中增加'逆向布局建议'字段"
+      ],
+      "output_adjustment": {
+        "add_reverse_opportunity": true,
+        "quality_stars": true,
+        "add_reverse_layout_advice": true
+      },
+      "verified_by": "历次恐慌后的反弹统计",
+      "hit_count": 0,
+      "correct_count": 0
+    },
+    {
+      "id": "SS-003",
+      "title": "情绪拐点预判（多因子）",
+      "type": "turning_point",
+      "active": true,
+      "trigger": {
+        "always_active": true
+      },
+      "rules": [
+        "拐点预判因子（综合多个信号）：",
+        "1. 情绪极值偏离：买入概率>80%或<20%（均值回归压力大）",
+        "2. 动量衰竭：情绪变化速度开始放缓（如从+10%/天降到+3%/天）",
+        "3. 外部催化剂：重大事件即将落地（财报/会议/数据公布）",
+        "4. 时间节点：周末/节假日前一天（情绪容易极端化后反转）",
+        "当≥2个因子同时出现 → 预判'拐点可能在1-2天内出现'"
+      ],
+      "output_adjustment": {
+        "add_turning_point_warning": true,
+        "factor_count_threshold": 2
+      },
+      "verified_by": "历史情绪拐点数据回测",
+      "hit_count": 0,
+      "correct_count": 0
+    }
+  ],
+  "white_dragon_experiences": [
+    {
+      "id": "WD-001",
+      "title": "Trump喊话-主力行为关联模式",
+      "type": "pattern_recognition",
+      "active": true,
+      "trigger": {
+        "trump_intensity_gte": 2,
+        "keywords": [
+          "Trump",
+          "特朗普",
+          "关税",
+          "威胁",
+          "制裁"
+        ]
+      },
+      "rules": [
+        "Trump喊多某资产 + 该资产价格在高位 + 主力状态='拉升' → 高概率是'拉升出货'",
+        "Trump喊空某资产 + 该资产价格在低位 + 主力状态='洗盘' → 高概率是'打压吸筹'",
+        "关联模式表：",
+        "| Trump动作 | 价格位置 | 主力真实意图 | 可信度 |",
+        "|----------|---------|------------|-------|",
+        "| 连续喊多  | 高位    | 出货派发   | 85%   |",
+        "| 连续喊多  | 低位    | 试探性拉升 | 60%   |",
+        "| 连续喊空  | 高位    | 打压出货   | 70%   |",
+        "| 连续喊空  | 低位    | 打压吸筹   | 90%   |"
+      ],
+      "output_adjustment": {
+        "trump_mainforce_pattern": true,
+        "override_state_on_match": true,
+        "boost_confidence": 0.13,
+        "pattern_table": {
+          "bull_high": {
+            "state_override": "出货(Trump关联)",
+            "confidence": 0.85
+          },
+          "bull_low": {
+            "state_override": "试探性拉升(Trump关联)",
+            "confidence": 0.6
+          },
+          "bear_high": {
+            "state_override": "打压出货(Trump关联)",
+            "confidence": 0.7
+          },
+          "bear_low": {
+            "state_override": "打压吸筹(Trump关联)",
+            "confidence": 0.9
+          }
+        }
+      },
+      "verified_by": "4月2日 Trump威胁伊朗 + 黄金高位4800 → 主力出货回落至4656",
+      "hit_count": 0,
+      "correct_count": 0
+    },
+    {
+      "id": "WD-002",
+      "title": "出货 vs 洗盘四维度精分辨",
+      "type": "state_distinction",
+      "active": true,
+      "trigger": {
+        "possible_state": [
+          "出货",
+          "洗盘"
+        ]
+      },
+      "rules": [
+        "当初步判断为'出货'或'洗盘'时，用四维度二次验证：",
+        "① 量能特征：",
+        "- 出货：放量（成交量>5日均量1.5倍），且放量后缩量不明显",
+        "- 洗盘：缩量（成交量<5日均量0.7倍），或放量后快速大幅缩量",
+        "② K线形态：",
+        "- 出货：长上影线频繁出现，收盘价逐步走低",
+        "- 洗盘：下影线长但收盘价稳定，不破关键支撑位",
+        "③ 时间周期：",
+        "- 出货：持续时间较长（1-2周以上），分批派发",
+        "- 洗盘：短促剧烈（2-5天），快速完成",
+        "④ 市场情绪配合（调用沙僧数据）：",
+        "- 出货时：散户情绪通常偏乐观（有人接盘）",
+        "- 洗盘时：散户情绪通常恐慌（交出筹码）"
+      ],
+      "output_adjustment": {
+        "add_four_dimension_check": true,
+        "confidence_threshold": 0.7,
+        "below_threshold_label": "待观察"
+      },
+      "verified_by": "历史K线数据回测",
+      "hit_count": 0,
+      "correct_count": 0
+    },
+    {
+      "id": "WD-003",
+      "title": "量价背离三级分类",
+      "type": "divergence_grading",
+      "active": true,
+      "trigger": {
+        "price_volume_divergence": true
+      },
+      "rules": [
+        "【一级·温和背离】（可忽略）",
+        "- 价格涨+量微缩（量仍在均量线以上）",
+        "- 操作：继续持有，密切观察",
+        "",
+        "【二级·中度背离】（需警惕）",
+        "- 价格涨+量明显萎缩（量跌至均量线以下）",
+        "- 或：连涨3天+每天递减的量",
+        "- 操作：不减仓但不加仓，设好止盈",
+        "",
+        "【三级·极端背离】（强烈信号）",
+        "- 价格大涨+量骤缩（量<均量50%）",
+        "- 或：高位放巨量+长上影线+收跌",
+        "- 或：连续背离超过5个交易日",
+        "- 操作：减仓或清仓"
+      ],
+      "output_adjustment": {
+        "add_divergence_grade": true,
+        "grades": {
+          "1_mild": {
+            "label": "温和背离",
+            "action": "继续持有",
+            "color": "green"
+          },
+          "2_moderate": {
+            "label": "中度背离",
+            "action": "不加仓设止盈",
+            "color": "yellow"
+          },
+          "3_extreme": {
+            "label": "极端背离",
+            "action": "减仓清仓",
+            "color": "red"
+          }
+        }
+      },
+      "verified_by": "历史量价数据回测",
+      "hit_count": 0,
+      "correct_count": 0
+    }
+  ],
+  "bajie_experiences": [
+    {
+      "id": "BJ-001",
+      "title": "历史同类场景先验概率库",
+      "type": "prior_calibration",
+      "active": true,
+      "trigger": {
+        "always_active": true
+      },
+      "rules": [
+        "不同类型事件的基准先验（来自历史统计）：",
+        "| 地缘突发事件做多     | 基准先验55% | 方向对但时机难把握 |",
+        "| 业绩超预期做多       | 基准先验72% | 财报季最高胜率场景 |",
+        "| Trump喊话反向操作   | 基准先验68% | 逆向思维胜率较高   |",
+        "| 政策利好做多         | 基准先验62% | 取决于政策力度     |",
+        "| 行业龙头技术突破     | 基准先验65% | 需看产业化进度     |",
+        "| 散户恐慌逆向做多     | 基准先验61% | 逆向但需选对标的   |",
+        "| 节假日前夕持仓       | 基准先验45% | 信息不对称风险大   |"
+      ],
+      "output_adjustment": {
+        "prior_table": {
+          "geopolitical_bullish": 55,
+          "earnings_beat": 72,
+          "trump_reverse": 68,
+          "policy_bullish": 62,
+          "tech_breakthrough": 65,
+          "retail_panic_reverse": 61,
+          "pre_holiday_hold": 45,
+          "default": 50
+        }
+      },
+      "verified_by": "17天实盘数据统计",
+      "hit_count": 0,
+      "correct_count": 0
+    },
+    {
+      "id": "BJ-002",
+      "title": "信号权重动态校准",
+      "type": "likelihood_calibration",
+      "active": true,
+      "trigger": {
+        "always_active": true
+      },
+      "rules": [
+        "各信号源的近期准确率决定其权重：",
+        "| 悟空深度分析  | 基础1.0 | 准确率>80%时加权1.2 |",
+        "| 沙僧情绪     | 基础0.8 | 狂热/恐慌时加权1.1 |",
+        "| 白龙马主力   | 基础0.9 | 可信度>0.85时加权1.2 |",
+        "| 外盘先行指标 | 基础1.1 | 节假日期间加权1.3 |",
+        "特殊调整：",
+        "- 沙僧=狂热 且 白龙马≠出货 → 听白龙马的",
+        "- 沙僧=恐慌 且 白龙马=吸筹 → 强烈逆向信号（加权1.4）",
+        "- 悟空与白龙马矛盾 → 降低整体置信度20%"
+      ],
+      "output_adjustment": {
+        "base_weights": {
+          "wukong": 1.0,
+          "sangsha": 0.8,
+          "white_dragon": 0.9,
+          "external_market": 1.1
+        },
+        "special_rules": {
+          "sangsha_hot_wd_not_selling": "trust_white_dragon",
+          "sangsha_panic_wd_accumulating": "strong_reverse_signal_weight_1.4",
+          "wukong_vs_wd_conflict": "reduce_confidence_20pct"
+        }
+      },
+      "verified_by": "信号一致性统计数据",
+      "hit_count": 0,
+      "correct_count": 0
+    },
+    {
+      "id": "BJ-003",
+      "title": "地缘类先验高频更新规则",
+      "type": "special_prior_rule",
+      "active": true,
+      "trigger": {
+        "prior_type": "geopolitical"
+      },
+      "rules": [
+        "地缘类先验概率极不稳定，需要特殊处理：",
+        "1. 先验有效期缩短至12小时（普通事件是72小时）",
+        "2. 每6小时强制重评一次先验概率",
+        "3. 关键变量列表（任一变化则立即触发重评）：",
+        "   - 双方是否有新的军事行动",
+        "   - 是否有第三方调停介入",
+        "   - 是否有官方和平声明",
+        "   - 相关大宗商品价格是否突破关键位",
+        "4. 地缘类的逻辑止损条件自动激活（不可关闭）"
+      ],
+      "output_adjustment": {
+        "prior_validity_hours": 12,
+        "re_evaluation_interval_hours": 6,
+        "auto_logic_stop": true,
+        "key_variables": [
+          "military_action",
+          "third_party_mediation",
+          "peace_statement",
+          "commodity_breakout"
+        ]
+      },
+      "verified_by": "4月5日失误根因：48小时内先验从72%暴跌到无效",
+      "hit_count": 0,
+      "correct_count": 0
+    }
+  ],
+  "failure_lessons": [
+    {
+      "id": "FL-001",
+      "title": "4月5日线性外推失误",
+      "date": "2026-04-05",
+      "description": "预判伊朗拒绝Trump通牒→局势持续升级→油气/黄金继续强势。实际：美伊48小时内达成停火→避险逻辑秒反转",
+      "root_causes": [
+        "线性外推谬误：伊朗强硬≠局势必然升级",
+        "信息滞后：清明休市无法更新先验概率",
+        "止损单一：只有价格止损-7%没有逻辑止损"
+      ],
+      "improvements": [
+        "嘴炮升级≠实际升级，真正的升级信号是军事行动",
+        "设置逻辑止损条件：停火协议/和平声明/海峡开放",
+        "节假日前降低地缘风险敞口"
+      ],
+      "attribution": {
+        "primary_module": "wukong",
+        "experience_created": "WX-001"
+      }
+    }
+  ],
+  "decision_history": []
+}

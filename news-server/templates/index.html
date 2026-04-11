@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>财经新闻速览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent-red: #e74c3c;
+            --accent-gold: #f39c12;
+            --accent-green: #27ae60;
+            --text-primary: #ecf0f1;
+            --text-secondary: #bdc3c7;
+            --border: #2c3e50;
+            --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 日期选择器 */
+        .date-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .date-selector label {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .date-selector input[type="date"] {
+            padding: 10px 15px;
+            background: rgba(44, 62, 80, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .date-selector input[type="date"]:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: rgba(44, 62, 80, 0.8);
+        }
+
+        .date-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .date-btn {
+            padding: 8px 16px;
+            background: rgba(52, 152, 219, 0.2);
+            border: 1px solid rgba(52, 152, 219, 0.5);
+            border-radius: 6px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .date-btn:hover {
+            background: rgba(52, 152, 219, 0.4);
+            border-color: var(--accent-gold);
+        }
+
+        .date-btn.active {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--primary);
+        }
+
+        /* 时间线容器 */
+        .timeline-container {
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 时间线 */
+        .timeline {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            padding: 20px 0;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            z-index: 0;
+        }
+
+        .timeline-item {
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            width: 60px;
+            height: 60px;
+            background: rgba(44, 62, 80, 0.5);
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            text-align: center;
+            padding: 5px;
+            color: var(--text-secondary);
+            line-height: 1.2;
+        }
+
+        .timeline-dot:hover {
+            background: rgba(52, 152, 219, 0.3);
+            border-color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        .timeline-dot.active {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--primary);
+            font-weight: 700;
+            box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
+        }
+
+        .timeline-dot.has-news {
+            border-color: var(--accent-red);
+        }
+
+        .timeline-dot.has-news.active {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+        }
+
+        .timeline-label {
+            font-size: 0.75em;
+            margin-top: 8px;
+            color: var(--text-secondary);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .timeline-count {
+            font-size: 0.65em;
+            background: rgba(231, 76, 60, 0.3);
+            color: var(--accent-red);
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* 头部 */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: slideDown 0.8s ease-out 0.2s both;
+        }
+
+        .header-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-date {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+
+        /* 市场基调 */
+        .market-tone {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--accent-red);
+            padding: 25px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            animation: slideUp 0.8s ease-out 0.3s both;
+        }
+
+        .market-tone-label {
+            font-size: 0.9em;
+            color: var(--accent-red);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .market-tone-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        /* 分类 */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title.s-level {
+            color: var(--accent-red);
+        }
+
+        .section-title.a-level {
+            color: var(--accent-gold);
+        }
+
+        .section-title.douyin-level {
+            color: #3498db;
+        }
+
+        /* 新闻项 */
+        .news-item {
+            background: rgba(44, 62, 80, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .news-item:hover {
+            background: rgba(44, 62, 80, 0.5);
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        .news-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .news-title-emoji {
+            font-size: 1.3em;
+        }
+
+        .news-field {
+            margin-bottom: 18px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .news-field-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            min-width: 100px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .news-field-content {
+            flex: 1;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .etf-item {
+            display: inline-block;
+            background: rgba(52, 152, 219, 0.15);
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-right: 10px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+
+        .etf-item.bullish {
+            background: rgba(231, 76, 60, 0.15);
+            border-color: rgba(231, 76, 60, 0.3);
+        }
+
+        .etf-item.bearish {
+            background: rgba(39, 174, 96, 0.15);
+            border-color: rgba(39, 174, 96, 0.3);
+        }
+
+        .stock-item {
+            display: inline-block;
+            background: rgba(155, 89, 182, 0.15);
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-right: 10px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            border: 1px solid rgba(155, 89, 182, 0.3);
+        }
+
+        .signal-box {
+            background: rgba(243, 156, 18, 0.1);
+            border-left: 3px solid var(--accent-gold);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            color: var(--text-secondary);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        /* 动画 */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .header-title {
+                font-size: 1.8em;
+            }
+
+            .date-selector {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .news-item {
+                padding: 20px;
+            }
+
+            .news-title {
+                font-size: 1.2em;
+            }
+
+            .news-field {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .news-field-label {
+                min-width: auto;
+            }
+        }
+
+        /* 加载状态 */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(243, 156, 18, 0.2);
+            border-top-color: var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 日期选择器 -->
+        <div class="date-selector">
+            <label for="dateInput">📅 选择日期：</label>
+            <input type="date" id="dateInput">
+            <div class="date-buttons">
+                <button class="date-btn" onclick="loadToday()">今天</button>
+                <button class="date-btn" onclick="loadYesterday()">昨天</button>
+                <button class="date-btn" onclick="loadLastWeek()">上周</button>
+            </div>
+        </div>
+
+        <!-- 新闻时间线 -->
+        <div class="timeline-container">
+            <div class="timeline-title">📰 新闻时间线</div>
+            <div class="timeline" id="timeline"></div>
+        </div>
+
+        <!-- 头部 -->
+        <div class="header">
+            <div class="header-title">📊 今日新闻速览</div>
+            <div class="header-date" id="displayDate"></div>
+        </div>
+
+        <!-- 内容区域 -->
+        <div id="newsContent"></div>
+    </div>
+
+    <script>
+        // 全局变量
+        let allDates = [];
+        let newsCache = {};
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('dateInput');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.value = today;
+            dateInput.addEventListener('change', function() {
+                loadNews(this.value);
+            });
+            
+            loadNews(today);
+            loadAvailableDates();
+        });
+
+        // 加载指定日期的新闻
+        async function loadNews(dateStr) {
+            const newsContent = document.getElementById('newsContent');
+            newsContent.innerHTML = '<div class="loading"><div class="spinner"></div><p>加载中...</p></div>';
+
+            try {
+                const response = await fetch(`/api/news/${dateStr}`);
+                const newsData = await response.json();
+                
+                // 缓存数据
+                newsCache[dateStr] = newsData;
+                
+                // 更新日期显示
+                document.getElementById('displayDate').textContent = formatDate(dateStr);
+                document.getElementById('dateInput').value = dateStr;
+                
+                // 更新时间线
+                updateTimeline(dateStr);
+                
+                // 渲染新闻
+                renderNews(newsData);
+            } catch (error) {
+                newsContent.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><p>加载失败，请重试</p></div>';
+                console.error('Error loading news:', error);
+            }
+        }
+
+        // 加载可用日期
+        async function loadAvailableDates() {
+            try {
+                const response = await fetch('/api/dates');
+                const data = await response.json();
+                allDates = data.dates;
+                updateTimeline(document.getElementById('dateInput').value);
+            } catch (error) {
+                console.error('Error loading dates:', error);
+            }
+        }
+
+        // 更新时间线
+        function updateTimeline(activeDate) {
+            const timeline = document.getElementById('timeline');
+            timeline.innerHTML = '';
+            
+            // 获取最近 30 天的日期
+            const today = new Date();
+            const dates = [];
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                dates.push(date.toISOString().split('T')[0]);
+            }
+            
+            dates.forEach(date => {
+                const hasNews = allDates.includes(date);
+                const isActive = date === activeDate;
+                
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                
+                const dot = document.createElement('div');
+                dot.className = `timeline-dot ${hasNews ? 'has-news' : ''} ${isActive ? 'active' : ''}`;
+                dot.onclick = () => loadNews(date);
+                
+                const dateObj = new Date(date + 'T00:00:00');
+                const day = dateObj.getDate();
+                const month = dateObj.getMonth() + 1;
+                
+                let newsCount = 0;
+                if (newsCache[date]) {
+                    const data = newsCache[date];
+                    newsCount = (data.s_level?.length || 0) + (data.a_level?.length || 0) + (data.douyin?.length || 0);
+                }
+                
+                dot.innerHTML = `
+                    <div>${month}/${day}</div>
+                    ${newsCount > 0 ? `<div class="timeline-count">${newsCount}</div>` : ''}
+                `;
+                
+                item.appendChild(dot);
+                timeline.appendChild(item);
+            });
+            
+            // 滚动到活跃项
+            setTimeout(() => {
+                const activeItem = timeline.querySelector('.timeline-dot.active');
+                if (activeItem) {
+                    activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            }, 100);
+        }
+
+        // 渲染新闻
+        function renderNews(newsData) {
+            const newsContent = document.getElementById('newsContent');
+            let html = '';
+
+            // 市场基调
+            if (newsData.market_tone) {
+                html += `
+                    <div class="market-tone">
+                        <div class="market-tone-label">⚠️ 今日市场总基调</div>
+                        <div class="market-tone-content">${newsData.market_tone}</div>
+                    </div>
+                `;
+            }
+
+            // S级新闻
+            if (newsData.s_level && newsData.s_level.length > 0) {
+                html += renderSection(newsData.s_level, 'S级 — 主线级', 's-level', '🔴');
+            }
+
+            // A级新闻
+            if (newsData.a_level && newsData.a_level.length > 0) {
+                html += renderSection(newsData.a_level, 'A级 — 轮动级', 'a-level', '🟡');
+            }
+
+            // 抖音相关
+            if (newsData.douyin && newsData.douyin.length > 0) {
+                html += renderSection(newsData.douyin, '抖音相关', 'douyin-level', '📱');
+            }
+
+            if (!html) {
+                html = '<div class="empty-state"><div class="empty-state-icon">📭</div><p>暂无新闻数据</p></div>';
+            }
+
+            newsContent.innerHTML = html;
+        }
+
+        // 渲染分类
+        function renderSection(items, title, cssClass, emoji) {
+            let html = `
+                <div class="section">
+                    <div class="section-title ${cssClass}">
+                        <span>${emoji}</span>
+                        <span>${title}</span>
+                    </div>
+            `;
+
+            items.forEach((item, index) => {
+                html += renderNewsItem(item, index);
+            });
+
+            html += '</div>';
+            return html;
+        }
+
+        // 渲染单条新闻
+        function renderNewsItem(item, index) {
+            const emoji = item.emoji || '📰';
+            const title = item.title || '未命名新闻';
+            const summary = item.summary || '';
+            const duration = item.duration || '';
+            const signal = item.signal || '';
+            
+            let html = `
+                <div class="news-item" style="animation-delay: ${0.3 + index * 0.1}s">
+                    <div class="news-title">
+                        <span class="news-title-emoji">${emoji}</span>
+                        <span>${title}</span>
+                    </div>
+            `;
+
+            if (summary) {
+                html += `
+                    <div class="news-field">
+                        <div class="news-field-label">📌 要点</div>
+                        <div class="news-field-content">${summary}</div>
+                    </div>
+                `;
+            }
+
+            if (duration) {
+                html += `
+                    <div class="news-field">
+                        <div class="news-field-label">⏱️ 影响时长</div>
+                        <div class="news-field-content">${duration}</div>
+                    </div>
+                `;
+            }
+
+            if (item.etfs && item.etfs.length > 0) {
+                html += '<div class="news-field"><div class="news-field-label">📈 映射ETF</div><div class="news-field-content">';
+                item.etfs.forEach(etf => {
+                    const etfClass = etf.sentiment === '利好' ? 'bullish' : 'bearish';
+                    html += `<div class="etf-item ${etfClass}">${etf.name} · ${etf.sentiment}</div>`;
+                });
+                html += '</div></div>';
+            }
+
+            if (item.stocks && item.stocks.length > 0) {
+                html += '<div class="news-field"><div class="news-field-label">✨ 映射个股</div><div class="news-field-content">';
+                item.stocks.forEach(stock => {
+                    html += `<div class="stock-item">${stock}</div>`;
+                });
+                html += '</div></div>';
+            }
+
+            if (signal) {
+                html += `
+                    <div class="signal-box">
+                        💡 <strong>资金信号：</strong>${signal}
+                    </div>
+                `;
+            }
+
+            html += '</div>';
+            return html;
+        }
+
+        // 快捷按钮
+        function loadToday() {
+            const today = new Date().toISOString().split('T')[0];
+            loadNews(today);
+        }
+
+        function loadYesterday() {
+            const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+            loadNews(yesterday);
+        }
+
+        function loadLastWeek() {
+            const lastWeek = new Date(Date.now() - 604800000).toISOString().split('T')[0];
+            loadNews(lastWeek);
+        }
+
+        // 格式化日期
+        function formatDate(dateStr) {
+            const date = new Date(dateStr + 'T00:00:00');
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' };
+            return date.toLocaleDateString('zh-CN', options);
+        }
+    </script>
+</body>
+</html>

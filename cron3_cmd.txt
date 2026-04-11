@@ -1,0 +1,1 @@
+cron action=add job={"name":"财经新闻-晚报","sessionTarget":"isolated","schedule":{"kind":"cron","expr":"0 22 * * 1-5","tz":"Asia/Shanghai"},"payload":{"kind":"agentTurn","message":"执行财经新闻推送任务。不要回复HEARTBEAT_OK，不要解释你是谁。"},"delivery":{"mode":"announce","channel":"weixin","to":"o9cq807dwW0H1oaoEkmj7r8hfVeU@im.wechat"}}

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>思想与多元宇宙</title>
+<style>
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+body {
+ background: #121212;
+ color: #fff;
+ min-height: 100vh;
+}
+.tabs {
+ display: flex;
+ gap: 16px;
+ padding: 12px 20px;
+ background: #1e1e1e;
+ overflow-x: auto;
+ border-bottom: 1px solid #333;
+}
+.tab {
+ color: #aaa;
+ font-size: 14px;
+ white-space: nowrap;
+ cursor: pointer;
+ padding: 4px 0;
+ border-bottom: 2px solid transparent;
+}
+.tab.active {
+ color: #fff;
+ border-bottom: 2px solid #e53935;
+}
+.slide-container {
+ padding: 24px 20px;
+ max-width: 600px;
+ margin: 0 auto;
+}
+.slide {
+ display: none;
+}
+.slide.active {
+ display: block;
+}
+.slide-header {
+ margin-bottom: 20px;
+}
+.slide-header .small {
+ color: #e53935;
+ font-size: 12px;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ margin-bottom: 4px;
+}
+.slide-header h1 {
+ font-size: 24px;
+ font-weight: 700;
+}
+.card {
+ background: #1e1e1e;
+ border-radius: 8px;
+ padding: 16px;
+ margin-bottom: 12px;
+ border-left: 4px solid;
+ opacity: 0;
+ transform: translateX(-20px);
+ transition: all 0.4s ease;
+}
+.card.visible {
+ opacity: 1;
+ transform: translateX(0);
+}
+.card.c-red { border-left-color: #e53935; }
+.card.c-green { border-left-color: #4CAF50; }
+.card.c-yellow { border-left-color: #FFC107; }
+.card.c-blue { border-left-color: #2196F3; }
+.card.c-purple { border-left-color: #9C27B0; }
+.card h3 {
+ font-size: 15px;
+ font-weight: 600;
+ margin-bottom: 4px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+}
+.card .badge {
+ width: 20px;
+ height: 20px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 12px;
+ font-weight: 700;
+ background: #e53935;
+ color: #fff;
+}
+.card p {
+ font-size: 12px;
+ color: #aaa;
+}
+.hint {
+ background: #fff;
+ color: #121212;
+ padding: 10px 20px;
+ border-radius: 20px;
+ font-size: 16px;
+ font-weight: 500;
+ text-align: center;
+ margin-top: 24px;
+ opacity: 0;
+ transform: scale(0.9);
+ transition: all 0.3s ease;
+}
+.hint.active {
+ opacity: 1;
+ transform: scale(1);
+}
+.progress {
+ position: fixed;
+ bottom: 60px;
+ left: 0;
+ right: 0;
+ height: 2px;
+ background: #333;
+}
+.progress-bar {
+ height: 100%;
+ background: #e53935;
+ transition: width 0.3s ease;
+}
+.controls {
+ position: fixed;
+ bottom: 20px;
+ left: 50%;
+ transform: translateX(-50%);
+ display: flex;
+ align-items: center;
+ gap: 20px;
+ background: #1e1e1e;
+ padding: 8px 16px;
+ border-radius: 24px;
+}
+.controls button {
+ background: none;
+ border: none;
+ color: #fff;
+ font-size: 18px;
+ cursor: pointer;
+}
+.controls button:disabled {
+ opacity: 0.3;
+}
+.controls .page {
+ font-size: 14px;
+ color: #aaa;
+}
+</style>
+</head>
+<body>
+
+<div class="tabs">
+ <div class="tab active">思想超越时间</div>
+ <div class="tab">多元宇宙</div>
+ <div class="tab">时间的公平</div>
+ <div class="tab">命运上下限</div>
+</div>
+
+<div class="slide-container">
+ <div class="slide active" id="s1">
+  <div class="slide-header">
+   <div class="small">BEYOND TIME</div>
+   <h1>思想是唯一<br>脱离时间的存在</h1>
+  </div>
+  <div class="card c-red">
+   <h3>🧠 穿越过去</h3>
+   <p>思想可以回溯任何历史瞬间，重温、反思、重构记忆中的每一个细节</p>
+  </div>
+  <div class="card c-blue">
+   <h3>🚀 抵达未来</h3>
+   <p>思想可以提前抵达尚未发生的时刻，想象、规划、预见无数种可能</p>
+  </div>
+  <div class="card c-purple">
+   <h3>💫 唯一的超越者</h3>
+   <p>身体被困在当下，但思想是唯一能同时存在于过去、现在与未来的东西</p>
+  </div>
+  <div class="hint">思想不受时间束缚</div>
+ </div>
+
+ <div class="slide" id="s2">
+  <div class="slide-header">
+   <div class="small">PARALLEL UNIVERSES</div>
+   <h1>每个想法<br>通向不同的宇宙</h1>
+  </div>
+  <div class="card c-yellow">
+   <h3>🔀 选择即分叉</h3>
+   <p>人生中的每个节点，不同的想法就像不同的岔路，将你送往不同的宇宙</p>
+  </div>
+  <div class="card c-red">
+   <h3>👁️ 弱版本的自己</h3>
+   <p>在某个宇宙里，可能有一个犹豫不决、停滞不前的版本正在重复同样的错误</p>
+  </div>
+  <div class="card c-green">
+   <h3>⚡ 强大版本的自己</h3>
+   <p>在另一个宇宙里，可能有一个坚定果决、持续进化的版本正在接近最好的自己</p>
+  </div>
+  <div class="hint">你此刻的想法，正在选择你要去的宇宙</div>
+ </div>
+
+ <div class="slide" id="s3">
+  <div class="slide-header">
+   <div class="small">THE GREAT EQUALIZER</div>
+   <h1>最公平的是时间</h1>
+  </div>
+  <div class="card c-blue">
+   <h3>⏳ 每天 24 小时</h3>
+   <p>首富的时钟不会比别人多走一小时，时间对所有人都一视同仁</p>
+  </div>
+  <div class="card c-green">
+   <h3>🎯 公平的起点</h3>
+   <p>不论出身、财富、地位，每个人拥有的时间配额完全相同</p>
+  </div>
+  <div class="card c-yellow">
+   <h3>🔐 不可存储</h3>
+   <p>时间无法储蓄、无法借还、无法倒流，过去了就永远过去了</p>
+  </div>
+  <div class="hint">时间公平，选择权在你</div>
+ </div>
+
+ <div class="slide" id="s4">
+  <div class="slide-header">
+   <div class="small">DESTINY</div>
+   <h1>利用时间的方式<br>决定你的宇宙</h1>
+  </div>
+  <div class="card c-purple">
+   <h3>📐 时间的用法 = 选择的宇宙</h3>
+   <p>你怎么度过每一小时，就是在投票选择抵达哪个版本的世界</p>
+  </div>
+  <div class="card c-red">
+   <h3>📈 命的上限</h3>
+   <p>持续把时间投入到成长、思考和行动中，你就在不断攀升命运的顶点</p>
+  </div>
+  <div class="card c-blue">
+   <h3>📉 命的下限</h3>
+   <p>挥霍时间、放弃选择，就是在亲手降低自己可能抵达的最好宇宙</p>
+  </div>
+  <div class="hint">思想选方向，时间铺路，你决定终点</div>
+ </div>
+</div>
+
+<div class="progress">
+ <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="controls">
+ <button id="prev" disabled>↑</button>
+ <span class="page" id="page">01 / 04</span>
+ <button id="next">↓</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const pageEl = document.getElementById('page');
+const progressBar = document.getElementById('progressBar');
+let currentIndex = 0;
+let startY = 0;
+
+function showSlide(index) {
+ slides.forEach(s => {
+  s.classList.remove('active');
+  s.querySelectorAll('.card').forEach(c => c.classList.remove('visible'));
+  const hint = s.querySelector('.hint');
+  if (hint) hint.classList.remove('active');
+ });
+ slides[index].classList.add('active');
+
+ const cards = slides[index].querySelectorAll('.card');
+ cards.forEach((card, i) => {
+  setTimeout(() => card.classList.add('visible'), i * 150);
+ });
+
+ const hint = slides[index].querySelector('.hint');
+ if (hint) {
+  setTimeout(() => hint.classList.add('active'), 600);
+ }
+
+ pageEl.textContent = `${String(index+1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+ progressBar.style.width = `${((index+1)/slides.length)*100}%`;
+
+ prevBtn.disabled = index === 0;
+ nextBtn.disabled = index === slides.length - 1;
+}
+
+nextBtn.addEventListener('click', () => {
+ if (currentIndex < slides.length - 1) {
+  currentIndex++;
+  showSlide(currentIndex);
+ }
+});
+
+prevBtn.addEventListener('click', () => {
+ if (currentIndex > 0) {
+  currentIndex--;
+  showSlide(currentIndex);
+ }
+});
+
+document.addEventListener('touchstart', e => {
+ startY = e.touches[0].clientY;
+});
+document.addEventListener('touchend', e => {
+ const diff = startY - e.changedTouches[0].clientY;
+ if (diff > 50) {
+  if (currentIndex < slides.length - 1) { currentIndex++; showSlide(currentIndex); }
+ } else if (diff < -50) {
+  if (currentIndex > 0) { currentIndex--; showSlide(currentIndex); }
+ }
+});
+
+let wheelLock = false;
+document.addEventListener('wheel', e => {
+ if (wheelLock) return;
+ wheelLock = true;
+ setTimeout(() => wheelLock = false, 400);
+ if (e.deltaY > 30) {
+  if (currentIndex < slides.length - 1) { currentIndex++; showSlide(currentIndex); }
+ } else if (e.deltaY < -30) {
+  if (currentIndex > 0) { currentIndex--; showSlide(currentIndex); }
+ }
+}, { passive: true });
+
+document.addEventListener('keydown', e => {
+ if (e.key === 'ArrowDown') {
+  if (currentIndex < slides.length - 1) { currentIndex++; showSlide(currentIndex); }
+ } else if (e.key === 'ArrowUp') {
+  if (currentIndex > 0) { currentIndex--; showSlide(currentIndex); }
+ }
+});
+
+showSlide(0);
+</script>
+</body>
+</html>

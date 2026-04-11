@@ -1,0 +1,47 @@
+{
+  "pending": [
+    {
+      "decision_id": "DEC-20260411-001",
+      "date": "2026-04-11",
+      "predictions": {
+        "market_direction": "轻仓观望：40-50%仓位为主，AI算力ETF回调后低吸，电网ETF逢低布局，回避科创芯片/创业板高位",
+        "win_rate": "~62%（贝叶斯后验+沙僧白龙马融合）",
+        "key_etf": "AI算力ETF(512930) > 电网ETF(159542) > 闪迪映射ETF > 电池ETF(159871)企稳后"
+      },
+      "evolution_applied": {
+        "version": "v4",
+        "date": "2026-04-11",
+        "scene_metadata": {
+          "date": "2026-04-11",
+          "has_geopolitical": true,
+          "trump_intensity": 2,
+          "has_policy_benefit": true,
+          "has_tech_breakthrough": true,
+          "is_earnings_season": true,
+          "is_near_weekend": true,
+          "prior_type": "geopolitical",
+          "prior_updated_at": "2026-04-11T17:18:53.283142"
+        },
+        "wukong_experiences": [
+          "WX-001"
+        ],
+        "sangsha_experiences": [
+          "SS-003"
+        ],
+        "white_dragon_experiences": [],
+        "bajie_experiences": [
+          "BJ-001",
+          "BJ-002",
+          "BJ-003"
+        ],
+        "tang_rules": [],
+        "arbitration_notes": [
+          "仲裁失败: run_tang_seng_arbitrate() got an unexpected keyword argument 'bajie_enhanced'"
+        ]
+      },
+      "status": "pending_validation",
+      "validate_by_date": "2026-04-16"
+    }
+  ],
+  "last_updated": "2026-04-11"
+}

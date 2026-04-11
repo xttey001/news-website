@@ -1,0 +1,102 @@
+{
+  "date": "2026-03-27",
+  "market_tone": "业绩验证日，龙头分化，黄金避险升温",
+  "wukong_judgment": {
+    "emotion": "中性",
+    "analysis": [
+      "TCL科技业绩超预期，面板周期拐点",
+      "美团财报落地，互联网股估值修复",
+      "黄金价格持续走高，避险情绪延续"
+    ],
+    "strategy": [
+      "✅ 关注业绩超预期龙头",
+      "✅ 黄金ETF持有",
+      "⚠️ 高估值小票规避"
+    ]
+  },
+  "s_level": [
+    {
+      "emoji": "🔴",
+      "title": "TCL科技业绩大增 → 面板周期拐点",
+      "source": "公司公告",
+      "summary": "TCL科技一季报净利润同比增150%，面板价格持续上涨，行业周期反转确认。",
+      "duration": "2-4周",
+      "etfs": [
+        {
+          "name": "512760 芯片ETF",
+          "sentiment": "利好"
+        }
+      ],
+      "stocks": [
+        {
+          "name": "000100 TCL科技",
+          "sentiment": "利好"
+        },
+        {
+          "name": "002049 国星光电",
+          "sentiment": "利好"
+        }
+      ]
+    }
+  ],
+  "a_level": [
+    {
+      "emoji": "🟡",
+      "title": "美团财报发布 → 营收超预期",
+      "source": "公司公告",
+      "summary": "美团2025年Q4营收同比增长25%，外卖业务盈利能力改善。",
+      "duration": "1-2周",
+      "etfs": [
+        {
+          "name": "159805 互联网ETF",
+          "sentiment": "利好"
+        }
+      ],
+      "stocks": [
+        {
+          "name": "3690 美团",
+          "sentiment": "利好"
+        }
+      ]
+    },
+    {
+      "emoji": "🟡",
+      "title": "茅台涨价预期 → 消费股估值修复",
+      "source": "市场传闻",
+      "summary": "市场预期茅台将上调出厂价，白酒板块估值修复。",
+      "duration": "1周",
+      "etfs": [
+        {
+          "name": "512810 消费ETF",
+          "sentiment": "利好"
+        }
+      ],
+      "stocks": [
+        {
+          "name": "600519 贵州茅台",
+          "sentiment": "利好"
+        }
+      ]
+    },
+    {
+      "emoji": "🟡",
+      "title": "黄金ETF持续吸金 → 避险情绪延续",
+      "source": "上交所数据",
+      "summary": "黄金ETF规模突破400亿，避险资金持续流入。",
+      "duration": "持续",
+      "etfs": [
+        {
+          "name": "518880 黄金ETF",
+          "sentiment": "利好"
+        }
+      ],
+      "stocks": [
+        {
+          "name": "600547 山东黄金",
+          "sentiment": "利好"
+        }
+      ]
+    }
+  ],
+  "douyin": []
+}

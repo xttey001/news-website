@@ -95,11 +95,19 @@ for date in sorted(all_news.keys(), reverse=True):
             'win_rate': fused_bajie.get('win_rate', ''),
             'max_drawdown': fused_bajie.get('max_drawdown', ''),
             'holding_period': orig_bajie.get('holding_period', ''),
+            # 【修复】添加 overall 字段供前端渲染
+            'overall': {
+                'best_action': fused_bajie.get('optimal_action', ''),
+                'best_etfs': fused_bajie.get('optimal_etfs', ''),
+                'win_rate': fused_bajie.get('win_rate', ''),
+                'stop_loss': fused_bajie.get('max_drawdown', ''),
+            },
             # 融合详情
             '沙僧信号': fused_bajie.get('沙僧信号', {}),
             '白龙马信号': fused_bajie.get('白龙马信号', {}),
             '悟空信号': fused_bajie.get('悟空信号', {}),
             '信号一致性': fused_bajie.get('信号一致性', ''),
+            '信号一致性得分': fused_bajie.get('信号一致性得分', 2),
             '融合说明': fused_bajie.get('融合说明', []),
             'original_bajie': fused_bajie.get('original_bajie', {})
         }
