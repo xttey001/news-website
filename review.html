@@ -251,26 +251,6 @@
         }
         .lesson-content li { margin-bottom: 6px; }
 
-        /* Navigation */
-        .nav-bar {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-        .nav-btn {
-            padding: 8px 16px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 13px;
-            transition: all 0.2s;
-        }
-        .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
-        .nav-btn.active { border-color: var(--gold); color: var(--gold); }
-
         /* Footer */
         .footer {
             text-align: center;
@@ -285,16 +265,53 @@
             .score-grid { grid-template-columns: repeat(2, 1fr); }
             .day-header { flex-wrap: wrap; }
         }
+
+        /* ===== 页面切换导航 ===== */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .page-nav .page-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .page-nav .page-btn-timeline {
+            background: rgba(63,185,80,0.15);
+            border: 1px solid rgba(63,185,80,0.4);
+            color: #3fb950;
+        }
+        .page-nav .page-btn-timeline:hover {
+            background: rgba(63,185,80,0.25);
+            border-color: #3fb950;
+            box-shadow: 0 0 12px rgba(63,185,80,0.3);
+        }
+        .page-nav .page-btn-review {
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.3);
+            color: #d29922;
+        }
+        .page-nav .page-btn-review:hover,
+        .page-nav .page-btn-review.active {
+            background: rgba(255,193,7,0.2);
+            border-color: #d29922;
+            box-shadow: 0 0 12px rgba(255,193,7,0.3);
+        }
     </style>
 </head>
 <body>
 <div class="container">
 
-    <!-- Navigation -->
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-btn">📅 新闻时间线</a>
-        <a href="review.html" class="nav-btn active">📊 14天复盘报告</a>
-    </nav>
+    <!-- 页面切换导航 -->
+    <div class="page-nav">
+        <a href="index.html" class="page-btn page-btn-timeline">📅 新闻时间线</a>
+        <a href="review.html" class="page-btn page-btn-review active">📊 14天复盘报告</a>
+    </div>
 
     <!-- Header -->
     <div class="header">
@@ -643,7 +660,20 @@
         </div>
     </div>
 
-    <!-- Mistakes & lessons -->
+        <div class="exp-card" style="border-color:rgba(244,67,54,0.3);background:rgba(244,67,54,0.05)">
+        <div class="exp-title"><span class="icon" style="color:#ef9a9a">&#128997;</span> 经验5（永久规则）：Trump jawboning 反转定律</div>
+        <div class="exp-content">
+            <p style="color:#ef9a9a;margin-bottom:10px"><strong>核心原理：</strong>Trump 本质是「交易员」而非「战略家」，他越用力喊多/喊空某个资产，越说明该资产自己走不动了。喊得越凶，真实意图越可能是找人接盘或打压吸筹。</p>
+            <ul>
+                <li><strong>喊话1次</strong>：可忽略，市场按原趋势走（反转概率 ~30%）</li>
+                <li><strong>连续2-3天喊话</strong>：警惕，开始减仓，不追涨（反转概率 ~50%）</li>
+                <li><strong>连续3天+威胁升级，或实际行政行动</strong>：反转信号明确，逆向操作（反转概率 &gt;=70%）</li>
+            </ul>
+            <p style="margin-top:10px"><strong>案例（4月2日验证）</strong>：Trump 连续威胁对伊朗更强火力打击 &rarr; 黄金涨至4800后当日回落至4656（-2.97%）。4800已是强阻力位，喊话本质是「吸引韭菜接盘」，真实信号是「多头在撤退」。</p>
+        </div>
+    </div>
+
+<!-- Mistakes & lessons -->
     <div class="section-title">🚨 失误教训：为什么4月5日判断错了</div>
 
     <div class="lesson-card">
