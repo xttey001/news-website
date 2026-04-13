@@ -230,6 +230,17 @@
             line-height: 1.8;
             color: var(--text);
         }
+        .tone-item {
+            margin-bottom: 12px;
+            padding: 10px;
+            background: rgba(0,0,0,0.15);
+            border-radius: 6px;
+        }
+        .tone-label {
+            font-weight: 600;
+            color: var(--gold);
+            margin-right: 8px;
+        }
 
         /* ===== 悟空判断 ===== */
         .judgment-section { 
@@ -1093,9 +1104,22 @@
             if (data.market_tone) {
                 html += `
                     <div class="section tone-section">
-                        <div class="section-title">📊 今日基调</div>
-                        <div class="tone-content">${data.market_tone}</div>
-                    </div>`;
+                        <div class="section-title">📊 今日基调</div>`;
+
+                // 支持早报晚报双基调
+                if (typeof data.market_tone === 'object') {
+                    if (data.market_tone.早报) {
+                        html += `<div class="tone-item"><span class="tone-label">早报：</span>${data.market_tone.早报}</div>`;
+                    }
+                    if (data.market_tone.晚报) {
+                        html += `<div class="tone-item"><span class="tone-label">晚报：</span>${data.market_tone.晚报}</div>`;
+                    }
+                } else {
+                    // 兼容旧格式（字符串）
+                    html += `<div class="tone-content">${data.market_tone}</div>`;
+                }
+
+                html += `</div>`;
             }
 
             // 悟空今日判断
