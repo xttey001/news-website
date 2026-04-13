@@ -1105,7 +1105,8 @@
                     <div class="section judgment-section">
                         <div class="section-title">📈 悟空今日判断</div>`;
                 
-                const emotion = wj.emotion || wj.market_sentiment;
+                // 兼容两种字段格式
+                const emotion = wj.emotion || wj.market_sentiment || wj.market_view;
                 if (emotion) {
                     html += `
                         <div class="emotion-row">
@@ -1114,7 +1115,8 @@
                         </div>`;
                 }
 
-                const analysisList = wj.analysis || wj.core_analysis;
+                // 兼容两种字段格式
+                const analysisList = wj.analysis || wj.core_analysis || wj.key_factors;
                 if (analysisList && analysisList.length) {
                     html += '<div class="analysis-list">';
                     analysisList.forEach(a => {
@@ -1123,15 +1125,28 @@
                     html += '</div>';
                 }
 
-                const strategyList = wj.strategy || wj.operations;
+                // 兼容操作建议字段（active_patterns）
+                const strategyList = wj.strategy || wj.operations || wj.active_patterns;
                 if (strategyList && strategyList.length) {
                     html += `
                         <div class="strategy-box">
                             <div class="strategy-label">今日操作参考：</div>`;
                     strategyList.forEach(s => {
-                        const label = s.type ? s.type + ' ' : '';
-                        const text = s.content || s;
+                        const label = s.type || s.id ? `${s.type || s.id} ` : '';
+                        const text = s.content || s.action || s.name || s;
                         html += `<div class="strategy-item">${label}${text}</div>`;
+                    });
+                    html += '</div>';
+                }
+
+                // 新增风险提示字段
+                const riskAlerts = wj.risk_alerts;
+                if (riskAlerts && riskAlerts.length) {
+                    html += `
+                        <div class="warning-box">
+                            <div style="font-weight:600;margin-bottom:6px;">⚠️ 风险提示：</div>`;
+                    riskAlerts.forEach(r => {
+                        html += `<div style="margin-bottom:4px;">• ${r}</div>`;
                     });
                     html += '</div>';
                 }
