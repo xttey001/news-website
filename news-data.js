@@ -1,7 +1,5 @@
-// 财经新闻数据 - 四层交叉分析版
-// 生成时间: 2026-04-10
-// 架构: 悟空+八戒(优质新闻) → 沙僧+白龙马(全量新闻+市场数据)
-// 三层交叉: 白龙马融合悟空信号 | 八戒融合沙僧+白龙马信号
+// 新闻数据 - 自动生成
+// 生成时间: 2026-04-13 22:28
 
 const newsData = {
   "2026-04-13": {
@@ -318,16 +316,10 @@ const newsData = {
       "win_rate": "~65%（贝叶斯后验+沙僧白龙马融合）",
       "max_drawdown": "-8.0%（止损线）",
       "holding_period": "石油1-3天，芯片3-5天",
-      "overall": {
-        "best_action": "双主线配置：石油ETF+芯片ETF",
-        "best_etfs": "561360石油ETF(40%) + 512760芯片ETF(60%)",
-        "win_rate": "~65%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
       "沙僧信号": {
         "情绪": "平稳",
-        "平均买入概率": 24,
-        "平均恐慌概率": 5,
+        "平均买入概率": 22,
+        "平均恐慌概率": 10,
         "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
         "可信度级别": "normal"
       },
@@ -342,7 +334,6 @@ const newsData = {
         "市场情绪": ""
       },
       "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
       "融合说明": [
         "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
         "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
@@ -355,8 +346,8 @@ const newsData = {
         "holding_period": "石油1-3天，芯片3-5天",
         "沙僧信号": {
           "情绪": "平稳",
-          "平均买入概率": 22,
-          "平均恐慌概率": 10,
+          "平均买入概率": 30,
+          "平均恐慌概率": 5,
           "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
           "可信度级别": "normal"
         },
@@ -378,94 +369,38 @@ const newsData = {
         "original_bajie": {
           "optimal_action": "双主线配置：石油ETF+芯片ETF",
           "optimal_etfs": "561360石油ETF(40%) + 512760芯片ETF(60%)",
-          "win_rate": "~65%（贝叶斯后验+沙僧白龙马融合）",
-          "max_drawdown": "-8.0%（止损线）",
+          "win_rate": "65%",
+          "max_drawdown": "-8%",
           "holding_period": "石油1-3天，芯片3-5天",
-          "沙僧信号": {
-            "情绪": "平稳",
-            "平均买入概率": 30,
-            "平均恐慌概率": 5,
-            "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-            "可信度级别": "normal"
-          },
-          "白龙马信号": {
-            "主力状态": "拉升",
-            "是否利用散户": false,
-            "可信度": 1.0,
-            "风险等级": "low",
-            "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-          },
-          "悟空信号": {
-            "市场情绪": ""
-          },
-          "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-          "融合说明": [
-            "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-            "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-          ],
-          "original_bajie": {
-            "optimal_action": "双主线配置：石油ETF+芯片ETF",
-            "optimal_etfs": "561360石油ETF(40%) + 512760芯片ETF(60%)",
+          "key_variables": "停火达成→退出油气；特朗普软化→退出芯片",
+          "overall": {
+            "best_action": "双主线配置",
+            "best_etfs": "561360+512760",
             "win_rate": "65%",
-            "max_drawdown": "-8%",
-            "holding_period": "石油1-3天，芯片3-5天",
-            "key_variables": "停火达成→退出油气；特朗普软化→退出芯片",
-            "overall": {
-              "best_action": "双主线配置",
-              "best_etfs": "561360+512760",
-              "win_rate": "65%",
-              "stop_loss": "-8%"
+            "stop_loss": "-8%"
+          },
+          "bayes_analysis": {
+            "scenario_1": {
+              "name": "封锁持续1周以上",
+              "probability": "40%",
+              "outcome": "油价维持高位→通胀担忧→美联储降息推迟→全球股市承压"
             },
-            "bayes_analysis": {
-              "scenario_1": {
-                "name": "封锁持续1周以上",
-                "probability": "40%",
-                "outcome": "油价维持高位→通胀担忧→美联储降息推迟→全球股市承压"
-              },
-              "scenario_2": {
-                "name": "双方迅速重启谈判",
-                "probability": "30%",
-                "outcome": "封锁解除→油价回落→避险降温"
-              },
-              "scenario_3": {
-                "name": "军事冲突升级",
-                "probability": "10%",
-                "outcome": "霍尔木兹全面关闭→全球能源危机"
-              },
-              "scenario_4": {
-                "name": "封锁执行但伊朗绕行",
-                "probability": "20%",
-                "outcome": "影响有限→逐步消化"
-              }
+            "scenario_2": {
+              "name": "双方迅速重启谈判",
+              "probability": "30%",
+              "outcome": "封锁解除→油价回落→避险降温"
+            },
+            "scenario_3": {
+              "name": "军事冲突升级",
+              "probability": "10%",
+              "outcome": "霍尔木兹全面关闭→全球能源危机"
+            },
+            "scenario_4": {
+              "name": "封锁执行但伊朗绕行",
+              "probability": "20%",
+              "outcome": "影响有限→逐步消化"
             }
-          },
-          "prior_calibration": {
-            "scene_type": "geopolitical_sudden",
-            "scene_desc": "地缘突发事件做多",
-            "original_prior": 65,
-            "calibrated_prior": 65,
-            "note": "当前胜率65%已偏离默认值，不替代（方向对但时机难把握）"
-          },
-          "signal_weights": {
-            "悟空深度分析": 1.0,
-            "沙僧情绪": 0.8,
-            "白龙马主力": 1.08,
-            "外盘先行指标": 1.1
-          },
-          "signal_weight_notes": [],
-          "geo_prior_check": {
-            "prior_type": "geopolitical",
-            "hours_since_last_update": 0.0,
-            "is_expired": false,
-            "needs_review": false,
-            "validity_hours": 12,
-            "review_interval_hours": 6
-          },
-          "_experiences_applied": [
-            "BJ-001",
-            "BJ-002",
-            "BJ-003"
-          ]
+          }
         },
         "prior_calibration": {
           "scene_type": "geopolitical_sudden",
@@ -494,13 +429,40 @@ const newsData = {
           "BJ-002",
           "BJ-003"
         ]
-      }
+      },
+      "prior_calibration": {
+        "scene_type": "geopolitical_sudden",
+        "scene_desc": "地缘突发事件做多",
+        "original_prior": 65,
+        "calibrated_prior": 65,
+        "note": "当前胜率65%已偏离默认值，不替代（方向对但时机难把握）"
+      },
+      "signal_weights": {
+        "悟空深度分析": 1.0,
+        "沙僧情绪": 0.8,
+        "白龙马主力": 1.08,
+        "外盘先行指标": 1.1
+      },
+      "signal_weight_notes": [],
+      "geo_prior_check": {
+        "prior_type": "geopolitical",
+        "hours_since_last_update": 0.0,
+        "is_expired": false,
+        "needs_review": false,
+        "validity_hours": 12,
+        "review_interval_hours": 6
+      },
+      "_experiences_applied": [
+        "BJ-001",
+        "BJ-002",
+        "BJ-003"
+      ]
     },
     "sangsha_module": {
       "overall_sentiment": "平稳",
       "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 24,
-      "avg_panic_prob": 5,
+      "avg_buy_prob": 22,
+      "avg_panic_prob": 10,
       "analysis_results": [
         {
           "news": "布油突破103美元，黄金跌破4650，全球资产剧烈波动",
@@ -518,7 +480,7 @@ const newsData = {
           "韭菜行为总结": "散户疯了，都在追！",
           "市场含义": "顶部风险",
           "买入概率": 58,
-          "is_long_term": false,
+          "is_long_term": true,
           "date": "2026-04-13",
           "decay": 1.0,
           "weighted_buy_prob": 58
@@ -539,7 +501,7 @@ const newsData = {
           "韭菜行为总结": "散户疯了，都在追！",
           "市场含义": "顶部风险",
           "买入概率": 55,
-          "is_long_term": false,
+          "is_long_term": true,
           "date": "2026-04-13",
           "decay": 1.0,
           "weighted_buy_prob": 55
@@ -560,7 +522,7 @@ const newsData = {
           "韭菜行为总结": "散户疯了，都在追！",
           "市场含义": "顶部风险",
           "买入概率": 51,
-          "is_long_term": false,
+          "is_long_term": true,
           "date": "2026-04-13",
           "decay": 1.0,
           "weighted_buy_prob": 51
@@ -580,30 +542,10 @@ const newsData = {
           "韭菜行为总结": "散户开始眼红，想冲进去",
           "市场含义": "分歧加大",
           "买入概率": 26,
-          "is_long_term": false,
+          "is_long_term": true,
           "date": "2026-04-13",
           "decay": 1.0,
           "weighted_buy_prob": 26
-        },
-        {
-          "news": "香港发放首批稳定币牌照（中美金融脱钩战略布局）",
-          "title": "香港发放首批稳定币牌照（中美金融脱钩战略布局）",
-          "full_title": "香港发放首批稳定币牌照（中美金融脱钩战略布局）",
-          "summary": "",
-          "追高买入概率": 5,
-          "抄底买入概率": 54,
-          "恐慌卖出概率": 5,
-          "观望概率": 80,
-          "情绪标签": [
-            "抄底冲动"
-          ],
-          "韭菜行为总结": "散户想抄底，认为是机会",
-          "市场含义": "可能有反弹",
-          "买入概率": 24,
-          "is_long_term": false,
-          "date": "2026-04-13",
-          "decay": 1.0,
-          "weighted_buy_prob": 24
         },
         {
           "news": "香港金管局发出首批稳定币牌照，汇丰及碇点金融获批",
@@ -618,7 +560,7 @@ const newsData = {
           "韭菜行为总结": "散户情绪平稳",
           "市场含义": "中性",
           "买入概率": 14,
-          "is_long_term": false,
+          "is_long_term": true,
           "date": "2026-04-13",
           "decay": 1.0,
           "weighted_buy_prob": 14
@@ -636,7 +578,7 @@ const newsData = {
           "韭菜行为总结": "散户情绪平稳",
           "市场含义": "中性",
           "买入概率": 5,
-          "is_long_term": false,
+          "is_long_term": true,
           "date": "2026-04-13",
           "decay": 1.0,
           "weighted_buy_prob": 5
@@ -654,7 +596,7 @@ const newsData = {
           "韭菜行为总结": "散户情绪平稳",
           "市场含义": "中性",
           "买入概率": 5,
-          "is_long_term": false,
+          "is_long_term": true,
           "date": "2026-04-13",
           "decay": 1.0,
           "weighted_buy_prob": 5
@@ -672,7 +614,7 @@ const newsData = {
           "韭菜行为总结": "散户情绪平稳",
           "市场含义": "中性",
           "买入概率": 5,
-          "is_long_term": false,
+          "is_long_term": true,
           "date": "2026-04-13",
           "decay": 1.0,
           "weighted_buy_prob": 5
@@ -690,14 +632,35 @@ const newsData = {
           "韭菜行为总结": "散户情绪平稳",
           "市场含义": "中性",
           "买入概率": 5,
-          "is_long_term": false,
+          "is_long_term": true,
+          "date": "2026-04-13",
+          "decay": 1.0,
+          "weighted_buy_prob": 5
+        },
+        {
+          "news": "美伊谈判破裂，美军封锁霍尔木兹海峡（地缘风险急剧升温）",
+          "title": "美伊谈判破裂，美军封锁霍尔木兹海峡（地缘风险急剧升温）",
+          "full_title": "美伊谈判破裂，美军封锁霍尔木兹海峡（地缘风险急剧升温）",
+          "summary": "",
+          "追高买入概率": 5,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 56,
+          "观望概率": 79,
+          "情绪标签": [
+            "恐慌"
+          ],
+          "韭菜行为总结": "散户恐慌，想割肉",
+          "市场含义": "可能见底",
+          "买入概率": 5,
+          "is_long_term": true,
           "date": "2026-04-13",
           "decay": 1.0,
           "weighted_buy_prob": 5
         }
       ],
       "total_news_count": 8,
-      "time_window": "7天累积（长期新闻除外）"
+      "time_window": "7天累积（长期新闻除外）",
+      "_experiences_applied": []
     },
     "white_dragon": {
       "主力状态": "拉升",
@@ -707,7 +670,7 @@ const newsData = {
       "可信度": 1.0,
       "矛盾ETF数": 0,
       "散户情绪": {
-        "平均买入概率": 42,
+        "平均买入概率": 40,
         "平均恐慌概率": 5
       },
       "悟空信号": "",
@@ -731,7 +694,7 @@ const newsData = {
           "是否利用散户": false,
           "可信度": 1.0,
           "矛盾信号": "",
-          "sangsha_buy_prob": 42,
+          "sangsha_buy_prob": 40,
           "sangsha_panic_prob": 5,
           "单日量比": 0.95
         },
@@ -753,7 +716,7 @@ const newsData = {
           "是否利用散户": false,
           "可信度": 1.0,
           "矛盾信号": "",
-          "sangsha_buy_prob": 42,
+          "sangsha_buy_prob": 40,
           "sangsha_panic_prob": 5,
           "单日量比": 0.62
         },
@@ -775,7 +738,7 @@ const newsData = {
           "是否利用散户": false,
           "可信度": 1.0,
           "矛盾信号": "",
-          "sangsha_buy_prob": 42,
+          "sangsha_buy_prob": 40,
           "sangsha_panic_prob": 5,
           "单日量比": 0.74
         },
@@ -797,12 +760,13 @@ const newsData = {
           "是否利用散户": false,
           "可信度": 1.0,
           "矛盾信号": "",
-          "sangsha_buy_prob": 42,
+          "sangsha_buy_prob": 40,
           "sangsha_panic_prob": 5,
           "单日量比": 1.36
         }
       ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
+      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓",
+      "_experiences_applied": []
     },
     "wukong_enhanced": {
       "market_view": "谨慎偏空",
@@ -1048,7 +1012,7 @@ const newsData = {
     "douyin": [],
     "sangsha_module": {
       "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
+      "advice": "震荡整理，观望为主\n[🔄 拐点预警] 2个因子触发，情绪拐点可能在1-2天内出现 | 因子: 情绪极值偏离, 时间节点",
       "avg_buy_prob": 5,
       "avg_panic_prob": 22,
       "analysis_results": [
@@ -1110,7 +1074,19 @@ const newsData = {
         }
       ],
       "total_news_count": 3,
-      "time_window": "7天累积（长期新闻除外）"
+      "time_window": "7天累积（长期新闻除外）",
+      "turning_point_warning": {
+        "detected": true,
+        "factors": [
+          "情绪极值偏离",
+          "时间节点"
+        ],
+        "factor_count": 2,
+        "prediction": "1-2天内可能出现情绪拐点"
+      },
+      "_experiences_applied": [
+        "SS-003"
+      ]
     },
     "white_dragon": {
       "主力状态": "拉升",
@@ -1131,11 +1107,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.08
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 3.02,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "拉升",
@@ -1146,40 +1122,40 @@ const newsData = {
           "矛盾信号": "",
           "sangsha_buy_prob": 5,
           "sangsha_panic_prob": 22,
-          "单日量比": 0.95
+          "单日量比": 0.97
         },
         {
           "code": "512930",
           "price_trend": {
             "trend": "up",
             "strength": 75,
-            "change_pct": 7.45
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 1.61,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
+          "阶段": "中期",
+          "行为解释": "量价齐升（单日量比1.54x），主力真实买入，短期有望继续上涨",
           "是否利用散户": false,
           "可信度": 1.0,
           "矛盾信号": "",
           "sangsha_buy_prob": 5,
           "sangsha_panic_prob": 22,
-          "单日量比": 0.62
+          "单日量比": 1.54
         },
         {
           "code": "518880",
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 0.56
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -21.29,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "观望",
@@ -1190,32 +1166,33 @@ const newsData = {
           "矛盾信号": "",
           "sangsha_buy_prob": 5,
           "sangsha_panic_prob": 22,
-          "单日量比": 0.74
+          "单日量比": 0.88
         },
         {
           "code": "588890",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.77
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 2.21,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
+          "阶段": "初期",
+          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
           "是否利用散户": false,
           "可信度": 1.0,
           "矛盾信号": "",
           "sangsha_buy_prob": 5,
           "sangsha_panic_prob": 22,
-          "单日量比": 1.36
+          "单日量比": 0.94
         }
       ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
+      "综合建议": "📊 观望为主：市场方向不明，建议轻仓观望",
+      "_experiences_applied": []
     },
     "bajie_conclusion": {
       "optimal_action": "轻仓观望：40-50%仓位为主，AI算力ETF回调后低吸，电网ETF逢低布局，回避科创芯片/创业板高位",
@@ -1223,12 +1200,6 @@ const newsData = {
       "win_rate": "~62%（贝叶斯后验+沙僧白龙马融合）",
       "max_drawdown": "-8.0%（止损线）",
       "holding_period": "1-3天（等创业板回踩确认后加仓）",
-      "overall": {
-        "best_action": "轻仓观望：40-50%仓位为主，AI算力ETF回调后低吸，电网ETF逢低布局，回避科创芯片/创业板高位",
-        "best_etfs": "AI算力ETF(512930) > 电网ETF(159542) > 闪迪映射ETF > 电池ETF(159871)企稳后",
-        "win_rate": "~62%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
       "沙僧信号": {
         "情绪": "平稳",
         "平均买入概率": 5,
@@ -1247,7 +1218,6 @@ const newsData = {
         "市场情绪": "地缘缓和预期升温，市场情绪趋于谨慎乐观"
       },
       "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
       "融合说明": [
         "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
         "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
@@ -1357,7 +1327,7 @@ const newsData = {
                 "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
               },
               "悟空信号": {
-                "市场情绪": "地缘缓和预期升温，市场情绪趋于谨慎乐观"
+                "市场情绪": ""
               },
               "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
               "融合说明": [
@@ -1400,8 +1370,8 @@ const newsData = {
                   "holding_period": "1-3天（等创业板回踩确认后加仓）",
                   "沙僧信号": {
                     "情绪": "平稳",
-                    "平均买入概率": 5,
-                    "平均恐慌概率": 22,
+                    "平均买入概率": 19,
+                    "平均恐慌概率": 10,
                     "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
                     "可信度级别": "normal"
                   },
@@ -1413,7 +1383,7 @@ const newsData = {
                     "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
                   },
                   "悟空信号": {
-                    "市场情绪": ""
+                    "市场情绪": "谨慎偏多：美伊谈判举行地缘缓和预期升温，但俄乌升温+创业板超买+内部分化严重，短期回踩风险上升；AI算力/自动驾驶中期逻辑清晰，等回调再入"
                   },
                   "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
                   "融合说明": [
@@ -1508,64 +1478,8 @@ const newsData = {
                           "optimal_action": "轻仓观望：40-50%仓位为主，AI算力ETF回调后低吸，电网ETF逢低布局，回避科创芯片/创业板高位",
                           "optimal_etfs": "AI算力ETF(512930) > 电网ETF(159542) > 闪迪映射ETF > 电池ETF(159871)企稳后",
                           "win_rate": "~62%（贝叶斯后验+沙僧白龙马融合）",
-                          "max_drawdown": "-8.0%（止损线）",
                           "holding_period": "1-3天（等创业板回踩确认后加仓）",
-                          "沙僧信号": {
-                            "情绪": "平稳",
-                            "平均买入概率": 19,
-                            "平均恐慌概率": 10,
-                            "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-                            "可信度级别": "normal"
-                          },
-                          "白龙马信号": {
-                            "主力状态": "拉升",
-                            "是否利用散户": false,
-                            "可信度": 1.0,
-                            "风险等级": "low",
-                            "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-                          },
-                          "悟空信号": {
-                            "市场情绪": "谨慎偏多：美伊谈判举行地缘缓和预期升温，但俄乌升温+创业板超买+内部分化严重，短期回踩风险上升；AI算力/自动驾驶中期逻辑清晰，等回调再入"
-                          },
-                          "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-                          "融合说明": [
-                            "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-                            "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-                          ],
-                          "original_bajie": {
-                            "optimal_action": "轻仓观望：40-50%仓位为主，AI算力ETF回调后低吸，电网ETF逢低布局，回避科创芯片/创业板高位",
-                            "optimal_etfs": "AI算力ETF(512930) > 电网ETF(159542) > 闪迪映射ETF > 电池ETF(159871)企稳后",
-                            "win_rate": "~62%（贝叶斯后验+沙僧白龙马融合）",
-                            "holding_period": "1-3天（等创业板回踩确认后加仓）",
-                            "max_drawdown": "-3%（创业板止损线）"
-                          },
-                          "prior_calibration": {
-                            "scene_type": "geopolitical_sudden",
-                            "scene_desc": "地缘突发事件做多",
-                            "original_prior": 62,
-                            "calibrated_prior": 62,
-                            "note": "当前胜率62%已偏离默认值，不替代（方向对但时机难把握）"
-                          },
-                          "signal_weights": {
-                            "悟空深度分析": 1.0,
-                            "沙僧情绪": 0.8,
-                            "白龙马主力": 1.08,
-                            "外盘先行指标": 1.1
-                          },
-                          "signal_weight_notes": [],
-                          "geo_prior_check": {
-                            "prior_type": "geopolitical",
-                            "hours_since_last_update": 0.0,
-                            "is_expired": false,
-                            "needs_review": false,
-                            "validity_hours": 12,
-                            "review_interval_hours": 6
-                          },
-                          "_experiences_applied": [
-                            "BJ-001",
-                            "BJ-002",
-                            "BJ-003"
-                          ]
+                          "max_drawdown": "-3%（创业板止损线）"
                         },
                         "prior_calibration": {
                           "scene_type": "geopolitical_sudden",
@@ -1818,7 +1732,34 @@ const newsData = {
           "BJ-002",
           "BJ-003"
         ]
-      }
+      },
+      "prior_calibration": {
+        "scene_type": "geopolitical_sudden",
+        "scene_desc": "地缘突发事件做多",
+        "original_prior": 62,
+        "calibrated_prior": 62,
+        "note": "当前胜率62%已偏离默认值，不替代（方向对但时机难把握）"
+      },
+      "signal_weights": {
+        "悟空深度分析": 1.0,
+        "沙僧情绪": 0.8,
+        "白龙马主力": 1.08,
+        "外盘先行指标": 1.1
+      },
+      "signal_weight_notes": [],
+      "geo_prior_check": {
+        "prior_type": "geopolitical",
+        "hours_since_last_update": 0.0,
+        "is_expired": false,
+        "needs_review": false,
+        "validity_hours": 12,
+        "review_interval_hours": 6
+      },
+      "_experiences_applied": [
+        "BJ-001",
+        "BJ-002",
+        "BJ-003"
+      ]
     },
     "evolution_v4": {
       "version": "v4",
@@ -2783,12 +2724,6 @@ const newsData = {
       "win_rate": "~62%（贝叶斯后验+沙僧白龙马融合）",
       "max_drawdown": "-8.0%（止损线）",
       "holding_period": "1-3天（等创业板回踩确认后加仓）",
-      "overall": {
-        "best_action": "轻仓观望：40-50%仓位为主，AI算力ETF回调后低吸，电网ETF逢低布局，回避科创芯片/创业板高位",
-        "best_etfs": "AI算力ETF(512930) > 电网ETF(159542) > 闪迪映射ETF > 电池ETF(159871)企稳后",
-        "win_rate": "~62%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
       "沙僧信号": {
         "情绪": "平稳",
         "平均买入概率": 19,
@@ -2807,7 +2742,6 @@ const newsData = {
         "市场情绪": "谨慎偏多：美伊谈判举行地缘缓和预期升温，但俄乌升温+创业板超买+内部分化严重，短期回踩风险上升；AI算力/自动驾驶中期逻辑清晰，等回调再入"
       },
       "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
       "融合说明": [
         "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
         "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
@@ -2816,65 +2750,36 @@ const newsData = {
         "optimal_action": "轻仓观望：40-50%仓位为主，AI算力ETF回调后低吸，电网ETF逢低布局，回避科创芯片/创业板高位",
         "optimal_etfs": "AI算力ETF(512930) > 电网ETF(159542) > 闪迪映射ETF > 电池ETF(159871)企稳后",
         "win_rate": "~62%（贝叶斯后验+沙僧白龙马融合）",
-        "max_drawdown": "-8.0%（止损线）",
         "holding_period": "1-3天（等创业板回踩确认后加仓）",
-        "沙僧信号": {
-          "情绪": "平稳",
-          "平均买入概率": 19,
-          "平均恐慌概率": 10,
-          "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-          "可信度级别": "normal"
-        },
-        "白龙马信号": {
-          "主力状态": "拉升",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "风险等级": "low",
-          "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-        },
-        "悟空信号": {
-          "市场情绪": "谨慎偏多：美伊谈判举行地缘缓和预期升温，但俄乌升温+创业板超买+内部分化严重，短期回踩风险上升；AI算力/自动驾驶中期逻辑清晰，等回调再入"
-        },
-        "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-        "融合说明": [
-          "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-          "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-        ],
-        "original_bajie": {
-          "optimal_action": "轻仓观望：40-50%仓位为主，AI算力ETF回调后低吸，电网ETF逢低布局，回避科创芯片/创业板高位",
-          "optimal_etfs": "AI算力ETF(512930) > 电网ETF(159542) > 闪迪映射ETF > 电池ETF(159871)企稳后",
-          "win_rate": "~62%（贝叶斯后验+沙僧白龙马融合）",
-          "holding_period": "1-3天（等创业板回踩确认后加仓）",
-          "max_drawdown": "-3%（创业板止损线）"
-        },
-        "prior_calibration": {
-          "scene_type": "geopolitical_sudden",
-          "scene_desc": "地缘突发事件做多",
-          "original_prior": 62,
-          "calibrated_prior": 62,
-          "note": "当前胜率62%已偏离默认值，不替代（方向对但时机难把握）"
-        },
-        "signal_weights": {
-          "悟空深度分析": 1.0,
-          "沙僧情绪": 0.8,
-          "白龙马主力": 1.08,
-          "外盘先行指标": 1.1
-        },
-        "signal_weight_notes": [],
-        "geo_prior_check": {
-          "prior_type": "geopolitical",
-          "hours_since_last_update": 0.0,
-          "is_expired": false,
-          "needs_review": false,
-          "validity_hours": 12,
-          "review_interval_hours": 6
-        },
-        "_experiences_applied": [
-          "BJ-001",
-          "BJ-002",
-          "BJ-003"
-        ]
-      }
+        "max_drawdown": "-3%（创业板止损线）"
+      },
+      "prior_calibration": {
+        "scene_type": "geopolitical_sudden",
+        "scene_desc": "地缘突发事件做多",
+        "original_prior": 62,
+        "calibrated_prior": 62,
+        "note": "当前胜率62%已偏离默认值，不替代（方向对但时机难把握）"
+      },
+      "signal_weights": {
+        "悟空深度分析": 1.0,
+        "沙僧情绪": 0.8,
+        "白龙马主力": 1.08,
+        "外盘先行指标": 1.1
+      },
+      "signal_weight_notes": [],
+      "geo_prior_check": {
+        "prior_type": "geopolitical",
+        "hours_since_last_update": 0.0,
+        "is_expired": false,
+        "needs_review": false,
+        "validity_hours": 12,
+        "review_interval_hours": 6
+      },
+      "_experiences_applied": [
+        "BJ-001",
+        "BJ-002",
+        "BJ-003"
+      ]
     },
     "tang_sanzang": {
       "仓位": "40-50%（×0.8 唐憎系数：情绪过热+信号混乱）",
@@ -2893,7 +2798,7 @@ const newsData = {
     },
     "sangsha_module": {
       "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
+      "advice": "震荡整理，观望为主\n[🔄 拐点预警] 3个因子触发，情绪拐点可能在1-2天内出现 | 因子: 情绪极值偏离, 恐慌极值偏离, 时间节点",
       "avg_buy_prob": 19,
       "avg_panic_prob": 10,
       "analysis_results": [
@@ -3089,7 +2994,20 @@ const newsData = {
         }
       ],
       "total_news_count": 10,
-      "time_window": "7天累积（长期新闻除外）"
+      "time_window": "7天累积（长期新闻除外）",
+      "turning_point_warning": {
+        "detected": true,
+        "factors": [
+          "情绪极值偏离",
+          "恐慌极值偏离",
+          "时间节点"
+        ],
+        "factor_count": 3,
+        "prediction": "1-2天内可能出现情绪拐点"
+      },
+      "_experiences_applied": [
+        "SS-003"
+      ]
     },
     "white_dragon": {
       "主力状态": "拉升",
@@ -3110,11 +3028,11 @@ const newsData = {
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.08
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 3.02,
+            "change_pct": 27.49,
             "level": "normal"
           },
           "主力状态": "拉升",
@@ -3125,40 +3043,40 @@ const newsData = {
           "矛盾信号": "",
           "sangsha_buy_prob": 34,
           "sangsha_panic_prob": 5,
-          "单日量比": 0.95
+          "单日量比": 0.97
         },
         {
           "code": "512930",
           "price_trend": {
             "trend": "up",
             "strength": 75,
-            "change_pct": 7.45
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 1.61,
+            "change_pct": 24.6,
             "level": "normal"
           },
           "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
+          "阶段": "中期",
+          "行为解释": "量价齐升（单日量比1.54x），主力真实买入，短期有望继续上涨",
           "是否利用散户": false,
           "可信度": 1.0,
           "矛盾信号": "",
           "sangsha_buy_prob": 34,
           "sangsha_panic_prob": 5,
-          "单日量比": 0.62
+          "单日量比": 1.54
         },
         {
           "code": "518880",
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 0.56
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -21.29,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "观望",
@@ -3169,32 +3087,33 @@ const newsData = {
           "矛盾信号": "",
           "sangsha_buy_prob": 34,
           "sangsha_panic_prob": 5,
-          "单日量比": 0.74
+          "单日量比": 0.88
         },
         {
           "code": "588890",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.77
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 2.21,
+            "change_pct": 3.17,
             "level": "normal"
           },
           "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
+          "阶段": "初期",
+          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
           "是否利用散户": false,
           "可信度": 1.0,
           "矛盾信号": "",
           "sangsha_buy_prob": 34,
           "sangsha_panic_prob": 5,
-          "单日量比": 1.36
+          "单日量比": 0.94
         }
       ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
+      "综合建议": "📊 观望为主：市场方向不明，建议轻仓观望",
+      "_experiences_applied": []
     },
     "evolution_v4": {
       "version": "v4",
@@ -3225,43 +3144,6 @@ const newsData = {
       "tang_rules": [],
       "arbitration_notes": [
         "仲裁失败: run_tang_seng_arbitrate() got an unexpected keyword argument 'bajie_enhanced'"
-      ]
-    },
-    "wukong_enhanced": {
-      "market_sentiment": "谨慎偏多：美伊谈判举行地缘缓和预期升温，但俄乌升温+创业板超买+内部分化严重，短期回踩风险上升；AI算力/自动驾驶中期逻辑清晰，等回调再入",
-      "core_analysis": [
-        "① 美伊谈判：万斯+库什纳同出席=最高级别关注，谈判本身已是缓和信号（GEO-001：停火=地缘溢价消散）；但伊方71人+美方300人代表团，谈判复杂度极高，不应过度乐观",
-        "② Trump三线作战分散精力：伊朗谈判+关税施压+油价平抑(SPR第二批848万桶)，单线反转概率降低，但任何一条超预期都可能引发市场巨震",
-        "③ 俄乌敖德萨遭袭：地缘风险并非单线下行，提醒不要线性外推地缘缓和",
-        "④ 创业板昨日+3.78%：杠杆资金加速入场(融资余额单日+74亿)，历史上创业板单日涨幅>3%后一周内回踩概率>70%",
-        "⑤ 华为/地平线/蔚来/比亚迪同日发声=行业共识凝聚+TRUMP-002范式验证，AI芯片+自动驾驶中期逻辑不变，短期等回调",
-        "⑥ 电池ETF放量砸盘(量比2.02)=散户恐慌？主力在接：四部门刚部署规范竞争秩序，头部电池企业竞争趋缓，可能是假摔"
-      ],
-      "operations": [
-        {
-          "type": "⚠️",
-          "content": "科创芯片ETF(588890)：短期涨幅过大，等回踩至2.7以下再入，止损2.55"
-        },
-        {
-          "type": "✅",
-          "content": "AI算力ETF(512930)：今日放量拉升(量比1.54)，主力真金白银，回踩2.15以下低吸，目标2.5+"
-        },
-        {
-          "type": "⚠️",
-          "content": "创业板ETF(159915)：昨日暴涨后短期回踩压力极大，回避，等回踩1.8以下"
-        },
-        {
-          "type": "📌",
-          "content": "电网ETF(159542)：十五五订单驱动，缩量小涨=主力建仓初期，可逢低布局，目标1.6+"
-        },
-        {
-          "type": "📌",
-          "content": "电池ETF(159871)：放量砸盘可能是假摔，关注1.0支撑是否有效，若守住可抄底"
-        },
-        {
-          "type": "⚠️",
-          "content": "黄金ETF(518880)：地缘缓和预期+Trump平抑油价=上方空间有限，逢高减仓"
-        }
       ]
     }
   },
@@ -3625,76 +3507,40 @@ const newsData = {
       "win_rate": "~68%（贝叶斯后验+沙僧白龙马融合）",
       "max_drawdown": "-8.0%（止损线）",
       "holding_period": "",
-      "overall": {
-        "best_action": "观望",
-        "best_etfs": "512880证券ETF(25%) + 588260科创芯片设计ETF(25%) + 159871新能源ETF(20%) + 518880黄金ETF(15%) + 现金(15%)",
-        "win_rate": "~68%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
       "沙僧信号": {
         "情绪": "平稳",
-        "平均买入概率": 38,
-        "平均恐慌概率": 5,
+        "平均买入概率": 41,
+        "平均恐慌概率": 6,
         "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
         "可信度级别": "normal"
       },
       "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
+        "主力状态": "信号混乱",
+        "是否利用散户": true,
+        "可信度": 0.8,
+        "风险等级": "high",
+        "调整结果": "⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
       },
       "悟空信号": {
         "市场情绪": "震荡偏多，地缘风险边际缓解，A股反弹窗口打开"
       },
       "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
       "融合说明": [
         "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
+        "【白龙马融合】⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
       ],
       "original_bajie": {
-        "optimal_action": "观望",
+        "optimal_action": "维持6-7成仓位，均衡配置成长+价值，关注券商+半导体+新能源轮动机会",
         "optimal_etfs": "512880证券ETF(25%) + 588260科创芯片设计ETF(25%) + 159871新能源ETF(20%) + 518880黄金ETF(15%) + 现金(15%)",
-        "win_rate": "~68%（贝叶斯后验+沙僧白龙马融合）",
-        "max_drawdown": "-8.0%（止损线）",
-        "holding_period": "",
-        "沙僧信号": {
-          "情绪": "平稳",
-          "平均买入概率": 41,
-          "平均恐慌概率": 6,
-          "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-          "可信度级别": "normal"
-        },
-        "白龙马信号": {
-          "主力状态": "信号混乱",
-          "是否利用散户": true,
-          "可信度": 0.8,
-          "风险等级": "high",
-          "调整结果": "⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
-        },
-        "悟空信号": {
-          "市场情绪": "震荡偏多，地缘风险边际缓解，A股反弹窗口打开"
-        },
-        "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-        "融合说明": [
-          "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-          "【白龙马融合】⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
-        ],
-        "original_bajie": {
-          "optimal_action": "维持6-7成仓位，均衡配置成长+价值，关注券商+半导体+新能源轮动机会",
-          "optimal_etfs": "512880证券ETF(25%) + 588260科创芯片设计ETF(25%) + 159871新能源ETF(20%) + 518880黄金ETF(15%) + 现金(15%)",
-          "win_rate": "~68%（贝叶斯后验）",
-          "max_drawdown": "-6%（止损线）"
-        }
+        "win_rate": "~68%（贝叶斯后验）",
+        "max_drawdown": "-6%（止损线）"
       }
     },
     "sangsha_module": {
       "overall_sentiment": "平稳",
       "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 38,
-      "avg_panic_prob": 5,
+      "avg_buy_prob": 41,
+      "avg_panic_prob": 6,
       "analysis_results": [
         {
           "news": "4月9日A股共64只个股涨停，光纤概念汇源通信5连板",
@@ -3843,6 +3689,26 @@ const newsData = {
           "weighted_buy_prob": 32
         },
         {
+          "news": "AI芯片/人工智能板块爆发：复旦微电大涨超10%，寒武纪涨超...",
+          "title": "AI芯片/人工智能板块爆发：复旦微电大涨超10%，寒武纪涨超8%",
+          "full_title": "AI芯片/人工智能板块爆发：复旦微电大涨超10%，寒武纪涨超8%",
+          "summary": "4月9日科技板块快速拉升，芯片、人工智能、军工板块走强。人工智能AIETF(515070)盘中上涨超...",
+          "追高买入概率": 70,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 18,
+          "观望概率": 64,
+          "情绪标签": [
+            "FOMO"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 44,
+          "is_long_term": false,
+          "date": "2026-04-09",
+          "decay": 0.7,
+          "weighted_buy_prob": 30
+        },
+        {
           "news": "A股4月10日早盘高开高走，沪指收复4000点，创业板涨超2...",
           "title": "A股4月10日早盘高开高走，沪指收复4000点，创业板涨超2%",
           "full_title": "A股4月10日早盘高开高走，沪指收复4000点，创业板涨超2%",
@@ -3879,97 +3745,77 @@ const newsData = {
           "date": "2026-04-10",
           "decay": 1.0,
           "weighted_buy_prob": 14
-        },
-        {
-          "news": "国际金价约4727美元/盎司，较1月高点5598美元已回调1...",
-          "title": "国际金价约4727美元/盎司，较1月高点5598美元已回调14%",
-          "full_title": "国际金价约4727美元/盎司，较1月高点5598美元已回调14%",
-          "summary": "4月9日国际现货黄金约4727.9美元/盎司（约1041.5元/克），4月8日曾跌至4803美元。2...",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": true,
-          "date": "2026-04-10",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
         }
       ],
-      "total_news_count": 20,
+      "total_news_count": 29,
       "time_window": "7天累积（长期新闻除外）"
     },
     "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
+      "主力状态": "信号混乱",
+      "阶段": "需观察",
+      "行为解释": "多个ETF主力信号矛盾（4个），市场分歧极大，建议观望等待信号明确",
+      "是否利用散户": true,
+      "可信度": 0.8,
+      "矛盾ETF数": 4,
       "散户情绪": {
         "平均买入概率": 53,
         "平均恐慌概率": 5
       },
       "悟空信号": "震荡偏多，地缘风险边际缓解，A股反弹窗口打开",
-      "八戒胜率": "~68%（贝叶斯后验+沙僧白龙马融合）",
+      "八戒胜率": "~68%（贝叶斯后验）",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.08
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 3.02,
+            "change_pct": 27.49,
             "level": "normal"
           },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
+          "主力状态": "矛盾-主力派发",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率68%但主力在出货，建议降仓",
           "sangsha_buy_prob": 53,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.95
+          "sangsha_panic_prob": 5
         },
         {
           "code": "512930",
           "price_trend": {
             "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
+            "strength": 90,
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 1.61,
+            "change_pct": 24.6,
             "level": "normal"
           },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
+          "主力状态": "矛盾-主力派发",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率68%但主力在出货，建议降仓",
           "sangsha_buy_prob": 53,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.62
+          "sangsha_panic_prob": 5
         },
         {
           "code": "518880",
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 0.56
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -21.29,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "观望",
@@ -3979,65 +3825,52 @@ const newsData = {
           "可信度": 1.0,
           "矛盾信号": "",
           "sangsha_buy_prob": 53,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.74
+          "sangsha_panic_prob": 5
         },
         {
           "code": "588890",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.77
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 2.21,
+            "change_pct": 3.17,
             "level": "normal"
           },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
+          "主力状态": "矛盾-主力派发",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率68%但主力在出货，建议降仓",
           "sangsha_buy_prob": 53,
-          "sangsha_panic_prob": 5,
-          "单日量比": 1.36
+          "sangsha_panic_prob": 5
+        },
+        {
+          "code": "159382",
+          "price_trend": {
+            "trend": "up",
+            "strength": 90,
+            "change_pct": 10.04
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": 44.11,
+            "level": "normal"
+          },
+          "主力状态": "矛盾-主力派发",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率68%但主力在出货，建议降仓",
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
         }
       ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "wukong_enhanced": {
-      "market_sentiment": "震荡偏多，地缘风险边际缓解，A股反弹窗口打开",
-      "core_analysis": [
-        "美伊停火协议生效但霍尔木兹海峡实际管控未解除，伊朗提出'十点方案'与美国分歧明显，4月11日首轮谈判存在变数",
-        "A股4月10日早盘收复4000点，券商ETF涨超5%，科创芯片设计ETF涨超2.5%，科技成长主线明确",
-        "四部门联合规范储能电池行业竞争秩序，坚决抵制'内卷式'竞争，利好头部企业",
-        "国际金价从1月高点回调14%，当前约4727美元/盎司，估值相对合理，地缘风险对冲仍有价值",
-        "内蒙古自贸试验区设立，自贸区扩围至23个，带来区域主题投资机会"
-      ],
-      "operations": [
-        {
-          "type": "可做",
-          "content": "券商ETF(512880)：市场活跃度提升，牛市旗手弹性大"
-        },
-        {
-          "type": "可做",
-          "content": "科创芯片设计ETF(588260)：AI算力需求驱动，半导体产业变革"
-        },
-        {
-          "type": "可做",
-          "content": "新能源/电池ETF(159871/159755)：储能政策利好，头部企业受益"
-        },
-        {
-          "type": "警惕",
-          "content": "油气开采板块：地缘风险边际缓解但仍有波动"
-        },
-        {
-          "type": "关注",
-          "content": "美伊谈判进展(4月11日首轮)及霍尔木兹海峡通航情况"
-        }
-      ]
+      "综合建议": "⚠️ 信号矛盾：悟空/白龙马/散户三方信号不一致，建议观望或降仓"
     }
   },
   "2026-04-09": {
@@ -4076,70 +3909,34 @@ const newsData = {
       "win_rate": "~72%（贝叶斯后验+沙僧白龙马融合）",
       "max_drawdown": "-8.0%（止损线）",
       "holding_period": "1-2周",
-      "overall": {
-        "best_action": "观望",
-        "best_etfs": "515070人工智能AIETF(40%) + 588890科创芯片ETF(30%) + 512930AI人工智能ETF(20%) + 现金(10%)",
-        "win_rate": "~72%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
       "沙僧信号": {
         "情绪": "平稳",
-        "平均买入概率": 25,
-        "平均恐慌概率": 19,
+        "平均买入概率": 42,
+        "平均恐慌概率": 9,
         "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
         "可信度级别": "normal"
       },
       "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
+        "主力状态": "信号混乱",
+        "是否利用散户": true,
+        "可信度": 0.8,
+        "风险等级": "high",
+        "调整结果": "⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
       },
       "悟空信号": {
         "市场情绪": "震荡偏多，科技成长股领涨"
       },
       "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
       "融合说明": [
         "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
+        "【白龙马融合】⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
       ],
       "original_bajie": {
-        "optimal_action": "观望",
+        "optimal_action": "重点配置AI芯片+人工智能ETF，科技成长股业绩驱动行情",
         "optimal_etfs": "515070人工智能AIETF(40%) + 588890科创芯片ETF(30%) + 512930AI人工智能ETF(20%) + 现金(10%)",
-        "win_rate": "~72%（贝叶斯后验+沙僧白龙马融合）",
-        "max_drawdown": "-8.0%（止损线）",
-        "holding_period": "1-2周",
-        "沙僧信号": {
-          "情绪": "平稳",
-          "平均买入概率": 42,
-          "平均恐慌概率": 9,
-          "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-          "可信度级别": "normal"
-        },
-        "白龙马信号": {
-          "主力状态": "信号混乱",
-          "是否利用散户": true,
-          "可信度": 0.8,
-          "风险等级": "high",
-          "调整结果": "⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
-        },
-        "悟空信号": {
-          "市场情绪": "震荡偏多，科技成长股领涨"
-        },
-        "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-        "融合说明": [
-          "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-          "【白龙马融合】⚠️ 白龙马：信号矛盾，市场方向不明，建议观望"
-        ],
-        "original_bajie": {
-          "optimal_action": "重点配置AI芯片+人工智能ETF，科技成长股业绩驱动行情",
-          "optimal_etfs": "515070人工智能AIETF(40%) + 588890科创芯片ETF(30%) + 512930AI人工智能ETF(20%) + 现金(10%)",
-          "win_rate": "~72%（贝叶斯后验）",
-          "max_drawdown": "-5%（止损线）",
-          "holding_period": "1-2周"
-        }
+        "win_rate": "~72%（贝叶斯后验）",
+        "max_drawdown": "-5%（止损线）",
+        "holding_period": "1-2周"
       }
     },
     "s_level": [
@@ -4252,9 +4049,113 @@ const newsData = {
     "sangsha_module": {
       "overall_sentiment": "平稳",
       "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 25,
-      "avg_panic_prob": 19,
+      "avg_buy_prob": 42,
+      "avg_panic_prob": 9,
       "analysis_results": [
+        {
+          "news": "4月9日A股共64只个股涨停，光纤概念汇源通信5连板",
+          "title": "4月9日A股共64只个股涨停，光纤概念汇源通信5连板",
+          "full_title": "4月9日A股共64只个股涨停，光纤概念汇源通信5连板",
+          "summary": "Wind数据显示，4月9日A股共计64只个股涨停。其中光纤概念股汇源通信收获5连板，液冷服务器股飞龙...",
+          "追高买入概率": 93,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 59,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 57,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 57
+        },
+        {
+          "news": "我国自贸试验区数量扩围至23个（新增内蒙古）",
+          "title": "我国自贸试验区数量扩围至23个（新增内蒙古）",
+          "full_title": "我国自贸试验区数量扩围至23个（新增内蒙古）",
+          "summary": "国务院印发《中国（内蒙古）自由贸易试验区总体方案》，内蒙古正式成为第23个自贸试验区。内蒙古本地股4...",
+          "追高买入概率": 88,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 61,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 55,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 55
+        },
+        {
+          "news": "内蒙古自贸试验区正式设立，我国自贸区扩围至23个",
+          "title": "内蒙古自贸试验区正式设立，我国自贸区扩围至23个",
+          "full_title": "内蒙古自贸试验区正式设立，我国自贸区扩围至23个",
+          "summary": "国务院印发《中国（内蒙古）自由贸易试验区总体方案》，内蒙古正式成为第23个自贸试验区。内蒙古本地股4...",
+          "追高买入概率": 88,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 61,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 55,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 55
+        },
+        {
+          "news": "A股4月8日强势上涨：沪指涨2.69%报3995点，创业板涨...",
+          "title": "A股4月8日强势上涨：沪指涨2.69%报3995点，创业板涨5.91%",
+          "full_title": "A股4月8日强势上涨：沪指涨2.69%报3995点，创业板涨5.91%",
+          "summary": "2026年4月8日，上证指数收盘涨2.70%报3995.00点，深证成指涨4.79%报14042.5...",
+          "追高买入概率": 80,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 64,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 50,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 50
+        },
+        {
+          "news": "科创芯片设计ETF国泰(589260)大涨超2.5%，半导体...",
+          "title": "科创芯片设计ETF国泰(589260)大涨超2.5%，半导体行业迎产业变革",
+          "full_title": "科创芯片设计ETF国泰(589260)大涨超2.5%，半导体行业迎产业变革",
+          "summary": "4月10日，科创芯片设计ETF国泰(589260)大涨超2.5%。长城证券指出，AI发展对算力提出更...",
+          "追高买入概率": 80,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 64,
+          "情绪标签": [
+            "FOMO"
+          ],
+          "韭菜行为总结": "散户疯了，都在追！",
+          "市场含义": "顶部风险",
+          "买入概率": 50,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 50
+        },
         {
           "news": "AI芯片/人工智能板块爆发：复旦微电大涨超10%，寒武纪涨超...",
           "title": "AI芯片/人工智能板块爆发：复旦微电大涨超10%，寒武纪涨超8%",
@@ -4276,6 +4177,68 @@ const newsData = {
           "weighted_buy_prob": 44
         },
         {
+          "news": "证券ETF(512880)今日强势反弹超5%，'牛市旗手'爆...",
+          "title": "证券ETF(512880)今日强势反弹超5%，'牛市旗手'爆发",
+          "full_title": "证券ETF(512880)今日强势反弹超5%，'牛市旗手'爆发",
+          "summary": "4月10日，证券ETF(512880)强势反弹超5%，规模超510亿元位居同类首位。重仓的中信证券、...",
+          "追高买入概率": 8,
+          "抄底买入概率": 73,
+          "恐慌卖出概率": 5,
+          "观望概率": 72,
+          "情绪标签": [
+            "抄底冲动",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户想抄底，认为是机会",
+          "市场含义": "可能有反弹",
+          "买入概率": 34,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 34
+        },
+        {
+          "news": "4月9日A股震荡调整：沪指跌0.73%，个股普跌",
+          "title": "4月9日A股震荡调整：沪指跌0.73%，个股普跌",
+          "full_title": "4月9日A股震荡调整：沪指跌0.73%，个股普跌",
+          "summary": "4月9日，A股全天震荡调整，上证指数跌0.73%，创业板指跌0.67%。个股涨跌比1039:4396...",
+          "追高买入概率": 50,
+          "抄底买入概率": 5,
+          "恐慌卖出概率": 5,
+          "观望概率": 77,
+          "情绪标签": [
+            "FOMO",
+            "易懂"
+          ],
+          "韭菜行为总结": "散户开始眼红，想冲进去",
+          "市场含义": "分歧加大",
+          "买入概率": 32,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 32
+        },
+        {
+          "news": "A股4月10日早盘高开高走，沪指收复4000点，创业板涨超2...",
+          "title": "A股4月10日早盘高开高走，沪指收复4000点，创业板涨超2%",
+          "full_title": "A股4月10日早盘高开高走，沪指收复4000点，创业板涨超2%",
+          "summary": "4月10日，A股早盘高开高走，三大指数集体拉升，沪指收复4000点关口，创业板涨超2%。电池产业链、...",
+          "追高买入概率": 8,
+          "抄底买入概率": 58,
+          "恐慌卖出概率": 5,
+          "观望概率": 77,
+          "情绪标签": [
+            "抄底冲动"
+          ],
+          "韭菜行为总结": "散户想抄底，认为是机会",
+          "市场含义": "可能有反弹",
+          "买入概率": 28,
+          "is_long_term": true,
+          "date": "2026-04-10",
+          "decay": 1.0,
+          "weighted_buy_prob": 28
+        },
+        {
           "news": "科技股重估进入阶段性休整后反弹",
           "title": "科技股重估进入阶段性休整后反弹",
           "full_title": "科技股重估进入阶段性休整后反弹",
@@ -4295,97 +4258,77 @@ const newsData = {
           "date": "2026-04-09",
           "decay": 1.0,
           "weighted_buy_prob": 18
-        },
-        {
-          "news": "科创AI指数异动拉升，芯片设计ETF交投活跃",
-          "title": "科创AI指数异动拉升，芯片设计ETF交投活跃",
-          "full_title": "科创AI指数异动拉升，芯片设计ETF交投活跃",
-          "summary": "科创AI指数午盘异动拉升涨超2%，科创AIETF(588790)直线拉升涨超2%，成交额超2000万...",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": false,
-          "date": "2026-04-09",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
         }
       ],
-      "total_news_count": 3,
+      "total_news_count": 29,
       "time_window": "7天累积（长期新闻除外）"
     },
     "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
+      "主力状态": "信号混乱",
+      "阶段": "需观察",
+      "行为解释": "多个ETF主力信号矛盾（4个），市场分歧极大，建议观望等待信号明确",
+      "是否利用散户": true,
+      "可信度": 0.8,
+      "矛盾ETF数": 4,
       "散户情绪": {
-        "平均买入概率": 25,
-        "平均恐慌概率": 19
+        "平均买入概率": 53,
+        "平均恐慌概率": 5
       },
       "悟空信号": "震荡偏多，科技成长股领涨",
-      "八戒胜率": "~72%（贝叶斯后验+沙僧白龙马融合）",
+      "八戒胜率": "~72%（贝叶斯后验）",
       "各ETF分析": [
         {
           "code": "512760",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.08
+            "change_pct": 7.5
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 3.02,
+            "change_pct": 27.49,
             "level": "normal"
           },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 25,
-          "sangsha_panic_prob": 19,
-          "单日量比": 0.95
+          "主力状态": "矛盾-主力派发",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率72%但主力在出货，建议降仓",
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
         },
         {
           "code": "512930",
           "price_trend": {
             "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
+            "strength": 90,
+            "change_pct": 8.04
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 1.61,
+            "change_pct": 24.6,
             "level": "normal"
           },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 25,
-          "sangsha_panic_prob": 19,
-          "单日量比": 0.62
+          "主力状态": "矛盾-主力派发",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率72%但主力在出货，建议降仓",
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
         },
         {
           "code": "518880",
           "price_trend": {
             "trend": "side",
             "strength": 40,
-            "change_pct": 0.56
+            "change_pct": 1.43
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": -21.29,
+            "change_pct": -2.54,
             "level": "normal"
           },
           "主力状态": "观望",
@@ -4394,61 +4337,53 @@ const newsData = {
           "是否利用散户": false,
           "可信度": 1.0,
           "矛盾信号": "",
-          "sangsha_buy_prob": 25,
-          "sangsha_panic_prob": 19,
-          "单日量比": 0.74
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
         },
         {
           "code": "588890",
           "price_trend": {
             "trend": "up",
             "strength": 90,
-            "change_pct": 7.77
+            "change_pct": 8.33
           },
           "volume_trend": {
             "trend": "side",
-            "change_pct": 2.21,
+            "change_pct": 3.17,
             "level": "normal"
           },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 25,
-          "sangsha_panic_prob": 19,
-          "单日量比": 1.36
+          "主力状态": "矛盾-主力派发",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率72%但主力在出货，建议降仓",
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
+        },
+        {
+          "code": "159382",
+          "price_trend": {
+            "trend": "up",
+            "strength": 90,
+            "change_pct": 10.04
+          },
+          "volume_trend": {
+            "trend": "side",
+            "change_pct": 44.11,
+            "level": "normal"
+          },
+          "主力状态": "矛盾-主力派发",
+          "阶段": "末期",
+          "行为解释": "价格上涨但量能不足，主力高位派发可能性大",
+          "是否利用散户": true,
+          "可信度": 0.75,
+          "矛盾信号": "⚠️ 矛盾：八戒胜率72%但主力在出货，建议降仓",
+          "sangsha_buy_prob": 53,
+          "sangsha_panic_prob": 5
         }
       ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓；✅ 八戒支持：胜率72%，胜率信号积极"
-    },
-    "wukong_enhanced": {
-      "market_sentiment": "震荡偏多，科技成长股领涨",
-      "core_analysis": [
-        "AI芯片/人工智能板块爆发：复旦微电大涨超10%，寒武纪-U涨超8%，金山办公涨超7%，人工智能AIETF(515070)盘中涨超3%",
-        "科技股重估进入阶段性休整后反弹：海外关税风险落地，市场进入财报窗口期，业绩确定性成为超额收益抓手",
-        "芯片板块集体走强：芯原股份、景嘉微等个股跟涨，科创AI指数异动拉升",
-        "进入4月财报季，业绩确定性将成为市场风格主要抓手，关注业绩超预期个股"
-      ],
-      "operations": [
-        {
-          "type": "可做",
-          "content": "AI芯片/人工智能板块：复旦微电、寒武纪-U、金山办公、人工智能AIETF(515070)"
-        },
-        {
-          "type": "可做",
-          "content": "科创芯片ETF：588890科创芯片ETF、588780科创芯片设计ETF"
-        },
-        {
-          "type": "警惕",
-          "content": "短期涨幅较大个股，注意获利回吐风险"
-        },
-        {
-          "type": "关注",
-          "content": "4月财报季业绩超预期个股"
-        }
-      ]
+      "综合建议": "⚠️ 信号矛盾：悟空/白龙马/散户三方信号不一致，建议观望或降仓；✅ 八戒支持：胜率72%，胜率信号积极"
     }
   },
   "2026-04-03": {
@@ -4629,276 +4564,7 @@ const newsData = {
         "stocks": [],
         "signal": "假期效应，市场无明显方向，节后首日关注北向资金动向"
       }
-    ],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 18,
-      "avg_panic_prob": 13,
-      "analysis_results": [
-        {
-          "news": "字节豆包日均Token消耗破120万亿，两年翻1000倍",
-          "title": "字节豆包日均Token消耗破120万亿，两年翻1000倍",
-          "full_title": "字节豆包日均Token消耗破120万亿，两年翻1000倍",
-          "summary": "4月2日火山引擎总裁谭待披露，豆包大模型日均Token使用量超120万亿，过去三个月翻倍，比2024...",
-          "追高买入概率": 80,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 64,
-          "情绪标签": [
-            "FOMO",
-            "易懂"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 50,
-          "is_long_term": false,
-          "date": "2026-04-03",
-          "decay": 1.0,
-          "weighted_buy_prob": 50
-        },
-        {
-          "news": "中企出海加速：恒瑞GLP-1授权Kailera赴美IPO，轮...",
-          "title": "中企出海加速：恒瑞GLP-1授权Kailera赴美IPO，轮胎/黄金龙头海外布局",
-          "full_title": "中企出海加速：恒瑞GLP-1授权Kailera赴美IPO，轮胎/黄金龙头海外布局",
-          "summary": "恒瑞医药GLP-1全球资产通过Kailera Therapeutics赴纳斯达克IPO，Kailer...",
-          "追高买入概率": 5,
-          "抄底买入概率": 54,
-          "恐慌卖出概率": 5,
-          "观望概率": 80,
-          "情绪标签": [
-            "抄底冲动"
-          ],
-          "韭菜行为总结": "散户想抄底，认为是机会",
-          "市场含义": "可能有反弹",
-          "买入概率": 24,
-          "is_long_term": false,
-          "date": "2026-04-03",
-          "decay": 1.0,
-          "weighted_buy_prob": 24
-        },
-        {
-          "news": "六大行年报出炉：营收增速转正，净息差降幅收窄",
-          "title": "六大行年报出炉：营收增速转正，净息差降幅收窄",
-          "full_title": "六大行年报出炉：营收增速转正，净息差降幅收窄",
-          "summary": "截至4月2日22家A股上市银行发布2025年报，总资产约300万亿。六大行营收增速终于转正（同比+1...",
-          "追高买入概率": 34,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 83,
-          "情绪标签": [
-            "易懂"
-          ],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 22,
-          "is_long_term": false,
-          "date": "2026-04-03",
-          "decay": 1.0,
-          "weighted_buy_prob": 22
-        },
-        {
-          "news": "礼来口服GLP-1减肥药Foundayo获FDA批准，口服时...",
-          "title": "礼来口服GLP-1减肥药Foundayo获FDA批准，口服时代正式开启",
-          "full_title": "礼来口服GLP-1减肥药Foundayo获FDA批准，口服时代正式开启",
-          "summary": "4月1日晚礼来宣布口服小分子GLP-1受体激动剂orforglipron（商品名Foundayo）在...",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 57,
-          "观望概率": 79,
-          "情绪标签": [
-            "恐慌"
-          ],
-          "韭菜行为总结": "散户恐慌，想割肉",
-          "市场含义": "可能见底",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-03",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "SpaceX IPO超级独角兽：估值1.75万亿美元，6月挂...",
-          "title": "SpaceX IPO超级独角兽：估值1.75万亿美元，6月挂牌",
-          "full_title": "SpaceX IPO超级独角兽：估值1.75万亿美元，6月挂牌",
-          "summary": "SpaceX已秘密提交IPO申请，寻求6月上市，估值超1.75万亿美元，募资或超750亿美元，成三巨...",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-03",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "清明节A股休市安排：4月4日至6日休市，7日复牌",
-          "title": "清明节A股休市安排：4月4日至6日休市，7日复牌",
-          "full_title": "清明节A股休市安排：4月4日至6日休市，7日复牌",
-          "summary": "清明节小长假，A股4月4日至6日休市，4月7日（周二）复牌交易。港股4月4日休市半天。",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-03",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        }
-      ],
-      "total_news_count": 6,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 21,
-        "平均恐慌概率": 15
-      },
-      "悟空信号": "暂无",
-      "八戒胜率": "暂无",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 21,
-          "sangsha_panic_prob": 15,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 21,
-          "sangsha_panic_prob": 15,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 21,
-          "sangsha_panic_prob": 15,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 21,
-          "sangsha_panic_prob": 15,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "bajie_conclusion": {
-      "optimal_action": "",
-      "optimal_etfs": "",
-      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "",
-      "overall": {
-        "best_action": "",
-        "best_etfs": "",
-        "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 18,
-        "平均恐慌概率": 13,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": ""
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {}
-    }
+    ]
   },
   "2026-04-02": {
     "date": "2026-04-02",
@@ -5021,290 +4687,7 @@ const newsData = {
         "stocks": [],
         "signal": "假期效应，市场无明显方向，节后首日关注北向资金动向"
       }
-    ],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 20,
-      "avg_panic_prob": 5,
-      "analysis_results": [
-        {
-          "news": "一季度财报季开启：半导体龙头业绩暴涨4659%",
-          "title": "一季度财报季开启：半导体龙头业绩暴涨4659%",
-          "full_title": "一季度财报季开启：半导体龙头业绩暴涨4659%",
-          "summary": "一季度财报季启幕，多家公司提前发布业绩，半导体龙头利润暴增4659%，10只个股利润翻倍，但也有2家...",
-          "追高买入概率": 94,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 59,
-          "情绪标签": [
-            "FOMO",
-            "易懂"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 58,
-          "is_long_term": false,
-          "date": "2026-04-02",
-          "decay": 1.0,
-          "weighted_buy_prob": 58
-        },
-        {
-          "news": "美股存储板块暴涨：美光+11%、铠侠再发停产通知",
-          "title": "美股存储板块暴涨：美光+11%、铠侠再发停产通知",
-          "full_title": "美股存储板块暴涨：美光+11%、铠侠再发停产通知",
-          "summary": "存储芯片大厂铠侠再度发布停产通知，叠加AI驱动HBM需求爆发，美光、西部数据、闪迪均暴涨10%以上。...",
-          "追高买入概率": 82,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 63,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 51,
-          "is_long_term": false,
-          "date": "2026-04-02",
-          "decay": 1.0,
-          "weighted_buy_prob": 51
-        },
-        {
-          "news": "礼来减肥药FOUNDAYO获美国批准",
-          "title": "礼来减肥药FOUNDAYO获美国批准",
-          "full_title": "礼来减肥药FOUNDAYO获美国批准",
-          "summary": "礼来公司减肥药FOUNDAYO获美国FDA批准，股价应声涨超3%，GLP-1减肥药市场持续扩大。",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": false,
-          "date": "2026-04-02",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "美伊停火谈判持续博弈，霍尔木兹海峡控制权成核心分歧",
-          "title": "美伊停火谈判持续博弈，霍尔木兹海峡控制权成核心分歧",
-          "full_title": "美伊停火谈判持续博弈，霍尔木兹海峡控制权成核心分歧",
-          "summary": "美伊双方就停火协议展开密集磋商，美方要求伊朗重开霍尔木兹海峡作为停火条件，伊朗坚持将封锁海峡作为反制...",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-02",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "SpaceX IPO超级独角兽：估值1.75万亿美元，6月挂...",
-          "title": "SpaceX IPO超级独角兽：估值1.75万亿美元，6月挂牌",
-          "full_title": "SpaceX IPO超级独角兽：估值1.75万亿美元，6月挂牌",
-          "summary": "SpaceX已秘密提交IPO申请，寻求6月上市，估值超1.75万亿美元，募资或超750亿美元，成三巨...",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-02",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "特斯拉欧洲销售分化：意大利大增32%，葡萄牙下滑2%",
-          "title": "特斯拉欧洲销售分化：意大利大增32%，葡萄牙下滑2%",
-          "full_title": "特斯拉欧洲销售分化：意大利大增32%，葡萄牙下滑2%",
-          "summary": "特斯拉欧洲多国销售数据出炉，意大利3月注册量同比大增32%，但葡萄牙下滑2%。整体1-3月欧洲市场增...",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-02",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "清明节A股休市安排：4月4日至6日休市，7日复牌",
-          "title": "清明节A股休市安排：4月4日至6日休市，7日复牌",
-          "full_title": "清明节A股休市安排：4月4日至6日休市，7日复牌",
-          "summary": "清明节小长假，A股4月4日至6日休市，4月7日复牌交易。港股4月4日休市半天。",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-02",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        }
-      ],
-      "total_news_count": 7,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 26,
-        "平均恐慌概率": 5
-      },
-      "悟空信号": "暂无",
-      "八戒胜率": "暂无",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 26,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 26,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 26,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 26,
-          "sangsha_panic_prob": 5,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "bajie_conclusion": {
-      "optimal_action": "",
-      "optimal_etfs": "",
-      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "",
-      "overall": {
-        "best_action": "",
-        "best_etfs": "",
-        "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 20,
-        "平均恐慌概率": 5,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": ""
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {}
-    }
+    ]
   },
   "2026-04-01": {
     "date": "2026-04-01",
@@ -5482,350 +4865,7 @@ const newsData = {
         "stocks": [],
         "signal": "社交媒体情绪高涨，但实际A股映射有限，属于题材炒作"
       }
-    ],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 21,
-      "avg_panic_prob": 11,
-      "analysis_results": [
-        {
-          "news": "医药板块掀涨停潮：港股创新药ETF暴涨超7%，广生堂、凯莱英...",
-          "title": "医药板块掀涨停潮：港股创新药ETF暴涨超7%，广生堂、凯莱英等多股涨停",
-          "full_title": "医药板块掀涨停潮：港股创新药ETF暴涨超7%，广生堂、凯莱英等多股涨停",
-          "summary": "医药生物板块领涨两市，港股创新药ETF暴涨超7%，A股广生堂、睿智医药、凯莱英、昂利康、海欣股份等多...",
-          "追高买入概率": 79,
-          "抄底买入概率": 23,
-          "恐慌卖出概率": 5,
-          "观望概率": 59,
-          "情绪标签": [
-            "FOMO",
-            "易懂"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 57,
-          "is_long_term": false,
-          "date": "2026-04-01",
-          "decay": 1.0,
-          "weighted_buy_prob": 57
-        },
-        {
-          "news": "小鹏汽车单季度盈利，全力押注AI，第二曲线能否走通？",
-          "title": "小鹏汽车单季度盈利，全力押注AI，第二曲线能否走通？",
-          "full_title": "小鹏汽车单季度盈利，全力押注AI，第二曲线能否走通？",
-          "summary": "小鹏汽车实现单季度盈利，将盈利归因于AI智驾技术商业化突破，但新能源车市场竞争激烈，盈利持续性有待观...",
-          "追高买入概率": 82,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 63,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 51,
-          "is_long_term": false,
-          "date": "2026-04-01",
-          "decay": 1.0,
-          "weighted_buy_prob": 51
-        },
-        {
-          "news": "全球股市暴涨：日经+4%、韩国+8%、欧洲多国+3%、美股存...",
-          "title": "全球股市暴涨：日经+4%、韩国+8%、欧洲多国+3%、美股存储板块爆发",
-          "full_title": "全球股市暴涨：日经+4%、韩国+8%、欧洲多国+3%、美股存储板块爆发",
-          "summary": "美伊局势缓和预期升温，全球风险资产狂欢。存储芯片大厂铠侠再度发布停产通知，美光、西部数据、闪迪均暴涨...",
-          "追高买入概率": 64,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 22,
-          "观望概率": 66,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 40,
-          "is_long_term": false,
-          "date": "2026-04-01",
-          "decay": 1.0,
-          "weighted_buy_prob": 40
-        },
-        {
-          "news": "比亚迪冲刺海外年销150万辆，把全球化变基本盘",
-          "title": "比亚迪冲刺海外年销150万辆，把全球化变基本盘",
-          "full_title": "比亚迪冲刺海外年销150万辆，把全球化变基本盘",
-          "summary": "比亚迪2026年海外销量目标锁定150万辆，重点布局东南亚、欧洲、中东市场，目前海外月销已突破10万...",
-          "追高买入概率": 36,
-          "抄底买入概率": 33,
-          "恐慌卖出概率": 5,
-          "观望概率": 74,
-          "情绪标签": [
-            "抄底冲动"
-          ],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 35,
-          "is_long_term": false,
-          "date": "2026-04-01",
-          "decay": 1.0,
-          "weighted_buy_prob": 35
-        },
-        {
-          "news": "美伊讨论以重开霍尔木兹海峡为条件的停火协议",
-          "title": "美伊讨论以重开霍尔木兹海峡为条件的停火协议",
-          "full_title": "美伊讨论以重开霍尔木兹海峡为条件的停火协议",
-          "summary": "美伊双方正就潜在停火协议展开讨论，美方要求伊朗重开霍尔木兹海峡换取停火。特朗普称伊朗请求停火，但伊朗...",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-01",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "SpaceX秘密提交IPO文件，估值超1.75万亿美元，6月...",
-          "title": "SpaceX秘密提交IPO文件，估值超1.75万亿美元，6月挂牌",
-          "full_title": "SpaceX秘密提交IPO文件，估值超1.75万亿美元，6月挂牌",
-          "summary": "马斯克旗下SpaceX已秘密提交IPO申请，估值超1.75万亿美元，募资或超750亿美元，成三巨头超...",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-01",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "伊朗革命卫队称完全掌控霍尔木兹海峡，并对以色列发动最大规模导...",
-          "title": "伊朗革命卫队称完全掌控霍尔木兹海峡，并对以色列发动最大规模导弹袭击",
-          "full_title": "伊朗革命卫队称完全掌控霍尔木兹海峡，并对以色列发动最大规模导弹袭击",
-          "summary": "伊朗革命卫队称海军已完全掌控霍尔木兹海峡，并对多个目标实施打击，刚刚过去的一小时是对以开战以来最大规...",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-01",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "台积电计划2028年在日本生产3nm芯片",
-          "title": "台积电计划2028年在日本生产3nm芯片",
-          "full_title": "台积电计划2028年在日本生产3nm芯片",
-          "summary": "台积电宣布将在日本工厂于2028年开始生产3nm先进制程芯片，受益于日本政府巨额补贴。",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-01",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "水泥巨头业绩雪崩，海螺水泥巨亏72亿",
-          "title": "水泥巨头业绩雪崩，海螺水泥巨亏72亿",
-          "full_title": "水泥巨头业绩雪崩，海螺水泥巨亏72亿",
-          "summary": "水泥行业景气度持续低迷，海螺水泥等巨头年报出现巨额亏损，行业出清加速。",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 57,
-          "观望概率": 79,
-          "情绪标签": [
-            "恐慌"
-          ],
-          "韭菜行为总结": "散户恐慌，想割肉",
-          "市场含义": "可能见底",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-01",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "SpaceX IPO消息刷屏：马斯克1.75万亿美元超级独角...",
-          "title": "SpaceX IPO消息刷屏：马斯克1.75万亿美元超级独角兽",
-          "full_title": "SpaceX IPO消息刷屏：马斯克1.75万亿美元超级独角兽",
-          "summary": "SpaceX IPO消息在社交媒体引发热议，马斯克太空商业帝国版图再扩大。",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-04-01",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        }
-      ],
-      "total_news_count": 10,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 37,
-        "平均恐慌概率": 8
-      },
-      "悟空信号": "暂无",
-      "八戒胜率": "暂无",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 37,
-          "sangsha_panic_prob": 8,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 37,
-          "sangsha_panic_prob": 8,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 37,
-          "sangsha_panic_prob": 8,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 37,
-          "sangsha_panic_prob": 8,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "bajie_conclusion": {
-      "optimal_action": "",
-      "optimal_etfs": "",
-      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "",
-      "overall": {
-        "best_action": "",
-        "best_etfs": "",
-        "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 21,
-        "平均恐慌概率": 11,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": ""
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {}
-    }
+    ]
   },
   "2026-03-31": {
     "date": "2026-03-31",
@@ -6035,356 +5075,7 @@ const newsData = {
         "stocks": [],
         "signal": "AI巨头入局机器人，产业前景广阔"
       }
-    ],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 35,
-      "avg_panic_prob": 5,
-      "analysis_results": [
-        {
-          "news": "A股三大指数震荡分化，创业板指表现活跃",
-          "title": "A股三大指数震荡分化，创业板指表现活跃",
-          "full_title": "A股三大指数震荡分化，创业板指表现活跃",
-          "summary": "上证指数微跌0.01%，深证成指跌0.15%，创业板指跌0.94%；机器人概念股逆势爆发，十余股涨停...",
-          "追高买入概率": 95,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 59,
-          "情绪标签": [
-            "FOMO",
-            "易懂"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 59,
-          "is_long_term": false,
-          "date": "2026-03-31",
-          "decay": 1.0,
-          "weighted_buy_prob": 59
-        },
-        {
-          "news": "宁德时代发布骁遥电池，钠锂混合技术突破",
-          "title": "宁德时代发布骁遥电池，钠锂混合技术突破",
-          "full_title": "宁德时代发布骁遥电池，钠锂混合技术突破",
-          "summary": "宁德时代发布骁遥电池，将钠电池与锂电池集成于同一电池包；国内首条全固态锂电池量产线正式投产；新能源赛...",
-          "追高买入概率": 92,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 59,
-          "情绪标签": [
-            "FOMO",
-            "易懂"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 57,
-          "is_long_term": false,
-          "date": "2026-03-31",
-          "decay": 1.0,
-          "weighted_buy_prob": 57
-        },
-        {
-          "news": "机器人概念股逆势爆发，十余股涨停",
-          "title": "机器人概念股逆势爆发，十余股涨停",
-          "full_title": "机器人概念股逆势爆发，十余股涨停",
-          "summary": "机器人板块持续火热，兆威机电、杭齿前进、襄阳轴承等十余股涨停，资金持续涌入机器人赛道",
-          "追高买入概率": 93,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 59,
-          "情绪标签": [
-            "FOMO",
-            "易懂"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 57,
-          "is_long_term": false,
-          "date": "2026-03-31",
-          "decay": 1.0,
-          "weighted_buy_prob": 57
-        },
-        {
-          "news": "锂电池板块多股涨停，宁德时代涨超5%",
-          "title": "锂电池板块多股涨停，宁德时代涨超5%",
-          "full_title": "锂电池板块多股涨停，宁德时代涨超5%",
-          "summary": "锂电池概念股走强，中国宝安、传艺科技、丰元股份、璞泰来等多股涨停，宁德时代涨超5%",
-          "追高买入概率": 93,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 59,
-          "情绪标签": [
-            "FOMO",
-            "易懂"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 57,
-          "is_long_term": false,
-          "date": "2026-03-31",
-          "decay": 1.0,
-          "weighted_buy_prob": 57
-        },
-        {
-          "news": "储能概念股走高，新能源修复反弹逻辑顺畅",
-          "title": "储能概念股走高，新能源修复反弹逻辑顺畅",
-          "full_title": "储能概念股走高，新能源修复反弹逻辑顺畅",
-          "summary": "储能概念股活跃，易事特、派能科技领涨；新能源午后走强，科士达冲击涨停；分析师认为新能源修复反弹逻辑顺...",
-          "追高买入概率": 29,
-          "抄底买入概率": 67,
-          "恐慌卖出概率": 5,
-          "观望概率": 66,
-          "情绪标签": [
-            "抄底冲动",
-            "易懂"
-          ],
-          "韭菜行为总结": "散户想抄底，认为是机会",
-          "市场含义": "可能有反弹",
-          "买入概率": 44,
-          "is_long_term": false,
-          "date": "2026-03-31",
-          "decay": 1.0,
-          "weighted_buy_prob": 44
-        },
-        {
-          "news": "人形机器人产业加速跑，OpenAI重启机器人部门",
-          "title": "人形机器人产业加速跑，OpenAI重启机器人部门",
-          "full_title": "人形机器人产业加速跑，OpenAI重启机器人部门",
-          "summary": "OpenAI重新组建机器人部门，专注研发通用、自适应、多功能机器人；特斯拉公布2026年人形机器人量...",
-          "追高买入概率": 60,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 72,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 38,
-          "is_long_term": false,
-          "date": "2026-03-31",
-          "decay": 1.0,
-          "weighted_buy_prob": 38
-        },
-        {
-          "news": "大金融板块集体走强，保险券商领涨",
-          "title": "大金融板块集体走强，保险券商领涨",
-          "full_title": "大金融板块集体走强，保险券商领涨",
-          "summary": "银行、保险、券商等大金融板块震荡走强，富时中国A50指数期货涨超2%；保险股爆发，券商股集体发力，市...",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": false,
-          "date": "2026-03-31",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "光伏产业链价格企稳，装机需求持续旺盛",
-          "title": "光伏产业链价格企稳，装机需求持续旺盛",
-          "full_title": "光伏产业链价格企稳，装机需求持续旺盛",
-          "summary": "国证新能源电池指数上涨0.9%，中证光伏产业指数上涨0.7%；光伏产业链价格逐步企稳，装机需求保持旺...",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": false,
-          "date": "2026-03-31",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "字节跳动、腾讯、阿里巴巴入选财富最受赞赏公司",
-          "title": "字节跳动、腾讯、阿里巴巴入选财富最受赞赏公司",
-          "full_title": "字节跳动、腾讯、阿里巴巴入选财富最受赞赏公司",
-          "summary": "2024年《财富》最受赞赏的中国公司榜单发布，字节跳动、腾讯、京东、小米、阿里巴巴、美团等互联网巨头...",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-03-31",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "OpenAI重新组建机器人部门",
-          "title": "OpenAI重新组建机器人部门",
-          "full_title": "OpenAI重新组建机器人部门",
-          "summary": "OpenAI发布招聘信息显示，正在重新组建机器人部门，将自主研发机器人及定制传感器套件，AI+机器人...",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-03-31",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        }
-      ],
-      "total_news_count": 10,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 54,
-        "平均恐慌概率": 5
-      },
-      "悟空信号": "暂无",
-      "八戒胜率": "暂无",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 54,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 54,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 54,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 54,
-          "sangsha_panic_prob": 5,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "bajie_conclusion": {
-      "optimal_action": "",
-      "optimal_etfs": "",
-      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "",
-      "overall": {
-        "best_action": "",
-        "best_etfs": "",
-        "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 35,
-        "平均恐慌概率": 5,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": ""
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {}
-    }
+    ]
   },
   "2026-03-30": {
     "date": "2026-03-30",
@@ -6476,251 +5167,7 @@ const newsData = {
         "signal": "消费市场开放，进口博览效应持续"
       }
     ],
-    "douyin": [],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 8,
-      "avg_panic_prob": 5,
-      "analysis_results": [
-        {
-          "news": "TCL科技等在深圳成立创新科技技术公司",
-          "title": "TCL科技等在深圳成立创新科技技术公司",
-          "full_title": "TCL科技等在深圳成立创新科技技术公司",
-          "summary": "TCL科技牵头成立创新科技技术公司，布局前沿技术领域，科技巨头持续加码研发",
-          "追高买入概率": 5,
-          "抄底买入概率": 54,
-          "恐慌卖出概率": 5,
-          "观望概率": 80,
-          "情绪标签": [
-            "抄底冲动"
-          ],
-          "韭菜行为总结": "散户想抄底，认为是机会",
-          "市场含义": "可能有反弹",
-          "买入概率": 24,
-          "is_long_term": false,
-          "date": "2026-03-30",
-          "decay": 1.0,
-          "weighted_buy_prob": 24
-        },
-        {
-          "news": "瑞云冷链完成新一轮亿元人民币融资",
-          "title": "瑞云冷链完成新一轮亿元人民币融资",
-          "full_title": "瑞云冷链完成新一轮亿元人民币融资",
-          "summary": "冷链物流赛道再获资本关注，瑞云冷链完成亿元融资，生鲜电商产业链受益",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-03-30",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "汇川技术聘请银行筹备香港上市",
-          "title": "汇川技术聘请银行筹备香港上市",
-          "full_title": "汇川技术聘请银行筹备香港上市",
-          "summary": "汇川技术聘请投行筹备香港上市计划，自动化龙头国际化进程加速",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-03-30",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "招商银行2026年息差管理要实现三个目标",
-          "title": "招商银行2026年息差管理要实现三个目标",
-          "full_title": "招商银行2026年息差管理要实现三个目标",
-          "summary": "招商银行副行长彭家文表示，2026年息差管理要实现三个目标，银行业稳健经营",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-03-30",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "消博会汇聚全球3800多家企业",
-          "title": "消博会汇聚全球3800多家企业",
-          "full_title": "消博会汇聚全球3800多家企业",
-          "summary": "累计92个国家和地区3800多家企业参加消博会，消费扩容升级持续推进",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-03-30",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        }
-      ],
-      "total_news_count": 5,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 8,
-        "平均恐慌概率": 5
-      },
-      "悟空信号": "暂无",
-      "八戒胜率": "暂无",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 8,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 8,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 8,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 8,
-          "sangsha_panic_prob": 5,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "bajie_conclusion": {
-      "optimal_action": "",
-      "optimal_etfs": "",
-      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "",
-      "overall": {
-        "best_action": "",
-        "best_etfs": "",
-        "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 8,
-        "平均恐慌概率": 5,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": ""
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {}
-    }
+    "douyin": []
   },
   "2026-03-29": {
     "date": "2026-03-29",
@@ -6859,292 +5306,7 @@ const newsData = {
         "stocks": [],
         "signal": "AI大模型商业化加速，估值重构"
       }
-    ],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 17,
-      "avg_panic_prob": 12,
-      "analysis_results": [
-        {
-          "news": "霍尔木兹海峡局势升温，原油/能源板块全线暴涨，超7万人爆仓",
-          "title": "霍尔木兹海峡局势升温，原油/能源板块全线暴涨，超7万人爆仓",
-          "full_title": "霍尔木兹海峡局势升温，原油/能源板块全线暴涨，超7万人爆仓",
-          "summary": "地缘冲突升级，霍尔木兹海峡突发大消息，原油期货大涨，能源化工板块暴涨，市场避险情绪升温",
-          "追高买入概率": 87,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 62,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 54,
-          "is_long_term": true,
-          "date": "2026-03-29",
-          "decay": 1.0,
-          "weighted_buy_prob": 54
-        },
-        {
-          "news": "铜价突围！美伊冲突以来首度周涨，黄金盘中反弹4%",
-          "title": "铜价突围！美伊冲突以来首度周涨，黄金盘中反弹4%",
-          "full_title": "铜价突围！美伊冲突以来首度周涨，黄金盘中反弹4%",
-          "summary": "铜价突破，美伊冲突以来首度周涨，黄金反弹但连跌四周，大宗商品市场波动加剧",
-          "追高买入概率": 36,
-          "抄底买入概率": 53,
-          "恐慌卖出概率": 5,
-          "观望概率": 67,
-          "情绪标签": [
-            "抄底冲动",
-            "易懂"
-          ],
-          "韭菜行为总结": "散户想抄底，认为是机会",
-          "市场含义": "可能有反弹",
-          "买入概率": 43,
-          "is_long_term": true,
-          "date": "2026-03-29",
-          "decay": 1.0,
-          "weighted_buy_prob": 43
-        },
-        {
-          "news": "中东战火蔓延，胡塞武装参战，曼德海峡也悬了",
-          "title": "中东战火蔓延，胡塞武装参战，曼德海峡也悬了",
-          "full_title": "中东战火蔓延，胡塞武装参战，曼德海峡也悬了",
-          "summary": "胡塞武装正式参战，第二大能源要道曼德海峡面临风险，中东局势大变天，全球供应链承压",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 56,
-          "观望概率": 79,
-          "情绪标签": [
-            "恐慌"
-          ],
-          "韭菜行为总结": "散户恐慌，想割肉",
-          "市场含义": "可能见底",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-29",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "券商一哥中信证券2025年净赚300亿元，重仓股名单出炉",
-          "title": "券商一哥中信证券2025年净赚300亿元，重仓股名单出炉",
-          "full_title": "券商一哥中信证券2025年净赚300亿元，重仓股名单出炉",
-          "summary": "中信证券2025年净利润300亿元，业绩亮眼，投行业务表现突出，重仓股曝光",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-29",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "比亚迪2025年营收达8040亿，境外业务收入增长40%",
-          "title": "比亚迪2025年营收达8040亿，境外业务收入增长40%",
-          "full_title": "比亚迪2025年营收达8040亿，境外业务收入增长40%",
-          "summary": "比亚迪2025年营收8040亿元，境外业务增长40%，拟现金分红总额约33亿，新能源车龙头地位稳固",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-29",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "工行全年分红超1100亿元，向世界一流金融机构迈进",
-          "title": "工行全年分红超1100亿元，向世界一流金融机构迈进",
-          "full_title": "工行全年分红超1100亿元，向世界一流金融机构迈进",
-          "summary": "工商银行2025年分红超1100亿元，业绩稳健，银行业整体向好",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-29",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "月之暗面冲刺IPO：大模型竞争进入定价阶段",
-          "title": "月之暗面冲刺IPO：大模型竞争进入定价阶段",
-          "full_title": "月之暗面冲刺IPO：大模型竞争进入定价阶段",
-          "summary": "月之暗面（Kimi）冲刺IPO，AI大模型竞争进入商业化定价阶段，字节跳动系AI公司受关注",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-29",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        }
-      ],
-      "total_news_count": 7,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 22,
-        "平均恐慌概率": 15
-      },
-      "悟空信号": "暂无",
-      "八戒胜率": "暂无",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 22,
-          "sangsha_panic_prob": 15,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 22,
-          "sangsha_panic_prob": 15,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 22,
-          "sangsha_panic_prob": 15,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 22,
-          "sangsha_panic_prob": 15,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "bajie_conclusion": {
-      "optimal_action": "",
-      "optimal_etfs": "",
-      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "",
-      "overall": {
-        "best_action": "",
-        "best_etfs": "",
-        "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 17,
-        "平均恐慌概率": 12,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": ""
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {}
-    }
+    ]
   },
   "2026-03-28": {
     "date": "2026-03-28",
@@ -7278,287 +5440,7 @@ const newsData = {
         "stocks": [],
         "signal": "字节电商业务增长放缓，平台价值承压"
       }
-    ],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 7,
-      "avg_panic_prob": 5,
-      "analysis_results": [
-        {
-          "news": "美联储鹰派言论引发全球股市下跌，A股跟跌",
-          "title": "美联储鹰派言论引发全球股市下跌，A股跟跌",
-          "full_title": "美联储鹰派言论引发全球股市下跌，A股跟跌",
-          "summary": "美联储官员释放鹰派信号，暗示可能继续加息，全球股市普遍下跌，A股跟跌，科技股领跌超3%",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": true,
-          "date": "2026-03-28",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "房地产销售继续下滑，龙头房企面临压力",
-          "title": "房地产销售继续下滑，龙头房企面临压力",
-          "full_title": "房地产销售继续下滑，龙头房企面临压力",
-          "summary": "房地产销售继续下滑，龙头房企销售压力增加，市场预期悲观，房地产板块下跌",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": true,
-          "date": "2026-03-28",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "美元升值，人民币贬值压力增加，新兴市场货币普遍承压",
-          "title": "美元升值，人民币贬值压力增加，新兴市场货币普遍承压",
-          "full_title": "美元升值，人民币贬值压力增加，新兴市场货币普遍承压",
-          "summary": "美元指数升至高位，人民币对美元贬值，新兴市场货币普遍承压，跨境资本流出压力显现",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-28",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "央行维持流动性稳定，投放500亿元逆回购",
-          "title": "央行维持流动性稳定，投放500亿元逆回购",
-          "full_title": "央行维持流动性稳定，投放500亿元逆回购",
-          "summary": "央行通过逆回购投放500亿元，维持市场流动性充裕，但市场对经济增长预期仍有担忧",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [
-            "迷茫"
-          ],
-          "韭菜行为总结": "散户看不懂，在观望",
-          "市场含义": "震荡整理",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-28",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "新能源汽车销量数据公布，环比增长放缓",
-          "title": "新能源汽车销量数据公布，环比增长放缓",
-          "full_title": "新能源汽车销量数据公布，环比增长放缓",
-          "summary": "2月新能源汽车销量环比增长15%，增速放缓，市场对产业景气度预期调整",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-28",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "工业企业利润数据不及预期，制造业景气度回落",
-          "title": "工业企业利润数据不及预期，制造业景气度回落",
-          "full_title": "工业企业利润数据不及预期，制造业景气度回落",
-          "summary": "工业企业利润环比下滑5%，不及市场预期，制造业景气度明显回落，经济增长压力显现",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-28",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "抖音电商春季大促延期，GMV目标调整",
-          "title": "抖音电商春季大促延期，GMV目标调整",
-          "full_title": "抖音电商春季大促延期，GMV目标调整",
-          "summary": "抖音电商春季大促因市场需求不足延期，GMV目标从100亿调整至80亿，字节跳动电商业务增长放缓",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-28",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        }
-      ],
-      "total_news_count": 7,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 8,
-        "平均恐慌概率": 5
-      },
-      "悟空信号": "暂无",
-      "八戒胜率": "暂无",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 8,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 8,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 8,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 8,
-          "sangsha_panic_prob": 5,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "bajie_conclusion": {
-      "optimal_action": "",
-      "optimal_etfs": "",
-      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "",
-      "overall": {
-        "best_action": "",
-        "best_etfs": "",
-        "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 7,
-        "平均恐慌概率": 5,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": ""
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {}
-    }
+    ]
   },
   "2026-03-27": {
     "date": "2026-03-27",
@@ -7688,291 +5570,7 @@ const newsData = {
         "stocks": [],
         "signal": "字节音乐业务扩展，平台价值提升"
       }
-    ],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 20,
-      "avg_panic_prob": 5,
-      "analysis_results": [
-        {
-          "news": "新能源汽车销量创新高，产业链景气度提升",
-          "title": "新能源汽车销量创新高，产业链景气度提升",
-          "full_title": "新能源汽车销量创新高，产业链景气度提升",
-          "summary": "2月新能源汽车销量同比增长50%，创历史新高，产业链景气度明显提升",
-          "追高买入概率": 75,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 66,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 47,
-          "is_long_term": false,
-          "date": "2026-03-27",
-          "decay": 1.0,
-          "weighted_buy_prob": 47
-        },
-        {
-          "news": "房地产政策松动，龙头房企股价反弹",
-          "title": "房地产政策松动，龙头房企股价反弹",
-          "full_title": "房地产政策松动，龙头房企股价反弹",
-          "summary": "多地房地产政策调整，首套房贷利率下调，龙头房企股价反弹，市场预期改善",
-          "追高买入概率": 5,
-          "抄底买入概率": 66,
-          "恐慌卖出概率": 5,
-          "观望概率": 76,
-          "情绪标签": [
-            "抄底冲动"
-          ],
-          "韭菜行为总结": "散户想抄底，认为是机会",
-          "市场含义": "可能有反弹",
-          "买入概率": 29,
-          "is_long_term": false,
-          "date": "2026-03-27",
-          "decay": 1.0,
-          "weighted_buy_prob": 29
-        },
-        {
-          "news": "金融股集体上涨，银行/保险板块领涨超2%",
-          "title": "金融股集体上涨，银行/保险板块领涨超2%",
-          "full_title": "金融股集体上涨，银行/保险板块领涨超2%",
-          "summary": "金融股全线上涨，银行、保险等板块领涨，机构资金持续布局",
-          "追高买入概率": 9,
-          "抄底买入概率": 54,
-          "恐慌卖出概率": 5,
-          "观望概率": 78,
-          "情绪标签": [
-            "抄底冲动"
-          ],
-          "韭菜行为总结": "散户想抄底，认为是机会",
-          "市场含义": "可能有反弹",
-          "买入概率": 27,
-          "is_long_term": false,
-          "date": "2026-03-27",
-          "decay": 1.0,
-          "weighted_buy_prob": 27
-        },
-        {
-          "news": "农产品价格上涨，农业板块走强",
-          "title": "农产品价格上涨，农业板块走强",
-          "full_title": "农产品价格上涨，农业板块走强",
-          "summary": "国际粮食价格上涨，国内农产品价格跟涨，农业板块走强",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": false,
-          "date": "2026-03-27",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "电力需求增加，电力股上涨",
-          "title": "电力需求增加，电力股上涨",
-          "full_title": "电力需求增加，电力股上涨",
-          "summary": "春季用电需求增加，电力股上涨，发电企业业绩预期向好",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": false,
-          "date": "2026-03-27",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "AI芯片需求旺盛，半导体产业景气度高企",
-          "title": "AI芯片需求旺盛，半导体产业景气度高企",
-          "full_title": "AI芯片需求旺盛，半导体产业景气度高企",
-          "summary": "AI芯片需求持续旺盛，国内芯片设计公司订单充足，产业景气度高企",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-03-27",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "抖音音乐业务扩展，与唱片公司合作深化",
-          "title": "抖音音乐业务扩展，与唱片公司合作深化",
-          "full_title": "抖音音乐业务扩展，与唱片公司合作深化",
-          "summary": "抖音与多家唱片公司签署合作协议，音乐业务扩展，内容生态完善",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-03-27",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        }
-      ],
-      "total_news_count": 7,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 26,
-        "平均恐慌概率": 5
-      },
-      "悟空信号": "暂无",
-      "八戒胜率": "暂无",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 26,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 26,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 26,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 26,
-          "sangsha_panic_prob": 5,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "bajie_conclusion": {
-      "optimal_action": "",
-      "optimal_etfs": "",
-      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "",
-      "overall": {
-        "best_action": "",
-        "best_etfs": "",
-        "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 20,
-        "平均恐慌概率": 5,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": ""
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {}
-    }
+    ]
   },
   "2026-03-26": {
     "date": "2026-03-26",
@@ -8102,287 +5700,7 @@ const newsData = {
         "stocks": [],
         "signal": "字节短剧业务增长放缓，成本压力上升"
       }
-    ],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 12,
-      "avg_panic_prob": 5,
-      "analysis_results": [
-        {
-          "news": "抖音短剧业务增长放缓，内容成本上升",
-          "title": "抖音短剧业务增长放缓，内容成本上升",
-          "full_title": "抖音短剧业务增长放缓，内容成本上升",
-          "summary": "抖音短剧业务增长放缓，内容成本上升，盈利压力增加",
-          "追高买入概率": 52,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 76,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户开始眼红，想冲进去",
-          "市场含义": "分歧加大",
-          "买入概率": 33,
-          "is_long_term": true,
-          "date": "2026-03-26",
-          "decay": 1.0,
-          "weighted_buy_prob": 33
-        },
-        {
-          "news": "美联储鹰派言论，全球股市下跌，A股承压",
-          "title": "美联储鹰派言论，全球股市下跌，A股承压",
-          "full_title": "美联储鹰派言论，全球股市下跌，A股承压",
-          "summary": "美联储官员释放鹰派信号，暗示可能继续加息，全球股市下跌，A股跟跌",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": true,
-          "date": "2026-03-26",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "医药板块调整，生物制药公司股价下跌",
-          "title": "医药板块调整，生物制药公司股价下跌",
-          "full_title": "医药板块调整，生物制药公司股价下跌",
-          "summary": "医药板块整体调整，生物制药、医疗器械等板块股价下跌，估值压力显现",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": true,
-          "date": "2026-03-26",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "汽车销量数据不及预期，汽车股下跌",
-          "title": "汽车销量数据不及预期，汽车股下跌",
-          "full_title": "汽车销量数据不及预期，汽车股下跌",
-          "summary": "2月汽车销量环比下降，不及市场预期，汽车股全线下跌",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": true,
-          "date": "2026-03-26",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "美元升值，新兴市场货币承压，人民币贬值压力增加",
-          "title": "美元升值，新兴市场货币承压，人民币贬值压力增加",
-          "full_title": "美元升值，新兴市场货币承压，人民币贬值压力增加",
-          "summary": "美元指数升至高位，新兴市场货币普遍贬值，人民币面临贬值压力",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-26",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "工业企业利润下滑，制造业景气度回落",
-          "title": "工业企业利润下滑，制造业景气度回落",
-          "full_title": "工业企业利润下滑，制造业景气度回落",
-          "summary": "工业企业利润环比下滑，制造业景气度回落，经济增长压力显现",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-26",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        },
-        {
-          "news": "房地产销售继续下滑，龙头房企面临压力",
-          "title": "房地产销售继续下滑，龙头房企面临压力",
-          "full_title": "房地产销售继续下滑，龙头房企面临压力",
-          "summary": "房地产销售继续下滑，龙头房企销售压力增加，市场预期悲观",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": true,
-          "date": "2026-03-26",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        }
-      ],
-      "total_news_count": 7,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 16,
-        "平均恐慌概率": 5
-      },
-      "悟空信号": "暂无",
-      "八戒胜率": "暂无",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 16,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 16,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 16,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 16,
-          "sangsha_panic_prob": 5,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "bajie_conclusion": {
-      "optimal_action": "",
-      "optimal_etfs": "",
-      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "",
-      "overall": {
-        "best_action": "",
-        "best_etfs": "",
-        "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 12,
-        "平均恐慌概率": 5,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": ""
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {}
-    }
+    ]
   },
   "2026-03-25": {
     "date": "2026-03-25",
@@ -8516,293 +5834,7 @@ const newsData = {
         "stocks": [],
         "signal": "字节游戏业务扩展，平台价值提升"
       }
-    ],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 28,
-      "avg_panic_prob": 5,
-      "analysis_results": [
-        {
-          "news": "AI概念股爆发，科技龙头股价创新高",
-          "title": "AI概念股爆发，科技龙头股价创新高",
-          "full_title": "AI概念股爆发，科技龙头股价创新高",
-          "summary": "AI概念股集体上涨，科技龙头股价创新高，市场对AI产业前景看好",
-          "追高买入概率": 82,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 64,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 51,
-          "is_long_term": false,
-          "date": "2026-03-25",
-          "decay": 1.0,
-          "weighted_buy_prob": 51
-        },
-        {
-          "news": "国家发改委发布新能源产业规划，新能源板块大涨",
-          "title": "国家发改委发布新能源产业规划，新能源板块大涨",
-          "full_title": "国家发改委发布新能源产业规划，新能源板块大涨",
-          "summary": "国家发改委发布新能源产业规划，明确发展目标，新能源板块全线大涨",
-          "追高买入概率": 80,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 64,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 50,
-          "is_long_term": false,
-          "date": "2026-03-25",
-          "decay": 1.0,
-          "weighted_buy_prob": 50
-        },
-        {
-          "news": "银行股估值修复，金融板块走强",
-          "title": "银行股估值修复，金融板块走强",
-          "full_title": "银行股估值修复，金融板块走强",
-          "summary": "银行股估值处于历史低位，机构持续布局，金融板块走强",
-          "追高买入概率": 5,
-          "抄底买入概率": 80,
-          "恐慌卖出概率": 5,
-          "观望概率": 72,
-          "情绪标签": [
-            "抄底冲动"
-          ],
-          "韭菜行为总结": "散户想抄底，认为是机会",
-          "市场含义": "可能有反弹",
-          "买入概率": 35,
-          "is_long_term": false,
-          "date": "2026-03-25",
-          "decay": 1.0,
-          "weighted_buy_prob": 35
-        },
-        {
-          "news": "制造业PMI回升，经济增长预期改善",
-          "title": "制造业PMI回升，经济增长预期改善",
-          "full_title": "制造业PMI回升，经济增长预期改善",
-          "summary": "制造业PMI回升至荣枯线以上，经济增长预期改善，市场信心提升",
-          "追高买入概率": 5,
-          "抄底买入概率": 74,
-          "恐慌卖出概率": 5,
-          "观望概率": 74,
-          "情绪标签": [
-            "抄底冲动"
-          ],
-          "韭菜行为总结": "散户想抄底，认为是机会",
-          "市场含义": "可能有反弹",
-          "买入概率": 32,
-          "is_long_term": false,
-          "date": "2026-03-25",
-          "decay": 1.0,
-          "weighted_buy_prob": 32
-        },
-        {
-          "news": "清洁能源投资加速，电力股上涨",
-          "title": "清洁能源投资加速，电力股上涨",
-          "full_title": "清洁能源投资加速，电力股上涨",
-          "summary": "清洁能源投资加速，风电、光伏等板块投资增加，电力股上涨",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": false,
-          "date": "2026-03-25",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "农业政策支持，农业板块上涨",
-          "title": "农业政策支持，农业板块上涨",
-          "full_title": "农业政策支持，农业板块上涨",
-          "summary": "国家加大农业支持力度，农业板块上涨，农民收入预期改善",
-          "追高买入概率": 16,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 90,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 12,
-          "is_long_term": false,
-          "date": "2026-03-25",
-          "decay": 1.0,
-          "weighted_buy_prob": 12
-        },
-        {
-          "news": "抖音游戏业务扩展，与游戏厂商合作加深",
-          "title": "抖音游戏业务扩展，与游戏厂商合作加深",
-          "full_title": "抖音游戏业务扩展，与游戏厂商合作加深",
-          "summary": "抖音与多家游戏厂商签署合作协议，游戏业务扩展，内容生态完善",
-          "追高买入概率": 5,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 95,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 5,
-          "is_long_term": false,
-          "date": "2026-03-25",
-          "decay": 1.0,
-          "weighted_buy_prob": 5
-        }
-      ],
-      "total_news_count": 7,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 36,
-        "平均恐慌概率": 5
-      },
-      "悟空信号": "暂无",
-      "八戒胜率": "暂无",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 36,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 36,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 36,
-          "sangsha_panic_prob": 5,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 36,
-          "sangsha_panic_prob": 5,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓"
-    },
-    "bajie_conclusion": {
-      "optimal_action": "",
-      "optimal_etfs": "",
-      "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "",
-      "overall": {
-        "best_action": "",
-        "best_etfs": "",
-        "win_rate": "~50%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 28,
-        "平均恐慌概率": 5,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": ""
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {}
-    }
+    ]
   },
   "2026-04-07": {
     "date": "2026-04-07",
@@ -8842,45 +5874,9 @@ const newsData = {
     "bajie_conclusion": {
       "optimal_action": "节后首日重点配置加密货币概念股+AI芯片，回避油气/黄金避险资产",
       "optimal_etfs": "512760芯片ETF(30%) + 515980云计算ETF(25%) + 加密货币概念股(15%) + 现金(30%)",
-      "win_rate": "~70%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "1-2周",
-      "overall": {
-        "best_action": "节后首日重点配置加密货币概念股+AI芯片，回避油气/黄金避险资产",
-        "best_etfs": "512760芯片ETF(30%) + 515980云计算ETF(25%) + 加密货币概念股(15%) + 现金(30%)",
-        "win_rate": "~70%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 31,
-        "平均恐慌概率": 20,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": "偏多，修复性反弹为主"
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {
-        "optimal_action": "节后首日重点配置加密货币概念股+AI芯片，回避油气/黄金避险资产",
-        "optimal_etfs": "512760芯片ETF(30%) + 515980云计算ETF(25%) + 加密货币概念股(15%) + 现金(30%)",
-        "win_rate": "~70%（贝叶斯后验）",
-        "max_drawdown": "-6%（止损线）",
-        "holding_period": "1-2周"
-      }
+      "win_rate": "~70%（贝叶斯后验）",
+      "max_drawdown": "-6%（止损线）",
+      "holding_period": "1-2周"
     },
     "s_level": [
       {
@@ -8983,214 +5979,7 @@ const newsData = {
         }
       }
     ],
-    "douyin": [],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 31,
-      "avg_panic_prob": 20,
-      "analysis_results": [
-        {
-          "news": "比特币站稳7万美元创历史新高",
-          "title": "比特币站稳7万美元创历史新高",
-          "full_title": "比特币站稳7万美元创历史新高",
-          "summary": "比特币站稳70000美元创历史新高，加密货币概念股开盘领涨，区块链板块涨幅居前。矿机、交易所概念股重...",
-          "追高买入概率": 82,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 63,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 51,
-          "is_long_term": false,
-          "date": "2026-04-07",
-          "decay": 1.0,
-          "weighted_buy_prob": 51
-        },
-        {
-          "news": "日韩股市强劲反弹",
-          "title": "日韩股市强劲反弹",
-          "full_title": "日韩股市强劲反弹",
-          "summary": "日经225涨0.72%，韩国KOSPI涨2.02%，三星电子涨近4%。美股科技股隔夜普涨：特斯拉涨1...",
-          "追高买入概率": 8,
-          "抄底买入概率": 58,
-          "恐慌卖出概率": 5,
-          "观望概率": 77,
-          "情绪标签": [
-            "抄底冲动"
-          ],
-          "韭菜行为总结": "散户想抄底，认为是机会",
-          "市场含义": "可能有反弹",
-          "买入概率": 28,
-          "is_long_term": false,
-          "date": "2026-04-07",
-          "decay": 1.0,
-          "weighted_buy_prob": 28
-        },
-        {
-          "news": "美伊停火协议正式落地",
-          "title": "美伊停火协议正式落地",
-          "full_title": "美伊停火协议正式落地",
-          "summary": "美伊停火协议正式落地，地缘风险急剧降温。黄金从4800美元高位回落至4650美元，原油从140美元回...",
-          "追高买入概率": 5,
-          "抄底买入概率": 28,
-          "恐慌卖出概率": 51,
-          "观望概率": 73,
-          "情绪标签": [
-            "恐慌"
-          ],
-          "韭菜行为总结": "散户恐慌，想割肉",
-          "市场含义": "可能见底",
-          "买入概率": 14,
-          "is_long_term": false,
-          "date": "2026-04-07",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        }
-      ],
-      "total_news_count": 3,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 31,
-        "平均恐慌概率": 20
-      },
-      "悟空信号": "偏多，修复性反弹为主",
-      "八戒胜率": "~70%（贝叶斯后验）",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 31,
-          "sangsha_panic_prob": 20,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 31,
-          "sangsha_panic_prob": 20,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 31,
-          "sangsha_panic_prob": 20,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 31,
-          "sangsha_panic_prob": 20,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓；✅ 八戒支持：胜率70%，胜率信号积极"
-    },
-    "wukong_enhanced": {
-      "market_sentiment": "偏多，修复性反弹为主",
-      "core_analysis": [
-        "美伊停火协议正式落地，地缘风险急剧降温：黄金从4800美元高位回落至4650美元，原油从140美元回落至106美元",
-        "比特币站稳70000美元创历史新高，加密货币概念股开盘领涨，区块链板块涨幅居前",
-        "日韩股市强劲反弹映射：日经225涨0.72%，韩国KOSPI涨2.02%，三星电子涨近4%",
-        "美股科技股隔夜普涨：特斯拉涨1.67%，Meta涨超1%，芯片股闪迪涨超4%",
-        "北向资金节后首日流向是关键观察指标，若净流入>50亿则确认修复行情"
-      ],
-      "operations": [
-        {
-          "type": "可做",
-          "content": "加密货币概念股：比特币破7万美元历史新高，矿机/交易所概念股重点配置"
-        },
-        {
-          "type": "可做",
-          "content": "AI芯片/算力：美股芯片股大涨映射，A股中际旭创/通宇通讯有望延续"
-        },
-        {
-          "type": "警惕",
-          "content": "油气板块：美伊停火原油回落，短期回避油气ETF"
-        },
-        {
-          "type": "警惕",
-          "content": "黄金贵金属：避险情绪降温，黄金高位震荡，控制仓位"
-        },
-        {
-          "type": "关注",
-          "content": "北向资金流向+成交量能否放大"
-        }
-      ]
-    }
+    "douyin": []
   },
   "2026-04-08": {
     "date": "2026-04-08",
@@ -9221,45 +6010,9 @@ const newsData = {
     "bajie_conclusion": {
       "optimal_action": "重点配置AI芯片+人工智能ETF，科技成长股修复行情",
       "optimal_etfs": "588890科创芯片ETF(40%) + 512930 AI人工智能ETF(30%) + 现金(30%)",
-      "win_rate": "~70%（贝叶斯后验+沙僧白龙马融合）",
-      "max_drawdown": "-8.0%（止损线）",
-      "holding_period": "1-2周",
-      "overall": {
-        "best_action": "重点配置AI芯片+人工智能ETF，科技成长股修复行情",
-        "best_etfs": "588890科创芯片ETF(40%) + 512930 AI人工智能ETF(30%) + 现金(30%)",
-        "win_rate": "~70%（贝叶斯后验+沙僧白龙马融合）",
-        "stop_loss": "-8.0%（止损线）"
-      },
-      "沙僧信号": {
-        "情绪": "平稳",
-        "平均买入概率": 23,
-        "平均恐慌概率": 20,
-        "调整结果": "✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "可信度级别": "normal"
-      },
-      "白龙马信号": {
-        "主力状态": "拉升",
-        "是否利用散户": false,
-        "可信度": 1.0,
-        "风险等级": "low",
-        "调整结果": "✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      },
-      "悟空信号": {
-        "市场情绪": "震荡偏多，科技成长股修复反弹"
-      },
-      "信号一致性": "✅ 信号正常：沙僧/白龙马无明显矛盾",
-      "信号一致性得分": 2,
-      "融合说明": [
-        "【沙僧融合】✅ 沙僧中性：散户情绪平稳，八戒信号可信",
-        "【白龙马融合】✅ 白龙马：主力拉升初期，无散户接盘，上涨空间仍在"
-      ],
-      "original_bajie": {
-        "optimal_action": "重点配置AI芯片+人工智能ETF，科技成长股修复行情",
-        "optimal_etfs": "588890科创芯片ETF(40%) + 512930 AI人工智能ETF(30%) + 现金(30%)",
-        "win_rate": "~70%（贝叶斯后验）",
-        "max_drawdown": "-5%（止损线）",
-        "holding_period": "1-2周"
-      }
+      "win_rate": "~70%（贝叶斯后验）",
+      "max_drawdown": "-5%（止损线）",
+      "holding_period": "1-2周"
     },
     "s_level": [
       {
@@ -9375,203 +6128,7 @@ const newsData = {
         }
       }
     ],
-    "douyin": [],
-    "sangsha_module": {
-      "overall_sentiment": "平稳",
-      "advice": "震荡整理，观望为主",
-      "avg_buy_prob": 23,
-      "avg_panic_prob": 20,
-      "analysis_results": [
-        {
-          "news": "创业板人工智能ETF涨超7%",
-          "title": "创业板人工智能ETF涨超7%",
-          "full_title": "创业板人工智能ETF涨超7%",
-          "summary": "创业板人工智能ETF南方(159382)上涨7.03%，冲击3连涨，跟踪指数创业板人工智能指数强势上...",
-          "追高买入概率": 68,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 69,
-          "情绪标签": [
-            "FOMO"
-          ],
-          "韭菜行为总结": "散户疯了，都在追！",
-          "市场含义": "顶部风险",
-          "买入概率": 43,
-          "is_long_term": false,
-          "date": "2026-04-08",
-          "decay": 1.0,
-          "weighted_buy_prob": 43
-        },
-        {
-          "news": "AI芯片/人工智能板块爆发式上涨",
-          "title": "AI芯片/人工智能板块爆发式上涨",
-          "full_title": "AI芯片/人工智能板块爆发式上涨",
-          "summary": "科创芯片ETF涨超5%，创业板人工智能ETF涨超7%，中际旭创涨超6%，深信服涨6%，光环新网上涨5...",
-          "追高买入概率": 20,
-          "抄底买入概率": 5,
-          "恐慌卖出概率": 5,
-          "观望概率": 89,
-          "情绪标签": [],
-          "韭菜行为总结": "散户情绪平稳",
-          "市场含义": "中性",
-          "买入概率": 14,
-          "is_long_term": false,
-          "date": "2026-04-08",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        },
-        {
-          "news": "美伊谈判现逆转信号",
-          "title": "美伊谈判现逆转信号",
-          "full_title": "美伊谈判现逆转信号",
-          "summary": "美伊谈判出现逆转信号，地缘风险降温，市场风险偏好回升。避险资金流出黄金、油气板块，流入科技成长股。",
-          "追高买入概率": 5,
-          "抄底买入概率": 28,
-          "恐慌卖出概率": 51,
-          "观望概率": 73,
-          "情绪标签": [
-            "恐慌"
-          ],
-          "韭菜行为总结": "散户恐慌，想割肉",
-          "市场含义": "可能见底",
-          "买入概率": 14,
-          "is_long_term": false,
-          "date": "2026-04-08",
-          "decay": 1.0,
-          "weighted_buy_prob": 14
-        }
-      ],
-      "total_news_count": 3,
-      "time_window": "7天累积（长期新闻除外）"
-    },
-    "white_dragon": {
-      "主力状态": "拉升",
-      "阶段": "中期",
-      "行为解释": "主力拉升信号明确，多个ETF量价配合良好",
-      "是否利用散户": false,
-      "可信度": 1.0,
-      "矛盾ETF数": 0,
-      "散户情绪": {
-        "平均买入概率": 23,
-        "平均恐慌概率": 20
-      },
-      "悟空信号": "震荡偏多，科技成长股修复反弹",
-      "八戒胜率": "~70%（贝叶斯后验）",
-      "各ETF分析": [
-        {
-          "code": "512760",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.08
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 3.02,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 23,
-          "sangsha_panic_prob": 20,
-          "单日量比": 0.95
-        },
-        {
-          "code": "512930",
-          "price_trend": {
-            "trend": "up",
-            "strength": 75,
-            "change_pct": 7.45
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 1.61,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "初期",
-          "行为解释": "价格温和上涨+量能收缩，主力控盘拉升中，无散户接盘",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 23,
-          "sangsha_panic_prob": 20,
-          "单日量比": 0.62
-        },
-        {
-          "code": "518880",
-          "price_trend": {
-            "trend": "side",
-            "strength": 40,
-            "change_pct": 0.56
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": -21.29,
-            "level": "normal"
-          },
-          "主力状态": "观望",
-          "阶段": "整理",
-          "行为解释": "价格横盘震荡，等待方向选择",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 23,
-          "sangsha_panic_prob": 20,
-          "单日量比": 0.74
-        },
-        {
-          "code": "588890",
-          "price_trend": {
-            "trend": "up",
-            "strength": 90,
-            "change_pct": 7.77
-          },
-          "volume_trend": {
-            "trend": "side",
-            "change_pct": 2.21,
-            "level": "normal"
-          },
-          "主力状态": "拉升",
-          "阶段": "中期",
-          "行为解释": "量价齐升（单日量比1.36x），主力真实买入，短期有望继续上涨",
-          "是否利用散户": false,
-          "可信度": 1.0,
-          "矛盾信号": "",
-          "sangsha_buy_prob": 23,
-          "sangsha_panic_prob": 20,
-          "单日量比": 1.36
-        }
-      ],
-      "综合建议": "✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓；✅ 八戒支持：胜率70%，胜率信号积极"
-    },
-    "wukong_enhanced": {
-      "market_sentiment": "震荡偏多，科技成长股修复反弹",
-      "core_analysis": [
-        "AI芯片爆发：科创芯片ETF涨超5%，创业板人工智能ETF涨超7%，中际旭创涨超6%",
-        "科技股集体上攻：美伊谈判现逆转信号，市场风险偏好回升",
-        "AI人工智能ETF平安涨超4.2%，冲击3连涨，深信服涨6%，光环新网上涨5.92%",
-        "资金回流科技板块：前期调整后迎来修复行情"
-      ],
-      "operations": [
-        {
-          "type": "可做",
-          "content": "AI芯片/算力板块：中际旭创、通宇通讯、科创芯片ETF"
-        },
-        {
-          "type": "可做",
-          "content": "人工智能ETF：短期反弹趋势确立"
-        },
-        {
-          "type": "警惕",
-          "content": "成交量配合，若不放大则冲高回落风险"
-        }
-      ]
-    }
+    "douyin": []
   }
 };
 
