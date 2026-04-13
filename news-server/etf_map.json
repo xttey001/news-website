@@ -1,0 +1,729 @@
+{
+  "version": "3.2",
+  "date": "2026-04-12",
+  "description": "Merged ETF map: user_doc(verified) + news-derived codes",
+  "source_note": "user_doc = authoritative from 1386-ETF list; news = from news analysis (may need verification)",
+  "merged": {
+    "510050": {
+      "name": "上证50ETF",
+      "category": "broad",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "510100": {
+      "name": "上证50ETF易方达",
+      "category": "broad",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "510300": {
+      "name": "沪深300ETF华泰柏瑞",
+      "category": "broad",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "510310": {
+      "name": "沪深300ETF易方达",
+      "category": "broad",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "510330": {
+      "name": "沪深300ETF华夏",
+      "category": "broad",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "510500": {
+      "name": "中证500ETF",
+      "category": "broad",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512100": {
+      "name": "中证1000ETF",
+      "category": "broad",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159915": {
+      "name": "创业板ETF易方达",
+      "category": "broad",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159949": {
+      "name": "创业板50ETF",
+      "category": "broad",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "588000": {
+      "name": "科创50ETF",
+      "category": "scitech",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "588080": {
+      "name": "科创50ETF易方达",
+      "category": "scitech",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159901": {
+      "name": "深证100ETF易方达",
+      "category": "broad",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512880": {
+      "name": "证券ETF",
+      "category": "securities",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512800": {
+      "name": "银行ETF",
+      "category": "bank",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512690": {
+      "name": "酒ETF",
+      "category": "liquor",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512070": {
+      "name": "保险ETF",
+      "category": "insurance",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "515790": {
+      "name": "光伏ETF",
+      "category": "solar",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "515030": {
+      "name": "新能源车ETF",
+      "category": "ev",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "516160": {
+      "name": "新能源ETF",
+      "category": "new_energy",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159755": {
+      "name": "电池ETF",
+      "category": "battery",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "561160": {
+      "name": "锂电池ETF",
+      "category": "battery",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159824": {
+      "name": "新能源车ETF博时",
+      "category": "ev",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "516660": {
+      "name": "新能源车ETF基金",
+      "category": "ev",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159625": {
+      "name": "绿色电力ETF嘉实",
+      "category": "green_power",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "562550": {
+      "name": "绿电ETF",
+      "category": "green_power",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512480": {
+      "name": "半导体ETF",
+      "category": "chip",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512760": {
+      "name": "芯片ETF",
+      "category": "chip",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "588200": {
+      "name": "科创芯片ETF",
+      "category": "scitech_chip",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159995": {
+      "name": "芯片ETF",
+      "category": "chip",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "516350": {
+      "name": "芯片ETF易方达",
+      "category": "chip",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "515070": {
+      "name": "人工智能AIETF",
+      "category": "ai",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512930": {
+      "name": "AI人工智能ETF",
+      "category": "ai",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159819": {
+      "name": "人工智能ETF易方达",
+      "category": "ai",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "515980": {
+      "name": "人工智能ETF",
+      "category": "ai",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "516010": {
+      "name": "游戏ETF",
+      "category": "gaming",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512980": {
+      "name": "传媒ETF",
+      "category": "media",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512720": {
+      "name": "计算机ETF",
+      "category": "computer",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512010": {
+      "name": "医药ETF易方达",
+      "category": "pharma",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512170": {
+      "name": "医疗ETF",
+      "category": "medical",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159859": {
+      "name": "生物医药ETF",
+      "category": "biotech",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "515120": {
+      "name": "创新药ETF",
+      "category": "innovative_drug",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159647": {
+      "name": "中药ETF",
+      "category": "tcm",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512290": {
+      "name": "生物医药ETF",
+      "category": "biotech",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159883": {
+      "name": "医疗器械ETF",
+      "category": "medical_device",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "562600": {
+      "name": "医疗器械ETF",
+      "category": "medical_device",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512710": {
+      "name": "军工龙头ETF",
+      "category": "military",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512660": {
+      "name": "军工ETF",
+      "category": "military",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512200": {
+      "name": "房地产ETF",
+      "category": "real_estate",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "515220": {
+      "name": "煤炭ETF",
+      "category": "coal",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "561360": {
+      "name": "石油ETF",
+      "category": "oil",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159690": {
+      "name": "有色矿业ETF招商",
+      "category": "nonferrous",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512400": {
+      "name": "有色金属ETF",
+      "category": "nonferrous",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "516020": {
+      "name": "化工ETF",
+      "category": "chemical",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159865": {
+      "name": "养殖ETF",
+      "category": "agriculture",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512680": {
+      "name": "军工ETF广发",
+      "category": "military",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "561700": {
+      "name": "电力ETF博时",
+      "category": "power",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159619": {
+      "name": "基建ETF",
+      "category": "infrastructure",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159512": {
+      "name": "汽车ETF",
+      "category": "auto",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "561120": {
+      "name": "家电ETF",
+      "category": "appliance",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159920": {
+      "name": "恒生ETF",
+      "category": "hk",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "513130": {
+      "name": "恒生科技ETF",
+      "category": "hk_tech",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "513050": {
+      "name": "中概互联网ETF易方达",
+      "category": "china_concept",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159605": {
+      "name": "中概互联ETF",
+      "category": "china_concept",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "513100": {
+      "name": "纳指ETF",
+      "category": "us",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "513500": {
+      "name": "标普500ETF博时",
+      "category": "us",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "513520": {
+      "name": "日经ETF",
+      "category": "us",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159941": {
+      "name": "纳指ETF",
+      "category": "us",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "513110": {
+      "name": "纳斯达克100ETF",
+      "category": "us",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159612": {
+      "name": "标普500ETF",
+      "category": "us",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "510880": {
+      "name": "红利ETF华泰柏瑞",
+      "category": "dividend",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "515180": {
+      "name": "红利ETF易方达",
+      "category": "dividend",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "515080": {
+      "name": "中证红利ETF",
+      "category": "dividend",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "512890": {
+      "name": "红利低波ETF华泰柏瑞",
+      "category": "dividend",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "515100": {
+      "name": "红利低波100ETF",
+      "category": "dividend",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "563180": {
+      "name": "高股息ETF",
+      "category": "dividend",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "518880": {
+      "name": "黄金ETF",
+      "category": "gold",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159934": {
+      "name": "黄金ETF易方达",
+      "category": "gold",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159937": {
+      "name": "黄金ETF博时",
+      "category": "gold",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159985": {
+      "name": "豆粕ETF",
+      "category": "agriculture",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "511880": {
+      "name": "银华日利ETF",
+      "category": "money",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "511990": {
+      "name": "华宝添益ETF",
+      "category": "money",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "511800": {
+      "name": "易方达货币ETF",
+      "category": "money",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "511810": {
+      "name": "货币ETF南方",
+      "category": "money",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "515050": {
+      "name": "中证港股通ETF",
+      "category": "hk_connect",
+      "source": "user_doc",
+      "status": "verified"
+    },
+    "159825": {
+      "name": "新能源车ETF（新闻代码）",
+      "category": "ev",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表515030为同主题ETF"
+    },
+    "159994": {
+      "name": "房地产ETF（新闻代码）",
+      "category": "real_estate",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表512200为同主题ETF"
+    },
+    "159407": {
+      "name": "豆粕ETF（新闻代码）",
+      "category": "agriculture",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表159985为同主题ETF"
+    },
+    "512500": {
+      "name": "中证500ETF（新闻代码）",
+      "category": "broad",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表510500为同主题ETF"
+    },
+    "159928": {
+      "name": "消费ETF（新闻数据）",
+      "category": "consumption",
+      "source": "user_verify",
+      "status": "verified",
+      "note": ""
+    },
+    "159770": {
+      "name": "机器人ETF（新闻数据）",
+      "category": "robot",
+      "source": "user_verify",
+      "status": "verified",
+      "note": ""
+    },
+    "159863": {
+      "name": "光伏ETF（新闻代码）",
+      "category": "solar",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表515790为同主题光伏ETF"
+    },
+    "159607": {
+      "name": "中概互联ETF（新闻数据）",
+      "category": "china_concept",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "新闻中用于中概股主题，用户列表513050/159605为同类ETF"
+    },
+    "159566": {
+      "name": "储能电池ETF（新闻数据）",
+      "category": "storage",
+      "source": "user_verify",
+      "status": "verified",
+      "note": ""
+    },
+    "159775": {
+      "name": "新能源ETF（新闻代码）",
+      "category": "new_energy",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表516160为同主题ETF"
+    },
+    "159857": {
+      "name": "光伏产业ETF（新闻数据）",
+      "category": "solar",
+      "source": "user_verify",
+      "status": "verified",
+      "note": ""
+    },
+    "159992": {
+      "name": "创新药产业ETF（新闻代码）",
+      "category": "innovative_drug",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表515120为创新药ETF"
+    },
+    "515700": {
+      "name": "新能源车ETF",
+      "category": "ev",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "用户核实确认：新能源车ETF（与515030为同类不同发行商）"
+    },
+    "159869": {
+      "name": "科创50ETF（新闻代码）",
+      "category": "scitech",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表588000/588080为科创50ETF"
+    },
+    "159805": {
+      "name": "传媒ETF",
+      "category": "media",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "用户核实确认：159805是传媒ETF，不是医疗ETF"
+    },
+    "588890": {
+      "name": "科创芯片ETF（新闻代码）",
+      "category": "scitech_chip",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表588200为科创芯片ETF"
+    },
+    "588790": {
+      "name": "科创AIETF（新闻数据）",
+      "category": "scitech_ai",
+      "source": "user_verify",
+      "status": "verified",
+      "note": ""
+    },
+    "588780": {
+      "name": "科创芯片设计ETF（新闻代码）",
+      "category": "scitech_chip",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表588200为科创芯片ETF"
+    },
+    "588260": {
+      "name": "科创芯片设计ETF（新闻代码）",
+      "category": "scitech_chip",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表588200为科创芯片ETF"
+    },
+    "159806": {
+      "name": "新能源车ETF（新闻代码）",
+      "category": "ev",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表515030为新能源车ETF"
+    },
+    "516070": {
+      "name": "易方达新能源ETF（新闻数据）",
+      "category": "new_energy",
+      "source": "user_verify",
+      "status": "verified",
+      "note": ""
+    },
+    "159012": {
+      "name": "不存在（非ETF）",
+      "category": "wrong",
+      "source": "user_verify",
+      "status": "wrong",
+      "note": "用户确认：159012不是ETF"
+    },
+    "516100": {
+      "name": "金融科技ETF",
+      "category": "fintech",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "用户核实：516100是金融科技ETF，不是基建ETF"
+    },
+    "159980": {
+      "name": "有色金属ETF（新闻代码）",
+      "category": "nonferrous",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "同名不同代码，用户列表512400/159690为有色金属ETF"
+    },
+    "159320": {
+      "name": "电网ETF（待核查）",
+      "category": "grid",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "用户核实：159320电网ETF有效"
+    },
+    "159322": {
+      "name": "黄金股ETF",
+      "category": "gold_stock",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "用户核实确认：159322是黄金股ETF（真实存在）"
+    },
+    "159542": {
+      "name": "机械ETF（错误代码）",
+      "category": "wrong",
+      "source": "news",
+      "status": "wrong",
+      "note": "电网投资主题错误引用为机械ETF"
+    },
+    "159871": {
+      "name": "有色ETF（错误代码）",
+      "category": "wrong",
+      "source": "news",
+      "status": "wrong",
+      "note": "新能源电池主题错误引用为有色ETF"
+    },
+    "513190": {
+      "name": "港股通金融ETF",
+      "category": "hk_finance",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "用户核实确认"
+    },
+    "159828": {
+      "name": "医疗ETF",
+      "category": "medical",
+      "source": "user_verify",
+      "status": "verified",
+      "note": "用户核实确认"
+    }
+  },
+  "summary": {
+    "user_verified": 84,
+    "news_alt_code": 13,
+    "news_in_news": 12,
+    "to_verify": 1,
+    "wrong": 3
+  }
+}

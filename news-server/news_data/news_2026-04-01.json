@@ -9,7 +9,7 @@
       "duration": "1-2天",
       "etfs": [
         {
-          "name": "512880 国债ETF",
+          "name": "512880 证券ETF",
           "sentiment": "利空"
         }
       ],
@@ -93,7 +93,7 @@
           "sentiment": "利好"
         },
         {
-          "name": "512880 国债ETF",
+          "name": "512880 证券ETF",
           "sentiment": "利空"
         }
       ],

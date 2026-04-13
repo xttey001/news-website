@@ -36,6 +36,67 @@ WNEWS_DIR = r'c:\Users\asus\wnews'
 sys.path.insert(0, EVOLUTION_DIR)
 sys.path.insert(0, NEWS_SERVER_DIR)
 
+# ============================================================
+#  ETF 名称校准映射表（防止AI幻觉导致名称错误）
+#  数据来源: 东方财富/天天基金 实时验证 (2026-04-12)
+#  完整映射表见: .workbuddy/skills/wnews-analysis/SKILL.md
+# ============================================================
+ETF_CANONICAL_MAP = {
+    # === 已验证正确（可直接使用） ===
+    '512930': 'AI算力ETF',           # 平安中证人工智能主题ETF ✅
+    '515070': '人工智能ETF华夏',      # 华夏中证人工智能主题ETF ✅
+    '518880': '黄金ETF',              # 华安黄金ETF ✅
+    '588790': '科创AIETF',            # 博时科创板人工智能ETF ✅
+    '588890': '科创芯片ETF',          # 南方上证科创板芯片ETF ✅
+    '588260': '科创信息ETF',          # ⚠️ 华安上证科创板新一代信息技术ETF（AI常误写为"科创芯片设计ETF"）
+    '159322': '黄金股ETF平安',        # 平安中证沪深港黄金产业ETF ✅
+    '159382': '创业板人工智能ETF南方', # 南方创业板人工智能ETF ✅
+    '159915': '创业板ETF',            # 易方达创业板ETF ✅
+    '512880': '证券ETF',              # 国泰中证全指证券公司ETF（也称券商ETF）✅
+    '159320': '电网ETF',              # ⚠️ 广发恒生A股电网设备ETF（这才是真正的电网ETF！）
+
+    # === 易混淆代码（⚠️ AI 高频错误区） ===
+    '159542': '工程机械ETF',          # ⚠️ 大成中证工程机械ETF（AI常误写为"电网ETF"，真电网是159320）
+    '159871': '有色ETF',              # ⚠️ 银华中证有色金属ETF（AI常误写为"电池ETF"）
+    '589260': '科创芯设ETF',          # ⚠️ 国泰上证科创板芯片设计主题ETF（AI常误写为"科创信息ETF"，注意：588260才是科创信息！）
+}
+
+def correct_etf_names(text):
+    """
+    校正文本中的ETF名称错误。
+    
+    扫描所有 ETF(XXXXXX) 格式，将错误名称替换为标准名称。
+    
+    Args:
+        text: str 或 dict/list，待校正的内容
+    
+    Returns:
+        校正后的内容（同类型）
+    """
+    import re
+    
+    if isinstance(text, str):
+        def replace_etf(match):
+            full_match = match.group(0)  # 如 "电网ETF(159542)"
+            code = match.group(1)         # 如 "159542"
+            
+            if code in ETF_CANONICAL_MAP:
+                correct_name = ETF_CANONICAL_MAP[code]
+                return f'{correct_name}({code})'
+            return full_match
+        
+        # 匹配格式: XXXETF(数字) 或 XXX(数字)
+        return re.sub(r'([^\s,(（）]{2,10})[ETF]*[(（](\d{6})[)）]', replace_etf, text)
+    
+    elif isinstance(text, dict):
+        return {k: correct_etf_names(v) for k, v in text.items()}
+    
+    elif isinstance(text, list):
+        return [correct_etf_names(item) for item in text]
+    
+    return text
+
+
 print('=== Daily Update v4 - 五维进化版 ===')
 print(f'  进化系统: {EVOLUTION_DIR}')
 print(f'  原有系统: {NEWS_SERVER_DIR}')
@@ -92,7 +153,11 @@ today_news = {today: data}
 
 wukong = data.get('wukong_judgment', {})
 orig_bajie = data.get('bajie_conclusion', {})
-print(f'\nStep 3: News loaded | 悟空: {bool(wukong)} | 原始八戒: {bool(orig_bajie)}')
+
+# 【新增】ETF名称校准：纠正AI生成的错误ETF名称映射
+wukong = correct_etf_names(wukong)
+orig_bajie = correct_etf_names(orig_bajie)
+print(f'\nStep 3: News loaded | 悟空: {bool(wukong)} | 原始八戒: {bool(orig_bajie)} | [ETF校准已启用]')
 
 # ============================================================
 #  Step 4: 构建场景元数据（供经验匹配用）
@@ -239,7 +304,7 @@ try:
         wukong_enhanced=wukong_enh,
         sangsha_enhanced=sangsha_enh,
         white_dragon_enhanced=wd_enh,
-        bajie_enhanced=bajie_enh,
+        bajie_calibrated=bajie_enh,
         news_metadata=news_metadata
     )
     tang_exp = tang_result.get('applied_rules', [])
@@ -285,15 +350,45 @@ final_output = {
 with open(news_file, 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-# 保留原有字段，追加进化结果
+# 保留原有字段，追加进化结果（五维全量输出）
 data['sangsha_module'] = sangsha_enh if isinstance(sangsha_enh, dict) else sangsha
 data['white_dragon'] = wd_enh if isinstance(wd_enh, dict) else white_dragon
-data['bajie_conclusion'] = tang_result.get('final_decision', bajie_enh)
+data['bajie_conclusion'] = correct_etf_names(bajie_enh if isinstance(bajie_enh, dict) else base_bajie)  # 保留八戒校准结果+ETF校准
+data['wukong_enhanced'] = wukong_enh if isinstance(wukong_enh, dict) else wukong  # 新增：悟空增强
+
+# 【重要】唐僧结果需要转换为前端期望的中文key格式（含ETF名称校准）
+tang_final_decision = tang_result.get('final_decision', bajie_enh)
+tang_action_text = correct_etf_names(tang_result.get('final_action', tang_final_decision.get('optimal_action', '观望') if isinstance(tang_final_decision, dict) else '?'))
+tang_wr_text = tang_result.get('final_win_rate', '~60%')
+
+# 从 action 文本提取仓位建议
+if '轻仓' in str(tang_action_text):
+    tang_position = '30-50% 轻仓'
+elif '重仓' in str(tang_action_text) or '加仓' in str(tang_action_text):
+    tang_position = '70%+ 重仓'
+elif '减仓' in str(tang_action_text) or '清仓' in str(tang_action_text):
+    tang_position = '0-20% 空仓/极轻'
+else:
+    tang_position = '40-60% 中性'
+
+# 构建前端兼容的唐僧字段
+data['tang_sanzang'] = {
+    # 前端 index.html 期望的中文 key 格式
+    '仓位': tang_position,
+    '最终行动': tang_action_text,
+    '仲裁矛盾': tang_result.get('arbitration_notes', []),
+    '仓位公式': f'base({tang_position}) × 风控调整',
+    '风控触发': [c.get('item') + ': ' + c.get('status') + ' - ' + c.get('reason','') 
+                 for c in tang_result.get('risk_checks', []) if c.get('status','') != '✅ 通过'],
+    # 同时保留原始结构供其他用途
+    '_raw': tang_result,
+}
+
 data['evolution_v4'] = final_output['evolution']
 
 with open(news_file, 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
-print(f'  ✅ Updated {news_file}')
+print(f'  ✅ Updated {news_file} (五维全量: 悟空+沙僧+白龙马+八戒+唐僧)')
 
 # ============================================================
 #  Step 9: 存入待验证队列

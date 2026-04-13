@@ -118,6 +118,18 @@ for date in sorted(all_news.keys(), reverse=True):
     all_news[date]['sangsha_module'] = sangsha
     all_news[date]['white_dragon'] = white_dragon
     all_news[date]['bajie_conclusion'] = final_bajie
+    
+    # 【v4进化】保留已有的五维增强字段（不被v3覆盖）
+    if 'wukong_enhanced' not in day_data and isinstance(wukong, dict) and wukong:
+        all_news[date]['wukong_enhanced'] = wukong
+    if 'tang_sanzang' not in day_data:
+        # 如果有evolution_v4说明已通过daily_update_v4处理过，构建唐僧字段
+        if 'evolution_v4' in day_data:
+            all_news[date]['tang_sanzang'] = {
+                'final_decision': final_bajie,
+                'applied_rules': day_data.get('evolution_v4', {}).get('tang_rules', []),
+                'arbitration_notes': day_data.get('evolution_v4', {}).get('arbitration_notes', []),
+            }
 
     # 打印摘要
     sg_s = sangsha.get('overall_sentiment', '?')

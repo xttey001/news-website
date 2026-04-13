@@ -352,10 +352,16 @@ class WhiteDragonModel:
             advice_parts.append('⚠️ 信号矛盾：悟空/白龙马/散户三方信号不一致，建议观望或降仓')
         elif state == '出货' and using_retail:
             advice_parts.append('⚠️ 风险提示：主力派发+散户追高，双重风险，建议减仓')
-        elif state == '拉升' and not using_retail and credibility > 1.0:
-            advice_parts.append('✅ 积极信号：主力拉升初期，无散户接盘，可适度参与')
-        elif state == '拉升' and credibility < 0.9:
-            advice_parts.append('⚠️ 可疑拉升：主力可能在诱多，需警惕')
+        elif state == '拉升':
+            # 【修复】credibility == 1.0 且无散户接盘，应给出积极信号
+            if not using_retail and credibility >= 1.0:
+                advice_parts.append('✅ 积极信号：主力拉升明显，量价配合良好，无散户接盘，可跟进持仓')
+            elif using_retail:
+                advice_parts.append('⚠️ 诱多风险：主力拉升但散户追高，需警惕诱多陷阱')
+            elif credibility < 0.9:
+                advice_parts.append('⚠️ 可疑拉升：主力可能在诱多，需警惕')
+            else:
+                advice_parts.append(f'📊 拉升信号：主力状态{state}，可信度{credibility:.1f}，可适度关注')
         elif state == '吸筹':
             advice_parts.append('📌 布局时机：主力吸筹阶段，可分批建仓')
         elif panic_prob > 55:

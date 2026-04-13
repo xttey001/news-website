@@ -86,7 +86,7 @@
           "sentiment": "利空"
         },
         {
-          "name": "159012 港股通金融ETF",
+          "name": "513190 港股通金融ETF",
           "sentiment": "利好"
         }
       ],
@@ -153,7 +153,7 @@
           "sentiment": "利好"
         },
         {
-          "name": "159871 新能源电池ETF",
+          "name": "516070 易方达新能源ETF",
           "sentiment": "利好"
         }
       ],
@@ -215,7 +215,7 @@
       "duration": "1-4周",
       "etfs": [
         {
-          "name": "159542 电网ETF",
+          "name": "516100 工银苏格兰基建ETF",
           "sentiment": "利好"
         }
       ],

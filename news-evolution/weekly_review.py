@@ -183,6 +183,128 @@ def load_experience_stats():
     return sorted(stats, key=lambda x: x.get('applied', 0), reverse=True)
 
 
+def is_last_week_of_month():
+    """判断本周是否是本月最后一周
+    
+    判断逻辑：如果当前周五 + 7天 > 本月最后一天 → 最后一周
+    """
+    today = datetime.now()
+    
+    # 计算本月最后一天
+    if today.month == 12:
+        last_day = datetime(today.year + 1, 1, 1) - timedelta(days=1)
+    else:
+        last_day = datetime(today.year, today.month + 1, 1) - timedelta(days=1)
+    
+    # 计算本周五
+    days_to_friday = (4 - today.weekday()) % 7  # 4 = Friday
+    this_friday = today + timedelta(days=days_to_friday)
+    
+    # 如果本周五 + 7天超过月末 → 最后一周
+    next_week = this_friday + timedelta(days=7)
+    
+    return next_week > last_day, last_day.day
+
+
+def generate_monthly_report(weekly_reports):
+    """生成月度汇总报告
+    
+    参数：
+        weekly_reports: 本月所有周报的列表
+    
+    返回：
+        月度报告字典
+    """
+    today = datetime.now()
+    
+    # 合并所有周报数据
+    total_decisions = 0
+    total_correct = 0
+    total_wrong = 0
+    module_totals = {}
+    
+    for report in weekly_reports:
+        total_decisions += report.get('total_decisions', 0)
+        total_correct += report.get('correct', 0)
+        total_wrong += report.get('wrong', 0)
+        
+        for mod, stats in report.get('module_stats', {}).items():
+            if mod not in module_totals:
+                module_totals[mod] = {'correct': 0, 'wrong': 0, 'name': stats.get('name', ''), 
+                                      'icon': stats.get('icon', ''), 'role': stats.get('role', '')}
+            module_totals[mod]['correct'] += stats.get('correct', 0)
+            module_totals[mod]['wrong'] += stats.get('wrong', 0)
+    
+    # 计算月度准确率
+    accuracy = round(total_correct / total_decisions * 100, 1) if total_decisions > 0 else 0
+    
+    # 找出最佳和最差模块
+    best_module = None
+    worst_module = None
+    best_rate = 0
+    worst_rate = 100
+    
+    for mod, stats in module_totals.items():
+        total = stats['correct'] + stats['wrong']
+        if total > 0:
+            rate = stats['correct'] / total * 100
+            if rate > best_rate:
+                best_rate = rate
+                best_module = {'module': mod, 'rate': rate, **stats}
+            if rate < worst_rate:
+                worst_rate = rate
+                worst_module = {'module': mod, 'rate': rate, **stats}
+    
+    # 生成报告
+    report = {
+        'month': today.strftime('%Y-%m'),
+        'total_decisions': total_decisions,
+        'correct': total_correct,
+        'wrong': total_wrong,
+        'accuracy': accuracy,
+        'module_stats': module_totals,
+        'best_module': best_module,
+        'worst_module': worst_module,
+        'weeks_count': len(weekly_reports),
+        'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    }
+    
+    # 打印报告
+    print(f'\n  📊 月度汇总报告 ({today.strftime("%Y年%m月")})')
+    print(f'  决策数: {total_decisions} | 正确: {total_correct} | 错误: {total_wrong} | 准确率: {accuracy}%')
+    print(f'  周报数: {len(weekly_reports)}')
+    
+    if best_module:
+        print(f'\n  🏆 最佳模块: {best_module["icon"]} {best_module["name"]}({best_module["rate"]:.0f}%)')
+    if worst_module:
+        print(f'  ⚠️ 需改进模块: {worst_module["icon"]} {worst_module["name"]}({worst_module["rate"]:.0f}%)')
+    
+    # 保存月报
+    report_file = os.path.join(DATA_DIR, f'monthly_report_{today.strftime("%Y-%m")}.json')
+    save_json(report_file, report)
+    print(f'\n  ✅ 月报已保存: {report_file}')
+    
+    return report
+
+
+def load_monthly_weekly_reports():
+    """加载本月所有周报"""
+    today = datetime.now()
+    month_prefix = today.strftime('%Y-%m')
+    
+    reports = []
+    for filename in os.listdir(DATA_DIR):
+        if filename.startswith(f'weekly_report_{month_prefix}') and filename.endswith('.json'):
+            filepath = os.path.join(DATA_DIR, filename)
+            try:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    reports.append(json.load(f))
+            except:
+                pass
+    
+    return reports
+
+
 def backfill_validation_to_news():
     """将验证结果回填到新闻数据文件中"""
     print('\n=== Step 3: 回填验证结果到新闻数据 ===')
@@ -329,6 +451,11 @@ def main():
     print('=' * 60)
     print(f'📅 周五复盘 - {datetime.now().strftime("%Y-%m-%d %H:%M")}')
     print('=' * 60)
+    
+    # 检查是否是本月最后一周
+    is_last_week, last_day = is_last_week_of_month()
+    if is_last_week:
+        print(f'\n🌟 本周是本月最后一周（月末{last_day}号），将执行月度总复盘！')
 
     # Step 1: 运行验证
     run_validation()
@@ -344,9 +471,39 @@ def main():
 
     # Step 5: 经验进化建议
     suggest_experience_updates(report)
+    
+    # Step 6: 如果是本月最后一周，执行月度汇总
+    if is_last_week:
+        print('\n' + '=' * 60)
+        print('📊 月度总复盘')
+        print('=' * 60)
+        
+        # 加载本月所有周报
+        weekly_reports = load_monthly_weekly_reports()
+        
+        if weekly_reports:
+            # 生成月度汇总
+            monthly_report = generate_monthly_report(weekly_reports)
+            
+            # 月度经验进化建议
+            print('\n=== 月度经验进化建议 ===')
+            
+            if monthly_report.get('worst_module'):
+                wm = monthly_report['worst_module']
+                print(f'  ⚠️ {wm["icon"]} {wm["name"]}本月准确率仅{wm["rate"]:.0f}%')
+                print(f'     建议：检查该模块的经验库是否有误导性规则')
+            
+            if monthly_report.get('best_module'):
+                bm = monthly_report['best_module']
+                print(f'  ✅ {bm["icon"]} {bm["name"]}本月表现出色（{bm["rate"]:.0f}%）')
+                print(f'     建议：将该模块的成功经验推广到其他模块')
+        else:
+            print('  ⚠️ 未找到本月的周报数据，跳过月度汇总')
 
     print('\n' + '=' * 60)
     print('📅 周五复盘完成!')
+    if is_last_week:
+        print('📊 月度总复盘完成!')
     print('=' * 60)
 
 
