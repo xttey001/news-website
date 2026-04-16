@@ -250,7 +250,11 @@
     
     <!-- 周选择器 -->
     <div id="week-selector" class="period-selector">
-        <button class="period-btn active" onclick="loadReport('week3')">
+        <button class="period-btn active" onclick="loadReport('week4')">
+            <span class="period-label">第4周</span>
+            <span class="period-date">04-11 ~ 04-16</span>
+        </button>
+        <button class="period-btn" onclick="loadReport('week3')">
             <span class="period-label">第3周</span>
             <span class="period-date">04-07 ~ 04-10</span>
         </button>
@@ -268,7 +272,7 @@
     <div id="month-selector" class="period-selector" style="display:none;">
         <button class="period-btn active" onclick="loadReport('apr')">
             <span class="period-label">2026年4月</span>
-            <span class="period-date">03-25 ~ 04-10</span>
+            <span class="period-date">03-25 ~ 04-16</span>
         </button>
         <button class="period-btn" onclick="loadReport('mar')">
             <span class="period-label">2026年3月</span>
@@ -279,7 +283,98 @@
     <!-- 报告内容区域 -->
     <div id="report-container" class="report-container">
         <!-- 默认显示最新周报 -->
-        <div id="report-week3" class="report-content">
+        <div id="report-week4" class="report-content">
+            <div class="report-header">
+                <h2>📊 第4周复盘报告</h2>
+                <div class="report-date">2026年4月11日 - 4月16日 | 地缘风暴到经济亮眼</div>
+                <div class="badge-row">
+                    <span class="badge badge-green">✅ 准确 5次</span>
+                    <span class="badge badge-gold">⚠️ 部分准确 1次</span>
+                    <span class="badge badge-blue">📌 GDP超预期</span>
+                </div>
+            </div>
+            
+            <div class="score-grid">
+                <div class="score-card highlight">
+                    <div class="number">83%</div>
+                    <div class="label">本周准确率</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">5天</div>
+                    <div class="label">准确天数</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">1次</span></div>
+                    <div class="label">部分误判</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">4条</div>
+                    <div class="label">新增经验</div>
+                </div>
+            </div>
+            
+            <div class="section-title">📋 本周总结</div>
+            <div class="summary-card">
+                <p><span class="highlight-line">主旋律：霍尔木兹危机升级 → 突然解除 → GDP亮眼</span>，本周经历了地缘风险从「谈判→破裂→封锁→突然恢复」的剧烈转折，最后以GDP增5%超预期收尾。</p>
+                <p><span class="highlight-line">最强判断：04-14 A股低开高走创业板大涨4.81%</span>，在美军封锁霍尔木兹的恐慌中，精准预判市场韧性超预期，锂矿光模块领涨。</p>
+                <p><span class="highlight-line">关键转折：04-15 霍尔木兹恢复通航</span>，Trump突然宣布「战争结束」，避险逻辑秒反转，A股高开低走分化明显。</p>
+                <p><span class="error-line">最大失误：04-15判断A股高开延续强势</span>，实际高开低走，医药爆发但科技回调，市场分歧超预期。</p>
+            </div>
+            
+            <div class="section-title">📅 逐日准确率</div>
+            <table>
+                <thead><tr><th>日期</th><th>市场基调</th><th>准确度</th><th>核心判断</th><th>实际走势</th></tr></thead>
+                <tbody>
+                    <tr><td>04-11</td><td>观望</td><td class="acc-high">✅ 高</td><td>美伊谈判开始，市场观望</td><td>A股震荡，油气异动</td></tr>
+                    <tr><td>04-12</td><td>警惕</td><td class="acc-high">✅ 极高</td><td>谈判破裂→封锁预期升温</td><td>周末突发封锁消息</td></tr>
+                    <tr><td>04-13</td><td>谨慎防御</td><td class="acc-high">✅ 高</td><td>美军封锁→油气稀土逆势</td><td>A股低开，包钢爆炸</td></tr>
+                    <tr><td>04-14</td><td>低开高走</td><td class="acc-high">✅ 极高</td><td>市场韧性超预期，锂矿领涨</td><td>创业板涨4.81%</td></tr>
+                    <tr><td>04-15</td><td>高开分化</td><td class="acc-mid">⚠️ 中</td><td>霍尔木兹恢复→科技延续</td><td>高开低走，医药爆发</td></tr>
+                    <tr><td>04-16</td><td>偏多</td><td class="acc-high">✅ 高</td><td>GDP增5%超预期→A股大涨</td><td>宁德时代创新高</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="section-title">🏆 本周可复刻经验</div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">⚡</span> 经验1：地缘危机「假动作」识别</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>Trump封锁霍尔木兹仅持续3天</strong>→ 避险逻辑窗口极短，快速止盈是关键</li>
+                        <li><strong>可复刻公式</strong>：Trump军事行动 + 无实质伤亡 = 快速解除概率高，不追避险</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">📈</span> 经验2：A股韧性超预期信号</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>04-14美股封锁生效日A股反而大涨</strong>→ 外盘大跌+A股低开高走=独立行情信号</li>
+                        <li><strong>关键指标</strong>：创业板涨幅>3% + 超过2000只个股上涨 = 市场底部确认</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">💊</span> 经验3：GDP数据超预期 → 信心修复</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>04-16 GDP增5%超预期</strong>→ 消费+新能源领涨，宁德时代创新高</li>
+                        <li><strong>可复刻公式</strong>：GDP超预期 + 政策宽松预期 = 消费/新能源做多窗口</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">⚠️</span> 风险提示：地缘消息反转速度极快</div>
+                <div class="exp-content">
+                    <ul>
+                        <li>霍尔木兹封锁→恢复仅用3天，追避险资产风险极大</li>
+                        <li>Trump「战争结束」宣言一出，避险逻辑必须立即止盈</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 第3周报告 -->
+        <div id="report-week3" class="report-content" style="display:none;">
             <div class="report-header">
                 <h2>📊 第3周复盘报告</h2>
                 <div class="report-date">2026年4月7日 - 4月10日 | 科技股强势回归</div>
@@ -483,22 +578,22 @@
         <div id="report-apr" class="report-content" style="display:none;">
             <div class="report-header">
                 <h2>📊 2026年4月复盘汇总</h2>
-                <div class="report-date">2026年3月25日 - 4月10日 | 17天完整复盘</div>
+                <div class="report-date">2026年3月25日 - 4月16日 | 23天完整复盘</div>
                 <div class="badge-row">
-                    <span class="badge badge-green">✅ 准确 14次</span>
-                    <span class="badge badge-gold">⚠️ 部分准确 2次</span>
+                    <span class="badge badge-green">✅ 准确 19次</span>
+                    <span class="badge badge-gold">⚠️ 部分准确 3次</span>
                     <span class="badge badge-red">❌ 失误 1次</span>
-                    <span class="badge badge-blue">📌 准确率 85%</span>
+                    <span class="badge badge-blue">📌 准确率 83%</span>
                 </div>
             </div>
             
             <div class="score-grid">
                 <div class="score-card highlight">
-                    <div class="number">85%</div>
+                    <div class="number">83%</div>
                     <div class="label">整体准确率</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">14</div>
+                    <div class="number">19</div>
                     <div class="label">精准命中天数</div>
                 </div>
                 <div class="score-card">
@@ -506,17 +601,17 @@
                     <div class="label">重大误判</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">9条</div>
+                    <div class="number">13条</div>
                     <div class="label">可复刻经验</div>
                 </div>
             </div>
             
             <div class="section-title">📋 月度总结</div>
             <div class="summary-card">
-                <p><span class="highlight-line">主旋律：地缘政治驱动行情（霍尔木兹危机）→ 科技股强势回归</span></p>
-                <p>17天市场走势经历了「美伊霍尔木兹危机」从爆发→升级→停火→修复的完整周期，随后进入科技股业绩驱动行情。</p>
-                <p><span class="highlight-line">最强判断</span>：3月29日霍尔木兹危机升级 → 油气/黄金暴涨，完美捕捉。</p>
-                <p><span class="error-line">最大失误</span>：4月5日判断中东升级→避险资产继续强势，但4月6日美伊停火，逻辑秒反转。</p>
+                <p><span class="highlight-line">主旋律：霍尔木兹危机爆发→封锁→突然解除→GDP亮眼</span></p>
+                <p>23天市场走势经历了「美伊霍尔木兹危机」从爆发→升级→谈判→破裂→封锁→突然恢复的完整周期，最后以GDP增5%超预期收尾。</p>
+                <p><span class="highlight-line">最强判断</span>：04-14 A股低开高走创业板大涨4.81%，在封锁恐慌中精准预判市场韧性。</p>
+                <p><span class="error-line">最大失误</span>：04-05判断中东升级→避险资产继续强势，但04-06美伊停火，逻辑秒反转。</p>
             </div>
             
             <div class="section-title">🏆 核心经验汇总</div>
@@ -525,16 +620,24 @@
                 <div class="exp-content"><ul><li>可复刻公式：地缘事件 + 供需缺口不可弥补 = 高胜率做多窗口</li></ul></div>
             </div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">📊</span> 2. 美股/日韩/BTC是A股先行指标，领先1-2天</div>
+                <div class="exp-title"><span class="icon">⚡</span> 2. Trump军事行动「假动作」识别</div>
+                <div class="exp-content"><ul><li>Trump封锁霍尔木兹仅持续3天就解除→军事行动+无实质伤亡=快速解除概率高</li></ul></div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">📊</span> 3. 美股/日韩/BTC是A股先行指标，领先1-2天</div>
                 <div class="exp-content"><ul><li>可复刻公式：节假日前看外盘 → 判断A股开盘方向</li></ul></div>
             </div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">💊</span> 3. 业绩验证类逻辑（创新药/AI芯片）在财报季胜率最高</div>
+                <div class="exp-title"><span class="icon">💊</span> 4. 业绩验证类逻辑（创新药/AI芯片）在财报季胜率最高</div>
                 <div class="exp-content"><ul><li>可复刻公式：财报季 + 业绩超预期 + 行业龙头 = 高胜率机会</li></ul></div>
             </div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">⚠️</span> 4. 避险资产在消息落地时必须立即止盈，不能恋战</div>
-                <div class="exp-content"><ul><li>4月5日失误的根本原因：过度线性外推地缘走向，没有为「反转」留后手</li></ul></div>
+                <div class="exp-title"><span class="icon">📈</span> 5. A股韧性超预期信号</div>
+                <div class="exp-content"><ul><li>外盘大跌+A股低开高走=独立行情信号，创业板涨幅>3%+超过2000只个股上涨=市场底部确认</li></ul></div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">⚠️</span> 6. 避险资产在消息落地时必须立即止盈，不能恋战</div>
+                <div class="exp-content"><ul><li>04-05失误的根本原因：过度线性外推地缘走向，没有为「反转」留后手</li></ul></div>
             </div>
             <div class="exp-card">
                 <div class="exp-title"><span class="icon">🇺🇸</span> 5. 特朗普政策预期是A股「自主可控」主线核心驱动</div>
