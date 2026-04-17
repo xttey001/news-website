@@ -73,7 +73,18 @@ const newsData = {
         {"name": "515050 通信ETF", "sentiment": "利好"},
         {"name": "159819 AI算力ETF", "sentiment": "利好"}
       ],
-      "stocks": ["源杰科技", "新易盛", "中际旭创", "德科立"]
+      "stocks": ["源杰科技", "新易盛", "中际旭创", "德科立"],
+      "signal": "短期：AI光互联大年+业绩验证，光模块主线成立；中期：PE650倍追高风险极大，ETF配置优于个股",
+      "bayes_analysis": {
+        "prior_judgment": "AI算力需求持续爆发，光模块为确定性最高的受益方向",
+        "prior_prob": 65,
+        "likelihood_judgment": "中际旭创Q1净利+226%业绩验证+Lightcounting预测复合增速20%=基本面极强",
+        "likelihood_prob": 85,
+        "posterior": 72,
+        "expected_return": "通信ETF短期+3%~+8%",
+        "confidence_interval": "[-6%, +12%]",
+        "key_variables": "源杰科技PE能否维持、3.2T光模块量产节奏、AI资本开支持续性"
+      }
     },
     {
       "emoji": "🔴",
@@ -84,7 +95,18 @@ const newsData = {
       "etfs": [
         {"name": "北证50相关ETF", "sentiment": "利好"}
       ],
-      "stocks": ["凯华材料", "凯德石英", "纳科诺尔", "天马新材"]
+      "stocks": ["凯华材料", "凯德石英", "纳科诺尔", "天马新材"],
+      "signal": "短期：增量资金利好催化，北证50弹性大；中期：流动性改善预期需验证，关注申购上限能否真正放开",
+      "bayes_analysis": {
+        "prior_judgment": "北交所流动性改善+ETF增量资金预期，板块弹性较高",
+        "prior_prob": 55,
+        "likelihood_judgment": "博时北证50基金放开大额申购+成交量翻倍=资金面实质性利好",
+        "likelihood_prob": 70,
+        "posterior": 62,
+        "expected_return": "北证50 ETF短期+2%~+6%",
+        "confidence_interval": "[-8%, +10%]",
+        "key_variables": "申购上限是否真正放开至15亿、其他基金是否跟进、北交所个股基本面"
+      }
     }
   ],
   "a_level": [
@@ -97,7 +119,18 @@ const newsData = {
       "etfs": [
         {"name": "512760 芯片ETF", "sentiment": "利好"}
       ],
-      "stocks": ["中际旭创", "新易盛", "源杰科技"]
+      "stocks": ["中际旭创", "新易盛", "源杰科技"],
+      "signal": "短期：业绩超预期验证AI算力景气度，光模块基本面支撑；中期：龙头公司增长可持续性较强",
+      "bayes_analysis": {
+        "prior_judgment": "光模块龙头受益AI算力需求爆发，业绩增长确定性高",
+        "prior_prob": 60,
+        "likelihood_judgment": "Q1营收+192%、净利+226%远超市场预期，800G/1.6T快速放量",
+        "likelihood_prob": 80,
+        "posterior": 68,
+        "expected_return": "芯片ETF短期+2%~+5%",
+        "confidence_interval": "[-4%, +8%]",
+        "key_variables": "AI资本开支持续性、光模块价格竞争、下游客户订单节奏"
+      }
     },
     {
       "emoji": "🟡",
@@ -109,7 +142,18 @@ const newsData = {
         {"name": "基建ETF", "sentiment": "利好"},
         {"name": "新能源ETF", "sentiment": "利好"}
       ],
-      "stocks": []
+      "stocks": [],
+      "signal": "短期：政策利好基建/新能源板块；中期：8000亿投放节奏需跟踪，央地合作项目落地是关键",
+      "bayes_analysis": {
+        "prior_judgment": "政策性金融工具支持重大项目，对基建/新能源形成长期利好",
+        "prior_prob": 55,
+        "likelihood_judgment": "8000亿资金体量可观+发改委明确加快投放=政策执行力强",
+        "likelihood_prob": 70,
+        "posterior": 62,
+        "expected_return": "基建ETF/新能源ETF短期+1%~+4%",
+        "confidence_interval": "[-5%, +7%]",
+        "key_variables": "资金投放节奏、央地合作项目落地情况、地方财政配套能力"
+      }
     },
     {
       "emoji": "🟡",
@@ -120,7 +164,18 @@ const newsData = {
       "etfs": [
         {"name": "港股ETF", "sentiment": "利好"}
       ],
-      "stocks": []
+      "stocks": [],
+      "signal": "短期：出口韧性超预期提振市场信心；中期：贸易摩擦不确定性仍存，需关注后续数据",
+      "bayes_analysis": {
+        "prior_judgment": "中国出口在全球贸易摩擦下仍具韧性，基本面支撑经济预期",
+        "prior_prob": 55,
+        "likelihood_judgment": "Q1外贸+15%超预期+8000亿政策工具内外需双重发力",
+        "likelihood_prob": 65,
+        "posterior": 59,
+        "expected_return": "港股ETF短期+1%~+3%",
+        "confidence_interval": "[-4%, +6%]",
+        "key_variables": "全球贸易政策走向、人民币汇率、外需持续性"
+      }
     }
   ],
   "douyin": [],
@@ -203,7 +258,44 @@ const newsData = {
       "源杰科技高位放量大阴线 → 坚决离场",
       "北证50指数基金申购利好未兑现 → 回避北交所个股"
     ]
-  }
+  },
+  "decision_matrix": [
+    {
+      "新闻": "源杰科技超越茅台成A股股王",
+      "做多概率": "72%",
+      "预期收益": "+3%~+8%",
+      "风险比": "1:2",
+      "建议": "✅ 可做（ETF为主）"
+    },
+    {
+      "新闻": "北证50增量资金利好",
+      "做多概率": "62%",
+      "预期收益": "+2%~+6%",
+      "风险比": "1:1.5",
+      "建议": "⚠️ 轻仓"
+    },
+    {
+      "新闻": "中际旭创Q1业绩+226%",
+      "做多概率": "68%",
+      "预期收益": "+2%~+5%",
+      "风险比": "1:2",
+      "建议": "✅ 可做"
+    },
+    {
+      "新闻": "8000亿政策金融工具",
+      "做多概率": "62%",
+      "预期收益": "+1%~+4%",
+      "风险比": "1:1.5",
+      "建议": "⚠️ 轻仓"
+    },
+    {
+      "新闻": "Q1外贸+15%超预期",
+      "做多概率": "59%",
+      "预期收益": "+1%~+3%",
+      "风险比": "1:1",
+      "建议": "⚠️ 观望"
+    }
+  ]
 },
 "2026-04-14": {
   "date": "2026-04-14",
@@ -10770,7 +10862,7 @@ const newsData = {
 
 };
 
-const availableDates = ["2026-04-17","2026-04-17","2026-04-16","2026-04-15","2026-04-14","2026-04-13","2026-04-12","2026-04-11","2026-04-10","2026-04-09","2026-04-08","2026-04-07","2026-04-03","2026-04-02","2026-04-01","2026-03-31","2026-03-30","2026-03-29","2026-03-28","2026-03-27","2026-03-26","2026-03-25"];
+const availableDates = ["2026-04-17","2026-04-16","2026-04-15","2026-04-14","2026-04-13","2026-04-12","2026-04-11","2026-04-10","2026-04-09","2026-04-08","2026-04-07","2026-04-03","2026-04-02","2026-04-01","2026-03-31","2026-03-30","2026-03-29","2026-03-28","2026-03-27","2026-03-26","2026-03-25"];
 
 function getNews(date) { return newsData[date] || null; }
 function getPreviousDate(date) { const idx = availableDates.indexOf(date); return idx < availableDates.length - 1 ? availableDates[idx + 1] : null; }
