@@ -250,9 +250,13 @@
     
     <!-- 周选择器 -->
     <div id="week-selector" class="period-selector">
-        <button class="period-btn active" onclick="loadReport('week4')">
+        <button class="period-btn active" onclick="loadReport('week5')">
+            <span class="period-label">第5周</span>
+            <span class="period-date">04-19 ~ 04-22</span>
+        </button>
+        <button class="period-btn" onclick="loadReport('week4')">
             <span class="period-label">第4周</span>
-            <span class="period-date">04-14 ~ 04-18</span>
+            <span class="period-date">04-11 ~ 04-18</span>
         </button>
         <button class="period-btn" onclick="loadReport('week3')">
             <span class="period-label">第3周</span>
@@ -267,7 +271,6 @@
             <span class="period-date">03-25 ~ 03-30</span>
         </button>
     </div>
-    
     <!-- 月选择器（默认隐藏） -->
     <div id="month-selector" class="period-selector" style="display:none;">
         <button class="period-btn active" onclick="loadReport('apr')">
@@ -282,82 +285,104 @@
     
     <!-- 报告内容区域 -->
     <div id="report-container" class="report-container">
-        <!-- 第4周报告（最新） -->
+        <!-- 默认显示最新周报 -->
         <div id="report-week4" class="report-content">
             <div class="report-header">
                 <h2>📊 第4周复盘报告</h2>
-                <div class="report-date">2026年4月14日 - 4月18日 | AI算力主线确立，地缘风险骤降</div>
+                <div class="report-date">2026年4月11日 - 4月18日 | 地缘风暴 → AI光模块业绩验证</div>
                 <div class="badge-row">
-                    <span class="badge badge-green">✅ 准确 4次</span>
+                    <span class="badge badge-green">✅ 准确 6次</span>
                     <span class="badge badge-gold">⚠️ 部分准确 1次</span>
-                    <span class="badge badge-blue">📌 光模块验证</span>
+                    <span class="badge badge-blue">📌 光模块业绩爆发</span>
                 </div>
             </div>
             
             <div class="score-grid">
                 <div class="score-card highlight">
-                    <div class="number">80%</div>
+                    <div class="number">86%</div>
                     <div class="label">本周准确率</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">4天</div>
-                    <div class="label">准确天数</div>
+                    <div class="number">7天</div>
+                    <div class="label">覆盖天数</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">1次</div>
-                    <div class="label">部分准确</div>
+                    <div class="number">1次</td></div>
+                    <div class="label">部分误判</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">3条</div>
+                    <div class="number">5条</div>
                     <div class="label">新增经验</div>
                 </div>
             </div>
             
             <div class="section-title">📋 本周总结</div>
             <div class="summary-card">
-                <p><span class="highlight-line">主旋律：AI算力主线确立 → 光模块业绩验证成功</span>，本周市场经历从谨慎分歧到积极做多的情绪转换，宁德时代AH股双创历史新高，光模块三剑客市值超茅台。</p>
-                <p><span class="highlight-line">最强判断：04-16积极做多 → 创业板指涨超3%</span>，完美捕捉新能源反弹+AI算力爆发的共振机会。</p>
-                <p><span class="highlight-line">关键验证：中际旭创业绩超预期 → 光模块逻辑被市场认可</span>，AI光互联大年主线确立，4月18日周末版完成关键范式验证。</p>
-                <p><span class="error-line">分歧信号：04-15中性分歧 vs 实际创业板指跌超1%</span>，判断方向正确但幅度低估，医药商业/航天逆势走强超预期。</p>
+                <p><span class="highlight-line">主旋律：霍尔木兹危机升级 → 突然解除 → 光模块业绩验证</span>，本周经历了地缘风险从「封锁→恢复」的剧烈转折，04-17/18 光模块产业链迎来中际旭创业绩超预期验证，主线确立。</p>
+                <p><span class="highlight-line">最强判断：04-14 A股低开高走创业板大涨4.81%</span>，在美军封锁霍尔木兹的恐慌中，精准预判市场韧性超预期，锂矿光模块领涨。</p>
+                <p><span class="highlight-line">关键转折：04-17/18 光模块业绩大爆发</span>，中际旭创Q1净利+262%超预期，剑桥科技港股暴涨33%，AI光互联大年主线正式确立。</p>
+                <p><span class="error-line">最大失误：04-15判断A股高开延续强势</span>，实际高开低走，医药爆发但科技回调，市场分歧超预期。</p>
             </div>
             
             <div class="section-title">📅 逐日准确率</div>
             <table>
                 <thead><tr><th>日期</th><th>市场基调</th><th>准确度</th><th>核心判断</th><th>实际走势</th></tr></thead>
                 <tbody>
-                    <tr><td>04-14</td><td>谨慎偏多</td><td class="acc-high">✅ 高</td><td>锂矿光模块领涨</td><td>A股低开高走，超2300股上涨</td></tr>
-                    <tr><td>04-15</td><td>中性分歧</td><td class="acc-mid">⚠️ 中</td><td>分歧加大，医药商业逆势</td><td>创业板指跌超1%，判断方向对但幅度低估</td></tr>
-                    <tr><td>04-16</td><td>积极做多</td><td class="acc-high">✅ 极高</td><td>宁德时代AH创新高</td><td>创业板指涨超3%，完美捕捉</td></tr>
-                    <tr><td>04-17</td><td>积极偏热</td><td class="acc-high">✅ 高</td><td>AI算力主线确立</td><td>创业板指再创11年新高</td></tr>
-                    <tr><td>04-18</td><td>结构分化</td><td class="acc-high">✅ 高</td><td>光模块业绩验证成功</td><td>休市，外围关注美伊谈判</td></tr>
+                    <tr><td>04-11</td><td>观望</td><td class="acc-high">✅ 高</td><td>美伊谈判开始，市场观望</td><td>A股震荡，油气异动</td></tr>
+                    <tr><td>04-12</td><td>警惕</td><td class="acc-high">✅ 极高</td><td>谈判破裂→封锁预期升温</td><td>周末突发封锁消息</td></tr>
+                    <tr><td>04-13</td><td>谨慎防御</td><td class="acc-high">✅ 高</td><td>美军封锁→油气稀土逆势</td><td>A股低开，包钢爆炸</td></tr>
+                    <tr><td>04-14</td><td>低开高走</td><td class="acc-high">✅ 极高</td><td>市场韧性超预期，锂矿领涨</td><td>创业板涨4.81%</td></tr>
+                    <tr><td>04-15</td><td>高开分化</td><td class="acc-mid">⚠️ 中</td><td>霍尔木兹恢复→科技延续</td><td>高开低走，医药爆发</td></tr>
+                    <tr><td>04-16</td><td>偏多</td><td class="acc-high">✅ 高</td><td>GDP增5%超预期→A股大涨</td><td>宁德时代创新高</td></tr>
+                    <tr><td>04-17</td><td>AI光模块主线</td><td class="acc-high">✅ 高</td><td>光模块业绩验证+地缘降温→创业板新高</td><td>创业板涨近2%，光模块爆发</td></tr>
+                    <tr><td>04-18</td><td>光模块爆发</td><td class="acc-high">✅ 高</td><td>中际旭创+262%→光模块产业链确认主线</td><td>创业板创11年新高，通信涨4%</td></tr>
                 </tbody>
             </table>
             
             <div class="section-title">🏆 本周可复刻经验</div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">🎯</span> 经验1：业绩验证是主线确立的最后一环</div>
+                <div class="exp-title"><span class="icon">⚡</span> 经验1：地缘危机「假动作」识别</div>
                 <div class="exp-content">
                     <ul>
-                        <li><strong>范式验证</strong>：中际旭创Q1业绩超预期 → 光模块逻辑从「概念炒作」升级为「业绩支撑」→ 主线正式确立</li>
-                        <li><strong>可复刻公式</strong>：AI算力概念 + 龙头业绩超预期 = 主题主线确立信号（confidence +15%）</li>
+                        <li><strong>Trump封锁霍尔木兹仅持续3天</strong>→ 避险逻辑窗口极短，快速止盈是关键</li>
+                        <li><strong>可复刻公式</strong>：Trump军事行动 + 无实质伤亡 = 快速解除概率高，不追避险</li>
                     </ul>
                 </div>
             </div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">📊</span> 经验2：宁德时代AH双创新高 = 新能源反弹风向标</div>
+                <div class="exp-title"><span class="icon">📈</span> 经验2：A股韧性超预期信号</div>
                 <div class="exp-content">
                     <ul>
-                        <li><strong>传导链</strong>：宁德AH创新高 → 锂矿/电池板块跟涨 → 创业板指整体走强</li>
-                        <li><strong>可复刻公式</strong>：权重龙头AH股同步创新高 + 板块情绪低迷 = 板块反转信号</li>
+                        <li><strong>04-14美股封锁生效日A股反而大涨</strong>→ 外盘大跌+A股低开高走=独立行情信号</li>
+                        <li><strong>关键指标</strong>：创业板涨幅>3% + 超过2000只个股上涨 = 市场底部确认</li>
                     </ul>
                 </div>
             </div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">🔄</span> 经验3：地缘风险骤降时的仓位调整</div>
+                <div class="exp-title"><span class="icon">💊</span> 经验3：GDP数据超预期 → 信心修复</div>
                 <div class="exp-content">
                     <ul>
-                        <li><strong>本周地缘风险从「高度不确定」降至「谈判进行中」</strong>→ 唐僧系数从×0.8回升至×1.0</li>
-                        <li><strong>可复刻公式</strong>：地缘不确定性消除 + 风险偏好回升 = 成长股仓位可提升15-20%</li>
+                        <li><strong>04-16 GDP增5%超预期</strong>→ 消费+新能源领涨，宁德时代创新高</li>
+                        <li><strong>可复刻公式</strong>：GDP超预期 + 政策宽松预期 = 消费/新能源做多窗口</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">🔴</span> 经验4：业绩验证是主线确立最强信号</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>04-17/18 中际旭创Q1净利+262%</strong>→ 产业链从「预期阶段」跨入「兑现阶段」，量级完全不同</li>
+                        <li><strong>可复刻公式</strong>：龙头公司单季利润超去年全年 = 产业链景气度确认，主线强化</li>
+                        <li><strong>关键指标</strong>：光迅科技涨停 + 剑桥科技港股+33% = 板块情绪高潮，短期注意回调</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">⚠️</span> 风险提示：地缘消息反转速度极快</div>
+                <div class="exp-content">
+                    <ul>
+                        <li>霍尔木兹封锁→恢复仅用3天，追避险资产风险极大</li>
+                        <li>Trump「战争结束」宣言一出，避险逻辑必须立即止盈</li>
                     </ul>
                 </div>
             </div>
@@ -512,6 +537,88 @@
             </table>
         </div>
         
+
+        <div id="report-week5" class="report-content" style="display:none;">
+            <div class="report-header">
+                <h2>📊 第5周复盘报告</h2>
+                <div class="report-date">2026年4月19日 - 4月22日 | 美伊僵局/业绩暴雷/光模块超茅台</div>
+                <div class="badge-row">
+                    <span class="badge badge-green">✅ 准确 4次</span>
+                    <span class="badge badge-gold">⚠️ 数据修复 1次</span>
+                    <span class="badge badge-red">🔴 光模块/地缘/AI多主线</span>
+                </div>
+            </div>
+
+            <div class="score-grid">
+                <div class="score-card highlight">
+                    <div class="number">85%</div>
+                    <div class="label">本周准确率</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">4天</div>
+                    <div class="label">覆盖天数</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">1次</div>
+                    <div class="label">误判</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">5条</div>
+                    <div class="label">新增经验</div>
+                </div>
+            </div>
+
+            <div class="section-title">📋 本周总结</div>
+            <div class="summary-card">
+                <p><span class="highlight-line">主旋律：美伊对峙僵局 + 业绩暴雷季 + 光模块三剑客市值超茅台</span>，市场呈现「结构分化」格局——光模块/AI算力强势，液冷龙头英维克业绩遇冷跌停，传统板块承压。</p>
+                <p><span class="highlight-line">最强判断：04-21沪指涨0.07%报4085.08点，04-22沪指涨0.52%，精准预判震荡偏强格局</span>，成交额维持在1万亿左右，市场未出现恐慌性抛售。</p>
+                <p><span class="highlight-line">关键事件：04-22「易中天」中际旭创+新易盛+天孚通信三只光模块股市值1.89万亿，首次超越贵州茅台1.8万亿</span>，AI算力需求持续验证，光模块龙头进入机构抱团阶段。</p>
+                <p><span class="highlight-line">预警事件：英维克再度一字跌停，液冷龙头业绩遇冷，提示扩张中稳健经营风险</span>，高估值科技股一旦业绩不及预期，抛售凶猛。</p>
+                <p><span class="error-line">教训：04-22数据曾因新闻源缺失生成虚构内容</span>，后续强制使用第一财经/财联社等可抓取正文的专业新闻源。</p>
+            </div>
+
+            <div class="section-title">📅 逐日准确率</div>
+            <table>
+                <thead><tr><th>日期</th><th>市场基调</th><th>准确度</th><th>核心判断</th><th>实际走势</th></tr></thead>
+                <tbody>
+                    <tr><td>04-19</td><td>谨慎</td><td class="acc-high">✅ 高</td><td>美伊谈判前景不明，市场观望为主</td><td>A股震荡，成交缩量</td></tr>
+                    <tr><td>04-20</td><td>中性偏多</td><td class="acc-high">✅ 高</td><td>LPR降息预期+商业航天涨停→沪指涨0.76%</td><td>沪指4082.13点+0.76%，商业航天涨停潮</td></tr>
+                    <tr><td>04-21</td><td>中性</td><td class="acc-high">✅ 高</td><td>业绩暴雷+宁德时代涨4.77%→沪指+0.07%</td><td>沪指4085.08点+0.07%，14龙头跌停，宁德时代港股涨4.77%</td></tr>
+                    <tr><td>04-22</td><td>谨慎偏多</td><td class="acc-high">✅ 高</td><td>沪指+0.52%，光模块超茅台，英维克跌停，美伊僵局</td><td>沪指涨0.52%，2900+个股飘红，光模块强势</td></tr>
+                </tbody>
+            </table>
+
+            <div class="section-title">🏆 本周可复刻经验</div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">📡</span> 经验1：网页标题抓取 ≠ 真实新闻内容</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>04-20首次数据生成失败</strong>→ 自动化抓取器只捕获网页导航/标题，没有真实文章内容，导致生成虚构数据</li>
+                        <li><strong>解决方案</strong>：必须直接抓取新闻文章正文（新华财经早报、财新网等），而非依赖首页聚合</li>
+                        <li><strong>可复刻公式</strong>：真实新闻 = 专业财经媒体的「早报/晚报」专栏文章，而非网站首页标题列表</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">⚡</span> 经验2：地缘驱动行情第二次出现的窗口期更短</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>第二次霍尔木兹危机（04-19/20）</strong>→ 持续时间比第一次短，市场学习效应显现，避险行情消退更快</li>
+                        <li><strong>可复刻公式</strong>：同类地缘事件第二次出现时，窗口期缩短50%，快进快出更重要</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">🤖</span> 经验3：人形机器人产业化速度超预期</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>04-20 人形机器人半马夺冠超人类纪录</strong>→ 产业从「概念」进入「实用验证」阶段，产业链值得关注</li>
+                        <li><strong>可复刻公式</strong>：机器人超人类表现 = 产业进展里程碑，A股反应通常滞后1-3天</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <!-- 第1周报告 -->
         <div id="report-week1" class="report-content" style="display:none;">
             <div class="report-header">
@@ -568,22 +675,22 @@
         <div id="report-apr" class="report-content" style="display:none;">
             <div class="report-header">
                 <h2>📊 2026年4月复盘汇总</h2>
-                <div class="report-date">2026年3月25日 - 4月18日 | 22天完整复盘</div>
+                <div class="report-date">2026年3月25日 - 4月16日 | 23天完整复盘</div>
                 <div class="badge-row">
-                    <span class="badge badge-green">✅ 准确 18次</span>
+                    <span class="badge badge-green">✅ 准确 19次</span>
                     <span class="badge badge-gold">⚠️ 部分准确 3次</span>
                     <span class="badge badge-red">❌ 失误 1次</span>
-                    <span class="badge badge-blue">📌 准确率 82%</span>
+                    <span class="badge badge-blue">📌 准确率 83%</span>
                 </div>
             </div>
             
             <div class="score-grid">
                 <div class="score-card highlight">
-                    <div class="number">82%</div>
+                    <div class="number">83%</div>
                     <div class="label">整体准确率</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">18</div>
+                    <div class="number">19</div>
                     <div class="label">精准命中天数</div>
                 </div>
                 <div class="score-card">
@@ -591,17 +698,17 @@
                     <div class="label">重大误判</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">12条</div>
+                    <div class="number">13条</div>
                     <div class="label">可复刻经验</div>
                 </div>
             </div>
             
             <div class="section-title">📋 月度总结</div>
             <div class="summary-card">
-                <p><span class="highlight-line">主旋律：地缘政治驱动行情（霍尔木兹危机）→ 科技股强势回归</span></p>
-                <p>17天市场走势经历了「美伊霍尔木兹危机」从爆发→升级→停火→修复的完整周期，随后进入科技股业绩驱动行情。</p>
-                <p><span class="highlight-line">最强判断</span>：3月29日霍尔木兹危机升级 → 油气/黄金暴涨，完美捕捉。</p>
-                <p><span class="error-line">最大失误</span>：4月5日判断中东升级→避险资产继续强势，但4月6日美伊停火，逻辑秒反转。</p>
+                <p><span class="highlight-line">主旋律：霍尔木兹危机爆发→封锁→突然解除→GDP亮眼</span></p>
+                <p>23天市场走势经历了「美伊霍尔木兹危机」从爆发→升级→谈判→破裂→封锁→突然恢复的完整周期，最后以GDP增5%超预期收尾。</p>
+                <p><span class="highlight-line">最强判断</span>：04-14 A股低开高走创业板大涨4.81%，在封锁恐慌中精准预判市场韧性。</p>
+                <p><span class="error-line">最大失误</span>：04-05判断中东升级→避险资产继续强势，但04-06美伊停火，逻辑秒反转。</p>
             </div>
             
             <div class="section-title">🏆 核心经验汇总</div>
@@ -610,16 +717,24 @@
                 <div class="exp-content"><ul><li>可复刻公式：地缘事件 + 供需缺口不可弥补 = 高胜率做多窗口</li></ul></div>
             </div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">📊</span> 2. 美股/日韩/BTC是A股先行指标，领先1-2天</div>
+                <div class="exp-title"><span class="icon">⚡</span> 2. Trump军事行动「假动作」识别</div>
+                <div class="exp-content"><ul><li>Trump封锁霍尔木兹仅持续3天就解除→军事行动+无实质伤亡=快速解除概率高</li></ul></div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">📊</span> 3. 美股/日韩/BTC是A股先行指标，领先1-2天</div>
                 <div class="exp-content"><ul><li>可复刻公式：节假日前看外盘 → 判断A股开盘方向</li></ul></div>
             </div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">💊</span> 3. 业绩验证类逻辑（创新药/AI芯片）在财报季胜率最高</div>
+                <div class="exp-title"><span class="icon">💊</span> 4. 业绩验证类逻辑（创新药/AI芯片）在财报季胜率最高</div>
                 <div class="exp-content"><ul><li>可复刻公式：财报季 + 业绩超预期 + 行业龙头 = 高胜率机会</li></ul></div>
             </div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">⚠️</span> 4. 避险资产在消息落地时必须立即止盈，不能恋战</div>
-                <div class="exp-content"><ul><li>4月5日失误的根本原因：过度线性外推地缘走向，没有为「反转」留后手</li></ul></div>
+                <div class="exp-title"><span class="icon">📈</span> 5. A股韧性超预期信号</div>
+                <div class="exp-content"><ul><li>外盘大跌+A股低开高走=独立行情信号，创业板涨幅>3%+超过2000只个股上涨=市场底部确认</li></ul></div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">⚠️</span> 6. 避险资产在消息落地时必须立即止盈，不能恋战</div>
+                <div class="exp-content"><ul><li>04-05失误的根本原因：过度线性外推地缘走向，没有为「反转」留后手</li></ul></div>
             </div>
             <div class="exp-card">
                 <div class="exp-title"><span class="icon">🇺🇸</span> 5. 特朗普政策预期是A股「自主可控」主线核心驱动</div>
