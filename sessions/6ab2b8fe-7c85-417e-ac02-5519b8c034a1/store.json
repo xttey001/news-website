@@ -1,0 +1,25 @@
+{
+  "id": "6ab2b8fe-7c85-417e-ac02-5519b8c034a1",
+  "name": "财经早报更新",
+  "status": "active",
+  "createdAt": "2026-04-18T10:38:56.838Z",
+  "updatedAt": "2026-04-24T01:09:17.817Z",
+  "agents": [
+    {
+      "id": "agent_3ly7vj29",
+      "name": "Main Agent",
+      "role": "assistant",
+      "status": "idle",
+      "createdAt": "2026-04-18T10:38:56.838Z",
+      "model": "unknown",
+      "systemPrompt": ""
+    }
+  ],
+  "summary": {
+    "id": "summary_hnir1f15",
+    "title": "财经早报更新",
+    "createdAt": "2026-04-18T10:38:56.838Z",
+    "file": "summary_hnir1f15.md"
+  },
+  "lastMessageCount": 71
+}

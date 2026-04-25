@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "created_at": "2026-04-25T22:17:11.077568",
+  "updated_at": "2026-04-25T22:17:11.080648",
+  "session_count": 1,
+  "user_profile": {
+    "preferences": {
+      "response_style": "简洁"
+    },
+    "communication_style": {},
+    "interests": [],
+    "avoid_topics": []
+  },
+  "conversation_history": [],
+  "key_memories": [
+    {
+      "timestamp": "2026-04-25T22:17:11.079265",
+      "category": "lesson",
+      "content": {
+        "description": "用户偏好简洁的回答风格"
+      },
+      "importance": 3
+    }
+  ],
+  "session_summaries": [
+    {
+      "date": "2026-04-25T22:17:11.079265",
+      "summary": "用户设定了回答风格偏好",
+      "topics": [
+        "用户偏好设置"
+      ],
+      "key_points": [
+        "用户偏好简洁的回答风格"
+      ]
+    }
+  ]
+}

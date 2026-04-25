@@ -1,0 +1,25 @@
+{
+  "id": "session-1776514800175-3253ad",
+  "name": "身份配置更新",
+  "status": "active",
+  "createdAt": "2026-04-18T12:21:36.679Z",
+  "updatedAt": "2026-04-18T12:21:36.679Z",
+  "agents": [
+    {
+      "id": "agent_53wtea7o",
+      "name": "agent-f189fdb5",
+      "role": "assistant",
+      "status": "idle",
+      "createdAt": "2026-04-18T12:21:36.679Z",
+      "model": "unknown",
+      "systemPrompt": ""
+    }
+  ],
+  "summary": {
+    "id": "summary_e39ka1de",
+    "title": "身份配置更新",
+    "createdAt": "2026-04-18T12:21:36.679Z",
+    "file": "summary_e39ka1de.md"
+  },
+  "lastMessageCount": 8
+}

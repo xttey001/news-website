@@ -1,0 +1,25 @@
+{
+  "id": "d95338c2-12e0-4c99-b9bd-04067973cf84",
+  "name": "复盘页面排查",
+  "status": "active",
+  "createdAt": "2026-04-15T11:18:33.485Z",
+  "updatedAt": "2026-04-15T11:18:33.485Z",
+  "agents": [
+    {
+      "id": "agent_cskgcypo",
+      "name": "Main Agent",
+      "role": "assistant",
+      "status": "idle",
+      "createdAt": "2026-04-15T11:18:33.485Z",
+      "model": "unknown",
+      "systemPrompt": ""
+    }
+  ],
+  "summary": {
+    "id": "summary_rjgozoib",
+    "title": "复盘页面排查",
+    "createdAt": "2026-04-15T11:18:33.485Z",
+    "file": "summary_rjgozoib.md"
+  },
+  "lastMessageCount": 113
+}

@@ -1,0 +1,25 @@
+{
+  "id": "2b886142-7d4c-4a19-a97d-23030e160250",
+  "name": "子代理自我介绍",
+  "status": "active",
+  "createdAt": "2026-04-21T06:13:58.967Z",
+  "updatedAt": "2026-04-21T06:13:58.967Z",
+  "agents": [
+    {
+      "id": "agent_trtuhxcg",
+      "name": "agent-f189fdb5",
+      "role": "assistant",
+      "status": "idle",
+      "createdAt": "2026-04-21T06:13:58.967Z",
+      "model": "unknown",
+      "systemPrompt": ""
+    }
+  ],
+  "summary": {
+    "id": "summary_z71fmw2w",
+    "title": "子代理自我介绍",
+    "createdAt": "2026-04-21T06:13:58.967Z",
+    "file": "summary_z71fmw2w.md"
+  },
+  "lastMessageCount": 4
+}

@@ -1,0 +1,25 @@
+{
+  "id": "session-1776857916581-gaxyif",
+  "name": "复盘Agent创建",
+  "status": "active",
+  "createdAt": "2026-04-22T11:46:43.815Z",
+  "updatedAt": "2026-04-22T13:06:27.804Z",
+  "agents": [
+    {
+      "id": "agent_ipz6lpaq",
+      "name": "Main Agent",
+      "role": "assistant",
+      "status": "idle",
+      "createdAt": "2026-04-22T11:46:43.815Z",
+      "model": "unknown",
+      "systemPrompt": ""
+    }
+  ],
+  "summary": {
+    "id": "summary_2ws8k2dc",
+    "title": "复盘Agent创建",
+    "createdAt": "2026-04-22T11:46:43.815Z",
+    "file": "summary_2ws8k2dc.md"
+  },
+  "lastMessageCount": 65
+}

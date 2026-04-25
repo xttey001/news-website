@@ -24,14 +24,14 @@
 ```
 
 **关键结论**:
-- 当前只有 **2 个 cron 任务**：早报(9:00) + 晚报(15:00)
-- **周复盘任务 ID `9cf024a9-...` 已不存在**（可能被误删或从未创建成功）
-- **月复盘任务也不存在**
-- 复盘页面更新完全依赖**手动执行**
+- 当前有 **4 个 cron 任务**：早报(9:00) + 晚报(15:00) + 周复盘(周五18:00) + 月复盘(月末18:00)
+- **复盘 Agent 技能已创建**：`C:\Users\asus\.qclaw\workspace\skills\review-agent\`
 
 **修复记录**:
 - 2026-04-18: 手动更新 review.html，扩展 week4 至 04-18，加入光模块业绩验证经验
-- 待办：重新创建周五 18:00 的周复盘 cron 任务
+- 2026-04-22: ✅ 创建复盘 Agent 技能 + 更新 cron 任务
+- 周复盘任务 ID: `496652c8-63ef-48cf-969d-caf0710710b4`
+- 月复盘任务 ID: `a619e8ae-8f48-4941-95d2-a899cc95a138`
 
 ---
 
@@ -783,7 +783,6 @@ python daily_update.py
 - tang_sanzang 字段已写入 news-data.js，但 index.html 尚无渲染代码，不影响数据，只影响网页显示唐僧仓位；待补充渲染逻辑
 - 新闻网站实际路径：`C:\Users\asus\temp-news-website\`（不是 news-server/，后者可能已废弃或迁移）
 - GitHub 仓库：`xttey001/news-website`，网站地址：https://xttey001.github.io/news-website/
-- 数据日期覆盖：3.25 ~ 4.16（部分日期有完整五层分析，部分只有S/A级新闻）
 
 ## 经验与决策
 

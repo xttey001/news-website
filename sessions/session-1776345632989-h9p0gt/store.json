@@ -1,0 +1,25 @@
+{
+  "id": "session-1776345632989-h9p0gt",
+  "name": "会话摘要",
+  "status": "active",
+  "createdAt": "2026-04-16T13:53:40.230Z",
+  "updatedAt": "2026-04-16T15:30:43.665Z",
+  "agents": [
+    {
+      "id": "agent_gjym08ra",
+      "name": "Main Agent",
+      "role": "assistant",
+      "status": "idle",
+      "createdAt": "2026-04-16T13:53:40.230Z",
+      "model": "unknown",
+      "systemPrompt": ""
+    }
+  ],
+  "summary": {
+    "id": "summary_2l2btm9t",
+    "title": "会话摘要",
+    "createdAt": "2026-04-16T13:53:40.230Z",
+    "file": "summary_2l2btm9t.md"
+  },
+  "lastMessageCount": 230
+}

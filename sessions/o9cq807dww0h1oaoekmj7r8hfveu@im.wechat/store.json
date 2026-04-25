@@ -1,0 +1,25 @@
+{
+  "id": "o9cq807dww0h1oaoekmj7r8hfveu@im.wechat",
+  "name": "新闻分析推送",
+  "status": "active",
+  "createdAt": "2026-04-15T15:32:44.157Z",
+  "updatedAt": "2026-04-15T15:32:44.157Z",
+  "agents": [
+    {
+      "id": "agent_jqkp7prh",
+      "name": "Main Agent",
+      "role": "assistant",
+      "status": "idle",
+      "createdAt": "2026-04-15T15:32:44.157Z",
+      "model": "unknown",
+      "systemPrompt": ""
+    }
+  ],
+  "summary": {
+    "id": "summary_iyrlnkdn",
+    "title": "新闻分析推送",
+    "createdAt": "2026-04-15T15:32:44.157Z",
+    "file": "summary_iyrlnkdn.md"
+  },
+  "lastMessageCount": 229
+}

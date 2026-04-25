@@ -1201,14 +1201,20 @@
                                 </thead>
                                 <tbody>`;
                     bj.decision_matrix.forEach(m => {
-                        const rc = m.win_rate >= 65 ? 'high' : m.win_rate >= 50 ? 'medium' : 'low';
+                        // 支持中英文两种字段格式
+                        const winRateStr = m.win_rate || m['做多概率'] || '50%';
+                        const winRateNum = parseInt(winRateStr) || 50;
+                        const expectedReturn = m.expected_return || m['预期收益'] || 'N/A';
+                        const riskRatio = m.risk_ratio || m['风险比'] || '1:1';
+                        const action = m.action || m['建议'] || '观望';
+                        const rc = winRateNum >= 65 ? 'high' : winRateNum >= 50 ? 'medium' : 'low';
                         html += `
                                     <tr>
                                         <td>${m.news}</td>
-                                        <td><span class="win-rate ${rc}">${m.win_rate}%</span></td>
-                                        <td>${m.expected_return}</td>
-                                        <td>${m.risk_ratio}</td>
-                                        <td>${m.action}</td>
+                                        <td><span class="win-rate ${rc}">${winRateNum}%</span></td>
+                                        <td>${expectedReturn}</td>
+                                        <td>${riskRatio}</td>
+                                        <td>${action}</td>
                                     </tr>`;
                     });
                     html += `

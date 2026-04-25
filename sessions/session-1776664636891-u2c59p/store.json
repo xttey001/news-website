@@ -1,0 +1,25 @@
+{
+  "id": "session-1776664636891-u2c59p",
+  "name": "交易复盘身份配置",
+  "status": "active",
+  "createdAt": "2026-04-20T05:59:44.762Z",
+  "updatedAt": "2026-04-20T05:59:44.762Z",
+  "agents": [
+    {
+      "id": "agent_zo9jen5f",
+      "name": "agent-5fb21f32",
+      "role": "assistant",
+      "status": "idle",
+      "createdAt": "2026-04-20T05:59:44.762Z",
+      "model": "unknown",
+      "systemPrompt": ""
+    }
+  ],
+  "summary": {
+    "id": "summary_jwk2i584",
+    "title": "交易复盘身份配置",
+    "createdAt": "2026-04-20T05:59:44.762Z",
+    "file": "summary_jwk2i584.md"
+  },
+  "lastMessageCount": 7
+}

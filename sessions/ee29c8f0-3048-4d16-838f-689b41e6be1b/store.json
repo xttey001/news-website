@@ -1,0 +1,25 @@
+{
+  "id": "ee29c8f0-3048-4d16-838f-689b41e6be1b",
+  "name": "操盘手介绍",
+  "status": "active",
+  "createdAt": "2026-04-21T06:20:28.725Z",
+  "updatedAt": "2026-04-21T06:20:28.725Z",
+  "agents": [
+    {
+      "id": "agent_1jikh29f",
+      "name": "agent-f189fdb5",
+      "role": "assistant",
+      "status": "idle",
+      "createdAt": "2026-04-21T06:20:28.725Z",
+      "model": "unknown",
+      "systemPrompt": ""
+    }
+  ],
+  "summary": {
+    "id": "summary_kv3pa7hb",
+    "title": "操盘手介绍",
+    "createdAt": "2026-04-21T06:20:28.725Z",
+    "file": "summary_kv3pa7hb.md"
+  },
+  "lastMessageCount": 4
+}
