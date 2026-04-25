@@ -210,3 +210,74 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+---
+
+# 🎯 悟空财经新闻项目 - 特殊规则
+
+> ⚠️ **以下规则仅适用于 workspace/ 目录下的悟空财经新闻项目**
+
+## 项目上下文
+
+**项目名称**：悟空财经新闻分析系统  
+**项目类型**：财经新闻智能分析 + 投资决策辅助  
+**线上地址**：https://xttey001.github.io/news-website/  
+**技术栈**：HTML5 + CSS3 + Vanilla JS + Python 3.14+  
+**部署**：GitHub Pages
+
+### 五维智能体架构
+- 🐵 **悟空**：市场深度判断（地缘非线性/Trump量化/财报分级）
+- 🧅 **沙僧**：散户情绪监测（FOMO预警/恐慌逆向/拐点预判）
+- 🐉 **白龙马**：主力行为识别（Trump-主力模式/出货vs洗盘）
+- 🐷 **八戒**：贝叶斯概率校准（先验库/信号权重/地缘有效期）
+- 🙏 **唐僧**：跨层矛盾仲裁（全局风控/仓位决策）
+
+## 代码规范
+
+### JavaScript
+- 使用双引号 `"` 而非单引号
+- 使用 Tab 缩进（而非空格）
+- 对象/数组末尾不加逗号
+
+### Python
+- 遵循 PEP 8
+- 使用 4 空格缩进
+- 函数命名：snake_case
+
+## 禁止事项 🚫
+
+1. **禁止遗漏五维模块** - 每个日期数据必须包含：悟空/沙僧/白龙马/八戒/唐僧
+2. **禁止 availableDates 顺序错误** - 新日期必须放在数组最前面 `[0]` 位置
+3. **禁止忘记更新 review.html** - 每次更新 news-data.js 后必须同步更新
+4. **禁止引入前端框架** - 保持纯 Vanilla JS，不引入 React/Vue/jQuery
+
+## 开发流程（每次更新必做）
+
+```
+1. 添加新日期数据 → 确保五维模块完整
+2. 更新 availableDates → 新日期放在数组 [0] 位置
+3. 语法验证 → node -c news-data.js
+4. 生成本地HTML → python create_local_version.py
+5. 更新复盘页面 → review.html
+6. Git提交推送 → add / commit / push
+```
+
+## 关键文件路径
+
+| 用途 | 路径 |
+|------|------|
+| 核心数据 | `workspace/news-data.js` |
+| 主页面 | `workspace/index.html` |
+| 复盘页面 | `workspace/review.html` |
+| 悟空模块 | `workspace/news-evolution/market_agents_evolution/wukong_enhanced.py` |
+| 沙僧模块 | `workspace/news-evolution/market_agents_evolution/sangsha_enhanced.py` |
+| 白龙马模块 | `workspace/news-evolution/market_agents_evolution/white_dragon_enhanced.py` |
+| 八戒模块 | `workspace/news-evolution/market_agents_evolution/bajie_enhanced.py` |
+| 唐僧模块 | `workspace/news-evolution/market_agents_evolution/tang_seng_arbiter.py` |
+
+## 重要记忆点
+
+- **五维模块缺一不可** - 最容易遗漏：沙僧、白龙马、唐僧
+- **availableDates 顺序** - 新日期必须在数组最前面 `[0]` 位置
+- **复盘页面同步** - 每次更新新闻必须同步更新 review.html
+- **语法验证习惯** - 修改后必运行 `node -c news-data.js`
