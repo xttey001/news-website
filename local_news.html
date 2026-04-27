@@ -15239,28 +15239,29 @@ function getNextDate(date) { const idx = availableDates.indexOf(date); return id
             }
 
             // 决策矩阵 + 八戒最终结论（汇总部分）
-            const bj = data.bajie_bayesian || buildBajieBayesian(data) || {};
-            const overall = bj.overall || data.bajie_conclusion || {};
+            // 优先使用 bajie_conclusion.decision_matrix，如果不存在则从 s_level/a_level 构建
+            const bjConclusion = data.bajie_conclusion || {};
+            const decisionMatrix = bjConclusion.decision_matrix || (buildBajieBayesian(data) || {}).decision_matrix || [];
+            const overall = bjConclusion || {};
 
-            if (bj && (bj.decision_matrix && bj.decision_matrix.length)) {
+            if (decisionMatrix && decisionMatrix.length) {
                 // 决策矩阵表格
-                if (bj.decision_matrix && bj.decision_matrix.length) {
-                    html += `
-                    <div class="section matrix-section">
-                        <div class="section-title">📊 决策矩阵</div>
-                        <div class="decision-matrix">
-                            <table class="matrix-table">
-                                <thead>
-                                    <tr>
-                                        <th>新闻</th>
-                                        <th>胜率</th>
-                                        <th>预期收益</th>
-                                        <th>风险比</th>
-                                        <th>建议</th>
-                                    </tr>
-                                </thead>
-                                <tbody>`;
-                    bj.decision_matrix.forEach(m => {
+                html += `
+                <div class="section matrix-section">
+                    <div class="section-title">📊 决策矩阵</div>
+                    <div class="decision-matrix">
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>新闻</th>
+                                    <th>胜率</th>
+                                    <th>预期收益</th>
+                                    <th>风险比</th>
+                                    <th>建议</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+                decisionMatrix.forEach(m => {
                         // 支持中英文两种字段格式
                         const newsTitle = m.news || m['新闻'] || 'N/A';
                         const winRateStr = m.win_rate || m['做多概率'] || '50%';
@@ -15283,7 +15284,6 @@ function getNextDate(date) { const idx = availableDates.indexOf(date); return id
                             </table>
                         </div>
                     </div>`;
-                }
 
                 // 八戒最终结论
                 if (overall) {
