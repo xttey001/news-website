@@ -15262,6 +15262,7 @@ function getNextDate(date) { const idx = availableDates.indexOf(date); return id
                                 <tbody>`;
                     bj.decision_matrix.forEach(m => {
                         // 支持中英文两种字段格式
+                        const newsTitle = m.news || m['新闻'] || 'N/A';
                         const winRateStr = m.win_rate || m['做多概率'] || '50%';
                         const winRateNum = parseInt(winRateStr) || 50;
                         const expectedReturn = m.expected_return || m['预期收益'] || 'N/A';
@@ -15270,7 +15271,7 @@ function getNextDate(date) { const idx = availableDates.indexOf(date); return id
                         const rc = winRateNum >= 65 ? 'high' : winRateNum >= 50 ? 'medium' : 'low';
                         html += `
                                     <tr>
-                                        <td>${m.news}</td>
+                                        <td>${newsTitle}</td>
                                         <td><span class="win-rate ${rc}">${winRateNum}%</span></td>
                                         <td>${expectedReturn}</td>
                                         <td>${riskRatio}</td>
