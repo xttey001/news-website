@@ -1051,7 +1051,7 @@
             const posterior = bayesData.posterior || 50;
             const expectedReturn = bayesData.expected_return || 'N/A';
             const confidence = bayesData.confidence_interval || bayesData.confidence || 'N/A';
-            const keyVar = bayesData.key_variables || bayesData.key_variable || 'N/A';
+            const keyVar = bayesData.key_variables || bayesData.key_variable || bayesData['关键变量'] || 'N/A';
             return `
             <div class="bayes-card news-bayes-card">
                 <div class="bayes-card-title">🧮 八戒贝叶斯分析</div>
