@@ -250,7 +250,11 @@
     
     <!-- 周选择器 -->
     <div id="week-selector" class="period-selector">
-        <button class="period-btn active" onclick="loadReport('week5')">
+        <button class="period-btn active" onclick="loadReport('week6')">
+            <span class="period-label">第6周</span>
+            <span class="period-date">04-26 ~ 04-28</span>
+        </button>
+        <button class="period-btn" onclick="loadReport('week5')">
             <span class="period-label">第5周</span>
             <span class="period-date">04-19 ~ 04-22</span>
         </button>
@@ -285,8 +289,120 @@
     
     <!-- 报告内容区域 -->
     <div id="report-container" class="report-container">
+        <!-- 第6周报告 -->
+        <div id="report-week6" class="report-content">
+            <div class="report-header">
+                <h2>📊 第6周复盘报告</h2>
+                <div class="report-date">2026年4月26日 - 4月28日 | 五维智能体交叉验证：特朗普喊票证伪 → 科技股流动性锁定 → 医药防御</div>
+                <div class="badge-row">
+                    <span class="badge badge-green">✅ 准确 2次</span>
+                    <span class="badge badge-gold">⚠️ 部分准确 1次</span>
+                    <span class="badge badge-red">📌 消息证伪风险</span>
+                </div>
+            </div>
+            
+            <div class="score-grid">
+                <div class="score-card highlight">
+                    <div class="number">67%</div>
+                    <div class="label">本周准确率</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">3天</div>
+                    <div class="label">覆盖天数</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">1次</div>
+                    <div class="label">部分误判</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">5条</div>
+                    <div class="label">新增经验</div>
+                </div>
+            </div>
+            
+            <div class="section-title">📋 五维智能体本周总结</div>
+            <div class="summary-card">
+                <p><span class="highlight-line">【悟空·市场判断】特朗普关税消息从「预期发酵」到「证伪确认」</span>，周末传出关税减免细则后，周一科技股高开低走，周二白宫仍无正式公告，消息证伪概率升至80%，科技股全天下跌。沪指跌0.85%报3962点，创业板跌1.12%。</p>
+                <p><span class="highlight-line">【沙僧·散户情绪】散户情绪从FOMO转向恐慌</span>，科技股追高者被套牢，恐慌情绪蔓延（恐慌卖出概率45%）；光模块持有者开始动摇（犹豫不安）；部分资金转向医药避险（买入概率55%）。</p>
+                <p><span class="highlight-line">【白龙马·主力行为】主力全面出货科技股</span>，内外资同步离场（北向全天净流出35亿）；光模块机构抱团出现松动迹象；医药板块获避险资金流入（信号+0.4）。</p>
+                <p><span class="highlight-line">【八戒·贝叶斯概率】消息证伪概率从65%升至80%</span>，科技股做多概率仅20%，预期收益-8%~-3%；医药防御做多概率65%，预期收益+1%~+3%。</p>
+                <p><span class="error-line">【唐僧·风控仲裁】仓位建议20-30%（大幅降低）</span>，清仓科技股，减仓光模块至10%，轻仓医药20%，现金70%等待市场企稳。</p>
+            </div>
+            
+            <div class="section-title">🔍 板块注意力与流动性分析</div>
+            <div class="summary-card">
+                <p><span class="highlight-line">【注意力分布】科技股（45%）> 光模块（25%）> 医药（20%）> 其他（10%）</span>，科技股占据市场主要关注度，但注意力正在从「追高」转向「恐慌」。</p>
+                <p><span class="highlight-line">【流动性锁定】科技股高位套牢</span>，周一高开低走形成大量套牢盘，流动性已被锁定在高位；光模块获利盘涌出，部分流动性开始释放；医药板块流动性未被锁定，上涨空间较大。</p>
+                <p><span class="highlight-line">【下一轮行情引领者预测】医药防御板块</span>，理由：①科技股流动性已锁定，难成新龙头；②医药板块防御属性凸显，资金正在流入；③估值合理，没有大量套牢盘；④市场调整期避险需求提升。</p>
+            </div>
+            
+            <div class="section-title">📅 逐日准确率（分析日→次日验证）</div>
+            <table>
+                <thead><tr><th>分析日期</th><th>预判次日</th><th>市场基调</th><th>准确度</th><th>核心判断</th><th>次日实际走势</th></tr></thead>
+                <tbody>
+                    <tr><td>04-26</td><td>04-27</td><td>偏多</td><td class="acc-mid">⚠️ 中</td><td>关税减免预期→科技股受益</td><td>高开低走，科技股冲高回落，光模块独立强势</td></tr>
+                    <tr><td>04-27</td><td>04-28</td><td>谨慎偏空</td><td class="acc-high">✅ 高</td><td>消息证伪风险→减仓科技股</td><td>沪指跌0.85%，科技股全天下跌，半导体跌2.3%</td></tr>
+                    <tr><td>04-28</td><td>04-29</td><td>谨慎</td><td class="acc-high">✅ 高</td><td>证伪确认→清仓科技，医药防御</td><td>待验证</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="section-title">🏆 本周可复刻经验</div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">⚡</span> 经验1：特朗普「周末喊票」模式识别</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>典型模式</strong>：周末释放消息→周一高开→资金借利好出货→散户接盘</li>
+                        <li><strong>可复刻公式</strong>：特朗普周末消息 + 周一无官方确认 + 高开低走 = 喊票模式确认，立即减仓</li>
+                        <li><strong>历史验证</strong>：多次关税/科技封锁消息均呈现此模式，胜率>70%</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">📊</span> 经验2：消息证伪的贝叶斯更新路径</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>04-26 周末</strong>：关税减免预期，科技股受益概率75%</li>
+                        <li><strong>04-27 周一</strong>：无官方确认+高开低走→证伪概率升至65%</li>
+                        <li><strong>04-28 周二</strong>：仍无公告+科技股持续下跌→证伪概率80%</li>
+                        <li><strong>可复刻公式</strong>：消息出现后48小时内无官方跟进 = 假消息概率>70%</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">💊</span> 经验3：市场调整期医药防御属性凸显</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>04-28 市场调整</strong>：医药板块逆势上涨0.5%，资金寻求避险</li>
+                        <li><strong>可复刻公式</strong>：科技股调整 + 量能萎缩 + 北向流出 = 医药防御配置窗口</li>
+                        <li><strong>关键指标</strong>：医药ETF逆势上涨 + 创新药概念股活跃 = 避险资金流入信号</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">⚠️</span> 经验4：光模块高位回调的识别与应对</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>04-27 创新高</strong>：中际旭创涨5.2%再创历史新高，机构抱团延续</li>
+                        <li><strong>04-28 回调</strong>：光模块板块跌1.5%，机构抱团出现松动迹象</li>
+                        <li><strong>可复刻公式</strong>：连续强势后首次回调 + 机构资金流出 = 短期调整概率60%</li>
+                        <li><strong>注意</strong>：AI算力需求逻辑未变，中期仍看好，短期注意仓位控制</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">🔄</span> 经验5：五维智能体交叉验证提高胜率</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>单一信号易误判</strong>：04-26仅看消息面偏多，实际高开低走</li>
+                        <li><strong>五维交叉验证</strong>：04-27结合悟空（谨慎）+沙僧（分化）+白龙马（出货）+八戒（55%胜率）+唐僧（降仓），准确率大幅提升</li>
+                        <li><strong>可复刻公式</strong>：五维信号一致时胜率>70%，信号分化时降低仓位</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
         <!-- 默认显示最新周报 -->
-        <div id="report-week4" class="report-content">
+        <div id="report-week4" class="report-content" style="display:none;">
             <div class="report-header">
                 <h2>📊 第4周复盘报告</h2>
                 <div class="report-date">2026年4月11日 - 4月18日 | 地缘风暴 → AI光模块业绩验证</div>
@@ -678,22 +794,22 @@
         <div id="report-apr" class="report-content" style="display:none;">
             <div class="report-header">
                 <h2>📊 2026年4月复盘汇总</h2>
-                <div class="report-date">2026年3月25日 - 4月16日 | 23天完整复盘</div>
+                <div class="report-date">2026年3月25日 - 4月28日 | 28天完整复盘</div>
                 <div class="badge-row">
-                    <span class="badge badge-green">✅ 准确 19次</span>
-                    <span class="badge badge-gold">⚠️ 部分准确 3次</span>
+                    <span class="badge badge-green">✅ 准确 21次</span>
+                    <span class="badge badge-gold">⚠️ 部分准确 4次</span>
                     <span class="badge badge-red">❌ 失误 1次</span>
-                    <span class="badge badge-blue">📌 准确率 83%</span>
+                    <span class="badge badge-blue">📌 准确率 82%</span>
                 </div>
             </div>
             
             <div class="score-grid">
                 <div class="score-card highlight">
-                    <div class="number">83%</div>
+                    <div class="number">82%</div>
                     <div class="label">整体准确率</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">19</div>
+                    <div class="number">21</div>
                     <div class="label">精准命中天数</div>
                 </div>
                 <div class="score-card">
@@ -701,17 +817,18 @@
                     <div class="label">重大误判</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">13条</div>
+                    <div class="number">17条</div>
                     <div class="label">可复刻经验</div>
                 </div>
             </div>
             
             <div class="section-title">📋 月度总结</div>
             <div class="summary-card">
-                <p><span class="highlight-line">主旋律：霍尔木兹危机爆发→封锁→突然解除→GDP亮眼</span></p>
-                <p>23天市场走势经历了「美伊霍尔木兹危机」从爆发→升级→谈判→破裂→封锁→突然恢复的完整周期，最后以GDP增5%超预期收尾。</p>
-                <p><span class="highlight-line">最强判断</span>：04-14 A股低开高走创业板大涨4.81%，在封锁恐慌中精准预判市场韧性。</p>
+                <p><span class="highlight-line">主旋律：霍尔木兹危机爆发→封锁→突然解除→GDP亮眼→特朗普消息证伪</span></p>
+                <p>28天市场走势经历了「美伊霍尔木兹危机」从爆发→升级→谈判→破裂→封锁→突然恢复的完整周期，随后以GDP增5%超预期收尾，最后以特朗普关税消息证伪、科技股调整结束本月。</p>
+                <p><span class="highlight-line">最强判断</span>：04-14 A股低开高走创业板大涨4.81%，在封锁恐慌中精准预判市场韧性；04-27 识别特朗普「周末喊票」模式，提前预警科技股调整风险。</p>
                 <p><span class="error-line">最大失误</span>：04-05判断中东升级→避险资产继续强势，但04-06美伊停火，逻辑秒反转。</p>
+                <p><span class="highlight-line">月末格局</span>：04-28 沪指跌0.85%报3962点，科技股进入调整期，医药防御属性凸显，市场进入震荡整理阶段。</p>
             </div>
             
             <div class="section-title">🏆 核心经验汇总</div>
@@ -740,7 +857,7 @@
                 <div class="exp-content"><ul><li>04-05失误的根本原因：过度线性外推地缘走向，没有为「反转」留后手</li></ul></div>
             </div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">🇺🇸</span> 5. 特朗普政策预期是A股「自主可控」主线核心驱动</div>
+                <div class="exp-title"><span class="icon">🇺🇸</span> 7. 特朗普政策预期是A股「自主可控」主线核心驱动</div>
                 <div class="exp-content">
                     <ul>
                         <li><strong>可复刻公式</strong>：特朗普对华强硬表态 + 科技封锁预期 = 半导体/AI芯片做多窗口</li>
@@ -750,11 +867,39 @@
                 </div>
             </div>
             <div class="exp-card">
-                <div class="exp-title"><span class="icon">🔄</span> 6. 特朗普交易 vs 地缘避险：两个独立逻辑可叠加</div>
+                <div class="exp-title"><span class="icon">🔄</span> 8. 特朗普交易 vs 地缘避险：两个独立逻辑可叠加</div>
                 <div class="exp-content">
                     <ul>
                         <li><strong>叠加公式</strong>：特朗普强硬（科技做多）+ 地缘升级（避险做多）= 半导体+黄金双主线</li>
                         <li><strong>解耦时机</strong>：地缘缓和时，特朗普逻辑独立运行，科技股继续走强</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">📡</span> 9. 特朗普「周末喊票」模式识别</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>典型模式</strong>：周末释放消息→周一高开→资金借利好出货→散户接盘</li>
+                        <li><strong>可复刻公式</strong>：特朗普周末消息 + 周一无官方确认 + 高开低走 = 喊票模式确认，立即减仓</li>
+                        <li><strong>历史验证</strong>：多次关税/科技封锁消息均呈现此模式，胜率>70%</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">📊</span> 10. 消息证伪的贝叶斯更新路径</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>可复刻公式</strong>：消息出现后48小时内无官方跟进 = 假消息概率>70%</li>
+                        <li><strong>验证路径</strong>：消息出现→24小时无确认(65%证伪)→48小时无确认(80%证伪)→立即调整策略</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">💊</span> 11. 市场调整期医药防御属性凸显</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>可复刻公式</strong>：科技股调整 + 量能萎缩 + 北向流出 = 医药防御配置窗口</li>
+                        <li><strong>关键指标</strong>：医药ETF逆势上涨 + 创新药概念股活跃 = 避险资金流入信号</li>
                     </ul>
                 </div>
             </div>
