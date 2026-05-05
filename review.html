@@ -119,32 +119,39 @@
             gap: 15px;
             margin: 20px 0;
             flex-wrap: wrap;
+            align-items: center;
         }
-        .period-btn {
-            padding: 12px 24px;
+        .period-select {
+            padding: 12px 40px 12px 18px;
             border-radius: 8px;
             border: 1px solid var(--border);
             background: var(--card);
             color: var(--text);
             cursor: pointer;
-            transition: all 0.3s;
             font-size: 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
+            font-family: inherit;
+            min-width: 280px;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239e9e9e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            transition: all 0.3s;
         }
-        .period-btn .period-label { font-weight: 500; }
-        .period-btn .period-date { font-size: 12px; color: var(--text-muted); }
-        .period-btn:hover {
+        .period-select:hover {
             border-color: var(--blue);
             background: rgba(33,150,243,0.1);
         }
-        .period-btn.active {
+        .period-select:focus {
+            outline: none;
             border-color: var(--gold);
-            background: rgba(255,193,7,0.15);
+            box-shadow: 0 0 0 2px rgba(255,193,7,0.2);
         }
-        .period-btn.active .period-label { color: var(--gold); }
+        .period-select option {
+            background: #1a1f2b;
+            color: var(--text);
+            padding: 10px;
+        }
         
         /* Report Container */
         .report-container {
@@ -221,7 +228,7 @@
         /* Responsive */
         @media (max-width: 600px) {
             .score-grid { grid-template-columns: repeat(2, 1fr); }
-            .period-btn { padding: 10px 18px; }
+            .period-select { min-width: 240px; font-size: 13px; }
         }
     </style>
 </head>
@@ -251,45 +258,22 @@
     
     <!-- 周选择器 -->
     <div id="week-selector" class="period-selector">
-        <button class="period-btn active" onclick="loadReport('week7')">
-            <span class="period-label">第7周</span>
-            <span class="period-date">04-30 ~ 05-04</span>
-        </button>
-        <button class="period-btn" onclick="loadReport('week6')">
-            <span class="period-label">第6周</span>
-            <span class="period-date">04-26 ~ 04-28</span>
-        </button>
-        <button class="period-btn" onclick="loadReport('week5')">
-            <span class="period-label">第5周</span>
-            <span class="period-date">04-19 ~ 04-22</span>
-        </button>
-        <button class="period-btn" onclick="loadReport('week4')">
-            <span class="period-label">第4周</span>
-            <span class="period-date">04-11 ~ 04-18</span>
-        </button>
-        <button class="period-btn" onclick="loadReport('week3')">
-            <span class="period-label">第3周</span>
-            <span class="period-date">04-07 ~ 04-10</span>
-        </button>
-        <button class="period-btn" onclick="loadReport('week2')">
-            <span class="period-label">第2周</span>
-            <span class="period-date">03-31 ~ 04-06</span>
-        </button>
-        <button class="period-btn" onclick="loadReport('week1')">
-            <span class="period-label">第1周</span>
-            <span class="period-date">03-25 ~ 03-30</span>
-        </button>
+        <select class="period-select" id="week-select" onchange="loadReport(this.value)">
+            <option value="week7">第7周 (04-30 ~ 05-04)</option>
+            <option value="week6">第6周 (04-26 ~ 04-28)</option>
+            <option value="week5">第5周 (04-19 ~ 04-22)</option>
+            <option value="week4">第4周 (04-11 ~ 04-18)</option>
+            <option value="week3">第3周 (04-07 ~ 04-10)</option>
+            <option value="week2">第2周 (03-31 ~ 04-06)</option>
+            <option value="week1">第1周 (03-25 ~ 03-30)</option>
+        </select>
     </div>
     <!-- 月选择器（默认隐藏） -->
     <div id="month-selector" class="period-selector" style="display:none;">
-        <button class="period-btn active" onclick="loadReport('apr')">
-            <span class="period-label">2026年4月</span>
-            <span class="period-date">03-25 ~ 04-18</span>
-        </button>
-        <button class="period-btn" onclick="loadReport('mar')">
-            <span class="period-label">2026年3月</span>
-            <span class="period-date">暂无数据</span>
-        </button>
+        <select class="period-select" id="month-select" onchange="loadReport(this.value)">
+            <option value="may">2026年5月 (05-01 ~ 05-05)</option>
+            <option value="apr">2026年4月 (03-25 ~ 04-30)</option>
+        </select>
     </div>
     
     <!-- 报告内容区域 -->
@@ -912,10 +896,10 @@
         <!-- 月度汇总 -->
         <div id="report-apr" class="report-content" style="display:none;">
             <div class="report-header">
-                <h2>📊 2026年4-5月复盘汇总</h2>
-                <div class="report-date">2026年3月25日 - 5月4日 | 33天完整复盘</div>
+                <h2>📊 2026年4月复盘汇总</h2>
+                <div class="report-date">2026年3月25日 - 4月30日 | 30天完整复盘</div>
                 <div class="badge-row">
-                    <span class="badge badge-green">✅ 准确 25次</span>
+                    <span class="badge badge-green">✅ 准确 23次</span>
                     <span class="badge badge-gold">⚠️ 部分准确 5次</span>
                     <span class="badge badge-red">❌ 失误 1次</span>
                     <span class="badge badge-blue">📌 准确率 83%</span>
@@ -928,7 +912,7 @@
                     <div class="label">整体准确率</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">25</div>
+                    <div class="number">23</div>
                     <div class="label">精准命中天数</div>
                 </div>
                 <div class="score-card">
@@ -944,10 +928,10 @@
             <div class="section-title">📋 月度总结</div>
             <div class="summary-card">
                 <p><span class="highlight-line">主旋律：霍尔木兹危机爆发→封锁→解除→GDP亮眼→特朗普消息证伪→五一政策密集轰炸→科技主线确立</span></p>
-                <p>33天市场走势经历了完整的地缘政治周期（美伊霍尔木兹危机从爆发到解除），随后以GDP增5%超预期、光模块业绩大爆发收尾，最后以五一假期政策密集轰炸（1.2万亿科创再贷款+AI国家战略+商务部反制+915亿设备更新+军工订单）确立科技股主线。</p>
+                <p>30天市场走势经历了完整的地缘政治周期（美伊霍尔木兹危机从爆发到解除），随后以GDP增5%超预期、光模块业绩大爆发收尾，最后以五一假期政策密集轰炸（1.2万亿科创再贷款+AI国家战略+商务部反制+915亿设备更新+军工订单）确立科技股主线。</p>
                 <p><span class="highlight-line">最强判断</span>：04-14 A股低开高走创业板大涨4.81%，在封锁恐慌中精准预判市场韧性；04-27 识别特朗普「周末喊票」模式，提前预警科技股调整风险；04-30 科创50暴涨5.19%精准捕捉科技股行情启动信号。</p>
                 <p><span class="error-line">最大失误</span>：04-05判断中东升级→避险资产继续强势，但04-06美伊停火，逻辑秒反转。</p>
-                <p><span class="highlight-line">当前格局（5月4日）</span>：科技股（AI算力+半导体+军工）主线确立，政策利好顶格加码，港股/A50双重验证。消费板块（五粮液暴雷+消费不及预期）和ST板块（地雷阵扩大）流动性锁死。节后开门红概率超80%，红五月行情可期。</p>
+                <p><span class="highlight-line">当前格局（4月30日）</span>：科技股（AI算力+半导体+军工）主线确立，政策利好顶格加码。消费板块（五粮液暴雷+消费不及预期）和ST板块（地雷阵扩大）流动性锁死。节后开门红概率超80%，红五月行情可期。</p>
             </div>
             
             <div class="section-title">🏆 核心经验汇总</div>
@@ -1023,6 +1007,73 @@
                 </div>
             </div>
         </div>
+        
+        <!-- 5月报告 -->
+        <div id="report-may" class="report-content" style="display:none;">
+            <div class="report-header">
+                <h2>📊 2026年5月复盘报告</h2>
+                <div class="report-date">2026年5月1日 - 5月5日 | 五一假期政策密集轰炸→五大利好共振→节后开门红预期</div>
+                <div class="badge-row">
+                    <span class="badge badge-blue">📌 假期休市</span>
+                    <span class="badge badge-gold">⚠️ 待验证 5次</span>
+                    <span class="badge badge-green">📈 节后开门红概率90%+</span>
+                </div>
+            </div>
+
+            <div class="score-grid">
+                <div class="score-card highlight">
+                    <div class="number">5天</div>
+                    <div class="label">假期覆盖</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">5条</div>
+                    <div class="label">S级机会</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">90%+</div>
+                    <div class="label">节后开门红概率</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">2条</div>
+                    <div class="label">新增经验</div>
+                </div>
+            </div>
+
+            <div class="section-title">📋 五月假期总结</div>
+            <div class="summary-card">
+                <p><span class="highlight-line">主旋律：五大利好逐日加码，利好强度递增，最终形成五重共振</span></p>
+                <p>五一假期（5.1-5.5）A股休市但重磅消息不断：①5.1：1.2万亿科创再贷款+AI上升为国家战略；②5.2：商务部反制美国关税+915亿设备更新落地；③5.3：美联储鹰派+五粮液暴雷（利空日）；④5.4：港股科技暴涨5%/A50+1.4%/十五五军工订单；⑤5.5：港股科技再涨3%/中东油价狂飙/政治局定调/3000亿逆回购到位/大基金三期3000亿。利好强度逐日递增，最终形成五重共振，利好压倒一切利空。</p>
+                <p><span class="highlight-line">核心判断</span>：节后首日（5.6）开门红概率超90%，科技（AI算力/半导体）+油气双主线并行。⚠️ 但FOMO峰值（历史98分位）+主力浮盈极为丰厚，暴力拉升后必有出货，必须设移动止盈。</p>
+            </div>
+
+            <div class="section-title">🔴 S级机会回顾</div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">🔴</span> 5.1 科创再贷款1.2万亿+AI国家战略</div>
+                <div class="exp-content"><ul><li>判断：科技股行情获政策顶格背书，科创50/芯片ETF强烈利好</li><li>验证：待5.6开盘验证</li></ul></div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">🔴</span> 5.2 商务部反制+915亿设备更新</div>
+                <div class="exp-content"><ul><li>判断：自主可控+设备更新双主线强化，半导体/高端装备受益</li><li>验证：待5.6开盘验证</li></ul></div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">🔴</span> 5.4 港股科技暴涨5%+A50+1.4%+军工订单</div>
+                <div class="exp-content"><ul><li>判断：港股/A50双重验证科技主线，军工十五五订单催化</li><li>验证：待5.6开盘验证</li></ul></div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">🔴</span> 5.5 港股科技+3%/油价狂飙/政治局定调/3000亿逆回购/大基金三期</div>
+                <div class="exp-content"><ul><li>判断：五大利好共振，节后开门红概率90%+，科技+油气双主线</li><li>验证：待5.6开盘验证</li></ul></div>
+            </div>
+
+            <div class="section-title">🏆 新增经验</div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">🎯</span> 12. 假期利好累积效应：逐日加码→节后集中爆发</div>
+                <div class="exp-content"><ul><li><strong>可复刻公式</strong>：长假期间利好逐日递增 + 港股/A50持续走强 = 节后首日高开概率>80%</li><li><strong>关键指标</strong>：假期最后一天港股/A50收盘价是节后A股开盘的最强参照</li></ul></div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">⚠️</span> 13. FOMO峰值+主力浮盈=暴力拉升后必有出货</div>
+                <div class="exp-content"><ul><li><strong>可复刻公式</strong>：散户情绪历史98分位 + 主力浮盈>20% = 拉升出货模式，必须设移动止盈</li><li><strong>风控规则</strong>：单日涨幅>8%→减仓至50%；移动止盈+15%/-8%</li></ul></div>
+            </div>
+        </div>
     </div>
     
     <div class="footer">
@@ -1033,27 +1084,19 @@
 
 <script>
 function showView(type) {
-    // 切换按钮状态
     document.querySelectorAll('.timeline-btn').forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
     
-    // 显示/隐藏选择器
     document.getElementById('week-selector').style.display = type === 'week' ? 'flex' : 'none';
     document.getElementById('month-selector').style.display = type === 'month' ? 'flex' : 'none';
     
-    // 全部报告时显示月度汇总
     if (type === 'all') {
         document.querySelectorAll('.report-content').forEach(r => r.style.display = 'none');
-        document.getElementById('report-apr').style.display = 'block';
+        document.getElementById('report-may').style.display = 'block';
     }
 }
 
 function loadReport(period) {
-    // 切换按钮状态
-    document.querySelectorAll('.period-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.closest('.period-btn').classList.add('active');
-    
-    // 显示对应报告
     document.querySelectorAll('.report-content').forEach(r => r.style.display = 'none');
     const reportId = 'report-' + period;
     const report = document.getElementById(reportId);
