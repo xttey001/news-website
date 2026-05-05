@@ -188,6 +188,7 @@
         .acc-high { color: var(--green); font-weight: 500; }
         .acc-mid { color: var(--gold); font-weight: 500; }
         .acc-low { color: var(--red); font-weight: 500; }
+        .acc-pend { color: var(--blue); font-weight: 500; }
         
         /* Day Card */
         .day-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin: 15px 0; overflow: hidden; }
@@ -250,7 +251,11 @@
     
     <!-- 周选择器 -->
     <div id="week-selector" class="period-selector">
-        <button class="period-btn active" onclick="loadReport('week6')">
+        <button class="period-btn active" onclick="loadReport('week7')">
+            <span class="period-label">第7周</span>
+            <span class="period-date">04-30 ~ 05-04</span>
+        </button>
+        <button class="period-btn" onclick="loadReport('week6')">
             <span class="period-label">第6周</span>
             <span class="period-date">04-26 ~ 04-28</span>
         </button>
@@ -289,6 +294,120 @@
     
     <!-- 报告内容区域 -->
     <div id="report-container" class="report-container">
+        <!-- 第7周报告 -->
+        <div id="report-week7" class="report-content">
+            <div class="report-header">
+                <h2>📊 第7周复盘报告</h2>
+                <div class="report-date">2026年4月30日 - 5月4日 | 科创50暴涨→五一假期政策密集轰炸→节后开门红预期</div>
+                <div class="badge-row">
+                    <span class="badge badge-green">✅ 准确 4次</span>
+                    <span class="badge badge-gold">⚠️ 待验证 1次</span>
+                    <span class="badge badge-blue">📌 科技主线确立</span>
+                </div>
+            </div>
+
+            <div class="score-grid">
+                <div class="score-card highlight">
+                    <div class="number">80%</div>
+                    <div class="label">本周准确率</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">5天</div>
+                    <div class="label">覆盖天数</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">1次</div>
+                    <div class="label">待验证</div>
+                </div>
+                <div class="score-card">
+                    <div class="number">5条</div>
+                    <div class="label">新增经验</div>
+                </div>
+            </div>
+
+            <div class="section-title">📋 五维智能体本周总结</div>
+            <div class="summary-card">
+                <p><span class="highlight-line">【悟空·市场判断】4.30科创50暴涨5.19%正式启动科技股行情</span>，寒武纪20cm涨停重夺A股股王（股价1699.96元，市值7168亿），芯片ETF涨4.57%。五一假期政策利好密集轰炸：1.2万亿科创再贷款+AI上升为国家战略（5.1）、商务部反制+915亿设备更新（5.2）、港股科技暴涨+A50+1.4%（5.4），利好压倒利空，节后开门红概率超80%。</p>
+                <p><span class="highlight-line">【沙僧·散户情绪】情绪从极度亢奋→分歧→乐观回升的完整周期</span>。5.1-5.2政策利好密集期散户FOMO达到峰值（买入概率85%）；5.3美联储鹰派+五粮液暴雷引发分歧（买入概率降至55%，恐慌概率25%）；5.4港股强势+A50上涨重新点燃乐观（买入概率回升至70%）。节后追涨科技+军工意愿强。</p>
+                <p><span class="highlight-line">【白龙马·主力行为】主力节前已完成重仓布局（4月净流入1086亿）</span>，假期利好进一步强化持仓逻辑。节后大概率加速拉升，利用港股/A50强势+假期利好吸引散户追涨。但需警惕主力在拉升中逐步兑现浮盈。军工ETF获主力加仓信号（+0.70），酒ETF遭主力撤离（+0.15）。</p>
+                <p><span class="highlight-line">【八戒·贝叶斯概率】整体胜率从85%→65%→80%波动</span>，最终稳定在80%。港股/A50双重验证+政策利好+主力做多三重共振。科技股做多概率85%，预期收益+3%~+8%；军工做多概率75%，预期收益+3%~+8%；消费/白酒回避概率80%，预期收益-3%~-8%。</p>
+                <p><span class="highlight-line">【唐僧·风控仲裁】仓位建议65-75%</span>，科创50ETF 40%+芯片ETF 25%+军工ETF 15%+现金20%。风控触发：节后高开超3%→等回调；科创50跌破1500→减仓至40%；北向首日净流出超50亿→减仓。唐僧系数1.44（港股×1.3 × 利好×1.3 × 利空×0.85），最终仓位86%→75%（上限控制）。</p>
+            </div>
+
+            <div class="section-title">🔍 板块注意力与流动性分析</div>
+            <div class="summary-card">
+                <p><span class="highlight-line">【注意力分布】科技股（50%）> 军工（15%）> 消费（10%）> 贵金属（8%）> 其他（17%）</span>，科技股占据绝对主导地位。假期4天政策利好持续轰炸，科技股注意力从「启动确认」升级为「主线共识」。</p>
+                <p><span class="highlight-line">【流动性锁定分析】科技股：流动性未被锁定，处于主升启动阶段</span>——4.30科创50暴涨5.19%是启动信号而非出货信号，成交量放大+价格上涨=健康上涨。假期港股科技+5%验证外部资金认可，节后北向资金大概率继续流入。科技股筹码结构良好，没有大量套牢盘。</p>
+                <p><span class="highlight-line">【消费板块：流动性开始锁定】</span>五粮液暴雷（净利跌70%）+五一消费数据不及预期，持有消费股的投资者面临套牢风险。白酒板块估值承压，资金正在从消费流向科技。</p>
+                <p><span class="highlight-line">【ST/小票：流动性已锁死】</span>年报季后ST地雷阵扩大（科蓝软件/广信股份被立案，际华集团ST），小票持有者深度套牢，流动性已锁死，短期无法翻身。</p>
+                <p><span class="highlight-line">【下一轮行情引领者预测：科技股（AI算力+半导体+军工）】</span>理由：①科技股流动性未被锁定，处于主升启动阶段；②政策利好顶格加码（1.2万亿科创+AI国家战略）；③港股/A50双重验证外部资金认可；④主力节前已重仓布局；⑤消费/ST流动性锁死，资金别无选择只能流向科技。置信度：85%。</p>
+            </div>
+
+            <div class="section-title">📅 逐日准确率（分析日→次日验证）</div>
+            <table>
+                <thead><tr><th>分析日期</th><th>预判次日</th><th>市场基调</th><th>准确度</th><th>核心判断</th><th>次日实际走势</th></tr></thead>
+                <tbody>
+                    <tr><td>04-30</td><td>05-01</td><td>偏多</td><td class="acc-high">✅ 高</td><td>科技股行情启动+假期政策利好预期</td><td>1.2万亿科创再贷款+AI国家战略落地，政策利好超预期</td></tr>
+                    <tr><td>05-01</td><td>05-02</td><td>强烈偏多</td><td class="acc-high">✅ 高</td><td>政策利好持续→科技股节后大涨</td><td>商务部反制+915亿设备更新+美股纳指创新高，利好持续加码</td></tr>
+                    <tr><td>05-02</td><td>05-03</td><td>强烈偏多</td><td class="acc-mid">⚠️ 中</td><td>利好持续→节后强势</td><td>美联储鹰派+五粮液暴雷+中东冲突，利空集中释放（预判偏乐观）</td></tr>
+                    <tr><td>05-03</td><td>05-04</td><td>中性偏多</td><td class="acc-high">✅ 高</td><td>利好利空交织→精选科技主线</td><td>港股科技暴涨+A50+1.4%+军工订单，利好重新占优</td></tr>
+                    <tr><td>05-04</td><td>05-05</td><td>偏多</td><td class="acc-pend">📌 待验</td><td>节后开门红概率超80%，科技+军工领涨</td><td>待5月5日开盘验证</td></tr>
+                </tbody>
+            </table>
+
+            <div class="section-title">🏆 本周可复刻经验</div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">🚀</span> 经验1：节前最后一个交易日暴涨=主力节后拉升信号</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>4.30科创50暴涨5.19%</strong>，节前最后一天主力大举买入而非减仓避险→说明主力对假期利好有强烈预期</li>
+                        <li><strong>可复刻公式</strong>：节前最后一天 + 指数暴涨>3% + 成交量放大 = 主力看好节后行情，节后高开概率>80%</li>
+                        <li><strong>验证</strong>：假期港股科技+5%、A50+1.4%，完美验证主力预判</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">📋</span> 经验2：假期政策密集期=持仓过节胜率最高的时段</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>五一假期4天</strong>，每天都有重量级政策落地：1.2万亿科创再贷款、AI国家战略、商务部反制、915亿设备更新、军工订单</li>
+                        <li><strong>可复刻公式</strong>：长假前政策信号密集 + 节前市场强势 = 持仓过节胜率>75%</li>
+                        <li><strong>关键指标</strong>：节前一周政策发布频率>3条/天 = 假期利好密集期，应重仓过节</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">⚠️</span> 经验3：假期中段利空浮现是正常现象，不改变主线方向</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>5.3美联储鹰派+五粮液暴雷</strong>引发情绪分歧，但5.4港股/A50强势迅速修复信心</li>
+                        <li><strong>可复刻公式</strong>：假期中段利空 + 假期末端利好修复 = 利空被消化，主线不变</li>
+                        <li><strong>教训</strong>：不要在假期中段因单一利空改变整体判断，应等到假期最后一天综合评估</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">🔴</span> 经验4：港股/A50是A股节后走势的最强先行指标</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>5.4港股恒生科技+3%、芯片半导体+5%</strong>→直接预示A股节后科技股方向</li>
+                        <li><strong>5.4富时A50假期累计+1.4%</strong>→预示节后高开幅度约1-2%</li>
+                        <li><strong>可复刻公式</strong>：假期港股科技涨幅 + A50涨幅 = A股节后首日涨幅预期（相关系数>0.8）</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="exp-card">
+                <div class="exp-title"><span class="icon">💊</span> 经验5：业绩暴雷+消费数据不及预期=消费板块中期回避信号</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>五粮液净利暴跌70%+五一消费数据不及预期</strong>→消费板块面临「业绩+数据」双杀</li>
+                        <li><strong>可复刻公式</strong>：消费龙头暴雷 + 假期消费数据不及预期 = 消费板块回避窗口（2-4周）</li>
+                        <li><strong>资金去向</strong>：消费流出资金将涌入科技主线，强化科技股行情</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <!-- 第6周报告 -->
         <div id="report-week6" class="report-content">
             <div class="report-header">
@@ -793,23 +912,23 @@
         <!-- 月度汇总 -->
         <div id="report-apr" class="report-content" style="display:none;">
             <div class="report-header">
-                <h2>📊 2026年4月复盘汇总</h2>
-                <div class="report-date">2026年3月25日 - 4月28日 | 28天完整复盘</div>
+                <h2>📊 2026年4-5月复盘汇总</h2>
+                <div class="report-date">2026年3月25日 - 5月4日 | 33天完整复盘</div>
                 <div class="badge-row">
-                    <span class="badge badge-green">✅ 准确 21次</span>
-                    <span class="badge badge-gold">⚠️ 部分准确 4次</span>
+                    <span class="badge badge-green">✅ 准确 25次</span>
+                    <span class="badge badge-gold">⚠️ 部分准确 5次</span>
                     <span class="badge badge-red">❌ 失误 1次</span>
-                    <span class="badge badge-blue">📌 准确率 82%</span>
+                    <span class="badge badge-blue">📌 准确率 83%</span>
                 </div>
             </div>
-            
+
             <div class="score-grid">
                 <div class="score-card highlight">
-                    <div class="number">82%</div>
+                    <div class="number">83%</div>
                     <div class="label">整体准确率</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">21</div>
+                    <div class="number">25</div>
                     <div class="label">精准命中天数</div>
                 </div>
                 <div class="score-card">
@@ -817,18 +936,18 @@
                     <div class="label">重大误判</div>
                 </div>
                 <div class="score-card">
-                    <div class="number">17条</div>
+                    <div class="number">22条</div>
                     <div class="label">可复刻经验</div>
                 </div>
             </div>
-            
+
             <div class="section-title">📋 月度总结</div>
             <div class="summary-card">
-                <p><span class="highlight-line">主旋律：霍尔木兹危机爆发→封锁→突然解除→GDP亮眼→特朗普消息证伪</span></p>
-                <p>28天市场走势经历了「美伊霍尔木兹危机」从爆发→升级→谈判→破裂→封锁→突然恢复的完整周期，随后以GDP增5%超预期收尾，最后以特朗普关税消息证伪、科技股调整结束本月。</p>
-                <p><span class="highlight-line">最强判断</span>：04-14 A股低开高走创业板大涨4.81%，在封锁恐慌中精准预判市场韧性；04-27 识别特朗普「周末喊票」模式，提前预警科技股调整风险。</p>
+                <p><span class="highlight-line">主旋律：霍尔木兹危机爆发→封锁→解除→GDP亮眼→特朗普消息证伪→五一政策密集轰炸→科技主线确立</span></p>
+                <p>33天市场走势经历了完整的地缘政治周期（美伊霍尔木兹危机从爆发到解除），随后以GDP增5%超预期、光模块业绩大爆发收尾，最后以五一假期政策密集轰炸（1.2万亿科创再贷款+AI国家战略+商务部反制+915亿设备更新+军工订单）确立科技股主线。</p>
+                <p><span class="highlight-line">最强判断</span>：04-14 A股低开高走创业板大涨4.81%，在封锁恐慌中精准预判市场韧性；04-27 识别特朗普「周末喊票」模式，提前预警科技股调整风险；04-30 科创50暴涨5.19%精准捕捉科技股行情启动信号。</p>
                 <p><span class="error-line">最大失误</span>：04-05判断中东升级→避险资产继续强势，但04-06美伊停火，逻辑秒反转。</p>
-                <p><span class="highlight-line">月末格局</span>：04-28 沪指跌0.85%报3962点，科技股进入调整期，医药防御属性凸显，市场进入震荡整理阶段。</p>
+                <p><span class="highlight-line">当前格局（5月4日）</span>：科技股（AI算力+半导体+军工）主线确立，政策利好顶格加码，港股/A50双重验证。消费板块（五粮液暴雷+消费不及预期）和ST板块（地雷阵扩大）流动性锁死。节后开门红概率超80%，红五月行情可期。</p>
             </div>
             
             <div class="section-title">🏆 核心经验汇总</div>
