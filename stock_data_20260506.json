@@ -1,0 +1,51 @@
+{
+  "688256": {
+    "name": "寒武纪",
+    "price": "1825.00",
+    "prev_close": "1699.96",
+    "change_pct": "7.36",
+    "change_amount": "1966.00"
+  },
+  "688521": {
+    "name": "芯原股份",
+    "price": "278.60",
+    "prev_close": "280.88",
+    "change_pct": "-0.81",
+    "change_amount": "296.96"
+  },
+  "300308": {
+    "name": "中际旭创",
+    "price": "856.00",
+    "prev_close": "857.50",
+    "change_pct": "-0.17",
+    "change_amount": "889.00"
+  },
+  "000858": {
+    "name": "五 粮 液",
+    "price": "92.26",
+    "prev_close": "97.08",
+    "change_pct": "-4.96",
+    "change_amount": "94.50"
+  },
+  "588000": {
+    "name": "科创50ETF华夏",
+    "price": "1.744",
+    "prev_close": "1.654",
+    "change_pct": "5.44",
+    "change_amount": "1.812"
+  },
+  "512760": {
+    "name": "芯片ETF国泰",
+    "price": "1.042",
+    "prev_close": "0.983",
+    "change_pct": "6.00",
+    "change_amount": "1.079"
+  },
+  "600673": {
+    "name": "东阳光",
+    "price": "38.94",
+    "prev_close": "35.40",
+    "change_pct": "10.00",
+    "change_amount": "38.94"
+  }
+}

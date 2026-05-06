@@ -29,6 +29,13 @@ class WukongEnhanced:
     # 财报相关关键词
     EARNINGS_KEYWORDS = ['业绩', '超预期', '净利润', '营收', '财报', '季报', '年报',
                          '营收增长', '利润增长', '业绩大增']
+    # 美元指数关键词
+    DXY_KEYWORDS = ['美元指数', 'DXY', '美元', '汇率', 'USD', '美元走弱', '美元走强', '美元贬值', '美元升值']
+    # 避害驱动关键词（被迫行动）
+    FORCED_ACTION_KEYWORDS = ['爆仓', '强平', '退市', '违约', '债务逾期', '监管处罚', '立案调查',
+                              '财务造假', '业绩暴雷', '大股东减持', '解禁', '赎回潮', '清盘']
+    # 反常信号关键词
+    ABNORMAL_SIGNALS = ['利空不跌', '利空出尽', '利好不涨', '利好出尽', '利好滞涨', '反常', '背离']
 
     def __init__(self, experience_path: str = None):
         if experience_path is None:
@@ -49,13 +56,14 @@ class WukongEnhanced:
         except Exception:
             return []
 
-    def enhance(self, wukong_result: Dict, news_data: Dict = None) -> Dict:
+    def enhance(self, wukong_result: Dict, news_data: Dict = None, dxy_data: Dict = None) -> Dict:
         """
         增强悟空分析结果
 
         Args:
             wukong_result: 原始悟空分析结果
             news_data: 当日新闻数据（用于场景检测）
+            dxy_data: 美元指数数据（用于宏观判断）
 
         Returns:
             dict: 增强后的悟空结果（添加经验标注+调整建议）
@@ -70,6 +78,7 @@ class WukongEnhanced:
         has_geo = self._detect_geopolitical(wukong_result, news_data)
         trump_intensity = self._detect_trump_intensity(wukong_result, news_data)
         has_earnings = self._detect_earnings(wukong_result, news_data)
+        has_dxy = self._detect_dxy_factor(wukong_result, news_data)
 
         # === WX-001：地缘非线性判断规则 ===
         if has_geo:
@@ -92,12 +101,31 @@ class WukongEnhanced:
                 wukong_result = self._apply_earnings_experience(wukong_result, exp)
                 applied_experiences.append('WX-003')
 
+        # === WX-004：美元指数宏观影响分析 ===
+        if dxy_data and dxy_data.get('has_data'):
+            wukong_result = self._apply_dxy_experience(wukong_result, dxy_data)
+            applied_experiences.append('WX-004')
+        elif has_dxy:
+            # 新闻中提到美元但没有DXY数据，添加提醒
+            wukong_result = self._apply_dxy_news_reminder(wukong_result)
+            applied_experiences.append('WX-004-news')
+
+        # === WX-005：避害驱动行为分析 ===
+        has_forced_action = self._detect_forced_action(wukong_result, news_data)
+        has_abnormal_signal = self._detect_abnormal_signals(wukong_result, news_data)
+        if has_forced_action or has_abnormal_signal:
+            wukong_result = self._apply_forced_action_experience(wukong_result, has_forced_action, has_abnormal_signal)
+            applied_experiences.append('WX-005')
+
         # 记录已应用的经验
         wukong_result['_experiences_applied'] = applied_experiences
         wukong_result['_scene_tags'] = {
             'has_geopolitical': has_geo,
             'trump_intensity': trump_intensity,
-            'has_earnings_news': has_earnings
+            'has_earnings_news': has_earnings,
+            'has_dxy_factor': has_dxy or (dxy_data and dxy_data.get('has_data', False)),
+            'has_forced_action': has_forced_action,
+            'has_abnormal_signal': has_abnormal_signal
         }
 
         return wukong_result
@@ -172,6 +200,58 @@ class WukongEnhanced:
         all_text += operations
 
         return any(kw in all_text for kw in self.EARNINGS_KEYWORDS)
+
+    def _detect_dxy_factor(self, wukong_result: Dict, news_data: Dict) -> bool:
+        """检测是否有美元指数相关因素"""
+        all_text = ''
+        for key in ['s_news', 'a_news', 'news']:
+            items = news_data.get(key, [])
+            if isinstance(items, list):
+                for item in items:
+                    if isinstance(item, dict):
+                        all_text += item.get('title', '') + item.get('content', '')
+                    elif isinstance(item, str):
+                        all_text += item
+
+        analysis = str(wukong_result.get('core_analysis', ''))
+        all_text += analysis
+
+        return any(kw in all_text for kw in self.DXY_KEYWORDS)
+
+    def _detect_forced_action(self, wukong_result: Dict, news_data: Dict) -> bool:
+        """检测是否有避害驱动的被迫行动"""
+        all_text = ''
+        for key in ['s_news', 'a_news', 'news']:
+            items = news_data.get(key, [])
+            if isinstance(items, list):
+                for item in items:
+                    if isinstance(item, dict):
+                        all_text += item.get('title', '') + item.get('content', '')
+                    elif isinstance(item, str):
+                        all_text += item
+
+        analysis = str(wukong_result.get('core_analysis', ''))
+        operations = str(wukong_result.get('operations', ''))
+        all_text += analysis + operations
+
+        return any(kw in all_text for kw in self.FORCED_ACTION_KEYWORDS)
+
+    def _detect_abnormal_signals(self, wukong_result: Dict, news_data: Dict) -> bool:
+        """检测是否有反常信号（利空不跌/利好不涨等）"""
+        all_text = ''
+        for key in ['s_news', 'a_news', 'news']:
+            items = news_data.get(key, [])
+            if isinstance(items, list):
+                for item in items:
+                    if isinstance(item, dict):
+                        all_text += item.get('title', '') + item.get('content', '')
+                    elif isinstance(item, str):
+                        all_text += item
+
+        analysis = str(wukong_result.get('core_analysis', ''))
+        all_text += analysis
+
+        return any(kw in all_text for kw in self.ABNORMAL_SIGNALS)
 
     # ============================================================
     #  经验应用
@@ -264,12 +344,97 @@ class WukongEnhanced:
 
         return result
 
+    def _apply_dxy_experience(self, result: Dict, dxy_data: Dict) -> Dict:
+        """应用美元指数宏观影响分析"""
+        analysis = dxy_data.get('analysis', {})
+
+        price = analysis.get('dxy_price', 0)
+        change = analysis.get('dxy_change', 0)
+        level_desc = analysis.get('level_desc', '')
+        change_desc = analysis.get('change_desc', '')
+        signal = analysis.get('signal', 'neutral')
+        impact_level = analysis.get('impact_level', 'neutral')
+
+        # 追加DXY标注
+        existing = result.get('core_analysis', '')
+        dxy_tag = f'\n[💱 美元指数: {price:.2f} ({change:+.2f}%) | {level_desc} | {change_desc}]'
+
+        if '美元指数' not in existing:
+            result['core_analysis'] = f'{existing}{dxy_tag}'
+
+        # 标记DXY影响（供唐僧仲裁使用）
+        result['dxy_price'] = price
+        result['dxy_change'] = change
+        result['dxy_signal'] = signal
+        result['dxy_impact_level'] = impact_level
+        result['dxy_kc50_recommendation'] = dxy_data.get('kc50_recommendation', {})
+
+        # 根据DXY信号调整操作建议
+        kc50_rec = dxy_data.get('kc50_recommendation', {})
+        if kc50_rec.get('action') in ['strong_buy', 'buy'] and kc50_rec.get('confidence') == 'high':
+            # DXY强烈利好科创50，追加建议
+            if 'operations' in result and isinstance(result['operations'], list):
+                result['operations'].append({
+                    'type': 'DXY信号',
+                    'content': f'美元{change_desc}，强烈利好科创50',
+                    'confidence': 'high'
+                })
+
+        return result
+
+    def _apply_dxy_news_reminder(self, result: Dict) -> Dict:
+        """新闻中提到美元但没有DXY数据时添加提醒"""
+        existing = result.get('core_analysis', '')
+        reminder = '\n[💱 汇率因素: 新闻涉及美元走势，建议关注DXY对科创50影响]'
+
+        if '汇率因素' not in existing:
+            result['core_analysis'] = f'{existing}{reminder}'
+
+        result['_dxy_reminder'] = True
+        return result
+
+    def _apply_forced_action_experience(self, result: Dict, has_forced_action: bool, has_abnormal_signal: bool) -> Dict:
+        """应用避害驱动行为分析经验
+
+        核心原则：避害驱动的被迫行动 > 趋利驱动的主动行动
+        """
+        existing = result.get('core_analysis', '')
+
+        # 添加避害分析标注
+        if has_forced_action and '避害分析' not in existing:
+            forced_tag = '\n[⚠️ 避害驱动: 检测到被迫行动信号，需分析"谁在不得不行动"'
+            forced_tag += '\n  → 被迫行动方：公募基金/融资客/大股东/散户/主力'
+            forced_tag += '\n  → 行动方向：被迫买入(指数调整) vs 被迫卖出(爆仓/退市/违约)'
+            forced_tag += '\n  → 避害 > 趋利：被迫行动确定性强、力度大、可预测]'
+            result['core_analysis'] = f'{existing}{forced_tag}'
+
+        # 添加反常信号分析
+        if has_abnormal_signal and '反常信号' not in existing:
+            abnormal_tag = '\n[🔍 反常信号分析:'
+            abnormal_tag += '\n  利空不跌→底部信号(卖方被迫惜售+买方被迫建仓)'
+            abnormal_tag += '\n  利空出尽→反转信号(最后一个利空price in)'
+            abnormal_tag += '\n  利好不涨→顶部信号(买方被迫止盈+卖方被迫出货)'
+            abnormal_tag += '\n  利好滞涨→吸筹信号(主力被迫压盘吸筹)]'
+            result['core_analysis'] = f'{result["core_analysis"]}{abnormal_tag}'
+
+        # 标记避害分析（供唐僧仲裁使用）
+        result['_forced_action_analysis'] = {
+            'has_forced_action': has_forced_action,
+            'has_abnormal_signal': has_abnormal_signal,
+            'principle': '避害行动 > 趋利行动',
+            'forced_sellers': ['公募基金(业绩压力)', '融资客(强平)', '大股东(爆仓)', '散户(恐慌)'],
+            'forced_buyers': ['指数调整被动配置', '基金赎回后重新配置'],
+            'key_question': '这新闻让谁不得不行动？'
+        }
+
+        return result
+
 
 def run_wukong_enhanced(wukong_result: Dict, news_data: Dict = None,
-                        experience_path: str = None) -> Dict:
+                        dxy_data: Dict = None, experience_path: str = None) -> Dict:
     """运行悟空增强"""
     enhancer = WukongEnhanced(experience_path)
-    return enhancer.enhance(wukong_result, news_data)
+    return enhancer.enhance(wukong_result, news_data, dxy_data)
 
 
 # ============================================================

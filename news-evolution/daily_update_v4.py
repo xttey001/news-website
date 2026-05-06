@@ -134,6 +134,9 @@ from market_agents_evolution import (
     run_tang_seng_arbitrate
 )
 
+# 美元指数分析模块
+from market_agents_evolution.dxy_analyzer import get_dxy_analysis_for_daily_update
+
 print('  ✅ All models imported')
 
 # ============================================================
@@ -182,6 +185,24 @@ news_metadata = {
 
 meta_summary = {k: v for k, v in news_metadata.items() if v}
 print(f'  📋 场景标签: {meta_summary}')
+
+# ============================================================
+#  Step 4b: 获取美元指数数据
+# ============================================================
+print('\nStep 4b: Fetching DXY data...')
+try:
+    dxy_analysis = get_dxy_analysis_for_daily_update()
+    if dxy_analysis.get('has_data'):
+        print(f'  💱 DXY: {dxy_analysis.get("summary")}')
+        print(f'  📊 科创50信号: {dxy_analysis.get("kc50_recommendation", {}).get("action", "neutral")}')
+        news_metadata['dxy_signal'] = dxy_analysis.get('key_signal', 'neutral')
+        news_metadata['dxy_impact'] = dxy_analysis.get('analysis', {}).get('impact_level', 'neutral')
+    else:
+        print('  ⚠️ DXY数据 unavailable')
+        dxy_analysis = None
+except Exception as e:
+    print(f'  ⚠️ DXY analysis error: {e}')
+    dxy_analysis = None
 
 # ============================================================
 #  Step 5: 原有四层分析
@@ -243,11 +264,14 @@ print(f'  🐷 八戒(原始): 胜率={base_bajie.get("win_rate")}')
 # ============================================================
 print('\nStep 6: 🧬 Running evolution enhancement...')
 
-# 6a. 悟空增强
+# 6a. 悟空增强（传入DXY数据）
 try:
-    wukong_enh = run_wukong_enhanced(wukong, news_metadata)
+    wukong_enh = run_wukong_enhanced(wukong, news_metadata, dxy_analysis)
     wk_exp = wukong_enh.get('_experiences_applied', [])
-    print(f'  🐵 悟空进化: +{len(wk_exp)}条经验 {wk_exp}')
+    dxy_tag = '💱' if any('WX-004' in exp for exp in wk_exp) else ''
+    print(f'  🐵 悟空进化: +{len(wk_exp)}条经验 {wk_exp} {dxy_tag}')
+    if wukong_enh.get('dxy_price'):
+        print(f'     DXY: {wukong_enh.get("dxy_price"):.2f} ({wukong_enh.get("dxy_change", 0):+.2f}%)')
 except Exception as e:
     print(f'  ⚠️ Wukong enhanced error: {e}')
     wukong_enh = wukong

@@ -150,7 +150,13 @@ class SangshaEnhanced:
         return {'detected': False, 'level': '', 'acceleration': recent_change, 'current_buy_prob': current_buy}
 
     def _apply_fomo_warning(self, result: Dict, fomo: Dict, exp: Dict) -> Dict:
-        """应用狂热提前预警"""
+        """应用狂热提前预警
+
+        核心洞察：FOMO的本质是避害，不是趋利！
+        - 害怕错过(Fear Of Missing Out) = 害怕落后于他人 = 害怕被时代抛弃
+        - 这是"不做就会受损"的避害心理，不是"做了会获得"的趋利心理
+        - 避害行动 > 趋利行动：被迫追涨的确定性强、力度大
+        """
         level = fomo['level']
         acc = fomo['acceleration']
         buy = fomo['current_buy_prob']
@@ -172,14 +178,25 @@ class SangshaEnhanced:
                 result['original_sentiment'] = current
                 result['overall_sentiment'] = '偏热'
 
-        # 追加FOMO预警标注
+        # 追加FOMO预警标注（加入避害本质分析）
         existing_advice = result.get('advice', '')
         fomo_note = f'\n[🔥 FOMO预警: {level}] 买入概率{buy}% 加速度+{acc}%/日'
+        fomo_note += f'\n  ⚠️ 避害本质: FOMO是"害怕错过→害怕落后→害怕被抛弃"的避害心理'
+        fomo_note += f'\n  → 散户被迫追涨（不做会受损：错过行情、跑输他人）'
+        fomo_note += f'\n  → 避害行动确定性强：直到所有人都买入，FOMO才会结束'
+        fomo_note += f'\n  → 主力利用FOMO：在散户被迫追涨时高位出货'
         result['advice'] = f'{existing_advice}{fomo_note}'
         result['fomo_warning'] = {
             'level': level,
             'acceleration': acc,
-            'current_buy_prob': buy
+            'current_buy_prob': buy,
+            'forced_action_analysis': {
+                'nature': '避害驱动',
+                'psychology': '害怕错过→害怕落后→害怕被抛弃',
+                'forced_buyers': '散户被迫追涨（不做会受损）',
+                'forced_sellers': '主力被迫出货（利用FOMO）',
+                'principle': '避害行动 > 趋利行动：FOMO确定性强、力度大、持续久'
+            }
         }
 
         return result

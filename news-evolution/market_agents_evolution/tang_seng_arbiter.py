@@ -269,6 +269,53 @@ class TangSengArbiter:
                 'reason': '地缘先验有效期12小时，需重新评估'
             })
 
+        # 检查6：美元指数极端信号
+        dxy_signal = metadata.get('dxy_signal', 'neutral')
+        dxy_impact = metadata.get('dxy_impact', 'neutral')
+        if dxy_signal in ['strong_buy', 'strong_sell']:
+            checks.append({
+                'item': f'美元指数极端信号: {dxy_signal}',
+                'status': '💱 宏观强信号',
+                'adjust_win_rate': 15 if dxy_signal == 'strong_buy' else -15,
+                'reason': f'DXY与科创50负相关-0.8，{dxy_signal}信号强烈影响科技股'
+            })
+        elif dxy_signal in ['buy', 'sell']:
+            checks.append({
+                'item': f'美元指数信号: {dxy_signal}',
+                'status': '💱 宏观信号',
+                'adjust_win_rate': 8 if dxy_signal == 'buy' else -8,
+                'reason': 'DXY变动对科技股有显著影响'
+            })
+
+        # 检查7：DXY与八戒信号共振/矛盾
+        if bajie and dxy_signal != 'neutral':
+            bj_action = bajie.get('optimal_action', '')
+            # DXY利好 + 八戒做多 = 共振
+            if dxy_signal in ['buy', 'strong_buy'] and any(kw in bj_action for kw in ['布局', '买入', '加仓']):
+                checks.append({
+                    'item': 'DXY利好+八戒做多 共振',
+                    'status': '✅ 强共振',
+                    'adjust_win_rate': 10,
+                    'reason': '宏观流动性与技术面共振，提升置信度'
+                })
+            # DXY利空 + 八戒做空 = 共振
+            elif dxy_signal in ['sell', 'strong_sell'] and any(kw in bj_action for kw in ['减仓', '清仓', '回避']):
+                checks.append({
+                    'item': 'DXY利空+八戒做空 共振',
+                    'status': '✅ 强共振',
+                    'adjust_win_rate': 10,
+                    'reason': '宏观流动性与技术面共振，提升置信度'
+                })
+            # DXY与八戒矛盾
+            elif (dxy_signal in ['buy', 'strong_buy'] and any(kw in bj_action for kw in ['减仓', '清仓'])) or \
+                 (dxy_signal in ['sell', 'strong_sell'] and any(kw in bj_action for kw in ['布局', '买入'])):
+                checks.append({
+                    'item': f'DXY({dxy_signal})与八戒({bj_action})矛盾',
+                    'status': '⚠️ 信号冲突',
+                    'adjust_win_rate': -10,
+                    'reason': '宏观与技术面矛盾，降低置信度，建议观望'
+                })
+
         if not checks:
             checks.append({
                 'item': '全局风控',
@@ -295,7 +342,11 @@ class TangSengArbiter:
         sentiment = wk.get('market_sentiment', wk.get('emotion', '?'))
         exps = wk.get('_experiences_applied', [])
         exp_tag = f' | 注入{len(exps)}条经验' if exps else ''
-        return f'情绪:{sentiment}{exp_tag}'
+        # 添加DXY信息
+        dxy_tag = ''
+        if wk.get('dxy_price'):
+            dxy_tag = f" | DXY:{wk.get('dxy_price'):.2f}({wk.get('dxy_change', 0):+.2f}%)"
+        return f'情绪:{sentiment}{exp_tag}{dxy_tag}'
 
     def _summarize_sangsha(self, sg: Optional[Dict]) -> str:
         if not sg:
