@@ -414,7 +414,9 @@ class WukongEnhanced:
             abnormal_tag += '\n  利空不跌→底部信号(卖方被迫惜售+买方被迫建仓)'
             abnormal_tag += '\n  利空出尽→反转信号(最后一个利空price in)'
             abnormal_tag += '\n  利好不涨→顶部信号(买方被迫止盈+卖方被迫出货)'
-            abnormal_tag += '\n  利好滞涨→吸筹信号(主力被迫压盘吸筹)]'
+            abnormal_tag += '\n  ⚠️ 利好滞涨→复杂信号(吸筹30%/质疑40%/套牢20%/隐藏利空10%)'
+            abnormal_tag += '\n    → 需验证：成交量、筹码分布、资金流向'
+            abnormal_tag += '\n    → 不能简单判断为吸筹！]'
             result['core_analysis'] = f'{result["core_analysis"]}{abnormal_tag}'
 
         # 标记避害分析（供唐僧仲裁使用）
