@@ -964,6 +964,9 @@
         }
 
         function getSentimentClass(sentiment) {
+            if (!sentiment) return 'neutral';
+            // 强烈利好（带警告）显示为橙色
+            if (sentiment.includes('强烈利好')) return 'avoid';
             const map = {
                 '利好': 'bullish',
                 '利空': 'bearish',
