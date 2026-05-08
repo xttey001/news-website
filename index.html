@@ -967,14 +967,14 @@
             if (!sentiment) return 'neutral';
             // 强烈利好（带警告）显示为橙色
             if (sentiment.includes('强烈利好')) return 'avoid';
-            const map = {
-                '利好': 'bullish',
-                '利空': 'bearish',
-                '关注': 'watch',
-                '警惕': 'avoid',
-                '回避': 'avoid'
-            };
-            return map[sentiment] || 'neutral';
+            // 匹配包含关键词的字符串（如"利好 ✅政策底确立"）
+            if (sentiment.includes('利好')) return 'bullish';
+            if (sentiment.includes('利空')) return 'bearish';
+            if (sentiment.includes('关注')) return 'watch';
+            if (sentiment.includes('警惕')) return 'avoid';
+            if (sentiment.includes('回避')) return 'avoid';
+            if (sentiment.includes('中性')) return 'neutral';
+            return 'neutral';
         }
 
         function renderTags(items) {
