@@ -1,0 +1,73 @@
+{
+    "monitor": {
+        "interval_minutes": 30,
+        "market_hours_only": true,
+        "market_open": "09:30",
+        "market_close": "15:00"
+    },
+    "watch_list": {
+        "high_risk": {
+            "芯片ETF": {
+                "code": "sh512760",
+                "rsi_threshold": 75,
+                "volume_threshold": 1.5
+            },
+            "科创50": {
+                "code": "sh588000",
+                "rsi_threshold": 75,
+                "volume_threshold": 1.5
+            }
+        },
+        "medium_risk": {
+            "医药ETF": {
+                "code": "sh512010",
+                "rsi_threshold": 70,
+                "volume_threshold": 1.3
+            },
+            "创业板ETF": {
+                "code": "sz159915",
+                "rsi_threshold": 70,
+                "volume_threshold": 1.3
+            }
+        },
+        "low_risk": {
+            "银行ETF": {
+                "code": "sh512800",
+                "rsi_threshold": 65,
+                "volume_threshold": 1.2
+            },
+            "红利ETF": {
+                "code": "sh510880",
+                "rsi_threshold": 65,
+                "volume_threshold": 1.2
+            }
+        }
+    },
+    "signals": {
+        "rsi_overbought": 75,
+        "rsi_oversold": 30,
+        "change_threshold": 3.0,
+        "rotation_threshold_high": -2.0,
+        "rotation_threshold_low": 1.0
+    },
+    "notification": {
+        "console": true,
+        "wechat_work": {
+            "enabled": false,
+            "webhook_url": ""
+        },
+        "dingtalk": {
+            "enabled": false,
+            "webhook_url": "",
+            "secret": ""
+        },
+        "email": {
+            "enabled": false,
+            "smtp_server": "",
+            "smtp_port": 587,
+            "sender": "",
+            "password": "",
+            "receiver": ""
+        }
+    }
+}
