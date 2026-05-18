@@ -1,0 +1,23 @@
+{
+    "wechat_work": {
+        "enabled": false,
+        "webhook_url": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_KEY"
+    },
+    "dingtalk": {
+        "enabled": false,
+        "webhook_url": "https://oapi.dingtalk.com/robot/send?access_token=YOUR_TOKEN",
+        "secret": "YOUR_SECRET"
+    },
+    "feishu": {
+        "enabled": true,
+        "webhook_url": "https://open.feishu.cn/open-apis/bot/v2/hook/8baf3f7e-f36e-4bb4-b74d-854e022a3774"
+    },
+    "email": {
+        "enabled": false,
+        "smtp_server": "smtp.qq.com",
+        "smtp_port": 587,
+        "sender": "your_email@qq.com",
+        "password": "your_auth_code",
+        "receiver": "receiver@example.com"
+    }
+}

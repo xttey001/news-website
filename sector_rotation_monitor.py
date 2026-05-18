@@ -12,6 +12,18 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Tuple, Optional
 import logging
 
+# 导入通知模块
+try:
+    from notification_extensions import (
+        MultiChannelNotifier, 
+        FeishuNotification,
+        create_notifier_from_config
+    )
+    NOTIFICATION_AVAILABLE = True
+except ImportError:
+    NOTIFICATION_AVAILABLE = False
+    print("⚠️ 通知模块未找到，将只使用控制台输出")
+
 # 配置日志
 logging.basicConfig(
     level=logging.INFO,
@@ -55,6 +67,24 @@ class SectorRotationMonitor:
         
         # 已发送信号记录（避免重复提醒）
         self.sent_signals = set()
+        
+        # 初始化通知器
+        self.notifier = None
+        if NOTIFICATION_AVAILABLE:
+            try:
+                # 尝试从配置文件加载
+                self.notifier = create_notifier_from_config('notification_config.json')
+                
+                # 如果配置文件中没有启用飞书，但设置了环境变量，则手动添加
+                import os
+                feishu_webhook = os.getenv('FEISHU_WEBHOOK')
+                if feishu_webhook and self.notifier:
+                    feishu = FeishuNotification(feishu_webhook)
+                    self.notifier.add_channel(feishu)
+                    logger.info("✅ 已从环境变量加载飞书通知")
+                    
+            except Exception as e:
+                logger.warning(f"初始化通知器失败: {e}")
         
     def fetch_realtime_data(self, symbols: List[str]) -> Dict:
         """从腾讯API获取实时数据"""
@@ -309,10 +339,11 @@ class SectorRotationMonitor:
         return rotation_signals
     
     def send_notification(self, signals: List[Dict]):
-        """发送通知（可扩展为微信/邮件/钉钉等）"""
+        """发送通知（支持控制台、飞书、微信、钉钉、邮件）"""
         if not signals:
             return
         
+        # 1. 控制台输出
         print("\n" + "=" * 60)
         print(f"【板块轮动监控提醒】{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print("=" * 60)
@@ -331,6 +362,16 @@ class SectorRotationMonitor:
             logger.info(f"信号触发: {signal['title']} - {signal['message']}")
         
         print("\n")
+        
+        # 2. 发送飞书/微信/钉钉/邮件通知
+        if self.notifier and NOTIFICATION_AVAILABLE:
+            try:
+                title = f"板块轮动监控 - 发现{len(signals)}个信号"
+                message = self.notifier.format_signal_message(signals)
+                self.notifier.send_all(title, message)
+                logger.info(f"已发送多渠道通知: {len(signals)}个信号")
+            except Exception as e:
+                logger.error(f"发送通知失败: {e}")
     
     def run_once(self):
         """执行一次监控"""

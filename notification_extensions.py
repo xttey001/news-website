@@ -93,6 +93,73 @@ class DingTalkNotification(NotificationSender):
             return False
 
 
+class FeishuNotification(NotificationSender):
+    """飞书通知"""
+    
+    def __init__(self, webhook_url: str):
+        self.webhook_url = webhook_url
+    
+    def send(self, title: str, message: str) -> bool:
+        """发送飞书消息"""
+        try:
+            # 飞书卡片消息格式
+            data = {
+                "msg_type": "interactive",
+                "card": {
+                    "config": {
+                        "wide_screen_mode": True
+                    },
+                    "header": {
+                        "title": {
+                            "tag": "plain_text",
+                            "content": f"📊 {title}"
+                        },
+                        "template": "blue"
+                    },
+                    "elements": [
+                        {
+                            "tag": "div",
+                            "text": {
+                                "tag": "lark_md",
+                                "content": message
+                            }
+                        },
+                        {
+                            "tag": "note",
+                            "elements": [
+                                {
+                                    "tag": "plain_text",
+                                    "content": f"⏰ 发送时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+            
+            response = requests.post(
+                self.webhook_url,
+                json=data,
+                timeout=10
+            )
+            
+            if response.status_code == 200:
+                result = response.json()
+                if result.get('code') == 0:
+                    print(f"✅ 飞书通知发送成功: {title}")
+                    return True
+                else:
+                    print(f"❌ 飞书通知发送失败: {result.get('msg')}")
+                    return False
+            else:
+                print(f"❌ 飞书通知发送失败: HTTP {response.status_code}")
+                return False
+            
+        except Exception as e:
+            print(f"❌ 飞书通知异常: {e}")
+            return False
+
+
 class EmailNotification(NotificationSender):
     """邮件通知"""
     
@@ -212,6 +279,12 @@ def create_notifier_from_config(config_file: str = 'notification_config.json') -
             )
             notifier.add_channel(email)
             print("✅ 已加载邮件通知")
+        
+        # 飞书
+        if 'feishu' in config and config['feishu'].get('enabled'):
+            feishu = FeishuNotification(config['feishu']['webhook_url'])
+            notifier.add_channel(feishu)
+            print("✅ 已加载飞书通知")
             
     except FileNotFoundError:
         print(f"⚠️ 配置文件 {config_file} 不存在，使用默认控制台输出")
@@ -231,6 +304,10 @@ CONFIG_TEMPLATE = {
         "enabled": False,
         "webhook_url": "https://oapi.dingtalk.com/robot/send?access_token=YOUR_TOKEN",
         "secret": "YOUR_SECRET"
+    },
+    "feishu": {
+        "enabled": False,
+        "webhook_url": "https://open.feishu.cn/open-apis/bot/v2/hook/YOUR_TOKEN"
     },
     "email": {
         "enabled": False,
