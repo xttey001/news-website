@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每月重大事件 - 悟空财经分析</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-start: #0d1117;
+            --bg-end: #161b22;
+            --green: #3fb950;
+            --green-bg: rgba(63,185,80,0.12);
+            --orange: #f0883e;
+            --red: #f85149;
+            --blue: #58a6ff;
+            --gold: #d29922;
+            --purple: #a371f7;
+            --cyan: #39d0d8;
+            --card-bg: rgba(255,255,255,0.04);
+            --card-border: rgba(255,255,255,0.1);
+            --text: #e6edf3;
+            --text-dim: #8b949e;
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font);
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        /* ===== 页面切换导航 ===== */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, #0d1117, #161b22);
+            padding: 12px 0 8px;
+            backdrop-filter: blur(10px);
+        }
+        .page-nav .page-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .page-nav .page-btn-timeline {
+            background: rgba(63,185,80,0.15);
+            border: 1px solid rgba(63,185,80,0.4);
+            color: #3fb950;
+        }
+        .page-nav .page-btn-timeline:hover {
+            background: rgba(63,185,80,0.25);
+            border-color: #3fb950;
+            box-shadow: 0 0 12px rgba(63,185,80,0.3);
+        }
+        .page-nav .page-btn-review {
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.3);
+            color: #d29922;
+        }
+        .page-nav .page-btn-review:hover {
+            background: rgba(255,193,7,0.2);
+            border-color: #d29922;
+            box-shadow: 0 0 12px rgba(255,193,7,0.3);
+        }
+        .page-nav .page-btn-events {
+            background: rgba(163,113,247,0.15);
+            border: 1px solid rgba(163,113,247,0.4);
+            color: #a371f7;
+        }
+        .page-nav .page-btn-events:hover,
+        .page-nav .page-btn-events.active {
+            background: rgba(163,113,247,0.25);
+            border-color: #a371f7;
+            box-shadow: 0 0 12px rgba(163,113,247,0.3);
+        }
+
+        /* ===== 标题 ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+        }
+        .header h1 {
+            font-size: 26px;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .subtitle {
+            font-size: 13px;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        /* ===== 月份选择器 ===== */
+        .month-selector {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            padding: 14px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+        .month-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+        .month-btn:hover {
+            background: rgba(163,113,247,0.15);
+            border-color: var(--purple);
+            color: var(--purple);
+        }
+        .month-btn.active {
+            background: rgba(163,113,247,0.25);
+            border-color: var(--purple);
+            color: var(--purple);
+            font-weight: 600;
+            box-shadow: 0 0 12px rgba(163,113,247,0.2);
+        }
+
+        /* ===== 区块通用 ===== */
+        .section {
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--card-border);
+            padding: 22px;
+            margin-bottom: 24px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ===== 月度概览 ===== */
+        .overview-section {
+            background: linear-gradient(135deg, rgba(163,113,247,0.08) 0%, rgba(88,166,255,0.05) 100%);
+            border-color: rgba(163,113,247,0.2);
+        }
+        .overview-section .section-title { color: var(--purple); }
+        .month-theme {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--purple);
+            margin-bottom: 12px;
+        }
+        .month-overview {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .summary-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .summary-tag {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .tag-theme {
+            background: rgba(163,113,247,0.15);
+            color: var(--purple);
+            border: 1px solid rgba(163,113,247,0.3);
+        }
+        .tag-risk {
+            background: rgba(248,81,73,0.15);
+            color: var(--red);
+            border: 1px solid rgba(248,81,73,0.3);
+        }
+        .tag-opportunity {
+            background: rgba(63,185,80,0.15);
+            color: var(--green);
+            border: 1px solid rgba(63,185,80,0.3);
+        }
+
+        /* ===== 事件卡片 ===== */
+        .event-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border-left: 4px solid;
+            padding: 18px;
+            margin-bottom: 16px;
+            transition: all 0.3s;
+        }
+        .event-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .event-card.s-level { border-left-color: var(--red); }
+        .event-card.a-level { border-left-color: var(--gold); }
+        .event-card.b-level { border-left-color: var(--blue); }
+        
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .event-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            flex: 1;
+        }
+        .event-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .event-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .badge-s { background: rgba(248,81,73,0.2); color: var(--red); border: 1px solid rgba(248,81,73,0.4); }
+        .badge-a { background: rgba(210,153,34,0.2); color: var(--gold); border: 1px solid rgba(210,153,34,0.4); }
+        .badge-b { background: rgba(88,166,255,0.2); color: var(--blue); border: 1px solid rgba(88,166,255,0.4); }
+        .badge-date {
+            background: rgba(255,255,255,0.06);
+            color: var(--text-dim);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .badge-type {
+            background: rgba(163,113,247,0.15);
+            color: var(--purple);
+            border: 1px solid rgba(163,113,247,0.3);
+        }
+
+        .event-description {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .event-implication {
+            font-size: 13px;
+            color: var(--text-dim);
+            padding: 10px;
+            background: rgba(0,0,0,0.15);
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== 影响板块标签 ===== */
+        .sectors-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .sector-tag {
+            padding: 4px 10px;
+            background: rgba(57,208,216,0.1);
+            border: 1px solid rgba(57,208,216,0.25);
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--cyan);
+        }
+
+        /* ===== 五维因子分析 ===== */
+        .factor-section {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .factor-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .factor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .factor-card {
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+        .factor-wukong {
+            background: rgba(163,113,247,0.1);
+            border: 1px solid rgba(163,113,247,0.25);
+        }
+        .factor-wukong .factor-label { color: var(--purple); font-weight: 600; }
+        .factor-bajie {
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.25);
+        }
+        .factor-bajie .factor-label { color: var(--gold); font-weight: 600; }
+        .factor-value {
+            margin-top: 6px;
+            color: var(--text);
+        }
+        .probability-high { color: var(--green); font-weight: 600; }
+        .probability-medium { color: var(--gold); font-weight: 600; }
+        .probability-low { color: var(--red); font-weight: 600; }
+
+        /* ===== 衡量因子汇总 ===== */
+        .factor-summary-section {
+            background: linear-gradient(135deg, rgba(255,193,7,0.08) 0%, rgba(255,152,0,0.05) 100%);
+            border-color: rgba(255,193,7,0.2);
+        }
+        .factor-summary-section .section-title { color: var(--gold); }
+        
+        .factor-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .factor-stat-card {
+            text-align: center;
+            padding: 16px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        .factor-stat-label {
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+        }
+        .factor-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .factor-stat-desc {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .factor-impact-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .factor-impact-table th {
+            text-align: left;
+            padding: 10px;
+            background: rgba(255,255,255,0.05);
+            color: var(--text-dim);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .factor-impact-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .impact-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .impact-high { background: rgba(63,185,80,0.2); color: var(--green); }
+        .impact-medium { background: rgba(210,153,34,0.2); color: var(--gold); }
+        .impact-low { background: rgba(248,81,73,0.2); color: var(--red); }
+
+        /* ===== 使用说明 ===== */
+        .guide-section {
+            background: linear-gradient(135deg, rgba(88,166,255,0.08) 0%, rgba(33,150,243,0.05) 100%);
+            border-color: rgba(88,166,255,0.2);
+        }
+        .guide-section .section-title { color: var(--blue); }
+        .guide-content {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .guide-item {
+            margin-bottom: 12px;
+            padding-left: 16px;
+            position: relative;
+        }
+        .guide-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: bold;
+        }
+        .guide-highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            text-align: center;
+            margin-top: 48px;
+            padding: 24px;
+            color: #484f58;
+            font-size: 12px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 22px; }
+            .section { padding: 16px; }
+            .event-card { padding: 14px; }
+            .factor-grid { grid-template-columns: 1fr; }
+            .factor-stats { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 页面切换导航 -->
+        <div class="page-nav">
+            <a href="index.html" class="page-btn page-btn-timeline">📅 新闻时间线</a>
+            <a href="review.html" class="page-btn page-btn-review">📊 复盘报告</a>
+            <a href="monthly-events.html" class="page-btn page-btn-events active">📅 每月重大事件</a>
+        </div>
+
+        <div class="header">
+            <h1>📅 每月重大事件</h1>
+            <div class="subtitle">提前洞察市场催化剂，将重大事件作为投资决策衡量因子</div>
+        </div>
+
+        <!-- 月份选择器 -->
+        <div class="month-selector" id="monthSelector"></div>
+
+        <!-- 内容区 -->
+        <div id="content"></div>
+
+        <footer>
+            <p>数据来源：悟空财经五维智能体分析系统</p>
+        </footer>
+    </div>
+
+    <script src="monthly-events-data.js"></script>
+    <script>
+        let currentMonth = getAvailableMonths()[0];
+
+        function initMonthSelector() {
+            const months = getAvailableMonths();
+            const selector = document.getElementById('monthSelector');
+            selector.innerHTML = months.map(m => {
+                const label = monthlyEventsData[m].month;
+                return `<button class="month-btn ${m === currentMonth ? 'active' : ''}" onclick="switchMonth('${m}')">${label}</button>`;
+            }).join('');
+        }
+
+        function switchMonth(month) {
+            currentMonth = month;
+            initMonthSelector();
+            renderContent();
+        }
+
+        function getImpactClass(level) {
+            if (level === 'S级') return 's-level';
+            if (level === 'A级') return 'a-level';
+            return 'b-level';
+        }
+
+        function getBadgeClass(level) {
+            if (level === 'S级') return 'badge-s';
+            if (level === 'A级') return 'badge-a';
+            return 'badge-b';
+        }
+
+        function getProbabilityClass(prob) {
+            if (prob >= 70) return 'probability-high';
+            if (prob >= 50) return 'probability-medium';
+            return 'probability-low';
+        }
+
+        function renderEventCard(event) {
+            const impactClass = getImpactClass(event.impact_level);
+            const badgeClass = getBadgeClass(event.impact_level);
+            const probClass = getProbabilityClass(event.bajie_factor.probability);
+            
+            return `
+                <div class="event-card ${impactClass}">
+                    <div class="event-header">
+                        <div class="event-title">${event.title}</div>
+                        <div class="event-badges">
+                            <span class="event-badge ${badgeClass}">${event.impact_level}</span>
+                            <span class="event-badge badge-date">${event.date}</span>
+                            <span class="event-badge badge-type">${event.type}</span>
+                        </div>
+                    </div>
+                    <div class="event-description">${event.description}</div>
+                    <div class="event-implication">📈 市场影响：${event.market_implication}</div>
+                    <div class="sectors-wrap">
+                        ${event.affected_sectors.map(s => `<span class="sector-tag">${s}</span>`).join('')}
+                    </div>
+                    <div class="factor-section">
+                        <div class="factor-title">🎯 五维因子分析</div>
+                        <div class="factor-grid">
+                            <div class="factor-card factor-wukong">
+                                <div class="factor-label">🐵 悟空风险定义</div>
+                                <div class="factor-value">
+                                    <div style="color: var(--purple); font-weight: 600; margin-bottom: 4px;">${event.wukong_factor.risk_definition}</div>
+                                    <div style="font-size: 12px; color: var(--text-dim);">${event.wukong_factor.reason}</div>
+                                    <div style="font-size: 12px; color: var(--text); margin-top: 6px;">💡 ${event.wukong_factor.strategy}</div>
+                                </div>
+                            </div>
+                            <div class="factor-card factor-bajie">
+                                <div class="factor-label">🐷 八戒概率校准</div>
+                                <div class="factor-value">
+                                    <div class="${probClass}" style="font-size: 18px; margin-bottom: 4px;">${event.bajie_factor.probability}%</div>
+                                    <div style="font-size: 12px; color: var(--text-dim);">置信度: ${event.bajie_factor.confidence}</div>
+                                    <div style="font-size: 12px; color: var(--gold); margin-top: 6px;">📊 预期收益: ${event.bajie_factor.expected_return}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderFactorSummary(data) {
+            const events = data.events;
+            const sCount = events.filter(e => e.impact_level === 'S级').length;
+            const aCount = events.filter(e => e.impact_level === 'A级').length;
+            const avgProb = Math.round(events.reduce((sum, e) => sum + e.bajie_factor.probability, 0) / events.length);
+            
+            // 按事件类型统计
+            const typeStats = {};
+            events.forEach(e => {
+                typeStats[e.type] = (typeStats[e.type] || 0) + 1;
+            });
+            
+            return `
+                <div class="section factor-summary-section">
+                    <div class="section-title">🎯 本月事件衡量因子汇总</div>
+                    <div class="factor-stats">
+                        <div class="factor-stat-card">
+                            <div class="factor-stat-label">S级事件</div>
+                            <div class="factor-stat-value" style="color: var(--red);">${sCount}</div>
+                            <div class="factor-stat-desc">重大市场催化剂</div>
+                        </div>
+                        <div class="factor-stat-card">
+                            <div class="factor-stat-label">A级事件</div>
+                            <div class="factor-stat-value" style="color: var(--gold);">${aCount}</div>
+                            <div class="factor-stat-desc">阶段性影响因素</div>
+                        </div>
+                        <div class="factor-stat-card">
+                            <div class="factor-stat-label">平均胜率</div>
+                            <div class="factor-stat-value ${getProbabilityClass(avgProb)}">${avgProb}%</div>
+                            <div class="factor-stat-desc">综合预期</div>
+                        </div>
+                    </div>
+                    <table class="factor-impact-table">
+                        <thead>
+                            <tr>
+                                <th>事件类型</th>
+                                <th>数量</th>
+                                <th>影响权重</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${Object.entries(typeStats).map(([type, count]) => {
+                                const weight = count >= 3 ? 'high' : count >= 2 ? 'medium' : 'low';
+                                const weightText = count >= 3 ? '高' : count >= 2 ? '中' : '低';
+                                return `
+                                    <tr>
+                                        <td>${type}</td>
+                                        <td>${count}个</td>
+                                        <td><span class="impact-tag impact-${weight}">${weightText}</span></td>
+                                    </tr>
+                                `;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function renderContent() {
+            const data = getMonthlyEvents(currentMonth);
+            if (!data) {
+                document.getElementById('content').innerHTML = '<p style="text-align:center;color:#666;padding:60px;">该月份暂无数据</p>';
+                return;
+            }
+
+            let html = '';
+
+            // 月度概览
+            html += `
+                <div class="section overview-section">
+                    <div class="section-title">📊 月度概览</div>
+                    <div class="month-theme">${data.theme}</div>
+                    <div class="month-overview">${data.overview}</div>
+                    <div class="summary-tags">
+                        <span class="summary-tag tag-theme">主题: ${data.monthly_summary.key_themes.join('、')}</span>
+                        <span class="summary-tag tag-risk">风险: ${data.monthly_summary.risk_factors.join('、')}</span>
+                        <span class="summary-tag tag-opportunity">机会: ${data.monthly_summary.opportunity_sectors.join('、')}</span>
+                    </div>
+                </div>
+            `;
+
+            // 衡量因子汇总
+            html += renderFactorSummary(data);
+
+            // 重大事件列表
+            html += `
+                <div class="section">
+                    <div class="section-title">📅 重大事件时间线</div>
+                    ${data.events.map(renderEventCard).join('')}
+                </div>
+            `;
+
+            // 使用说明
+            html += `
+                <div class="section guide-section">
+                    <div class="section-title">💡 如何使用本页面</div>
+                    <div class="guide-content">
+                        <div class="guide-item">
+                            <span class="guide-highlight">提前布局：</span>通过查看每月重大事件，提前识别市场催化剂，在事件发生前进行布局
+                        </div>
+                        <div class="guide-item">
+                            <span class="guide-highlight">风险评估：</span>参考悟空风险定义，判断事件是"真机会"还是"假风险"，避免追高被套
+                        </div>
+                        <div class="guide-item">
+                            <span class="guide-highlight">概率校准：</span>结合八戒概率校准，评估事件发生的胜率和预期收益，优化仓位配置
+                        </div>
+                        <div class="guide-item">
+                            <span class="guide-highlight">综合裁量：</span>将重大事件作为五维智能体分析的衡量因子，与每日新闻分析交叉验证
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('content').innerHTML = html;
+        }
+
+        // 初始化
+        initMonthSelector();
+        renderContent();
+    </script>
+</body>
+</html>
