@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宏观因子 - 悟空财经分析</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-start: #0d1117;
+            --bg-end: #161b22;
+            --green: #3fb950;
+            --red: #f85149;
+            --cyan: #39d0d8;
+            --purple: #a371f7;
+            --gold: #d29922;
+            --card-bg: rgba(255,255,255,0.04);
+            --card-border: rgba(255,255,255,0.1);
+            --text: #e6edf3;
+            --text-dim: #8b949e;
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            font-family: var(--font);
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        /* 页面切换导航 */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, #0d1117, #161b22);
+            padding: 12px 0 8px;
+            backdrop-filter: blur(10px);
+        }
+        .page-nav .page-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .page-nav .page-btn-timeline {
+            background: rgba(63,185,80,0.15);
+            border: 1px solid rgba(63,185,80,0.4);
+            color: #3fb950;
+        }
+        .page-nav .page-btn-timeline:hover {
+            background: rgba(63,185,80,0.25);
+            border-color: #3fb950;
+        }
+        .page-nav .page-btn-review {
+            background: rgba(255,193,7,0.1);
+            border: 1px solid rgba(255,193,7,0.3);
+            color: #d29922;
+        }
+        .page-nav .page-btn-review:hover {
+            background: rgba(255,193,7,0.2);
+            border-color: #d29922;
+        }
+        .page-nav .page-btn-events {
+            background: rgba(163,113,247,0.15);
+            border: 1px solid rgba(163,113,247,0.4);
+            color: #a371f7;
+        }
+        .page-nav .page-btn-events:hover {
+            background: rgba(163,113,247,0.25);
+            border-color: #a371f7;
+        }
+        .page-nav .page-btn-macro {
+            background: rgba(57,208,216,0.15);
+            border: 1px solid rgba(57,208,216,0.4);
+            color: #39d0d8;
+        }
+        .page-nav .page-btn-macro:hover,
+        .page-nav .page-btn-macro.active {
+            background: rgba(57,208,216,0.25);
+            border-color: #39d0d8;
+        }
+
+        /* 标题 */
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 24px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+        }
+        .header h1 {
+            font-size: 26px;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
+        }
+        .header .subtitle {
+            font-size: 13px;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+        }
+
+        /* 自定义图表添加区 */
+        .add-chart-section {
+            background: linear-gradient(135deg, rgba(57,208,216,0.08), rgba(163,113,247,0.08));
+            border: 1px solid rgba(57,208,216,0.25);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .add-chart-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--cyan);
+        }
+        .add-chart-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .input-group label {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+        .input-group input,
+        .input-group select {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: var(--text);
+            font-size: 14px;
+            min-width: 150px;
+        }
+        .add-btn {
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(57,208,216,0.3);
+        }
+
+        /* 区块通用 */
+        .section {
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--card-border);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 指标卡片网格 */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 16px;
+        }
+
+        .chart-container {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .chart-header {
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .chart-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .chart-name-section {
+            display: flex;
+            flex-direction: column;
+        }
+        .chart-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .chart-symbol {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+        .chart-category {
+            padding: 3px 10px;
+            background: rgba(57,208,216,0.15);
+            border: 1px solid rgba(57,208,216,0.3);
+            border-radius: 6px;
+            font-size: 11px;
+            color: var(--cyan);
+        }
+        .chart-price-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .chart-price {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .chart-change {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-top: 4px;
+        }
+        .change-up {
+            background: rgba(63,185,80,0.15);
+            color: var(--green);
+            border: 1px solid rgba(63,185,80,0.3);
+        }
+        .change-down {
+            background: rgba(248,81,73,0.15);
+            color: var(--red);
+            border: 1px solid rgba(248,81,73,0.3);
+        }
+        .chart-widget {
+            height: 220px;
+        }
+
+        .chart-actions {
+            padding: 8px 12px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+        .remove-btn {
+            background: rgba(248,81,73,0.15);
+            border: 1px solid rgba(248,81,73,0.3);
+            color: var(--red);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .remove-btn:hover {
+            background: rgba(248,81,73,0.25);
+        }
+
+        /* 分析卡片 */
+        .analysis-card {
+            background: linear-gradient(135deg, rgba(163,113,247,0.1) 0%, rgba(57,208,216,0.05) 100%);
+            border: 1px solid rgba(163,113,247,0.2);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 16px;
+        }
+        .analysis-card.bajie {
+            background: linear-gradient(135deg, rgba(210,153,34,0.1) 0%, rgba(163,113,247,0.05) 100%);
+            border-color: rgba(210,153,34,0.3);
+        }
+        .analysis-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--purple);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .analysis-card.bajie .analysis-title {
+            color: var(--gold);
+        }
+        .analysis-title span {
+            font-size: 18px;
+        }
+        .analysis-content {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.8;
+        }
+        .analysis-item {
+            display: flex;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .analysis-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .analysis-label {
+            min-width: 100px;
+            color: var(--cyan);
+            font-weight: 500;
+        }
+        .analysis-card.bajie .analysis-label {
+            color: var(--gold);
+        }
+        .analysis-value {
+            color: var(--text);
+        }
+
+        /* 贝叶斯概率表 */
+        .bayes-table {
+            width: 100%;
+            margin-top: 12px;
+            border-collapse: collapse;
+        }
+        .bayes-table th,
+        .bayes-table td {
+            padding: 10px 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 12px;
+        }
+        .bayes-table th {
+            background: rgba(210,153,34,0.1);
+            font-weight: 600;
+            color: var(--gold);
+        }
+        .prob-high {
+            color: var(--green);
+            font-weight: 600;
+        }
+        .prob-medium {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .prob-low {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        /* 风险警示 */
+        .risk-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+        .risk-high {
+            background: rgba(248,81,73,0.15);
+            color: var(--red);
+            border: 1px solid rgba(248,81,73,0.3);
+        }
+        .risk-medium {
+            background: rgba(210,153,34,0.15);
+            color: var(--gold);
+            border: 1px solid rgba(210,153,34,0.3);
+        }
+        .risk-low {
+            background: rgba(63,185,80,0.15);
+            color: var(--green);
+            border: 1px solid rgba(63,185,80,0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #484f58;
+            font-size: 12px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 22px; }
+            .section { padding: 16px; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .add-chart-controls { flex-direction: column; }
+            .add-chart-controls .input-group,
+            .add-chart-controls .add-btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 页面切换导航 -->
+        <div class="page-nav">
+            <a href="index.html" class="page-btn page-btn-timeline">📅 新闻时间线</a>
+            <a href="review.html" class="page-btn page-btn-review">📊 复盘报告</a>
+            <a href="monthly-events.html" class="page-btn page-btn-events">📅 每月重大事件</a>
+            <a href="macro-indicators.html" class="page-btn page-btn-macro active">🌍 宏观因子</a>
+        </div>
+
+        <div class="header">
+            <h1>🌍 宏观因子实时监测</h1>
+            <div class="subtitle">数据来源于TradingView • 悟空智能分析</div>
+        </div>
+
+        <!-- 自定义图表添加区 -->
+        <div class="add-chart-section">
+            <div class="add-chart-title">➕ 添加自定义图表</div>
+            <div class="add-chart-controls">
+                <div class="input-group">
+                    <label>交易对/代码</label>
+                    <input type="text" id="customSymbol" placeholder="如: BTCUSD, AAPL, GBPUSD">
+                </div>
+                <div class="input-group">
+                    <label>显示名称</label>
+                    <input type="text" id="customName" placeholder="如: 比特币">
+                </div>
+                <div class="input-group">
+                    <label>数据源</label>
+                    <select id="customSource">
+                        <option value="BINANCE">币安 (加密货币)</option>
+                        <option value="NASDAQ">纳斯达克</option>
+                        <option value="NYSE">纽交所</option>
+                        <option value="OANDA">外汇</option>
+                        <option value="TVC">全球指数</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>分类</label>
+                    <select id="customCategory">
+                        <option value="加密货币">加密货币</option>
+                        <option value="股票">股票</option>
+                        <option value="外汇">外汇</option>
+                        <option value="商品">商品</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <button class="add-btn" onclick="addCustomChart()">添加图表</button>
+            </div>
+        </div>
+
+        <!-- 悟空宏观综合分析 -->
+        <div class="section">
+            <div class="section-title">🐵 悟空宏观观点</div>
+            <div class="analysis-card">
+                <div class="analysis-title"><span>📊</span> 综合分析</div>
+                <div class="analysis-content">
+                    <div class="analysis-item">
+                        <div class="analysis-label">美元流动性:</div>
+                        <div class="analysis-value">中性偏紧 <span class="risk-tag risk-medium">观望</span></div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-label">市场情绪:</div>
+                        <div class="analysis-value">谨慎乐观 <span class="risk-tag risk-low">机会</span></div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-label">避险需求:</div>
+                        <div class="analysis-value">上升中 <span class="risk-tag risk-medium">关注</span></div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-label">建议仓位:</div>
+                        <div class="analysis-value">50%-60% 中等仓位</div>
+                    </div>
+                </div>
+            </div>
+            <div class="analysis-card">
+                <div class="analysis-title"><span>💡</span> 策略建议</div>
+                <div class="analysis-content">
+                    1. 美债收益率维持高位(4.4%+)，压制成长股估值，建议控制科技股仓位在30%以内<br>
+                    2. 黄金创新高(3200+)，避险情绪升温，可配置15%-20%避险资产对冲风险<br>
+                    3. 比特币强势(基于TradingView数据)，显示风险偏好仍存，但需警惕波动率放大，建议仓位不超过10%<br>
+                    4. 关注美元指数(99-101区间)，若突破101新兴市场可能承压，可适度减仓<br>
+                    5. 人民币汇率保持稳定(7.2附近)，关注出口受益板块机会
+                </div>
+            </div>
+        </div>
+
+        <!-- 八戒贝叶斯分析 -->
+        <div class="section">
+            <div class="section-title">🐷 八戒贝叶斯概率分析</div>
+            <div class="analysis-card bajie">
+                <div class="analysis-title"><span>📈</span> 上涨概率评估 (基于历史数据)</div>
+                <div class="analysis-content">
+                    <table class="bayes-table">
+                        <thead>
+                            <tr>
+                                <th>品种</th>
+                                <th>先验概率</th>
+                                <th>当前信号强度</th>
+                                <th>后验上涨概率</th>
+                                <th>建议操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>黄金</td>
+                                <td>52%</td>
+                                <td>强 (新高)</td>
+                                <td class="prob-high">68%</td>
+                                <td>持有/轻仓加仓</td>
+                            </tr>
+                            <tr>
+                                <td>比特币</td>
+                                <td>48%</td>
+                                <td>中</td>
+                                <td class="prob-medium">55%</td>
+                                <td>观望/小仓位</td>
+                            </tr>
+                            <tr>
+                                <td>纳斯达克</td>
+                                <td>55%</td>
+                                <td>中</td>
+                                <td class="prob-medium">58%</td>
+                                <td>持有/分批止盈</td>
+                            </tr>
+                            <tr>
+                                <td>原油</td>
+                                <td>45%</td>
+                                <td>弱</td>
+                                <td class="prob-low">38%</td>
+                                <td>观望/等待机会</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="analysis-card bajie">
+                <div class="analysis-title"><span>🔍</span> 贝叶斯分析说明</div>
+                <div class="analysis-content">
+                    • <strong>先验概率</strong>：基于历史数据的长期上涨概率<br>
+                    • <strong>信号强度</strong>：综合技术指标、消息面、资金流的评估<br>
+                    • <strong>后验概率</strong>：结合当前信息更新后的概率<br>
+                    • 建议概率>60%可考虑加仓，<40%以观望为主
+                </div>
+            </div>
+        </div>
+
+        <!-- 美元指数与美债 -->
+        <div class="section">
+            <div class="section-title">📊 美元 & 美债</div>
+            <div class="charts-grid" id="dollar-section">
+                <!-- 美元指数 -->
+                <div class="chart-container" data-symbol="TVC:DXY">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">美元指数 DXY</div>
+                                <div class="chart-symbol">美元强弱</div>
+                            </div>
+                            <span class="chart-category">美元流动性</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-DXY">100.25</div>
+                            <div class="chart-change change-up" id="change-DXY">+0.18% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="dxy-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+                <!-- 美债10年期 -->
+                <div class="chart-container" data-symbol="TVC:US10Y">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">美债10年期收益率</div>
+                                <div class="chart-symbol">全球无风险利率</div>
+                            </div>
+                            <span class="chart-category">全球无风险利率</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-US10Y">4.42%</div>
+                            <div class="chart-change change-down" id="change-US10Y">-0.03% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="us10y-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 外汇汇率 -->
+        <div class="section">
+            <div class="section-title">💱 外汇汇率</div>
+            <div class="charts-grid" id="fx-section">
+                <!-- 美元日元 -->
+                <div class="chart-container" data-symbol="OANDA:USDJPY">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">美元/日元 USDJPY</div>
+                                <div class="chart-symbol">套息交易指标</div>
+                            </div>
+                            <span class="chart-category">外汇</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-USDJPY">143.25</div>
+                            <div class="chart-change change-up" id="change-USDJPY">+0.32% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="usdjpy-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+                <!-- 美元离岸人民币 -->
+                <div class="chart-container" data-symbol="OANDA:USDCNH">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">美元/离岸人民币 USDCNH</div>
+                                <div class="chart-symbol">人民币汇率</div>
+                            </div>
+                            <span class="chart-category">外汇</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-USDCNH">7.1950</div>
+                            <div class="chart-change change-down" id="change-USDCNH">-0.08% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="usdcnh-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 避险资产 -->
+        <div class="section">
+            <div class="section-title">🛡️ 贵金属 & 能源</div>
+            <div class="charts-grid" id="safe-section">
+                <!-- 黄金 -->
+                <div class="chart-container" data-symbol="TVC:GOLD">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">现货黄金 GOLD</div>
+                                <div class="chart-symbol">避险之王</div>
+                            </div>
+                            <span class="chart-category">贵金属</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-GOLD">$3,280.50</div>
+                            <div class="chart-change change-up" id="change-GOLD">+1.25% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="gold-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+                <!-- 白银 -->
+                <div class="chart-container" data-symbol="TVC:SILVER">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">现货白银 SILVER</div>
+                                <div class="chart-symbol">工业金属+避险</div>
+                            </div>
+                            <span class="chart-category">贵金属</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-SILVER">$38.45</div>
+                            <div class="chart-change change-up" id="change-SILVER">+2.15% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="silver-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+                <!-- 原油 -->
+                <div class="chart-container" data-symbol="TVC:USOIL">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">WTI原油 USOIL</div>
+                                <div class="chart-symbol">大宗商品</div>
+                            </div>
+                            <span class="chart-category">能源</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-USOIL">$62.35</div>
+                            <div class="chart-change change-down" id="change-USOIL">-0.85% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="oil-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 加密货币 -->
+        <div class="section">
+            <div class="section-title">🪙 加密货币</div>
+            <div class="charts-grid" id="crypto-section">
+                <!-- 比特币 -->
+                <div class="chart-container" data-symbol="BINANCE:BTCUSD">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">比特币 BTCUSD</div>
+                                <div class="chart-symbol">加密货币之王</div>
+                            </div>
+                            <span class="chart-category">加密货币</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-BTCUSD">$65,420</div>
+                            <div class="chart-change change-up" id="change-BTCUSD">+3.25% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="btc-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+                <!-- 以太坊 -->
+                <div class="chart-container" data-symbol="BINANCE:ETHUSD">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">以太坊 ETHUSD</div>
+                                <div class="chart-symbol">智能合约平台</div>
+                            </div>
+                            <span class="chart-category">加密货币</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-ETHUSD">$3,450</div>
+                            <div class="chart-change change-up" id="change-ETHUSD">+2.85% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="eth-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 市场情绪 -->
+        <div class="section">
+            <div class="section-title">📈 股票指数</div>
+            <div class="charts-grid" id="equity-section">
+                <!-- 标普500 -->
+                <div class="chart-container" data-symbol="SPX">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">标普500指数 SPX</div>
+                                <div class="chart-symbol">美股基准</div>
+                            </div>
+                            <span class="chart-category">股票指数</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-SPX">5,210.45</div>
+                            <div class="chart-change change-up" id="change-SPX">+0.65% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="spx-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+                <!-- 纳斯达克100 -->
+                <div class="chart-container" data-symbol="NASDAQ:NDX">
+                    <div class="chart-header">
+                        <div class="chart-top-row">
+                            <div class="chart-name-section">
+                                <div class="chart-name">纳斯达克100指数 NDX</div>
+                                <div class="chart-symbol">科技股风向标</div>
+                            </div>
+                            <span class="chart-category">股票指数</span>
+                        </div>
+                        <div class="chart-price-section">
+                            <div class="chart-price" id="price-NDX">18,450.30</div>
+                            <div class="chart-change change-up" id="change-NDX">+0.85% 24h</div>
+                        </div>
+                    </div>
+                    <div class="chart-widget" id="ndx-chart"></div>
+                    <div class="chart-actions">
+                        <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>数据来源：TradingView • 分析仅供参考，不构成投资建议</p>
+        </footer>
+    </div>
+
+    <!-- TradingView Widget Scripts -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+        let chartCounter = 0;
+        let customCharts = [];
+
+        // 初始化默认图表
+        document.addEventListener('DOMContentLoaded', function() {
+            // 美元指数
+            createTradingViewWidget('dxy-chart', 'TVC:DXY');
+            
+            // 美债10年期
+            createTradingViewWidget('us10y-chart', 'TVC:US10Y');
+            
+            // 美元日元
+            createTradingViewWidget('usdjpy-chart', 'OANDA:USDJPY');
+            
+            // 美元离岸人民币
+            createTradingViewWidget('usdcnh-chart', 'OANDA:USDCNH');
+            
+            // 黄金
+            createTradingViewWidget('gold-chart', 'TVC:GOLD');
+            
+            // 白银
+            createTradingViewWidget('silver-chart', 'TVC:SILVER');
+            
+            // 原油
+            createTradingViewWidget('oil-chart', 'TVC:USOIL');
+            
+            // 比特币
+            createTradingViewWidget('btc-chart', 'BINANCE:BTCUSD');
+            
+            // 以太坊
+            createTradingViewWidget('eth-chart', 'BINANCE:ETHUSD');
+            
+            // 标普500
+            createTradingViewWidget('spx-chart', 'SPX');
+            
+            // 纳斯达克100
+            createTradingViewWidget('ndx-chart', 'NASDAQ:NDX');
+        });
+
+        function createTradingViewWidget(containerId, symbol) {
+            new TradingView.widget({
+                "width": "100%",
+                "height": "220",
+                "symbol": symbol,
+                "interval": "D",
+                "timezone": "Asia/Shanghai",
+                "theme": "dark",
+                "style": "1",
+                "locale": "zh_CN",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "withdateranges": true,
+                "hide_top_toolbar": false,
+                "allow_symbol_change": true,
+                "save_image": false,
+                "container_id": containerId,
+                "studies": [],
+                "show_popup_button": false
+            });
+        }
+
+        function addCustomChart() {
+            const symbol = document.getElementById('customSymbol').value.trim();
+            const name = document.getElementById('customName').value.trim();
+            const source = document.getElementById('customSource').value;
+            const category = document.getElementById('customCategory').value;
+
+            if (!symbol) {
+                alert('请输入交易对代码！');
+                return;
+            }
+
+            const fullSymbol = source === 'TVC' ? symbol : `${source}:${symbol}`;
+            const displayName = name || symbol;
+            const chartId = `custom-chart-${chartCounter++}`;
+
+            // 创建图表容器
+            const chartContainer = document.createElement('div');
+            chartContainer.className = 'chart-container';
+            chartContainer.dataset.symbol = fullSymbol;
+            chartContainer.innerHTML = `
+                <div class="chart-header">
+                    <div class="chart-top-row">
+                        <div class="chart-name-section">
+                            <div class="chart-name">${displayName}</div>
+                            <div class="chart-symbol">${fullSymbol}</div>
+                        </div>
+                        <span class="chart-category">${category}</span>
+                    </div>
+                    <div class="chart-price-section">
+                        <div class="chart-price">加载中...</div>
+                        <div class="chart-change change-up">--</div>
+                    </div>
+                </div>
+                <div class="chart-widget" id="${chartId}"></div>
+                <div class="chart-actions">
+                    <button class="remove-btn" onclick="removeChart(this)">移除</button>
+                </div>
+            `;
+
+            // 添加到自定义区域
+            let customSection = document.getElementById('custom-section');
+            if (!customSection) {
+                customSection = document.createElement('div');
+                customSection.className = 'section';
+                customSection.innerHTML = '<div class="section-title">🎯 自定义图表</div>';
+                const chartsGrid = document.createElement('div');
+                chartsGrid.className = 'charts-grid';
+                chartsGrid.id = 'custom-section';
+                customSection.appendChild(chartsGrid);
+                const footer = document.querySelector('footer');
+                footer.parentNode.insertBefore(customSection, footer);
+            }
+
+            document.getElementById('custom-section').appendChild(chartContainer);
+            
+            // 创建图表
+            setTimeout(() => {
+                createTradingViewWidget(chartId, fullSymbol);
+            }, 100);
+
+            // 清空输入
+            document.getElementById('customSymbol').value = '';
+            document.getElementById('customName').value = '';
+        }
+
+        function removeChart(btn) {
+            if (confirm('确定要移除这个图表吗？')) {
+                const container = btn.closest('.chart-container');
+                container.style.transition = 'opacity 0.3s';
+                container.style.opacity = '0';
+                setTimeout(() => {
+                    container.remove();
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>

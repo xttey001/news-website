@@ -80,6 +80,13 @@
         .nav-btn.events:hover {
             background: rgba(163,113,247,0.15);
         }
+        .nav-btn.macro {
+            border-color: #39d0d8;
+            color: #39d0d8;
+        }
+        .nav-btn.macro:hover {
+            background: rgba(57,208,216,0.15);
+        }
         
         /* Header */
         .header {
@@ -251,6 +258,9 @@
         <a href="monthly-events.html" class="nav-btn events" title="每月重大事件">
             📅 每月事件
         </a>
+        <a href="macro-indicators.html" class="nav-btn macro" title="宏观因子监测">
+            🌍 宏观因子
+        </a>
         <button class="nav-btn" onclick="showBuySideReport()" title="AI买方研究报告">
             🔬 AI买方报告
         </button>
@@ -267,6 +277,7 @@
         <button class="timeline-btn active" onclick="showView('week')">📅 按周查看</button>
         <button class="timeline-btn" onclick="showView('month')">📆 按月查看</button>
         <button class="timeline-btn" onclick="showView('all')">📋 全部报告</button>
+        <button class="timeline-btn" onclick="showView('experience')" style="border-color: #d29922; color: #d29922;">💎 核心经验库</button>
     </div>
     
     <!-- 周选择器 -->
@@ -350,7 +361,8 @@
                     <tr><td>05-16</td><td>05-17</td><td>中性偏多</td><td class="acc-high">✅ 高</td><td>周末消息面复杂，避险+政策双主线</td><td>周末穆迪下调美国评级至AA1，证监会并购重组新规落地，国资委强调发展战略性新兴产业，关注黄金避险和并购重组机会</td></tr>
                     <tr><td>05-17</td><td>05-18</td><td>中性偏多</td><td class="acc-high">✅ 高</td><td>业绩驱动+政策催化，关注存储芯片和机器人</td><td>长鑫科技业绩爆发Q1净利增长1268%，存储芯片超级周期确认；中美经贸磋商成果公布；沪指低开0.37%后关注存储芯片板块表现，预判兑现</td></tr>
                     <tr><td>05-18</td><td>05-19</td><td>中性偏多</td><td class="acc-high">✅ 高</td><td>业绩驱动行情延续，关注存储芯片持续性</td><td>沪指跌0.09%报4131.53点，科创50逆势涨0.95%，两市成交2.89万亿，2375只上涨3003只下跌，存储芯片、AI算力领涨，预判兑现</td></tr>
-                    <tr><td>05-19</td><td>05-20</td><td>中性偏多</td><td class="acc-wait">⏳ 待验证</td><td>政策驱动行情，关注电力板块持续性</td><td>待验证...</td></tr>
+                    <tr><td>05-19</td><td>05-20</td><td>中性偏多</td><td class="acc-high">✅ 高</td><td>政策驱动行情，关注电力板块持续性</td><td>沪指跌0.18%报4162.18点，深成指平收，创业板指涨0.34%，科创50大涨3.81%；半导体产业链爆发，电力板块重挫，结构性行情极致演绎</td></tr>
+                    <tr><td>05-20</td><td>05-21</td><td>中性偏多</td><td class="acc-wait">⏳ 待验证</td><td>半导体产业趋势明确，关注持续性</td><td>待验证...</td></tr>
                 </tbody>
             </table>
 
@@ -551,6 +563,21 @@
                 </div>
             </div>
 
+            <!-- 失误3：05-19电力板块持续性误判 -->
+            <div class="exp-card" style="border: 2px solid var(--red); background: rgba(244,67,54,0.08);">
+                <div class="exp-title"><span class="icon">❌</span> 失误3：05-19→05-20电力板块持续性误判 - 政策驱动预期 vs 板块重挫</div>
+                <div class="exp-content">
+                    <ul>
+                        <li><strong>预判</strong>：政策驱动行情，关注电力板块持续性</li>
+                        <li><strong>实际</strong>：电力板块全天重挫，京能电力、大唐发电等多股跌停，电力ETF跌超5%</li>
+                        <li><strong>偏差原因</strong>：①过度依赖政策利好逻辑，忽视技术面超买信号；②电力板块前期涨幅过大（多股连续涨停），获利盘丰厚；③资金从高位电力向低位半导体调仓，结构性切换</li>
+                        <li><strong>教训</strong>：<span style="color: var(--red);">政策利好无法对抗高位获利盘抛压+板块轮动，连续涨停后追高风险极大</span></li>
+                        <li><strong>可复刻公式</strong>：连续涨停板块+政策利好密集=利好出尽信号，次日低开低走概率>70%</li>
+                        <li><strong>关键信号</strong>：①板块内多股连续涨停（5连板以上）；②政策利好密集发布；③板块成交额占全市场比例过高；④次日开盘即低开低走</li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- 记忆固化总结 -->
             <div class="exp-card" style="border: 2px solid var(--purple); background: rgba(156,39,176,0.08); margin-top: 20px;">
                 <div class="exp-title"><span class="icon">📚</span> 记忆固化总结（11条核心规律）</div>
@@ -567,6 +594,7 @@
                         <li>宇宙行分红落地=流动性改善信号，中小盘科技股活跃窗口</li>
                         <li>低开高走创新高=主升浪延续信号，洗盘后更强势</li>
                         <li><strong>【新】连续上涨+次日高开+量能放大=主力借高开出货概率>80%</strong></li>
+                        <li><strong>【新】连续涨停板块+政策利好密集=利好出尽信号，次日低开低走概率>70%</strong>（电力板块案例：政策驱动预期 vs 实际重挫）</li>
                     </ol>
                 </div>
             </div>
@@ -1657,6 +1685,169 @@
         </div>
     </div>
     
+    <!-- 核心经验库 -->
+    <div id="experience-library" class="report-content" style="display:none;">
+        <div class="report-header">
+            <h2>💎 核心经验库</h2>
+            <div class="report-date">可复刻规律 · 失误反思 · 策略公式</div>
+            <div class="badge-row">
+                <span class="badge badge-green">✅ 验证经验 14条</span>
+                <span class="badge badge-red">❌ 失误反思 3条</span>
+                <span class="badge badge-gold">📋 核心框架 1个</span>
+            </div>
+        </div>
+        
+        <div class="section-title">📋 记忆固化总结（13条核心规律）</div>
+        <div class="exp-card" style="border: 2px solid var(--gold); background: rgba(255,193,7,0.1);">
+            <div class="exp-content">
+                <ol style="line-height: 2;">
+                    <li>假期利好共振+港股验证=高概率开门红</li>
+                    <li>FOMO峰值+主力浮盈丰厚=暴力拉升后必有出货</li>
+                    <li>历史最大涨幅次日：早盘冲高回落概率高，但科技主线硬核时午后可能拉回</li>
+                    <li>政策利好无法对抗高位获利盘抛压，'利好出尽'效应可能强于'政策底'效应</li>
+                    <li>核爆级利好（融资+政策+订单三重共振）可能改变短期趋势</li>
+                    <li>大涨次日必分化，主力借高开出货，冲高回落是常态</li>
+                    <li>全球AI芯片股估值泡沫风险（韩国股市闪崩警示），但存储芯片基本面最扎实</li>
+                    <li>宏观因素纳入决策矩阵：美元指数、伯克希尔现金储备、VIX、比特币</li>
+                    <li>宇宙行分红落地=流动性改善信号，中小盘科技股活跃窗口</li>
+                    <li>低开高走创新高=主升浪延续信号，洗盘后更强势</li>
+                    <li><strong>【新】连续上涨+次日高开+量能放大=主力借高开出货概率>80%</strong></li>
+                    <li><strong>【新】连续涨停板块+政策利好密集=利好出尽信号，次日低开低走概率>70%</strong>（电力板块案例：政策驱动预期 vs 实际重挫）</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="section-title">❌ 失误反思（3条）</div>
+        
+        <div class="exp-card" style="border: 2px solid var(--red); background: rgba(244,67,54,0.08);">
+            <div class="exp-title"><span class="icon">❌</span> 失误1：05-07→05-08预判偏差 - 政策利好未能对抗高位获利盘抛压</div>
+            <div class="exp-content">
+                <ul>
+                    <li><strong>预判</strong>：政策利好（1.2万亿科创再贷款）对冲外部压力，低开高走</li>
+                    <li><strong>实际</strong>：早盘低开但全天分化，科创50大跌2.29%，算力硬件（CPO/PCB）领跌</li>
+                    <li><strong>偏差原因</strong>：政策利好未能阻止高位科技股获利了结，资金从高位科技向低位题材切换</li>
+                    <li><strong>教训</strong>：<span style="color: var(--red);">高位+政策利好 ≠ 继续上涨，可能是'利好出尽'效应</span></li>
+                    <li><strong>可复刻公式</strong>：高位股+利好密集 = 警惕出货信号，而非追涨时机</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="exp-card" style="border: 2px solid var(--red); background: rgba(244,67,54,0.08);">
+            <div class="exp-title"><span class="icon">❌</span> 失误2：05-13→05-14预判偏差 - 震荡整固预期 vs 高开低走大跌</div>
+            <div class="exp-content">
+                <ul>
+                    <li><strong>预判</strong>：震荡整固，AI算力分化，CPO强者恒强</li>
+                    <li><strong>实际</strong>：沪指高开0.32%后收跌1.52%失守4200点，创业板高开1.23%后收跌2.16%，超4300股下跌</li>
+                    <li><strong>偏差原因</strong>：①早盘高开诱多，主力借高开出货；②高位科技股获利回吐压力集中释放；③中特估虹吸流动性，中小盘承压</li>
+                    <li><strong>教训</strong>：<span style="color: var(--red);">连续上涨后+高开=主力出货信号，不是追涨时机</span></li>
+                    <li><strong>可复刻公式</strong>：连续上涨+次日高开+量能放大=主力借高开出货概率>80%</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="exp-card" style="border: 2px solid var(--red); background: rgba(244,67,54,0.08);">
+            <div class="exp-title"><span class="icon">❌</span> 失误3：05-19→05-20电力板块持续性误判 - 政策驱动预期 vs 板块重挫</div>
+            <div class="exp-content">
+                <ul>
+                    <li><strong>预判</strong>：政策驱动行情，关注电力板块持续性</li>
+                    <li><strong>实际</strong>：电力板块全天重挫，京能电力、大唐发电等多股跌停，电力ETF跌超5%</li>
+                    <li><strong>偏差原因</strong>：①过度依赖政策利好逻辑，忽视技术面超买信号；②电力板块前期涨幅过大（多股连续涨停），获利盘丰厚；③资金从高位电力向低位半导体调仓，结构性切换</li>
+                    <li><strong>教训</strong>：<span style="color: var(--red);">政策利好无法对抗高位获利盘抛压+板块轮动，连续涨停后追高风险极大</span></li>
+                    <li><strong>可复刻公式</strong>：连续涨停板块+政策利好密集=利好出尽信号，次日低开低走概率>70%</li>
+                    <li><strong>关键信号</strong>：①板块内多股连续涨停（5连板以上）；②政策利好密集发布；③板块成交额占全市场比例过高；④次日开盘即低开低走</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section-title">✅ 验证经验（14条）</div>
+        
+        <div class="exp-card" style="border: 2px solid var(--green); background: rgba(76,175,80,0.08);">
+            <div class="exp-title"><span class="icon">✅</span> 经验1：05-05→05-06节后开门红 - 精准兑现</div>
+            <div class="exp-content">
+                <ul>
+                    <li><strong>预判</strong>：五大利好共振，节后开门红概率90%+</li>
+                    <li><strong>实际</strong>：科创50暴涨7%，创业板涨2.93%，开门红100%准确</li>
+                    <li><strong>可复刻公式</strong>：长假利好共振+港股验证=节后开门红概率>90%</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="exp-card" style="border: 2px solid var(--gold); background: rgba(255,193,7,0.08);">
+            <div class="exp-title"><span class="icon">⚠️</span> 经验2：05-05 FOMO峰值风险提示 - 精准验证</div>
+            <div class="exp-content">
+                <ul>
+                    <li><strong>风险提示</strong>：FOMO峰值（历史98分位）+主力浮盈极为丰厚，暴力拉升后必有出货</li>
+                    <li><strong>实际</strong>：05-06科创50暴涨7%，但期权从750%跌至177%，留下长上影线</li>
+                    <li><strong>可复刻公式</strong>：情绪指标达历史极值+主力浮盈丰厚 = 次日暴力拉升是出货机会</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="exp-card" style="border: 2px solid var(--green); background: rgba(76,175,80,0.08);">
+            <div class="exp-title"><span class="icon">🚀</span> 经验3：05-10→05-11核爆级利好 - 精准兑现</div>
+            <div class="exp-content">
+                <ul>
+                    <li><strong>预判</strong>：周一大幅高开，AI算力、半导体、特高压板块或领涨</li>
+                    <li><strong>实际</strong>：沪指开盘4201点（+0.51%）；科创50涨3.52%；汉邦高科开盘涨停；收盘科创50暴涨4.65%创历史新高</li>
+                    <li><strong>可复刻公式</strong>：核爆级利好（融资+政策+订单三重共振）可能改变短期趋势</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="exp-card" style="border: 2px solid var(--green); background: rgba(76,175,80,0.08);">
+            <div class="exp-title"><span class="icon">📉</span> 经验4：05-11→05-12冲高回落 - 精准兑现</div>
+            <div class="exp-content">
+                <ul>
+                    <li><strong>预判</strong>：冲高回落后震荡，获利盘抛压增加</li>
+                    <li><strong>实际</strong>：沪指高开0.10%后回落，收盘跌0.25%失守4200点；4044只个股下跌</li>
+                    <li><strong>可复刻公式</strong>：大涨次日必分化，主力借高开出货，冲高回落是常态</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="exp-card" style="border: 2px solid var(--blue); background: rgba(33,150,243,0.08);">
+            <div class="exp-title"><span class="icon">📈</span> 经验5：05-12→05-13低开高走 - 早盘精准+午后超预期</div>
+            <div class="exp-content">
+                <ul>
+                    <li><strong>预判</strong>：周三A股或延续震荡调整</li>
+                    <li><strong>实际</strong>：早盘低开符合预期；但午后史诗级反转，沪指收涨0.67%创逾十年新高，创业板暴涨2.63%创历史新高</li>
+                    <li><strong>可复刻公式</strong>：低开高走创新高 = 主升浪延续信号，洗盘后更强势</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="exp-card" style="border: 2px solid var(--gold); background: rgba(255,193,7,0.1);">
+            <div class="exp-title"><span class="icon">⭐</span> 经验6：业绩驱动战胜外围利空 - 长鑫科技案例</div>
+            <div class="exp-content">
+                <ul>
+                    <li><strong>背景</strong>：美股重挫（纳指跌1.54%，费城半导体指数跌4%），A股科技股开盘承压</li>
+                    <li><strong>催化</strong>：长鑫科技Q1净利润330亿元，同比增长1268.45%</li>
+                    <li><strong>结果</strong>：存储芯片板块逆势大涨，兆易创新涨停，科创50涨0.95%成为唯一收红宽基指数</li>
+                    <li><strong>可复刻公式</strong>：业绩超预期（增长>1000%）+ 行业涨价逻辑 + 低位启动 = 逆势上涨概率>80%</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section-title">🏛️ 核心框架</div>
+        <div class="exp-card" style="border: 2px solid var(--gold); background: rgba(210,153,34,0.1);">
+            <div class="exp-title"><span class="icon">🏛️</span> 行政点位识别：政策/行政手段形成的阶段性高低点</div>
+            <div class="exp-content">
+                <ul>
+                    <li><strong>核心概念</strong>：政府通过政策、行政手段、监管干预等方式，主动打压或抬高市场/板块/个股价格，形成的阶段性低点或高点</li>
+                    <li><strong>行政打压低点</strong>：监管出手降温、限制交易、窗口指导 → 大概率是阶段性低点 → 逢低布局</li>
+                    <li><strong>行政利好高点</strong>：政策密集发布、领导喊话、国家队护盘 → 大概率是阶段性高点 → 逢高减仓</li>
+                    <li><strong>判断矩阵</strong>：<br>
+                        ├─ 高位+行政利好 = 阶段性高点（利好出尽）<br>
+                        ├─ 低位+行政打压 = 阶段性低点（利空出尽）<br>
+                        ├─ 高位+行政打压 = 加速下跌（风险释放）<br>
+                        └─ 低位+行政利好 = 反弹启动（政策底）
+                    </li>
+                    <li><strong>经典案例</strong>：①2024年2月量化监管风暴（行政打压→阶段性低点→反弹30%+）；②2024年9月政策组合拳（行政利好→阶段性高点→回调20%+）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
     <div class="footer">
         悟空财经 · 复盘报告中心 &nbsp;|&nbsp; 制作：QClaw AI<br>
         数据来源：悟空每日市场判断 + 实际走势对照
@@ -1674,6 +1865,12 @@ function showView(type) {
     if (type === 'all') {
         document.querySelectorAll('.report-content').forEach(r => r.style.display = 'none');
         document.getElementById('report-may').style.display = 'block';
+    } else if (type === 'experience') {
+        document.querySelectorAll('.report-content').forEach(r => r.style.display = 'none');
+        document.getElementById('experience-library').style.display = 'block';
+    } else {
+        document.querySelectorAll('.report-content').forEach(r => r.style.display = 'none');
+        document.getElementById('report-week10').style.display = 'block';
     }
 }
 

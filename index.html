@@ -85,6 +85,16 @@
             border-color: #a371f7;
             box-shadow: 0 0 12px rgba(163,113,247,0.3);
         }
+        .page-nav .page-btn-macro {
+            background: rgba(57,208,216,0.15);
+            border: 1px solid rgba(57,208,216,0.4);
+            color: #39d0d8;
+        }
+        .page-nav .page-btn-macro:hover {
+            background: rgba(57,208,216,0.25);
+            border-color: #39d0d8;
+            box-shadow: 0 0 12px rgba(57,208,216,0.3);
+        }
 
         /* ===== 标题 ===== */
         .header {
@@ -887,6 +897,7 @@
             <a href="index.html" class="page-btn page-btn-timeline active">📅 新闻时间线</a>
             <a href="review.html" class="page-btn page-btn-review">📊 复盘报告</a>
             <a href="monthly-events.html" class="page-btn page-btn-events">📅 每月重大事件</a>
+            <a href="macro-indicators.html" class="page-btn page-btn-macro">🌍 宏观因子</a>
         </div>
 
         <div class="header">
@@ -915,9 +926,40 @@
         </footer>
     </div>
 
-    <script src="news-data.js"></script>
+    <!-- 数据加载器 -->
+    <script src="news-data-loader.js"></script>
     <script>
-        let currentDate = availableDates[0];
+        // 动态数据存储
+        let newsData = {};
+        let availableDates = [];
+        let currentDate = null;
+        let dataLoaded = false;
+
+        // 初始化数据
+        async function initData() {
+            try {
+                // 加载索引
+                const index = await NewsDataLoader.loadIndex();
+                availableDates = index.availableDates;
+                
+                if (availableDates.length === 0) {
+                    console.error('没有可用日期');
+                    return false;
+                }
+                
+                // 加载最新日期数据
+                currentDate = availableDates[0];
+                const latestData = await NewsDataLoader.loadDate(currentDate);
+                newsData[currentDate] = latestData;
+                
+                dataLoaded = true;
+                console.log('数据加载完成，最新日期:', currentDate);
+                return true;
+            } catch (error) {
+                console.error('数据加载失败:', error);
+                return false;
+            }
+        }
 
         function formatDate(dateStr) {
             const [y, m, d] = dateStr.split('-');
@@ -941,25 +983,55 @@
             document.getElementById('nextBtn').disabled = currentIndex <= 0;
         }
 
-        function onDatePickerChange(value) {
+        async function onDatePickerChange(value) {
             if (value && availableDates.includes(value)) {
                 currentDate = value;
+                // 如果数据未加载，先加载
+                if (!newsData[currentDate]) {
+                    try {
+                        const data = await NewsDataLoader.loadDate(currentDate);
+                        newsData[currentDate] = data;
+                    } catch (error) {
+                        console.error('加载日期数据失败:', error);
+                        return;
+                    }
+                }
                 updateUI();
             }
         }
 
-        function goToPrevDate() {
+        async function goToPrevDate() {
             const currentIndex = availableDates.indexOf(currentDate);
             if (currentIndex < availableDates.length - 1) {
                 currentDate = availableDates[currentIndex + 1];
+                // 按需加载数据
+                if (!newsData[currentDate]) {
+                    try {
+                        const data = await NewsDataLoader.loadDate(currentDate);
+                        newsData[currentDate] = data;
+                    } catch (error) {
+                        console.error('加载日期数据失败:', error);
+                        return;
+                    }
+                }
                 updateUI();
             }
         }
 
-        function goToNextDate() {
+        async function goToNextDate() {
             const currentIndex = availableDates.indexOf(currentDate);
             if (currentIndex > 0) {
                 currentDate = availableDates[currentIndex - 1];
+                // 按需加载数据
+                if (!newsData[currentDate]) {
+                    try {
+                        const data = await NewsDataLoader.loadDate(currentDate);
+                        newsData[currentDate] = data;
+                    } catch (error) {
+                        console.error('加载日期数据失败:', error);
+                        return;
+                    }
+                }
                 updateUI();
             }
         }
@@ -1508,8 +1580,18 @@
         }
 
         // 初始化
-        initNav();
-        updateUI();
+        async function init() {
+            const success = await initData();
+            if (success) {
+                initNav();
+                updateUI();
+            } else {
+                document.getElementById('content').innerHTML = 
+                    '<p style="text-align:center;color:#f85149;padding:60px;">数据加载失败，请刷新页面重试</p>';
+            }
+        }
+        
+        init();
     </script>
 </body>
 </html>
