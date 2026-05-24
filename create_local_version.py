@@ -1,16 +1,32 @@
 # -*- coding: utf-8 -*-
 """
-创建本地版本脚本
+⚠️ 此脚本已弃用！请使用 update_local_html.py
+
+创建本地版本脚本（旧版）
 将 index.html 和 news-data.js 合并为 local_news.html
+
+新版脚本：update_local_html.py（支持 news-data/ 分片目录）
 """
 
 # 路径配置
-INDEX_PATH = r'C:\Users\asus\.qclaw\workspace\index.html'
-DATA_PATH = r'C:\Users\asus\.qclaw\workspace\news-data.js'
-OUTPUT_PATH = r'C:\Users\asus\.qclaw\workspace\local_news.html'
+INDEX_PATH = r'd:\.qclaw\workspace\index.html'
+DATA_PATH = r'd:\.qclaw\workspace\news-data.js'
+OUTPUT_PATH = r'd:\.qclaw\workspace\local_news.html'
 
 def create_local_version():
     """创建本地版本"""
+    print("="*60)
+    print("⚠️  此脚本已弃用！请使用 update_local_html.py")
+    print("="*60)
+    print("原因：项目已改用 news-data/ 分片目录结构")
+    print("新脚本支持从 news-data/YYYY-MM-DD.json 加载数据")
+    print("="*60)
+    print()
+    print("请运行: python update_local_html.py")
+    print("="*60)
+    return False
+    
+    # 以下代码已弃用
     print("="*60)
     print("[创建本地版本]")
     print("="*60)
