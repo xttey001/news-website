@@ -698,6 +698,117 @@
         .news-section.a-level .section-title { color: var(--gold); }
         .news-section.douyin .section-title { color: var(--blue); }
 
+        /* ===== 上帝双时空复盘 ===== */
+        .god-perspective-section {
+            margin-top: 16px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.12) 0%, rgba(255,152,0,0.08) 100%);
+            border: 2px solid rgba(255,215,0,0.4);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .god-perspective-section .section-title { color: #FFD700; }
+        .god-core-formula {
+            background: rgba(0,0,0,0.25);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-family: monospace;
+            color: #FFD700;
+            text-align: center;
+            font-size: 13px;
+        }
+        .god-step {
+            background: rgba(0,0,0,0.15);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .god-step-title {
+            font-weight: 600;
+            color: #FFD700;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .god-step-content {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .god-priority-badge {
+            display: inline-block;
+            background: rgba(248,81,73,0.3);
+            color: #FF6B6B;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .god-check-pass { color: var(--green); }
+        .god-check-warn { color: var(--orange); }
+        .god-check-fail { color: var(--red); }
+        .god-iron-law {
+            background: rgba(255,215,0,0.1);
+            border-left: 3px solid #FFD700;
+            padding: 8px 12px;
+            margin: 8px 0;
+            font-size: 13px;
+        }
+        .god-position-box {
+            background: rgba(63,185,80,0.15);
+            border: 1px solid rgba(63,185,80,0.4);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 12px;
+        }
+        .god-position-title {
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 8px;
+        }
+        .god-attribution-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .god-attribution-item {
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+        }
+        .god-attribution-weight {
+            font-size: 12px;
+            color: #FFD700;
+            font-weight: 600;
+        }
+        .god-attribution-desc {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+        .god-trap-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .god-trap-item {
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            padding: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .god-trap-action {
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .god-trap-action.avoid { color: var(--red); }
+        .god-trap-action.focus { color: var(--green); }
+
         /* ===== 新闻卡片 ===== */
         .news-card {
             background: rgba(255,255,255,0.03);
@@ -872,6 +983,81 @@
             font-size: 12px;
             color: #FFC107;
             margin-top: 8px;
+        }
+        /* ===== 八戒贝叶斯详细分析卡片 ===== */
+        .bayes-detail-section {
+            margin-top: 24px;
+        }
+        .bayes-detail-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .bayes-detail-header {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .bayes-detail-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .bayes-probability-row {
+            display: flex;
+            justify-content: space-around;
+            margin: 16px 0;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+        .bayes-prob-item {
+            text-align: center;
+        }
+        .bayes-prob-label {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+        }
+        .bayes-prob-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--green);
+        }
+        .bayes-prob-value.high { color: var(--green); }
+        .bayes-prob-value.medium { color: #FFC107; }
+        .bayes-prob-value.low { color: #f44336; }
+        .bayes-detail-row {
+            display: flex;
+            gap: 16px;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+        .bayes-detail-label {
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+        .bayes-detail-value {
+            color: var(--text);
+            font-weight: 600;
+        }
+        .bayes-detail-factors {
+            margin-top: 12px;
+            padding: 10px;
+            background: rgba(255,193,7,0.05);
+            border-left: 3px solid #FFC107;
+            border-radius: 0 6px 6px 0;
+            font-size: 12px;
+        }
+        .bayes-detail-wukong {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(63,185,80,0.05);
+            border-left: 3px solid var(--green);
+            border-radius: 0 6px 6px 0;
+            font-size: 12px;
         }
         /* ===== Footer ===== */
         footer {
@@ -1091,24 +1277,35 @@
                         <div class="news-title">${item.emoji} ${item.title}</div>
                         ${item.source ? '<div class="news-source">来源：' + item.source + '</div>' : ''}
                     </div>
-                    <div class="news-row"><span class="label">要点：</span>${item.key_point || item.summary || ''}</div>
-                    <div class="news-row"><span class="label">影响时长：</span>${item.duration}</div>`;
+                    <div class="news-row"><span class="label">要点：</span>${item.key_points || item.key_point || item.summary || ''}</div>
+                    <div class="news-row"><span class="label">影响时长：</span>${item.duration || '1-3天'}</div>`;
 
-            if (item.etfs && item.etfs.length) {
+            // 支持新的 etf_mapping 格式
+            const etfMapping = item.etf_mapping || item.etfs;
+            if (etfMapping && etfMapping.length) {
+                const etfItems = etfMapping.map(e => {
+                    if (typeof e === 'object' && e.code) {
+                        return { name: `${e.code} ${e.name}`, sentiment: e.type || '利好', reason: e.reason };
+                    }
+                    return typeof e === 'object' ? e : { name: e, sentiment: '利好' };
+                });
                 html += `
                     <div class="mapping-section">
                         <div class="mapping-row">
                             <div class="mapping-label">📈 ETF映射：</div>
-                            ${renderTags(item.etfs)}
+                            ${renderTags(etfItems)}
                         </div>
                     </div>`;
             }
 
-            if (item.stocks && item.stocks.length) {
-                // 纯字符串个股默认标记为利好，保持与ETF标签风格一致
-                const stockItems = item.stocks.map(s => {
-                    if (typeof s === 'object') return s;
-                    return { name: s, sentiment: '利好' };
+            // 支持新的 stock_mapping 格式
+            const stockMapping = item.stock_mapping || item.stocks;
+            if (stockMapping && stockMapping.length) {
+                const stockItems = stockMapping.map(s => {
+                    if (typeof s === 'object' && s.name) {
+                        return { name: s.name, sentiment: s.type || '利好', reason: s.reason };
+                    }
+                    return typeof s === 'object' ? s : { name: s, sentiment: '利好' };
                 });
                 html += `
                     <div class="mapping-section">
@@ -1130,55 +1327,78 @@
         // 渲染单条新闻的贝叶斯分析
         function renderNewsBayesAnalysis(newsTitle, bayesData) {
             if (!bayesData) return '';
-            const pc = bayesData.posterior >= 65 ? 'high' : bayesData.posterior >= 50 ? 'medium' : 'low';
-            const priorJudg = bayesData.prior_judgment || '历史基准';
-            const priorProb = bayesData.prior_prob || bayesData.prior || 50;
-            const likelihoodJudg = bayesData.likelihood_judgment || '新闻信息强度';
-            const likelihoodProb = bayesData.likelihood_prob || bayesData.likelihood || 50;
-            const posterior = bayesData.posterior || 50;
+            const pc = bayesData.posterior_probability || bayesData.posterior >= 65 ? 'high' : bayesData.posterior >= 50 ? 'medium' : 'low';
+            const priorProbRaw = bayesData.prior_probability || bayesData.prior_prob || bayesData.prior || 50;
+            const likelihoodProbRaw = bayesData.likelihood || bayesData.likelihood_prob || 50;
+            const posteriorRaw = bayesData.posterior_probability || bayesData.posterior || 50;
+            // 移除可能的%符号
+            const priorProb = String(priorProbRaw).replace(/%/g, '');
+            const likelihoodProb = String(likelihoodProbRaw).replace(/%/g, '');
+            const posterior = String(posteriorRaw).replace(/%/g, '');
             const expectedReturn = bayesData.expected_return || 'N/A';
             const confidence = bayesData.confidence_interval || bayesData.confidence || 'N/A';
-            const keyVar = bayesData.key_variables || bayesData.key_variable || bayesData['关键变量'] || 'N/A';
+            const keyFactors = bayesData.key_factors || bayesData.key_variables || bayesData.key_variable || 'N/A';
+            const wukongValidation = bayesData.wukong_validation || '';
             return `
-            <div class="bayes-card news-bayes-card">
-                <div class="bayes-card-title">🧮 八戒贝叶斯分析</div>
-                <table class="bayes-table">
-                    <thead>
-                        <tr><th>维度</th><th>判断</th><th>概率</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>先验（市场基准）</td>
-                            <td>${priorJudg}</td>
-                            <td>${priorProb}%</td>
-                        </tr>
-                        <tr>
-                            <td>似然（数据验证）</td>
-                            <td>${likelihoodJudg}</td>
-                            <td>${likelihoodProb}%</td>
-                        </tr>
-                        <tr class="posterior-row">
-                            <td>后验（综合）</td>
-                            <td>做多概率</td>
-                            <td><strong class="win-rate ${pc}">${posterior}%</strong></td>
-                        </tr>
-                        <tr>
-                            <td>预期收益率</td>
-                            <td>ETF/个股</td>
-                            <td><strong>${expectedReturn}</strong></td>
-                        </tr>
-                        <tr>
-                            <td>置信区间</td>
-                            <td>95%CI</td>
-                            <td>${confidence}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="key-variable">💡 关键变量：${keyVar}</div>
+            <div class="bayes-detail-card">
+                <div class="bayes-detail-header">
+                    <span class="bayes-detail-title">📊 ${newsTitle}</span>
+                </div>
+                <div class="bayes-probability-row">
+                    <div class="bayes-prob-item">
+                        <div class="bayes-prob-label">先验概率</div>
+                        <div class="bayes-prob-value">${priorProb}%</div>
+                    </div>
+                    <div class="bayes-prob-item">
+                        <div class="bayes-prob-label">似然</div>
+                        <div class="bayes-prob-value">${likelihoodProb}%</div>
+                    </div>
+                    <div class="bayes-prob-item">
+                        <div class="bayes-prob-label">后验概率</div>
+                        <div class="bayes-prob-value ${pc}">${posterior}%</div>
+                    </div>
+                </div>
+                <div class="bayes-detail-row">
+                    <span class="bayes-detail-label">预期收益：</span>
+                    <span class="bayes-detail-value">${expectedReturn}</span>
+                    <span class="bayes-detail-label">置信区间：</span>
+                    <span class="bayes-detail-value">${confidence}</span>
+                </div>
+                <div class="bayes-detail-factors">
+                    <span class="bayes-detail-label">💡 关键因子：</span>${keyFactors}
+                </div>
+                ${wukongValidation ? `<div class="bayes-detail-wukong">
+                    <span class="bayes-detail-label">🐵 悟空验证：</span>${wukongValidation}
+                </div>` : ''}
             </div>`;
         }
 
+        // 从每条新闻的 bayes_analysis 构建 bajie_bayesian 结构（兼容新旧数据格式）
+        function buildBajieBayesian(data) {
+            const allNews = [].concat(data.s_level || [], data.a_level || [], data.douyin || []);
+            const newsAnalysis = [];
+            const decisionMatrix = [];
+            allNews.forEach(item => {
+                const ba = item.bayes_analysis;
+                if (ba) {
+                    newsAnalysis.push({ news_title: item.title, ...ba });
+                    const wr = ba.posterior || 50;
+                    const action = wr >= 65 ? '✅ 坚定做多' : wr >= 50 ? '⚠️ 轻仓' : '❌ 回避';
+                    decisionMatrix.push({
+                        news: item.title.substring(0, 15) + '...',
+                        win_rate: wr,
+                        expected_return: ba.expected_return || 'N/A',
+                        risk_ratio: wr >= 65 ? '1:3' : wr >= 50 ? '1:2' : '1:1',
+                        action: action
+                    });
+                }
+            });
+            if (newsAnalysis.length === 0) return null;
+            return { news_analysis: newsAnalysis, decision_matrix: decisionMatrix };
+        }
+
         function renderContent() {
+            try {
             const data = newsData[currentDate];
             if (!data) {
                 document.getElementById('content').innerHTML = '<p style="text-align:center;color:#666;padding:60px;">该日期暂无数据</p>';
@@ -1266,10 +1486,12 @@
             }
 
             // 决策矩阵 + 八戒最终结论（汇总部分）
-            // 优先使用 bajie_conclusion.decision_matrix，如果不存在则从 s_level/a_level 构建
-            const bjConclusion = data.bajie_conclusion || {};
-            const decisionMatrix = bjConclusion.decision_matrix || (buildBajieBayesian(data) || {}).decision_matrix || [];
-            const overall = bjConclusion || {};
+            // 优先使用 bajie_conclusion.decision_matrix，兼容 bajie_analysis 格式
+            const bjConclusion = data.bajie_conclusion || data.bajie_analysis || {};
+            const decisionMatrix = bjConclusion.decision_matrix || bjConclusion.decisionMatrix || (buildBajieBayesian(data) || {}).decision_matrix || [];
+            const overall = bjConclusion.final_conclusion || bjConclusion || {};
+            // 用于S/A级新闻贝叶斯分析查找
+            const bj = buildBajieBayesian(data) || { news_analysis: [], decision_matrix: [] };
 
             if (decisionMatrix && decisionMatrix.length) {
                 // 决策矩阵表格
@@ -1291,8 +1513,8 @@
                 decisionMatrix.forEach(m => {
                         // 支持中英文两种字段格式
                         const newsTitle = m.news || m['新闻'] || 'N/A';
-                        const winRateStr = m.win_rate || m['做多概率'] || '50%';
-                        const winRateNum = parseInt(winRateStr) || 50;
+                        const winRateStrRaw = m.win_rate || m['做多概率'] || '50%';
+                        const winRateNum = parseInt(String(winRateStrRaw).replace(/%/g, '')) || 50;
                         const expectedReturn = m.expected_return || m['预期收益'] || 'N/A';
                         const riskRatio = m.risk_ratio || m['风险比'] || '1:1';
                         const action = m.action || m['建议'] || '观望';
@@ -1314,32 +1536,45 @@
 
                 // 八戒最终结论
                 if (overall) {
-                    const wrStr = overall.win_rate || '';
+                    const wrStr = overall.win_rate || overall.winRate || '';
                     const wrNum = parseInt(wrStr) || 50;
                     const wrClass = wrNum >= 65 ? 'high' : wrNum >= 50 ? 'medium' : 'low';
+                    const optimalCombo = overall.optimal_combo || overall.optimalCombo || overall.best_etfs || overall.optimal_etfs || '';
                     html += `
                     <div class="section conclusion-section">
                         <div class="section-title">🧠 八戒最终结论</div>
                         <div class="bajie-conclusion">
-                            <div class="bajie-conclusion-row"><span class="bc-label">最优行动：</span><span>${overall.best_action || overall.optimal_action || overall.action || ''}</span></div>
-                            <div class="bajie-conclusion-row"><span class="bc-label">最优ETF组合：</span><span>${overall.best_etfs || overall.optimal_etfs || ''}</span></div>
-                            <div class="bajie-conclusion-row"><span class="bc-label">胜率：</span><span class="win-rate ${wrClass}">${wrStr || overall.win_rate || ''}</span></div>
-                            <div class="bajie-conclusion-row"><span class="bc-label">最大回撤警戒：</span><span class="win-rate low">${overall.stop_loss || overall.max_drawdown || ''}</span></div>
+                            <div class="bajie-conclusion-row"><span class="bc-label">最优行动：</span><span>${overall.best_action || overall.optimal_action || overall.action || optimalCombo || ''}</span></div>
+                            <div class="bajie-conclusion-row"><span class="bc-label">最优ETF组合：</span><span>${optimalCombo}</span></div>
+                            <div class="bajie-conclusion-row"><span class="bc-label">胜率：</span><span class="win-rate ${wrClass}">${wrStr}</span></div>
+                            <div class="bajie-conclusion-row"><span class="bc-label">最大回撤警戒：</span><span class="win-rate low">${overall.max_drawdown_alert || overall.stop_loss || overall.max_drawdown || ''}</span></div>
                         </div>
                     </div>`;
                 }
 
+                // 每条新闻的详细贝叶斯分析
+                if (decisionMatrix.length > 0) {
+                    html += `
+                    <div class="section bayes-detail-section">
+                        <div class="section-title">📋 八戒贝叶斯决策分析</div>`;
+                    decisionMatrix.forEach(m => {
+                        const newsTitle = m.news || m['新闻'] || 'N/A';
+                        html += renderNewsBayesAnalysis(newsTitle, m);
+                    });
+                    html += `</div>`;
+                }
             }
 
             // ========== 唐僧最终仲裁模块 ==========
             const ts = data.tang_sanzang;
             if (ts) {
-                const tsAction = ts.最终行动 || ts.action || '';
-                const tsPosition = ts.仓位 || '';
-                const tsNote = ts.唐僧结论 || ts.唐憎结论 || ts.conclusion || '';
-                const conflicts = Array.isArray(ts.跨层矛盾仲裁) ? ts.跨层矛盾仲裁 : (Array.isArray(ts.仲裁矛盾) ? ts.仲裁矛盾 : []);
-                const riskTriggers = Array.isArray(ts.风控触发) ? ts.风控触发 : [];
-                const formulas = ts.仓位公式 || {};
+                // 兼容中英文键名
+                const tsAction = ts.final_action || ts.最终行动 || ts.action || '';
+                const tsPosition = ts.position_suggestion || ts.仓位 || '';
+                const tsNote = ts.tang_conclusion || ts.唐僧结论 || ts.唐憎结论 || ts.conclusion || '';
+                const conflicts = Array.isArray(ts.cross_layer_arbitration) ? ts.cross_layer_arbitration : (Array.isArray(ts.跨层矛盾仲裁) ? ts.跨层矛盾仲裁 : (Array.isArray(ts.仲裁矛盾) ? ts.仲裁矛盾 : []));
+                const riskTriggers = Array.isArray(ts.risk_triggers) ? ts.risk_triggers : (Array.isArray(ts.风控触发) ? ts.风控触发 : []);
+                const formulas = ts.position_formula || ts.仓位公式 || {};
 
                 html += `
                 <div class="section tang-sanzang-section">
@@ -1351,17 +1586,17 @@
                     <div class="tang-body">
                         <div class="ts-subtitle">仲裁矛盾：</div>`;
                 conflicts.forEach(c => {
-                    const cType = typeof c === 'object' ? (c.类型 || c.type || '') : '';
-                    const cDesc = typeof c === 'object' ? (c.描述 || c.desc || String(c)) : String(c);
-                    const cCoef = typeof c === 'object' ? (c.唐憎系数 || c.coef || '') : '';
+                    const cType = typeof c === 'object' ? (c.type || c.类型 || '') : '';
+                    const cDesc = typeof c === 'object' ? (c.description || c.描述 || c.desc || String(c)) : String(c);
+                    const cCoef = typeof c === 'object' ? (c.tang_coefficient || c.唐憎系数 || c.coef || '') : '';
                     html += `<div class="ts-conflict-item">⚠️ ${cType ? cType + '：' : ''}${cDesc}${cCoef ? '（' + cCoef + '）' : ''}</div>`;
                 });
                 html += `
-                        <div class="ts-formula">仓位公式：${formulas.基础仓位 || ''} × ${formulas.唐僧系数 || formulas.唐憎系数 || ''} × ${formulas.风控系数 || '1.0'} = ${formulas.结果 || tsPosition}</div>`;
+                        <div class="ts-formula">仓位公式：${formulas.base_position || formulas.基础仓位 || ''} × ${formulas.tang_coefficient || formulas.唐僧系数 || formulas.唐憎系数 || ''} × ${formulas.risk_coefficient || formulas.风控系数 || '1.0'} = ${formulas.result || formulas.结果 || tsPosition}</div>`;
                 if (riskTriggers.length > 0) {
                     html += `<div class="ts-subtitle">🚨 风控触发：</div>`;
                     riskTriggers.forEach(r => {
-                        html += `<div class="ts-risk-item">${typeof r === 'string' ? r : (r.条件 || r.condition || JSON.stringify(r))}</div>`;
+                        html += `<div class="ts-risk-item">${typeof r === 'string' ? r : (r.condition || r.条件 || JSON.stringify(r))}</div>`;
                     });
                 }
                 html += `
@@ -1389,11 +1624,11 @@
                     <div class="sangsha-stats">
                         <div class="sg-stat">
                             <span class="stat-label">平均买入概率</span>
-                            <span class="stat-value buy">${sg.avg_buy_prob || 0}%</span>
+                            <span class="stat-value buy">${String(sg.avg_buy_prob || 0).replace(/%/g, '')}%</span>
                         </div>
                         <div class="sg-stat">
                             <span class="stat-label">平均恐慌概率</span>
-                            <span class="stat-value panic">${sg.avg_panic_prob || 0}%</span>
+                            <span class="stat-value panic">${String(sg.avg_panic_prob || 0).replace(/%/g, '')}%</span>
                         </div>
                     </div>
                     <div class="sangsha-top-news">
@@ -1401,7 +1636,7 @@
                 
                 const sgResults = sg.analysis_results || [];
                 sgResults.slice(0, 5).forEach((r, i) => {
-                    const buyProb = r.买入概率 || 0;
+                    const buyProb = String(r.买入概率 || 0).replace(/%/g, '');
                     const tags = (r.情绪标签 || []).join(', ');
                     const dateTag = r.date || '';
                     const decayInfo = r.decay ? ` [${(r.decay*100).toFixed(0)}%权重]` : '';
@@ -1409,7 +1644,7 @@
                         <div class="sg-news-item">
                             <div class="sg-news-rank">${i+1}</div>
                             <div class="sg-news-content">
-                                <div class="sg-news-title">${r.full_title || r.title || ''}</div>
+                                <div class="sg-news-title">${r.title || r.full_title || ''}</div>
                                 <div class="sg-news-meta">
                                     <span class="sg-buy-prob">买入概率: ${buyProb}%</span>
                                     <span class="sg-tags">${tags}</span>
@@ -1427,51 +1662,159 @@
             // ========== 白龙马主力行为模块 ==========
             const wd = data.white_dragon || data.white_dragon_decision;
             if (wd) {
-                const usingRetail = wd.是否利用散户 ? '是' : '否';
-                const retailClass = wd.是否利用散户 ? 'warning' : 'normal';
+                const usingRetail = wd.is_using_retail ? '是' : '否';
+                const retailClass = wd.is_using_retail ? 'warning' : 'normal';
                 html += `
                 <div class="section white-dragon-section">
                     <div class="section-title">🐴 白龙马主力行为</div>
                     <div class="wd-main-state">
                         <span class="wd-label">主力状态:</span>
-                        <span class="wd-value state-${wd.主力状态 || 'unknown'}">${wd.主力状态 || '观望'}</span>
-                        <span class="wd-stage">(${wd.阶段 || '观察'})</span>
+                        <span class="wd-value state-${wd['主力状态'] || 'unknown'}">${wd['主力状态'] || wd.stage || '观望'}</span>
+                        <span class="wd-stage">(${wd.stage || '观察'})</span>
                     </div>
-                    <div class="wd-explain">${wd.行为解释 || ''}</div>
+                    <div class="wd-explain">${wd.behavior_analysis || wd['行为解释'] || ''}</div>
                     <div class="wd-using-retail ${retailClass}">
                         <span class="wd-label">是否利用散户:</span>
                         <span class="wd-value">${usingRetail}</span>
                     </div>
-                    <div class="wd-advice">${wd.综合建议 || ''}</div>
+                    <div class="wd-advice">${wd.recommendation || wd['综合建议'] || ''}</div>
+                </div>`;
+            }
+
+            // ========== 上帝双时空复盘 ==========
+            const gp = data.god_perspective;
+            if (gp) {
+                html += `
+                <div class="section god-perspective-section">
+                    <div class="section-title">🔮 上帝双时空复盘 4.0</div>
+                    
+                    <div class="god-core-formula">
+                        ${gp.core_formula || '新闻 → 注意力 → 流动性 → 利润 → 现金流 → Capex → 最终股价'}
+                        <div style="margin-top:8px;color:#FF6B6B;">
+                            核心优先级：${gp.core_priority || 'Capex > 收费 > 需求 > 能力'}
+                            <span class="god-priority-badge">最高权重</span>
+                        </div>
+                    </div>
+                    
+                    <div class="god-step">
+                        <div class="god-step-title">📌 Step 1: 冻结历史快照</div>
+                        <div class="god-step-content">
+                            <div><strong>新闻事实：</strong>${gp.step1_freeze_snapshot?.news_facts || '-'}</div>
+                            <div><strong>市场叙事：</strong>${gp.step1_freeze_snapshot?.market_narrative || '-'}</div>
+                            <div><strong>共识标的：</strong>${(gp.step1_freeze_snapshot?.consensus_stocks || []).join('、') || '-'}</div>
+                            <div><strong>增长属性：</strong><span style="color:#FFD700;">${gp.step1_freeze_snapshot?.growth_attribute || '-'}</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="god-step">
+                        <div class="god-step-title">📌 Step 2: 需求链传导</div>
+                        <div class="god-step-content">
+                            <div><strong>产业链：</strong>${gp.step2_demand_chain?.industry_chain || '-'}</div>
+                            <div><strong>时间节奏：</strong>${gp.step2_demand_chain?.time_rhythm || '-'}</div>
+                            <div><strong>供需格局：</strong>${gp.step2_demand_chain?.supply_demand || '-'}</div>
+                            <div><strong>类型：</strong><span style="color:${gp.step2_demand_chain?.expansion_vs_competition === 'Expansion' ? 'var(--green)' : 'var(--orange)'};">${gp.step2_demand_chain?.expansion_vs_competition || '-'}</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="god-step">
+                        <div class="god-step-title">📌 Step 3: 注意力中心 ≠ 利润中心</div>
+                        <div class="god-step-content">
+                            <div><strong>注意力中心：</strong><span style="color:var(--orange);">${gp.step3_attention_vs_profit?.attention_center || '-'}</span></div>
+                            <div><strong>利润中心：</strong><span style="color:var(--green);">${gp.step3_attention_vs_profit?.profit_center || '-'}</span></div>
+                            <div><strong>结论：</strong>${gp.step3_attention_vs_profit?.conclusion || '-'}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="god-step">
+                        <div class="god-step-title">📌 Step 4: Capex 资本开支验证 <span class="god-priority-badge">最高权重</span></div>
+                        <div class="god-step-content">
+                            <div class="god-iron-law">
+                                ${gp.step4_capex_verification?.status || '待验证'}
+                            </div>
+                            ${gp.step4_capex_verification?.warning ? `<div style="color:#FF6B6B;margin-top:8px;">⚠️ ${gp.step4_capex_verification.warning}</div>` : ''}
+                        </div>
+                    </div>
+                    
+                    <div class="god-step">
+                        <div class="god-step-title">📌 Step 5: 有生力量消灭战</div>
+                        <div class="god-step-content">
+                            <div>${gp.step5_living_force?.market_background?.index_behavior || ''}</div>
+                            <div>${gp.step5_living_force?.purification_signals?.判断 || ''}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="god-step">
+                        <div class="god-step-title">📌 Step 6: 高记忆行业捕兽夹</div>
+                        <div class="god-trap-grid">`;
+                const traps = gp.step6_trap_check?.high_memory_traps || [];
+                traps.forEach(t => {
+                    const actionClass = t.action === '回避' ? 'avoid' : 'focus';
+                    html += `
+                            <div class="god-trap-item">
+                                <span>${t.板块}</span>
+                                <span class="god-trap-action ${actionClass}">${t.action}</span>
+                            </div>`;
+                });
+                html += `
+                        </div>
+                    </div>
+                    
+                    <div class="god-step">
+                        <div class="god-step-title">📌 Step 7: 系统锁死规则</div>
+                        <div class="god-step-content">`;
+                const lockActions = gp.step7_system_lock?.actions || [];
+                lockActions.forEach(a => {
+                    const checkClass = a.includes('✅') ? 'god-check-pass' : (a.includes('⚠️') ? 'god-check-warn' : '');
+                    html += `<div class="${checkClass}">${a}</div>`;
+                });
+                html += `
+                        </div>
+                    </div>
+                    
+                    <div class="god-step">
+                        <div class="god-step-title">📌 Step 8: 时空B预判（1-3-6个月）</div>
+                        <div class="god-step-content">
+                            <div><strong>1个月后：</strong>注意力中心预期${gp.step8_time_warp_prediction?.时空B_1month?.attention_center_result || '-'}</div>
+                            <div><strong>1个月后：</strong>利润中心预期${gp.step8_time_warp_prediction?.时空B_1month?.profit_center_result || '-'}</div>
+                            <div><strong>3个月后：</strong>注意力中心预期${gp.step8_time_warp_prediction?.时空B_3months?.attention_center_result || '-'}</div>
+                            <div><strong>3个月后：</strong>利润中心预期${gp.step8_time_warp_prediction?.时空B_3months?.profit_center_result || '-'}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="god-position-box">
+                        <div class="god-position-title">🎯 最终仓位决策</div>
+                        <div><strong>主题：</strong>${gp.final_decision?.theme || '-'}</div>
+                        <div><strong>重心：</strong><span style="color:var(--green);">${gp.final_decision?.focus || '-'}</span></div>
+                        <div><strong>仓位：</strong>${gp.final_decision?.position_suggestion || '-'}</div>
+                        <div><strong>止损：</strong>${gp.final_decision?.stop_loss || '-'}</div>
+                        <div><strong>时间窗口：</strong>${gp.final_decision?.time_window || '-'}</div>
+                    </div>
+                    
+                    <div class="god-attribution-grid">`;
+                const attr = gp.five_layer_attribution || {};
+                const attrItems = [
+                    {key: 'news_judgment', label: '①新闻判断'},
+                    {key: 'narrative_judgment', label: '②叙事判断'},
+                    {key: 'growth_attribute', label: '③增长属性'},
+                    {key: 'profit_center_capex', label: '④收税人+Capex'},
+                    {key: 'living_force_time', label: '⑤有生力量'}
+                ];
+                attrItems.forEach(item => {
+                    if (attr[item.key]) {
+                        html += `
+                            <div class="god-attribution-item">
+                                <div class="god-attribution-weight">${attr[item.key].weight || '-'}</div>
+                                <div class="god-attribution-desc">${item.label}</div>
+                            </div>`;
+                    }
+                });
+                html += `
+                    </div>
                 </div>`;
             }
 
             // 分隔线
             html += `<div class="section-divider"><span>=== 新闻详情 ===</span></div>`;
-
-            // 从每条新闻的 bayes_analysis 构建 bajie_bayesian 结构（兼容新旧数据格式）
-            function buildBajieBayesian(data) {
-                const allNews = [].concat(data.s_level || [], data.a_level || [], data.douyin || []);
-                const newsAnalysis = [];
-                const decisionMatrix = [];
-                allNews.forEach(item => {
-                    const ba = item.bayes_analysis;
-                    if (ba) {
-                        newsAnalysis.push({ news_title: item.title, ...ba });
-                        const wr = ba.posterior || 50;
-                        const action = wr >= 65 ? '✅ 坚定做多' : wr >= 50 ? '⚠️ 轻仓' : '❌ 回避';
-                        decisionMatrix.push({
-                            news: item.title.substring(0, 15) + '...',
-                            win_rate: wr,
-                            expected_return: ba.expected_return || 'N/A',
-                            risk_ratio: wr >= 65 ? '1:3' : wr >= 50 ? '1:2' : '1:1',
-                            action: action
-                        });
-                    }
-                });
-                if (newsAnalysis.length === 0) return null;
-                return { news_analysis: newsAnalysis, decision_matrix: decisionMatrix };
-            }
 
             // 智能匹配新闻和贝叶斯分析
             function findBayesForNews(newsTitle, newsAnalysisList, decisionMatrix) {
@@ -1577,6 +1920,10 @@
             }
 
             document.getElementById('content').innerHTML = html;
+            } catch (error) {
+                console.error('Render error:', error);
+                document.getElementById('content').innerHTML = '<p style="text-align:center;color:#f85149;padding:60px;">渲染错误: ' + error.message + '</p>';
+            }
         }
 
         // 初始化

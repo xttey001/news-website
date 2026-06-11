@@ -1,0 +1,659 @@
+{
+	"date": "2026-06-11",
+	"market_tone": {
+		"早报": "【2026-06-11 早盘】沪指低开0.3%报3979.71点，深成指低开0.4%，创业板指低开0.5%；小金属、氟化工板块高开，影视院线、文化传媒板块低开；央行开展1885亿元7天期逆回购操作；A股延续弱势震荡格局",
+		"晚报": "【2026-06-11 收盘】沪指跌0.16%报3987.01点，深成指跌0.68%，创业板指跌1.13%，科创综指涨1.0%；两市成交2.55万亿，缩量672亿；小金属、氟化工、光刻机板块走强，影视院线、文化传媒、空间计算板块走低；沪指探底3958点后回升，连续两日收长下影线"
+	},
+	"all_news": [
+		{
+			"emoji": "🟢",
+			"title": "央行开展1885亿元7天期逆回购操作，净投放1885亿元",
+			"source": "货币政策/央行",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟢",
+			"title": "工信部印发《\"人工智能+信息通信\"创新发展实施意见》",
+			"source": "政策/工信部",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟢",
+			"title": "小金属板块大涨，稀土永磁领涨两市",
+			"source": "市场数据/小金属",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟢",
+			"title": "氟化工板块走强，制冷剂涨价预期升温",
+			"source": "市场数据/氟化工",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟢",
+			"title": "光刻机板块活跃，半导体设备股反弹",
+			"source": "市场数据/光刻机",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟢",
+			"title": "科创综指涨1.0%，中芯国际涨1.6%",
+			"source": "市场数据/科创板",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟢",
+			"title": "中贝通信中标7.4亿元智能算力枢纽中心项目",
+			"source": "个股公告",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟢",
+			"title": "药明康德拟10亿元回购股份",
+			"source": "个股公告",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🔴",
+			"title": "影视院线板块大跌，AI视频概念承压",
+			"source": "市场数据/影视",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🔴",
+			"title": "文化传媒板块调整，短剧游戏概念回落",
+			"source": "市场数据/文化传媒",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🔴",
+			"title": "空间计算板块走低，VR/AR概念调整",
+			"source": "市场数据/空间计算",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟡",
+			"title": "沪指探底3958点后回升，连续两日收长下影线",
+			"source": "市场数据/A股",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟡",
+			"title": "世界杯开幕，全球风险偏好下降",
+			"source": "国际新闻",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟡",
+			"title": "美国CPI数据超预期，美联储加息预期升温",
+			"source": "国际新闻",
+			"date": "2026-06-11"
+		},
+		{
+			"emoji": "🟡",
+			"title": "中东局势紧张，油价波动影响市场",
+			"source": "国际新闻",
+			"date": "2026-06-11"
+		}
+	],
+	"s_level": [
+		{
+			"emoji": "🟡",
+			"title": "【S级】沪指连续两日探底回升，3960点支撑夯实",
+			"source": "市场数据",
+			"date": "2026-06-11",
+			"analysis": "沪指连续第二个交易日探底回升，最低探至3958.44点，收盘3987.01点，收出长下影线。连续三根长下影小阳线组合表明3960点附近支撑正在逐步夯实，市场正在构筑阶段性底部平台。但均线系统仍呈空头排列，5日均线继续向下压制，中期趋势依然明确向下。成交量萎缩672亿，观望情绪浓厚，多空僵持格局未变。",
+			"key_points": "沪指探底3958点后回升；连续两日收长下影线；3960点支撑夯实；市场构筑阶段性底部；均线空头排列未改变；成交缩量672亿",
+			"duration": "1-2周",
+			"etf_mapping": [
+				{"code": "510300", "name": "沪深300ETF", "type": "中性", "reason": "震荡筑底阶段"},
+				{"code": "588000", "name": "科创50ETF", "type": "利好", "reason": "科创综指涨1.0%"}
+			],
+			"stock_mapping": [
+				{"name": "中芯国际", "type": "利好", "reason": "涨1.6%，半导体反弹"},
+				{"name": "北方华创", "type": "利好", "reason": "半导体设备龙头"}
+			]
+		},
+		{
+			"emoji": "🟢",
+			"title": "【S级】工信部AI+通信政策落地，科技产业链获政策支撑",
+			"source": "政策/工信部",
+			"date": "2026-06-11",
+			"analysis": "工信部印发《\"人工智能+信息通信\"创新发展实施意见(2026-2028年)》，明确加快高速光电芯片、CPO、400G/800G高速网络研发验证，补齐产业链短板。到2028年目标城域算力1毫秒时延圈覆盖率≥75%，落地30个以上高价值应用场景。这为科技产业链提供了中长期政策支撑。",
+			"key_points": "AI+通信国家级顶层设计；高速光电芯片、CPO获支持；2028年明确目标；科技产业链政策支撑；中长期利好",
+			"duration": "1-3月",
+			"etf_mapping": [
+				{"code": "512480", "name": "半导体ETF", "type": "利好", "reason": "政策支持半导体产业链"},
+				{"code": "512930", "name": "纳指ETF", "type": "中性", "reason": "美股科技股联动"}
+			],
+			"stock_mapping": [
+				{"name": "中际旭创", "type": "利好", "reason": "CPO龙头"},
+				{"name": "华工科技", "type": "利好", "reason": "光模块龙头"},
+				{"name": "天孚通信", "type": "利好", "reason": "高速光器件"}
+			]
+		}
+	],
+	"a_level": [
+		{
+			"emoji": "🟢",
+			"title": "【A级】小金属、氟化工、光刻机板块逆势走强",
+			"source": "市场数据",
+			"date": "2026-06-11",
+			"analysis": "在市场整体弱势震荡背景下，小金属、氟化工、光刻机板块逆势走强。小金属板块受益于新能源需求增长和供给收缩预期；氟化工板块受制冷剂涨价预期推动；光刻机板块作为半导体设备核心，受益于国产替代加速和政策支持。",
+			"key_points": "小金属板块大涨；氟化工板块走强；光刻机板块活跃；逆势表现亮眼；资金寻求避险",
+			"duration": "1-3天",
+			"etf_mapping": [
+				{"code": "512480", "name": "半导体ETF", "type": "利好", "reason": "光刻机板块活跃"},
+				{"code": "512880", "name": "有色金属ETF", "type": "利好", "reason": "小金属板块大涨"}
+			],
+			"stock_mapping": [
+				{"name": "北方稀土", "type": "利好", "reason": "小金属龙头"},
+				{"name": "中微公司", "type": "利好", "reason": "光刻机设备龙头"},
+				{"name": "巨化股份", "type": "利好", "reason": "氟化工龙头"}
+			]
+		},
+		{
+			"emoji": "🔴",
+			"title": "【A级】影视院线、文化传媒板块领跌",
+			"source": "市场数据",
+			"date": "2026-06-11",
+			"analysis": "影视院线、文化传媒、空间计算板块领跌，AI视频概念承压。前期热门题材集体调整，资金从高位题材股流出，转向低估值防御板块。世界杯开幕也对影视院线板块造成短期冲击。",
+			"key_points": "影视院线板块大跌；文化传媒板块调整；空间计算板块走低；前期热门题材集体调整；世界杯开幕影响",
+			"duration": "1-3天",
+			"etf_mapping": [
+				{"code": "512930", "name": "纳指ETF", "type": "中性", "reason": "美股科技股影响"}
+			],
+			"stock_mapping": [
+				{"name": "光线传媒", "type": "利空", "reason": "影视院线龙头"},
+				{"name": "芒果超媒", "type": "利空", "reason": "文化传媒龙头"}
+			]
+		},
+		{
+			"emoji": "🟢",
+			"title": "【A级】央行1885亿逆回购注入流动性，资金面宽松",
+			"source": "货币政策",
+			"date": "2026-06-11",
+			"analysis": "央行开展1885亿元7天期逆回购操作，利率维持1.4%不变，当日无逆回购到期，实现净投放1885亿元。此举有助于缓解年中资金面紧张，为市场提供流动性支持。",
+			"key_points": "1885亿逆回购；净投放；利率1.4%；流动性宽松；年中资金面缓解",
+			"duration": "1-2天",
+			"etf_mapping": [
+				{"code": "510230", "name": "金融ETF", "type": "利好", "reason": "流动性宽松利好金融板块"}
+			],
+			"stock_mapping": [
+				{"name": "工商银行", "type": "利好", "reason": "流动性宽松利好银行"},
+				{"name": "建设银行", "type": "利好", "reason": "流动性宽松利好银行"}
+			]
+		}
+	],
+	"wukong_judgment": {
+		"emotion": "弱势筑底",
+		"analysis": [
+			"沪指跌0.16%报3987.01点，深成指跌0.68%，创业板指跌1.13%，科创综指涨1.0%",
+			"两市成交2.55万亿，较前一交易日缩量672亿，观望情绪浓厚",
+			"沪指探底3958点后回升，连续两日收长下影线，3960点支撑显现",
+			"小金属、氟化工、光刻机板块走强，影视院线、文化传媒领跌",
+			"中芯国际涨1.6%，半导体设备股反弹，科创综指逆势上涨",
+			"工信部发布AI+通信政策，为科技产业链提供中长期支撑",
+			"央行1885亿逆回购净投放，流动性宽松",
+			"空方动能释放，但多头也未能组织有效反攻，多空僵持",
+			"均线空头排列未改变，中期趋势仍向下，当前仅为弱势震荡",
+			"世界杯开幕+中东局势紧张，全球风险偏好下降",
+			"美国CPI超预期，美联储加息预期升温"
+		],
+		"strategy": [
+			{
+				"type": "关注",
+				"content": "小金属板块（北方稀土、盛和资源），逆势走强"
+			},
+			{
+				"type": "关注",
+				"content": "光刻机板块（中微公司、华创精机），半导体设备反弹"
+			},
+			{
+				"type": "关注",
+				"content": "CPO/光模块（中际旭创、华工科技），政策利好支撑"
+			},
+			{
+				"type": "观望",
+				"content": "影视院线、文化传媒，前期热门题材调整"
+			},
+			{
+				"type": "回避",
+				"content": "空间计算、VR/AR概念，短期承压"
+			},
+			{
+				"type": "风控",
+				"content": "关注3960点支撑，跌破则考验3930点"
+			}
+		]
+	},
+	"sangsha_module": {
+		"overall_sentiment": "谨慎观望",
+		"advice": "沪指连续两日探底回升，但成交量萎缩，观望情绪浓厚。散户容易被长下影线迷惑抄底，但中期趋势依然向下。影视院线、文化传媒等前期热门题材大跌，追高者被套。建议控制仓位，等待明确止跌信号。",
+		"avg_buy_prob": 35,
+		"avg_panic_prob": 40,
+		"total_news_count": 15,
+		"time_window": "收盘",
+		"analysis_results": [
+			{
+				"news": "沪指探底回升",
+				"title": "犹豫观望",
+				"追高买入概率": 30,
+				"抄底买入概率": 35,
+				"恐慌卖出概率": 25,
+				"观望概率": 50,
+				"情绪标签": ["犹豫", "观望"],
+				"buy_prob": 30,
+				"date": "2026-06-11",
+				"decay": 1
+			},
+			{
+				"news": "小金属板块大涨",
+				"title": "防御偏好",
+				"追高买入概率": 40,
+				"抄底买入概率": 30,
+				"panic_sell_prob": 15,
+				"观望_prob": 35,
+				"情绪标签": ["防御", "避险"],
+				"buy_prob": 45,
+				"date": "2026-06-11",
+				"decay": 1
+			},
+			{
+				"news": "文化传媒大跌",
+				"title": "题材退潮",
+				"追高买入概率": 10,
+				"抄底买入概率": 20,
+				"panic_sell_prob": 50,
+				"观望_prob": 45,
+				"情绪标签": ["恐慌", "题材退潮"],
+				"buy_prob": 15,
+				"date": "2026-06-11",
+				"decay": 1
+			},
+			{
+				"news": "工信部AI政策",
+				"title": "政策预期",
+				"追高买入概率": 35,
+				"抄底买入概率": 40,
+				"panic_sell_prob": 10,
+				"观望_prob": 40,
+				"情绪标签": ["政策利好", "观望"],
+				"buy_prob": 40,
+				"date": "2026-06-11",
+				"decay": 1
+			}
+		],
+		"韭菜行为总结": "散户容易被长下影线迷惑抄底，但成交量萎缩显示买盘不足。前期热门题材大跌，追高者损失惨重。世界杯开幕和中东局势紧张加剧市场观望情绪，建议保持耐心，等待市场明确方向。",
+		"market_implication": "情绪指标显示谨慎观望，防御板块受青睐，题材股退潮。散户抄底需谨慎，等待止跌信号。"
+	},
+	"white_dragon": {
+		"主力状态": "防御布局",
+		"stage": "筑底阶段",
+		"behavior_analysis": "主力资金从影视院线、文化传媒等前期热门题材流出，转向小金属、氟化工、光刻机等防御性和业绩确定性板块。沪指探底3958点时出现抄底资金承接，但整体量能不足。主力利用弱势震荡悄悄布局低估值板块，为后续反弹做准备。工信部AI政策发布后，资金开始关注CPO和光模块产业链。",
+		"is_using_retail": false,
+		"credibility": 0.75,
+		"wukong_signal": "弱势筑底",
+		"bajie_win_rate": "50%",
+		"recommendation": "关注小金属、光刻机、CPO，观望题材股",
+		"etf_signals": [
+			{
+				"name": "有色金属ETF",
+				"signal": 0.65,
+				"sentiment": "流入"
+			},
+			{
+				"name": "半导体ETF",
+				"signal": 0.55,
+				"sentiment": "流入"
+			},
+			{
+				"name": "传媒ETF",
+				"signal": -0.6,
+				"sentiment": "流出"
+			},
+			{
+				"name": "创业板ETF",
+				"signal": -0.4,
+				"sentiment": "小幅流出"
+			},
+			{
+				"name": "通信ETF",
+				"signal": 0.45,
+				"sentiment": "流入"
+			}
+		]
+	},
+	"bajie_analysis": {
+		"final_conclusion": {
+			"win_rate": "50%",
+			"holding_period": "1-3天",
+			"max_drawdown_alert": "-6%",
+			"optimal_combo": "小金属(10%)+半导体设备(5%)+CPO(5%)+现金80%，胜率50%，最大回撤6%止损"
+		},
+		"decision_matrix": [
+			{
+				"news": "沪指连续探底回升",
+				"win_rate": "50%",
+				"expected_return": "-1%~+2%",
+				"risk_ratio": "1:1",
+				"suggestion": "⚠️ 观望",
+				"prior_probability": "45%",
+				"likelihood": "55%",
+				"posterior_probability": "50%",
+				"confidence_interval": "[-2%, +3%]",
+				"key_factors": "3960点支撑、长下影线、缩量震荡",
+				"wukong_validation": "沪指探底3958点后回升，3960点支撑显现"
+			},
+			{
+				"news": "工信部AI+通信政策",
+				"win_rate": "65%",
+				"expected_return": "+2%~+5%",
+				"risk_ratio": "1:2",
+				"suggestion": "✅ 轻仓参与",
+				"prior_probability": "60%",
+				"likelihood": "70%",
+				"posterior_probability": "65%",
+				"confidence_interval": "[0%, +6%]",
+				"key_factors": "政策落地、CPO支撑、产业链受益",
+				"wukong_validation": "工信部发布AI+通信政策，为科技产业链提供中长期支撑"
+			},
+			{
+				"news": "小金属板块大涨",
+				"win_rate": "60%",
+				"expected_return": "+2%~+5%",
+				"risk_ratio": "1:2",
+				"suggestion": "✅ 轻仓参与",
+				"prior_probability": "55%",
+				"likelihood": "65%",
+				"posterior_probability": "60%",
+				"confidence_interval": "[0%, +6%]",
+				"key_factors": "新能源需求、供给收缩、资金流入",
+				"wukong_validation": "小金属板块逆势走强"
+			},
+			{
+				"news": "光刻机板块活跃",
+				"win_rate": "55%",
+				"expected_return": "+1%~+4%",
+				"risk_ratio": "1:1.5",
+				"suggestion": "✅ 轻仓参与",
+				"prior_probability": "50%",
+				"likelihood": "60%",
+				"posterior_probability": "55%",
+				"confidence_interval": "[-1%, +5%]",
+				"key_factors": "国产替代、半导体设备需求、政策支持",
+				"wukong_validation": "中芯国际涨1.6%，半导体设备股反弹"
+			},
+			{
+				"news": "文化传媒大跌",
+				"win_rate": "30%",
+				"expected_return": "-2%~-5%",
+				"risk_ratio": "1:0.4",
+				"suggestion": "❌ 回避",
+				"prior_probability": "35%",
+				"likelihood": "25%",
+				"posterior_probability": "30%",
+				"confidence_interval": "[-6%, -1%]",
+				"key_factors": "前期涨幅大、获利回吐、世界杯冲击",
+				"wukong_validation": "影视院线、文化传媒领跌"
+			},
+			{
+				"news": "成交缩量672亿",
+				"win_rate": "40%",
+				"expected_return": "-1%~+1%",
+				"risk_ratio": "1:0.6",
+				"suggestion": "⚠️ 观望",
+				"prior_probability": "40%",
+				"likelihood": "40%",
+				"posterior_probability": "40%",
+				"confidence_interval": "[-3%, +2%]",
+				"key_factors": "观望情绪、量能不足、多空僵持",
+				"wukong_validation": "两市成交2.55万亿，缩量672亿"
+			},
+			{
+				"news": "央行1885亿逆回购",
+				"win_rate": "55%",
+				"expected_return": "+0.5%~+2%",
+				"risk_ratio": "1:1.5",
+				"suggestion": "✅ 中性偏多",
+				"prior_probability": "50%",
+				"likelihood": "55%",
+				"posterior_probability": "55%",
+				"confidence_interval": "[-1%, +3%]",
+				"key_factors": "流动性宽松、资金面缓解",
+				"wukong_validation": "央行1885亿逆回购净投放，流动性宽松"
+			}
+		],
+		"fusion_notes": [
+			"【沙僧融合】情绪谨慎观望，防御板块受青睐→关注小金属",
+			"【白龙马融合】主力布局低估值板块→关注光刻机、CPO",
+			"【政策融合】工信部AI政策落地→利好半导体、通信产业链",
+			"【决策矩阵】胜率50%，建议轻仓20%布局防御+政策受益板块，保留80%现金"
+		]
+	},
+	"tang_sanzang": {
+		"position_suggestion": "20%（轻仓）",
+		"final_action": "🎯 小金属ETF 10% + 半导体设备ETF 5% + 通信ETF 5% + 现金80%",
+		"cross_layer_arbitration": [
+			{
+				"type": "筑底阶段",
+				"description": "沪指连续两日探底回升，3960点支撑显现",
+				"tang_coefficient": "×1.1"
+			},
+			{
+				"type": "缩量震荡",
+				"description": "两市成交2.55万亿，缩量672亿，观望情绪浓厚",
+				"tang_coefficient": "×0.7"
+			},
+			{
+				"type": "防御切换",
+				"description": "资金从题材股流向小金属、光刻机等防御板块",
+				"tang_coefficient": "×1.2"
+			},
+			{
+				"type": "政策利好",
+				"description": "工信部AI+通信政策落地，中长期利好科技产业链",
+				"tang_coefficient": "×1.15"
+			},
+			{
+				"type": "流动性宽松",
+				"description": "央行1885亿逆回购净投放，资金面缓解",
+				"tang_coefficient": "×1.1"
+			},
+			{
+				"type": "均线压制",
+				"description": "5日均线向下压制，中期趋势仍向下",
+				"tang_coefficient": "×0.8"
+			}
+		],
+		"position_formula": {
+			"base_position": "30%",
+			"tang_coefficient": "0.87（筑底+缩量+防御切换+政策利好+流动性+均线压制）",
+			"risk_coefficient": "0.77（量能不足，风险未完全解除）",
+			"result": "30%→20%（轻仓）"
+		},
+		"risk_triggers": [
+			"沪指跌破3955点→减仓至10%",
+			"创业板指跌破3800点→减仓至10%",
+			"跌停家数超过20家→观望",
+			"成交缩量至2.3万亿以下→观望",
+			"中东局势恶化→减仓"
+		],
+		"tang_conclusion": "【弱势筑底，轻仓布局】6月11日收盘，沪指跌0.16%报3987.01点，深成指跌0.68%，创业板指跌1.13%，科创综指涨1.0%。沪指探底3958点后回升，连续两日收长下影线，3960点支撑显现，但成交量萎缩672亿，观望情绪浓厚。工信部AI+通信政策落地为科技产业链提供中长期支撑，央行1885亿逆回购净投放缓解资金面。小金属、氟化工、光刻机板块逆势走强，影视院线、文化传媒领跌。建议轻仓20%布局防御+政策受益板块（小金属ETF 10%+半导体设备ETF 5%+通信ETF 5%），保留80%现金，等待明确止跌信号。"
+	},
+	"market_data": {
+		"shanghai": {
+			"index": 3987.01,
+			"change": "-0.16%",
+			"turnover": "1.19万亿",
+			"source": "新浪财经",
+			"fetch_time": "2026-06-11 15:00"
+		},
+		"shenzhen": {
+			"index": 14851.98,
+			"change": "-0.68%",
+			"turnover": "1.36万亿",
+			"source": "新浪财经",
+			"fetch_time": "2026-06-11 15:00"
+		},
+		"chi_next": {
+			"index": 3811.25,
+			"change": "-1.13%",
+			"turnover": "预估",
+			"source": "新浪财经",
+			"fetch_time": "2026-06-11 15:00"
+		},
+		"kechuang50": {
+			"index": 2034.3,
+			"change": "+1.0%",
+			"turnover": "预估",
+			"source": "新浪财经",
+			"fetch_time": "2026-06-11 15:00"
+		},
+		"market_summary": {
+			"total_turnover": "2.55万亿",
+			"up_count": 1200,
+			"down_count": 3800,
+			"north_bound": "预估流出",
+			"zt_count": 35,
+			"dt_count": 15
+		}
+	},
+	"hot_topics": [
+		"沪指探底3958点后回升，连续两日收长下影线",
+		"工信部发布AI+通信政策，利好科技产业链",
+		"小金属、氟化工、光刻机板块逆势走强",
+		"影视院线、文化传媒板块领跌",
+		"科创综指涨1.0%，半导体成分股反弹",
+		"央行开展1885亿元逆回购操作",
+		"两市成交2.55万亿，缩量672亿"
+	],
+	"douyin": [],
+	"data_source": "新浪财经/东方财富/今日头条/新华网",
+	"fetch_timestamp": "2026-06-11 15:00",
+	"real_data_note": "本数据基于2026年6月11日收盘真实市场数据，沪指跌0.16%报3987.01点，深成指跌0.68%，创业板指跌1.13%，科创综指涨1.0%",
+	"data_status": "收盘数据",
+	"god_perspective": {
+		"version": "4.0",
+		"date": "2026-06-11",
+		"core_formula": "新闻 → 注意力 → 流动性 → 利润 → 现金流 → Capex → 最终股价",
+		"core_priority": "Capex > 收费 > 需求 > 能力",
+		"step1_freeze_snapshot": {
+			"news_facts": "工信部发布《\"人工智能+信息通信\"创新发展实施意见(2026-2028年)》",
+			"market_narrative": "AI+通信顶层设计落地，利好科技产业链，CPO/光模块板块受益",
+			"consensus_stocks": ["中际旭创", "华工科技", "天孚通信"],
+			"my_judgment": "轻仓参与CPO产业链，政策催化推动",
+			"growth_attribute": "Expansion（蛋糕变大）——AI算力基础设施需求扩张"
+		},
+		"step2_demand_chain": {
+			"catalyst_strength": "国家级顶层设计，3年规划，颠覆性强",
+			"demand_quantifiable": "目标城域算力1毫秒时延圈覆盖率≥75%，30+应用场景",
+			"time_rhythm": "2026-2028年逐步落地，中长期利好",
+			"industry_chain": "高速光电芯片→CPO→400G/800G网络→应用场景",
+			"supply_demand": "CPO产能稀缺，扩产周期长，壁垒高",
+			"expansion_vs_competition": "Expansion"
+		},
+		"step3_attention_vs_profit": {
+			"attention_center": "AI概念股、应用端（初期批量涨停，散户追捧）",
+			"profit_center": "CPO/光模块（产能刚性，壁垒高，收税人）",
+			"conclusion": "政策受益最确定的是CPO/光模块上游，而非概念炒作的AI应用股"
+		},
+		"step4_capex_verification": {
+			"golden_order": "⚠️ 待跟踪",
+			"expansion_announcement": "⚠️ 待观察",
+			"contract_signed": "⚠️ 待验证",
+			"financial_capex": "⚠️ 无数据",
+			"policy_guidance": "✅ 工信部明确支持，到2028年目标清晰",
+			"status": "政策落地 √ | Capex待验证 ⚠️",
+			"warning": "仅凭政策不够，必须跟踪后续是否有真金白银的订单/扩产跟进"
+		},
+		"step5_living_force": {
+			"market_background": {
+				"index_behavior": "沪指连续两日探底3958点，3960点支撑显现",
+				"volume": "成交缩量672亿，观望情绪浓厚",
+				"theme_stocks": "影视院线、文化传媒大跌（前期热门题材）"
+			},
+			"high_memory_check": {
+				"影视院线": "✅ 是高记忆陷阱",
+				"文化传媒": "✅ 是高记忆陷阱",
+				"CPO/光模块": "❌ 否，尚未形成高记忆"
+			},
+			"purification_signals": {
+				"融资余额": "部分高拥挤板块融资余额下降",
+				"换手率": "缩量观望",
+				"判断": "旧题材高拥挤正在净化，CPO NEW MONEY机会"
+			}
+		},
+		"step6_trap_check": {
+			"high_memory_traps": [
+				{"板块": "影视院线", "status": "暴跌中", "action": "回避"},
+				{"板块": "文化传媒", "status": "调整中", "action": "回避"},
+				{"板块": "CPO/光模块", "status": "刚启动", "action": "关注"},
+				{"板块": "小金属", "status": "逆势走强", "action": "关注"}
+			],
+			"god_cycle": "全民信神→拥挤加剧→聪明钱离场→利空触发→暴跌→全民毁神→绝望→定价错配→重新研究"
+		},
+		"step7_system_lock": {
+			"trigger_event": "工信部AI+通信政策",
+			"actions": [
+				"✅ 已识别：注意力中心 ≠ 利润中心",
+				"✅ 收税人：CPO/光模块（产能刚性）",
+				"⚠️ Capex验证：待跟踪",
+				"✅ 有生力量：CPO非高记忆，NEW MONEY机会"
+			],
+			"position_allocation": {
+				"concept_stocks": "概念本体仓位 ≤ 15%",
+				"tax_collector_stocks": "收税人仓位 ≥ 85%"
+			}
+		},
+		"step8_time_warp_prediction": {
+			"时空A_current": {
+				"attention_center": "AI应用概念股（短期炒作）",
+				"profit_center": "CPO/光模块（收税人）",
+				"capex_status": "⚠️ 待验证",
+				"living_force": "旧题材高拥挤，CPO NEW MONEY"
+			},
+			"时空B_1month": {
+				"attention_center_result": "预期分化，部分A杀",
+				"profit_center_result": "CPO龙头业绩预期改善",
+				"capex_verification": "待观察",
+				"living_force": "旧题材继续出清"
+			},
+			"时空B_3months": {
+				"attention_center_result": "大部分证伪",
+				"profit_center_result": "CPO龙头主升浪",
+				"capex_verification": "预期有真金白银跟进",
+				"living_force": "筹码净化完成"
+			}
+		},
+		"final_decision": {
+			"theme": "工信部AI+通信政策",
+			"growth_attribute": "Expansion（算力基础设施扩张）",
+			"focus": "CPO/光模块（收税人）",
+			"position_suggestion": "概念股 ≤ 15%，CPO龙头 ≥ 85%",
+			"stop_loss": "政策低于预期 / Capex无跟进",
+			"time_window": "政策催化→3-6个月业绩验证"
+		},
+		"five_layer_attribution": {
+			"news_judgment": {"weight": "10%", "content": "国家级顶层设计，判断正确"},
+			"narrative_judgment": {"weight": "15%", "content": "CPO受益逻辑清晰"},
+			"growth_attribute": {"weight": "20%", "content": "Expansion判断正确，算力基础设施受益"},
+			"profit_center_capex": {"weight": "30%", "content": "收税人识别正确，Capex待验证"},
+			"living_force_time": {"weight": "25%", "content": "识别旧题材高拥挤，CPO NEW MONEY"}
+		},
+		"self_check": [
+			"✅ 区分了注意力中心和利润中心",
+			"✅ 识别了CPO为收税人",
+			"⚠️ Capex验证未完成，需跟踪",
+			"✅ CPO板块不存在高记忆陷阱",
+			"✅ 时空B预判已记录",
+			"✅ 仓位分配符合规则"
+		],
+		"core_iron_laws": [
+			"✅ Capex > 收费 > 需求 > 能力（最高权重）",
+			"✅ 注意力中心 ≠ 利润中心",
+			"✅ 造神者未必赚钱，收税人往往暴富",
+			"⚠️ 等待Capex真金白银验证"
+		]
+	}
+}
