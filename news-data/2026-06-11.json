@@ -632,7 +632,90 @@
 			"focus": "CPO/光模块（收税人）",
 			"position_suggestion": "概念股 ≤ 15%，CPO龙头 ≥ 85%",
 			"stop_loss": "政策低于预期 / Capex无跟进",
-			"time_window": "政策催化→3-6个月业绩验证"
+			"time_window": "政策催化→3-6个月业绩验证",
+			"stock_recommendations": [
+				{
+					"rank": 1,
+					"name": "中际旭创",
+					"code": "300308",
+					"weight": "30%",
+					"reason": "CPO龙头，800G光模块出货量全球领先，直接受益AI算力基础设施建设",
+					"expected_return": "+3%~+5%",
+					"stop_loss": "-3%"
+				},
+				{
+					"rank": 2,
+					"name": "华工科技",
+					"code": "000988",
+					"weight": "25%",
+					"reason": "CPO核心器件供应商，激光器技术领先，订单持续增长",
+					"expected_return": "+2%~+4%",
+					"stop_loss": "-3%"
+				},
+				{
+					"rank": 3,
+					"name": "天孚通信",
+					"code": "300394",
+					"weight": "15%",
+					"reason": "光器件龙头，高速光模块配套齐全，产能扩张中",
+					"expected_return": "+2%~+4%",
+					"stop_loss": "-3%"
+				},
+				{
+					"rank": 4,
+					"name": "新易盛",
+					"code": "300502",
+					"weight": "10%",
+					"reason": "800G光模块出货，海外客户拓展顺利",
+					"expected_return": "+1%~+3%",
+					"stop_loss": "-3%"
+				},
+				{
+					"rank": 5,
+					"name": "中贝通信",
+					"code": "603220",
+					"weight": "5%",
+					"reason": "中标7.4亿智能算力枢纽项目，算力租赁业务增长",
+					"expected_return": "+2%~+5%",
+					"stop_loss": "-4%"
+				}
+			],
+			"etf_recommendations": [
+				{
+					"rank": 1,
+					"name": "通信ETF",
+					"code": "512480",
+					"weight": "30%",
+					"reason": "集中持有CPO/光模块龙头，政策利好直接受益"
+				},
+				{
+					"rank": 2,
+					"name": "半导体ETF",
+					"code": "512480",
+					"weight": "20%",
+					"reason": "半导体设备与材料间接受益AI算力需求"
+				},
+				{
+					"rank": 3,
+					"name": "科创50ETF",
+					"code": "588000",
+					"weight": "10%",
+					"reason": "科创属性标的集中，弹性较大"
+				}
+			],
+			"validation_criteria": {
+				"next_day": {
+					"success": "CPO板块平均涨幅 > 1%，推荐个股平均涨幅 > 1.5%",
+					"failure": "CPO板块平均跌幅 > 1%，推荐个股平均跌幅 > 1.5%",
+					"neutral": "其他情况"
+				},
+				"3_days": {
+					"success": "推荐个股累计平均涨幅 > 3%",
+					"failure": "推荐个股累计平均跌幅 > 3%",
+					"neutral": "其他情况"
+				},
+				"key_reference": "对比通信ETF(512480)涨幅作为基准"
+			}
 		},
 		"five_layer_attribution": {
 			"news_judgment": {"weight": "10%", "content": "国家级顶层设计，判断正确"},

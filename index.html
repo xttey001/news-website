@@ -809,6 +809,128 @@
         .god-trap-action.avoid { color: var(--red); }
         .god-trap-action.focus { color: var(--green); }
 
+        /* ===== 个股推荐 ===== */
+        .god-stock-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .god-stock-item {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+        .god-stock-rank {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #FFD700;
+            color: #000;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .god-stock-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .god-stock-code {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+        .god-stock-weight {
+            margin-left: auto;
+            background: rgba(63,185,80,0.2);
+            color: var(--green);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .god-stock-detail {
+            width: 100%;
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        .god-stock-reason {
+            width: 100%;
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-top: 4px;
+            padding-top: 4px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ===== ETF推荐 ===== */
+        .god-etf-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .god-etf-item {
+            background: rgba(0,0,0,0.15);
+            border-radius: 6px;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .god-etf-rank {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: var(--blue);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .god-etf-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text);
+        }
+        .god-etf-code {
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+        .god-etf-weight {
+            margin-left: auto;
+            background: rgba(88,166,255,0.2);
+            color: var(--blue);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .god-etf-reason {
+            width: 100%;
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        /* ===== 验证标准 ===== */
+        .god-validation {
+            background: rgba(0,0,0,0.15);
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
         /* ===== 新闻卡片 ===== */
         .news-card {
             background: rgba(255,255,255,0.03);
@@ -1788,6 +1910,58 @@
                         <div><strong>仓位：</strong>${gp.final_decision?.position_suggestion || '-'}</div>
                         <div><strong>止损：</strong>${gp.final_decision?.stop_loss || '-'}</div>
                         <div><strong>时间窗口：</strong>${gp.final_decision?.time_window || '-'}</div>
+                        
+                        <!-- 个股推荐排名 -->
+                        ${gp.final_decision?.stock_recommendations?.length > 0 ? `
+                        <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);">
+                            <div style="font-weight:600;color:#FFD700;margin-bottom:8px;">📈 个股推荐排名（按权重）</div>
+                            <div class="god-stock-list">` : ''}
+                        ${gp.final_decision?.stock_recommendations?.map(stock => `
+                            <div class="god-stock-item">
+                                <span class="god-stock-rank">${stock.rank}</span>
+                                <span class="god-stock-name">${stock.name}</span>
+                                <span class="god-stock-code">(${stock.code})</span>
+                                <span class="god-stock-weight">${stock.weight}</span>
+                                <div class="god-stock-detail">
+                                    <span style="color:var(--green);">预期:${stock.expected_return}</span>
+                                    <span style="color:var(--red);">止损:${stock.stop_loss}</span>
+                                </div>
+                                <div class="god-stock-reason">${stock.reason}</div>
+                            </div>
+                        `).join('') || ''}
+                        ${gp.final_decision?.stock_recommendations?.length > 0 ? `
+                            </div>
+                        </div>` : ''}
+                        
+                        <!-- ETF推荐 -->
+                        ${gp.final_decision?.etf_recommendations?.length > 0 ? `
+                        <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);">
+                            <div style="font-weight:600;color:#FFD700;margin-bottom:8px;">📊 ETF推荐</div>
+                            <div class="god-etf-list">` : ''}
+                        ${gp.final_decision?.etf_recommendations?.map(etf => `
+                            <div class="god-etf-item">
+                                <span class="god-etf-rank">${etf.rank}</span>
+                                <span class="god-etf-name">${etf.name}</span>
+                                <span class="god-etf-code">(${etf.code})</span>
+                                <span class="god-etf-weight">${etf.weight}</span>
+                                <div class="god-etf-reason">${etf.reason}</div>
+                            </div>
+                        `).join('') || ''}
+                        ${gp.final_decision?.etf_recommendations?.length > 0 ? `
+                            </div>
+                        </div>` : ''}
+                        
+                        <!-- 验证标准 -->
+                        ${gp.final_decision?.validation_criteria ? `
+                        <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);">
+                            <div style="font-weight:600;color:#FFD700;margin-bottom:8px;">✅ 验证标准（次日对照）</div>
+                            <div class="god-validation">
+                                <div><strong>次日成功：</strong><span style="color:var(--green);">${gp.final_decision.validation_criteria.next_day.success}</span></div>
+                                <div><strong>次日失败：</strong><span style="color:var(--red);">${gp.final_decision.validation_criteria.next_day.failure}</span></div>
+                                <div><strong>3日成功：</strong><span style="color:var(--green);">${gp.final_decision.validation_criteria['3_days'].success}</span></div>
+                                <div><strong>参考基准：</strong>${gp.final_decision.validation_criteria.key_reference}</div>
+                            </div>
+                        </div>` : ''}
                     </div>
                     
                     <div class="god-attribution-grid">`;
